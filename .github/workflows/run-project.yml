@@ -1,0 +1,44 @@
+name: Run project
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/.run'
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Find project
+        id: project
+        shell: bash
+        run: |
+          FILE="$(git diff --name-only HEAD^ HEAD | grep '/\.run$' | head -1)"
+          test -n "$FILE"
+          DIR="$(dirname "$FILE")"
+          echo "dir=$DIR" >> "$GITHUB_OUTPUT"
+          echo "Running $DIR"
+
+      - name: Run project
+        working-directory: ${{ steps.project.outputs.dir }}
+        run: bash run.sh
+
+      - name: Save project outputs
+        shell: bash
+        run: |
+          DIR="${{ steps.project.outputs.dir }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$DIR"
+          if ! git diff --cached --quiet; then
+            git commit -m "Run $DIR"
+            git push
+          fi
