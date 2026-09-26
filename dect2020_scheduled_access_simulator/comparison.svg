@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="480" viewBox="0 0 760 480">
+<rect width="100%" height="100%" fill="white"/>
+<line x1="60" y1="420" x2="700" y2="420" stroke="black"/>
+<line x1="60" y1="60" x2="60" y2="420" stroke="black"/>
+<polyline points="60.0,408.0 102.7,407.4 145.3,406.3 188.0,404.6 230.7,401.6 273.3,396.0 316.0,382.5 358.7,323.8 401.3,154.8 444.0,102.2 486.7,89.1 529.3,83.3 572.0,80.0 614.7,77.9 657.3,76.3 700.0,75.2" fill="none" stroke="#1f77b4" stroke-width="3"/>
+<circle cx="60.0" cy="408.1" r="4" fill="#ff7f0e"/><circle cx="102.7" cy="407.4" r="4" fill="#ff7f0e"/><circle cx="145.3" cy="406.3" r="4" fill="#ff7f0e"/><circle cx="188.0" cy="404.6" r="4" fill="#ff7f0e"/><circle cx="230.7" cy="401.6" r="4" fill="#ff7f0e"/><circle cx="273.3" cy="396.1" r="4" fill="#ff7f0e"/><circle cx="316.0" cy="382.4" r="4" fill="#ff7f0e"/><circle cx="358.7" cy="324.1" r="4" fill="#ff7f0e"/><circle cx="401.3" cy="156.0" r="4" fill="#ff7f0e"/><circle cx="444.0" cy="103.1" r="4" fill="#ff7f0e"/><circle cx="486.7" cy="89.6" r="4" fill="#ff7f0e"/><circle cx="529.3" cy="83.8" r="4" fill="#ff7f0e"/><circle cx="572.0" cy="80.4" r="4" fill="#ff7f0e"/><circle cx="614.7" cy="77.8" r="4" fill="#ff7f0e"/><circle cx="657.3" cy="76.5" r="4" fill="#ff7f0e"/><circle cx="700.0" cy="74.9" r="4" fill="#ff7f0e"/>
+<text x="380" y="465" text-anchor="middle" font-family="Arial" font-size="18">rho = lambda m_B</text>
+<text x="18" y="240" transform="rotate(-90 18 240)" text-anchor="middle" font-family="Arial" font-size="18">Mean delay, ms</text>
+<line x1="520" y1="35" x2="560" y2="35" stroke="#1f77b4" stroke-width="3"/><text x="570" y="41" font-family="Arial" font-size="16">Analytical</text>
+<circle cx="540" cy="62" r="4" fill="#ff7f0e"/><text x="570" y="68" font-family="Arial" font-size="16">Monte Carlo</text>
+</svg>
