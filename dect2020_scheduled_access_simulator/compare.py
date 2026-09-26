@@ -104,5 +104,5 @@ print("max delay error: %.2f%%"%err.max())
 
 plt.plot(RHOS,ana,"-",label="Analytical (corrected)")
 plt.plot(RHOS,sim,"o",ms=4,label="Monte Carlo")
-plt.xlabel(r"$\\rho=\\lambda m_B$"); plt.ylabel("Mean delay, ms")
+plt.xlabel("rho = lambda m_B"); plt.ylabel("Mean delay, ms")
 plt.grid(alpha=.3); plt.legend(); plt.tight_layout(); plt.savefig("comparison.svg")
