@@ -1509,6 +1509,420 @@ def run_stage3():
     if errors:
         raise RuntimeError("Stage 3 validation failed: " + " | ".join(errors))
 
+
+STATE_GROUPS = ("PBS", "LPS", "run", "MCC")
+STATE_WEEKS = (0, 16, 24)
+
+
+def state_label(group, week):
+    return f"{group}^{week}"
+
+
+def build_experimental_states(final_std, state_mouse_ids=None, reference_xbar=None):
+    """
+    Build the 12 group×week states in the 30-dimensional eNRI feature space.
+
+    state_mouse_ids controls which mice contribute to N_A/R_A/I_A/O_A/D_A/U_A.
+    reference_xbar is the normalization vector used in b_A. If omitted, it is
+    computed from living complete PBS^0 rows in the same state subset.
+    Later CV code can therefore build train states, retain xbar_PBS0_train, and
+    reuse that same reference for validation states without leakage.
+    """
+    if state_mouse_ids is None:
+        subset = final_std.copy()
+        scope = "all_included"
+    else:
+        ids = set(state_mouse_ids)
+        subset = final_std[final_std["mouse_id"].isin(ids)].copy()
+        scope = "mouse_subset"
+
+    errors = []
+    if subset.empty:
+        return {}, None, {
+            "scope": scope,
+            "errors": ["State subset is empty."],
+        }
+
+    # Every included mouse must have exactly one row at each of 0/16/24.
+    dup = subset[["mouse_id", "week"]].duplicated()
+    if dup.any():
+        errors.append("Duplicate mouse_id/week rows in state subset.")
+
+    per_mouse_weeks = subset.groupby("mouse_id")["week"].nunique()
+    bad_weeks = per_mouse_weeks[per_mouse_weeks.ne(3)]
+    if len(bad_weeks):
+        errors.append(
+            "Some mice do not have exactly three state rows: "
+            + json.dumps({str(k): int(v) for k, v in bad_weeks.items()}, ensure_ascii=False)
+        )
+
+    # Determine the normalization reference from PBS^0 living complete observations.
+    if reference_xbar is None:
+        pbs0 = subset[
+            subset["group"].eq("PBS")
+            & subset["week"].eq(0)
+            & subset["status"].isin(["observed", "imputed"])
+        ]
+        if pbs0.empty:
+            errors.append("No living complete PBS^0 rows available for normalization reference.")
+            xbar = None
+        else:
+            xbar = pbs0[MODEL_FEATURES].astype(float).mean(axis=0).to_numpy(dtype=float)
+    else:
+        xbar = np.asarray(reference_xbar, dtype=float)
+
+    if xbar is not None:
+        if xbar.shape != (len(MODEL_FEATURES),):
+            errors.append(
+                f"xbar_PBS0 has shape {xbar.shape}; expected {(len(MODEL_FEATURES),)}."
+            )
+        elif not np.isfinite(xbar).all():
+            errors.append("xbar_PBS0 contains non-finite values.")
+
+    states = {}
+    for group in STATE_GROUPS:
+        group_mice = sorted(subset.loc[subset["group"].eq(group), "mouse_id"].unique())
+        N_group = len(group_mice)
+
+        for week in STATE_WEEKS:
+            label = state_label(group, week)
+            rows = subset[subset["group"].eq(group) & subset["week"].eq(week)].copy()
+
+            if len(rows) != N_group:
+                errors.append(
+                    f"{label}: expected one row for each of {N_group} group mice, got {len(rows)}."
+                )
+
+            R = rows[rows["status"].eq("observed")]
+            I = rows[rows["status"].eq("imputed")]
+            D = rows[rows["status"].eq("death")]
+            U = rows[rows["status"].eq("missing_visit")]
+            O = rows[rows["status"].isin(["observed", "imputed"])]
+
+            N_A = N_group
+            counts = {
+                "N": int(N_A),
+                "R": int(len(R)),
+                "I": int(len(I)),
+                "O": int(len(O)),
+                "D": int(len(D)),
+                "U": int(len(U)),
+            }
+
+            if counts["R"] + counts["I"] != counts["O"]:
+                errors.append(f"{label}: R+I != O.")
+            if counts["O"] + counts["D"] + counts["U"] != N_A:
+                errors.append(
+                    f"{label}: O+D+U={counts['O'] + counts['D'] + counts['U']} != N={N_A}."
+                )
+
+            if len(O):
+                X = O[MODEL_FEATURES].to_numpy(dtype=float)
+                if not np.isfinite(X).all():
+                    errors.append(f"{label}: O_A contains non-finite model values.")
+            else:
+                X = np.empty((0, len(MODEL_FEATURES)), dtype=float)
+                errors.append(f"{label}: O_A is empty.")
+
+            if xbar is None or N_A == 0:
+                a_A = np.nan
+                b_A = np.full(len(MODEL_FEATURES), np.nan)
+            else:
+                a_A = float(len(O) / N_A)
+                b_A = ((X - xbar).sum(axis=0) / N_A) if len(O) else np.zeros(len(MODEL_FEATURES))
+
+            if len(O) >= 2:
+                S_A = np.cov(X, rowvar=False, ddof=1)
+            else:
+                S_A = np.full((len(MODEL_FEATURES), len(MODEL_FEATURES)), np.nan)
+                errors.append(f"{label}: fewer than 2 living complete observations for covariance.")
+
+            if S_A.shape != (len(MODEL_FEATURES), len(MODEL_FEATURES)):
+                errors.append(f"{label}: covariance shape {S_A.shape} is invalid.")
+
+            finite_cov = bool(np.isfinite(S_A).all())
+            symmetry_error = (
+                float(np.max(np.abs(S_A - S_A.T))) if finite_cov else float("nan")
+            )
+            if finite_cov:
+                S_sym = 0.5 * (S_A + S_A.T)
+                eigvals = np.linalg.eigvalsh(S_sym)
+                min_eig = float(eigvals.min())
+                rank = int(np.linalg.matrix_rank(S_sym, tol=1e-10))
+                trace = float(np.trace(S_sym))
+            else:
+                min_eig = float("nan")
+                rank = 0
+                trace = float("nan")
+
+            if not finite_cov:
+                errors.append(f"{label}: covariance contains non-finite values.")
+            if finite_cov and symmetry_error > 1e-10:
+                errors.append(f"{label}: covariance asymmetry {symmetry_error} exceeds tolerance.")
+            if finite_cov and min_eig < -1e-8:
+                errors.append(f"{label}: covariance minimum eigenvalue {min_eig} < -1e-8.")
+
+            states[label] = {
+                "group": group,
+                "week": int(week),
+                "N": int(N_A),
+                "R": int(len(R)),
+                "I": int(len(I)),
+                "O": int(len(O)),
+                "D": int(len(D)),
+                "U": int(len(U)),
+                "R_mouse_ids": sorted(R["mouse_id"].tolist()),
+                "I_mouse_ids": sorted(I["mouse_id"].tolist()),
+                "O_mouse_ids": sorted(O["mouse_id"].tolist()),
+                "D_mouse_ids": sorted(D["mouse_id"].tolist()),
+                "U_mouse_ids": sorted(U["mouse_id"].tolist()),
+                "a": float(a_A),
+                "b": np.asarray(b_A, dtype=float),
+                "S": np.asarray(S_A, dtype=float),
+                "covariance_min_eigenvalue": min_eig,
+                "covariance_rank": rank,
+                "covariance_trace": trace,
+                "covariance_symmetry_error": symmetry_error,
+            }
+
+    stats = {
+        "scope": scope,
+        "state_count": int(len(states)),
+        "feature_count": int(len(MODEL_FEATURES)),
+        "errors": errors,
+    }
+    return states, xbar, stats
+
+
+def validate_full_stage4(states, xbar, stats):
+    errors = list(stats["errors"])
+
+    expected_state_labels = {
+        state_label(g, w) for g in STATE_GROUPS for w in STATE_WEEKS
+    }
+    if set(states) != expected_state_labels:
+        errors.append(
+            "State label set mismatch: "
+            + json.dumps(sorted(set(states) ^ expected_state_labels))
+        )
+
+    if len(states) != 12:
+        errors.append(f"Expected 12 states, got {len(states)}.")
+
+    expected_N = EXPECTED_GROUP_COUNTS
+    expected_alive_by_week = {
+        0: EXPECTED_GROUP_COUNTS,
+        16: EXPECTED_ALIVE[16],
+        24: EXPECTED_ALIVE[24],
+    }
+    expected_death_by_week = {
+        0: {g: 0 for g in STATE_GROUPS},
+        16: EXPECTED_DEATH[16],
+        24: EXPECTED_DEATH[24],
+    }
+
+    for group in STATE_GROUPS:
+        for week in STATE_WEEKS:
+            label = state_label(group, week)
+            if label not in states:
+                continue
+            s = states[label]
+
+            if s["N"] != expected_N[group]:
+                errors.append(
+                    f"{label}: N={s['N']}, expected {expected_N[group]}."
+                )
+            if s["O"] != expected_alive_by_week[week][group]:
+                errors.append(
+                    f"{label}: O={s['O']}, expected alive={expected_alive_by_week[week][group]}."
+                )
+            if s["D"] != expected_death_by_week[week][group]:
+                errors.append(
+                    f"{label}: D={s['D']}, expected death={expected_death_by_week[week][group]}."
+                )
+            if s["U"] != 0:
+                errors.append(f"{label}: U={s['U']} but full model requires U=0.")
+            if not math.isclose(
+                s["a"],
+                s["O"] / s["N"],
+                rel_tol=0,
+                abs_tol=1e-12,
+            ):
+                errors.append(f"{label}: a_A != O_A/N_A.")
+
+    if xbar is None:
+        errors.append("xbar_PBS0 is missing.")
+    else:
+        # By construction, b_PBS0 must be essentially zero because PBS^0 has no deaths.
+        pbs0_b = states["PBS^0"]["b"]
+        max_abs_pbs0_b = float(np.max(np.abs(pbs0_b)))
+        if max_abs_pbs0_b > 1e-10:
+            errors.append(
+                f"PBS^0 b_A is not zero under PBS^0 centering; max abs={max_abs_pbs0_b}."
+            )
+
+    return errors
+
+
+def add_stage4_diag(rows, severity, check, detail, value="", feature="", week="", group="", mouse_id=""):
+    rows.append({
+        "type": "state",
+        "severity": severity,
+        "check": check,
+        "mouse_id": mouse_id,
+        "group": group,
+        "week": week,
+        "feature": feature,
+        "column": "",
+        "excel_cell": "",
+        "value": value,
+        "detail": detail,
+    })
+
+
+def run_stage4():
+    # Re-run all upstream preprocessing before constructing states.
+    run_stage3()
+
+    source = load_included_source()
+    long_raw = build_long_table(source)
+    final_std, stage3_stats = fit_transform_stage3(
+        long_raw,
+        fit_mouse_ids=None,
+        random_state=IMPUTATION_SEED,
+    )
+    upstream_errors = list(stage3_stats.get("errors", []))
+
+    states, xbar, state_stats = build_experimental_states(final_std)
+    errors = upstream_errors + validate_full_stage4(states, xbar, state_stats)
+
+    diagnostics_path = RESULTS_DIR / "diagnostics.csv"
+    diagnostics = pd.read_csv(diagnostics_path)
+    # Replace prior stage-4 state diagnostics if this stage is rerun.
+    diagnostics = diagnostics[
+        ~(
+            diagnostics["type"].astype(str).eq("state")
+            & diagnostics["check"].astype(str).str.startswith("stage4_")
+        )
+    ].copy()
+
+    rows = []
+    for group in STATE_GROUPS:
+        for week in STATE_WEEKS:
+            label = state_label(group, week)
+            s = states[label]
+            add_stage4_diag(
+                rows,
+                "ok",
+                "stage4_state_counts",
+                (
+                    f"{label}: N={s['N']}, R={s['R']}, I={s['I']}, "
+                    f"O={s['O']}, D={s['D']}, U={s['U']}."
+                ),
+                value=f"N={s['N']};R={s['R']};I={s['I']};O={s['O']};D={s['D']};U={s['U']}",
+                feature=label,
+                group=group,
+                week=week,
+            )
+            add_stage4_diag(
+                rows,
+                "ok",
+                "stage4_state_a",
+                "a_A = |O_A| / N_A; deaths therefore contribute zero to the group-mean eNRI representation.",
+                value=f"{s['a']:.12g}",
+                feature=label,
+                group=group,
+                week=week,
+            )
+            add_stage4_diag(
+                rows,
+                "ok",
+                "stage4_state_b",
+                "b_A is the 30-vector (1/N_A) * sum_{i in O_A}(x_i - xbar_PBS0). Value reports its Euclidean norm.",
+                value=f"{float(np.linalg.norm(s['b'])):.12g}",
+                feature=label,
+                group=group,
+                week=week,
+            )
+            add_stage4_diag(
+                rows,
+                "ok" if s["covariance_min_eigenvalue"] >= -1e-8 else "fatal",
+                "stage4_state_covariance",
+                (
+                    f"S_A is 30x30 sample covariance over O_A. "
+                    f"rank={s['covariance_rank']}; trace={s['covariance_trace']:.12g}; "
+                    f"min_eigenvalue={s['covariance_min_eigenvalue']:.12g}; "
+                    f"symmetry_error={s['covariance_symmetry_error']:.3g}."
+                ),
+                value=f"{s['covariance_min_eigenvalue']:.12g}",
+                feature=label,
+                group=group,
+                week=week,
+            )
+
+    xbar_norm = float(np.linalg.norm(xbar)) if xbar is not None else float("nan")
+    add_stage4_diag(
+        rows,
+        "ok" if xbar is not None else "fatal",
+        "stage4_xbar_pbs0",
+        "Normalization reference xbar_PBS0 computed from living complete PBS week-0 standardized MODEL_FEATURES. Value reports Euclidean norm.",
+        value=f"{xbar_norm:.12g}",
+        feature="xbar_PBS0",
+        group="PBS",
+        week=0,
+    )
+
+    for err in errors:
+        add_stage4_diag(rows, "fatal", "stage4_validation", err)
+
+    status = "READY" if not errors else "FATAL"
+    add_stage4_diag(
+        rows,
+        "summary",
+        "stage4_status",
+        (
+            f"Stage 4 status={status}; states={len(states)}; model_features={len(MODEL_FEATURES)}; "
+            f"validation_errors={len(errors)}."
+        ),
+        value=status,
+    )
+
+    merged = pd.concat([diagnostics, pd.DataFrame(rows)], ignore_index=True)
+    merged.to_csv(diagnostics_path, index=False)
+
+    state_counts = {
+        label: {
+            k: int(states[label][k])
+            for k in ("N", "R", "I", "O", "D", "U")
+        }
+        for label in sorted(states)
+    }
+    covariance_min_eigs = {
+        label: float(states[label]["covariance_min_eigenvalue"])
+        for label in sorted(states)
+    }
+    covariance_ranks = {
+        label: int(states[label]["covariance_rank"])
+        for label in sorted(states)
+    }
+
+    summary = {
+        "stage": 4,
+        "status": status,
+        "state_count": int(len(states)),
+        "model_features": int(len(MODEL_FEATURES)),
+        "xbar_pbs0_norm": xbar_norm,
+        "state_counts": state_counts,
+        "covariance_min_eigenvalues": covariance_min_eigs,
+        "covariance_ranks": covariance_ranks,
+        "validation_errors": errors,
+        "diagnostics_file": str(diagnostics_path.relative_to(ROOT)),
+    }
+    print("STAGE4_SUMMARY=" + json.dumps(summary, ensure_ascii=False, sort_keys=True))
+
+    if errors:
+        raise RuntimeError("Stage 4 validation failed: " + " | ".join(errors))
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--stage", type=int, required=True)
@@ -1520,6 +1934,8 @@ def main():
         run_stage2()
     elif args.stage == 3:
         run_stage3()
+    elif args.stage == 4:
+        run_stage4()
     else:
         raise SystemExit(f"Stage {args.stage} is not implemented yet.")
 
