@@ -140,53 +140,117 @@ stage3,ok,status_count,,,,missing_visit,,,0,Final stage-3 visit status.
 stage3,ok,complete_35d_living,,,,,,,0,All living eligible visits must have a complete standardized 30-dimensional MODEL_FEATURES vector after imputation. Five deterministic derived features are QC-only.
 stage3,ok,observed_values_preserved,,,,,,,3.637978807091713e-12,Maximum raw-scale absolute change among originally observed MODEL_FEATURES after standardize/impute/inverse-transform.
 stage3,summary,stage3_status,,,,,,,READY,Stage 3 status=READY; validation_errors=0; imputed_base_cells=15; final living standardized missing=0.
-state,ok,stage4_state_counts,,PBS,0,PBS^0,,,N=11;R=11;I=0;O=11;D=0;U=0,"PBS^0: N=11, R=11, I=0, O=11, D=0, U=0."
-state,ok,stage4_state_a,,PBS,0,PBS^0,,,1,a_A = |O_A| / N_A; deaths therefore contribute zero to the group-mean eNRI representation.
-state,ok,stage4_state_b,,PBS,0,PBS^0,,,2.15718074075e-16,b_A is the 30-vector (1/N_A) * sum_{i in O_A}(x_i - xbar_PBS0). Value reports its Euclidean norm.
-state,ok,stage4_state_covariance,,PBS,0,PBS^0,,,-8.77522370451e-16,"S_A is 30x30 sample covariance over O_A. rank=10; trace=26.6549267888; min_eigenvalue=-8.77522370451e-16; symmetry_error=0. Because p=30 exceeds state sample size, S_A is singular; tiny negative eigenvalues from floating-point eigendecomposition are diagnostic only. The hard PSD tolerance is applied to symmetrized Q_var at stage 5."
-state,ok,stage4_state_counts,,PBS,16,PBS^16,,,N=11;R=8;I=1;O=9;D=2;U=0,"PBS^16: N=11, R=8, I=1, O=9, D=2, U=0."
-state,ok,stage4_state_a,,PBS,16,PBS^16,,,0.818181818182,a_A = |O_A| / N_A; deaths therefore contribute zero to the group-mean eNRI representation.
-state,ok,stage4_state_b,,PBS,16,PBS^16,,,3.12110231809,b_A is the 30-vector (1/N_A) * sum_{i in O_A}(x_i - xbar_PBS0). Value reports its Euclidean norm.
-state,ok,stage4_state_covariance,,PBS,16,PBS^16,,,-2.7344252612e-15,"S_A is 30x30 sample covariance over O_A. rank=8; trace=43.9216714776; min_eigenvalue=-2.7344252612e-15; symmetry_error=0. Because p=30 exceeds state sample size, S_A is singular; tiny negative eigenvalues from floating-point eigendecomposition are diagnostic only. The hard PSD tolerance is applied to symmetrized Q_var at stage 5."
-state,ok,stage4_state_counts,,PBS,24,PBS^24,,,N=11;R=8;I=0;O=8;D=3;U=0,"PBS^24: N=11, R=8, I=0, O=8, D=3, U=0."
-state,ok,stage4_state_a,,PBS,24,PBS^24,,,0.727272727273,a_A = |O_A| / N_A; deaths therefore contribute zero to the group-mean eNRI representation.
-state,ok,stage4_state_b,,PBS,24,PBS^24,,,16.8572097077,b_A is the 30-vector (1/N_A) * sum_{i in O_A}(x_i - xbar_PBS0). Value reports its Euclidean norm.
-state,ok,stage4_state_covariance,,PBS,24,PBS^24,,,-2.79482304932e-15,"S_A is 30x30 sample covariance over O_A. rank=7; trace=2581.1373905; min_eigenvalue=-2.79482304932e-15; symmetry_error=0. Because p=30 exceeds state sample size, S_A is singular; tiny negative eigenvalues from floating-point eigendecomposition are diagnostic only. The hard PSD tolerance is applied to symmetrized Q_var at stage 5."
-state,ok,stage4_state_counts,,LPS,0,LPS^0,,,N=14;R=14;I=0;O=14;D=0;U=0,"LPS^0: N=14, R=14, I=0, O=14, D=0, U=0."
-state,ok,stage4_state_a,,LPS,0,LPS^0,,,1,a_A = |O_A| / N_A; deaths therefore contribute zero to the group-mean eNRI representation.
-state,ok,stage4_state_b,,LPS,0,LPS^0,,,2.32329846393,b_A is the 30-vector (1/N_A) * sum_{i in O_A}(x_i - xbar_PBS0). Value reports its Euclidean norm.
-state,ok,stage4_state_covariance,,LPS,0,LPS^0,,,-6.78432706602e-16,"S_A is 30x30 sample covariance over O_A. rank=13; trace=29.5321594539; min_eigenvalue=-6.78432706602e-16; symmetry_error=0. Because p=30 exceeds state sample size, S_A is singular; tiny negative eigenvalues from floating-point eigendecomposition are diagnostic only. The hard PSD tolerance is applied to symmetrized Q_var at stage 5."
-state,ok,stage4_state_counts,,LPS,16,LPS^16,,,N=14;R=12;I=0;O=12;D=2;U=0,"LPS^16: N=14, R=12, I=0, O=12, D=2, U=0."
-state,ok,stage4_state_a,,LPS,16,LPS^16,,,0.857142857143,a_A = |O_A| / N_A; deaths therefore contribute zero to the group-mean eNRI representation.
-state,ok,stage4_state_b,,LPS,16,LPS^16,,,3.16378570041,b_A is the 30-vector (1/N_A) * sum_{i in O_A}(x_i - xbar_PBS0). Value reports its Euclidean norm.
-state,ok,stage4_state_covariance,,LPS,16,LPS^16,,,-2.4495701249e-15,"S_A is 30x30 sample covariance over O_A. rank=11; trace=36.4564793918; min_eigenvalue=-2.4495701249e-15; symmetry_error=0. Because p=30 exceeds state sample size, S_A is singular; tiny negative eigenvalues from floating-point eigendecomposition are diagnostic only. The hard PSD tolerance is applied to symmetrized Q_var at stage 5."
-state,ok,stage4_state_counts,,LPS,24,LPS^24,,,N=14;R=10;I=1;O=11;D=3;U=0,"LPS^24: N=14, R=10, I=1, O=11, D=3, U=0."
-state,ok,stage4_state_a,,LPS,24,LPS^24,,,0.785714285714,a_A = |O_A| / N_A; deaths therefore contribute zero to the group-mean eNRI representation.
-state,ok,stage4_state_b,,LPS,24,LPS^24,,,3.27976867281,b_A is the 30-vector (1/N_A) * sum_{i in O_A}(x_i - xbar_PBS0). Value reports its Euclidean norm.
-state,ok,stage4_state_covariance,,LPS,24,LPS^24,,,-1.78916937098e-15,"S_A is 30x30 sample covariance over O_A. rank=10; trace=50.8638107682; min_eigenvalue=-1.78916937098e-15; symmetry_error=0. Because p=30 exceeds state sample size, S_A is singular; tiny negative eigenvalues from floating-point eigendecomposition are diagnostic only. The hard PSD tolerance is applied to symmetrized Q_var at stage 5."
-state,ok,stage4_state_counts,,run,0,run^0,,,N=15;R=14;I=1;O=15;D=0;U=0,"run^0: N=15, R=14, I=1, O=15, D=0, U=0."
-state,ok,stage4_state_a,,run,0,run^0,,,1,a_A = |O_A| / N_A; deaths therefore contribute zero to the group-mean eNRI representation.
-state,ok,stage4_state_b,,run,0,run^0,,,1.67024423023,b_A is the 30-vector (1/N_A) * sum_{i in O_A}(x_i - xbar_PBS0). Value reports its Euclidean norm.
-state,ok,stage4_state_covariance,,run,0,run^0,,,-1.25614013348e-15,"S_A is 30x30 sample covariance over O_A. rank=14; trace=21.1418100581; min_eigenvalue=-1.25614013348e-15; symmetry_error=0. Because p=30 exceeds state sample size, S_A is singular; tiny negative eigenvalues from floating-point eigendecomposition are diagnostic only. The hard PSD tolerance is applied to symmetrized Q_var at stage 5."
-state,ok,stage4_state_counts,,run,16,run^16,,,N=15;R=11;I=1;O=12;D=3;U=0,"run^16: N=15, R=11, I=1, O=12, D=3, U=0."
-state,ok,stage4_state_a,,run,16,run^16,,,0.8,a_A = |O_A| / N_A; deaths therefore contribute zero to the group-mean eNRI representation.
-state,ok,stage4_state_b,,run,16,run^16,,,1.89440000371,b_A is the 30-vector (1/N_A) * sum_{i in O_A}(x_i - xbar_PBS0). Value reports its Euclidean norm.
-state,ok,stage4_state_covariance,,run,16,run^16,,,-3.04727359762e-15,"S_A is 30x30 sample covariance over O_A. rank=11; trace=24.1735984328; min_eigenvalue=-3.04727359762e-15; symmetry_error=0. Because p=30 exceeds state sample size, S_A is singular; tiny negative eigenvalues from floating-point eigendecomposition are diagnostic only. The hard PSD tolerance is applied to symmetrized Q_var at stage 5."
-state,ok,stage4_state_counts,,run,24,run^24,,,N=15;R=12;I=0;O=12;D=3;U=0,"run^24: N=15, R=12, I=0, O=12, D=3, U=0."
-state,ok,stage4_state_a,,run,24,run^24,,,0.8,a_A = |O_A| / N_A; deaths therefore contribute zero to the group-mean eNRI representation.
-state,ok,stage4_state_b,,run,24,run^24,,,6.32743941869,b_A is the 30-vector (1/N_A) * sum_{i in O_A}(x_i - xbar_PBS0). Value reports its Euclidean norm.
-state,ok,stage4_state_covariance,,run,24,run^24,,,-1.79116189851e-15,"S_A is 30x30 sample covariance over O_A. rank=11; trace=475.60335312; min_eigenvalue=-1.79116189851e-15; symmetry_error=0. Because p=30 exceeds state sample size, S_A is singular; tiny negative eigenvalues from floating-point eigendecomposition are diagnostic only. The hard PSD tolerance is applied to symmetrized Q_var at stage 5."
-state,ok,stage4_state_counts,,MCC,0,MCC^0,,,N=14;R=13;I=1;O=14;D=0;U=0,"MCC^0: N=14, R=13, I=1, O=14, D=0, U=0."
-state,ok,stage4_state_a,,MCC,0,MCC^0,,,1,a_A = |O_A| / N_A; deaths therefore contribute zero to the group-mean eNRI representation.
-state,ok,stage4_state_b,,MCC,0,MCC^0,,,2.05306847534,b_A is the 30-vector (1/N_A) * sum_{i in O_A}(x_i - xbar_PBS0). Value reports its Euclidean norm.
-state,ok,stage4_state_covariance,,MCC,0,MCC^0,,,-1.45096916872e-15,"S_A is 30x30 sample covariance over O_A. rank=13; trace=43.4904971511; min_eigenvalue=-1.45096916872e-15; symmetry_error=0. Because p=30 exceeds state sample size, S_A is singular; tiny negative eigenvalues from floating-point eigendecomposition are diagnostic only. The hard PSD tolerance is applied to symmetrized Q_var at stage 5."
-state,ok,stage4_state_counts,,MCC,16,MCC^16,,,N=14;R=11;I=0;O=11;D=3;U=0,"MCC^16: N=14, R=11, I=0, O=11, D=3, U=0."
-state,ok,stage4_state_a,,MCC,16,MCC^16,,,0.785714285714,a_A = |O_A| / N_A; deaths therefore contribute zero to the group-mean eNRI representation.
-state,ok,stage4_state_b,,MCC,16,MCC^16,,,1439.00239839,b_A is the 30-vector (1/N_A) * sum_{i in O_A}(x_i - xbar_PBS0). Value reports its Euclidean norm.
-state,ok,stage4_state_covariance,,MCC,16,MCC^16,,,-1.15042346448e-08,"S_A is 30x30 sample covariance over O_A. rank=10; trace=19687496.7241; min_eigenvalue=-1.15042346448e-08; symmetry_error=0. Because p=30 exceeds state sample size, S_A is singular; tiny negative eigenvalues from floating-point eigendecomposition are diagnostic only. The hard PSD tolerance is applied to symmetrized Q_var at stage 5."
-state,ok,stage4_state_counts,,MCC,24,MCC^24,,,N=14;R=11;I=0;O=11;D=3;U=0,"MCC^24: N=14, R=11, I=0, O=11, D=3, U=0."
-state,ok,stage4_state_a,,MCC,24,MCC^24,,,0.785714285714,a_A = |O_A| / N_A; deaths therefore contribute zero to the group-mean eNRI representation.
-state,ok,stage4_state_b,,MCC,24,MCC^24,,,10.689775567,b_A is the 30-vector (1/N_A) * sum_{i in O_A}(x_i - xbar_PBS0). Value reports its Euclidean norm.
-state,ok,stage4_state_covariance,,MCC,24,MCC^24,,,-1.26992569159e-15,"S_A is 30x30 sample covariance over O_A. rank=10; trace=2131.86637254; min_eigenvalue=-1.26992569159e-15; symmetry_error=0. Because p=30 exceeds state sample size, S_A is singular; tiny negative eigenvalues from floating-point eigendecomposition are diagnostic only. The hard PSD tolerance is applied to symmetrized Q_var at stage 5."
-state,ok,stage4_xbar_pbs0,,PBS,0,xbar_PBS0,,,1.35411801611,Normalization reference xbar_PBS0 computed from living complete PBS week-0 standardized MODEL_FEATURES. Value reports Euclidean norm.
+state,ok,stage4_state_counts,,PBS,0.0,PBS^0,,,N=11;R=11;I=0;O=11;D=0;U=0,"PBS^0: N=11, R=11, I=0, O=11, D=0, U=0."
+state,ok,stage4_state_a,,PBS,0.0,PBS^0,,,1,a_A = |O_A| / N_A; deaths therefore contribute zero to the group-mean eNRI representation.
+state,ok,stage4_state_b,,PBS,0.0,PBS^0,,,2.15718074075e-16,b_A is the 30-vector (1/N_A) * sum_{i in O_A}(x_i - xbar_PBS0). Value reports its Euclidean norm.
+state,ok,stage4_state_covariance,,PBS,0.0,PBS^0,,,-1.47384558788e-15,"S_A is 30x30 sample covariance over O_A. rank=10; trace=26.6549267888; min_eigenvalue=-1.47384558788e-15; symmetry_error=0. Because p=30 exceeds state sample size, S_A is singular; tiny negative eigenvalues from floating-point eigendecomposition are diagnostic only. The hard PSD tolerance is applied to symmetrized Q_var at stage 5."
+state,ok,stage4_state_counts,,PBS,16.0,PBS^16,,,N=11;R=8;I=1;O=9;D=2;U=0,"PBS^16: N=11, R=8, I=1, O=9, D=2, U=0."
+state,ok,stage4_state_a,,PBS,16.0,PBS^16,,,0.818181818182,a_A = |O_A| / N_A; deaths therefore contribute zero to the group-mean eNRI representation.
+state,ok,stage4_state_b,,PBS,16.0,PBS^16,,,3.12110231809,b_A is the 30-vector (1/N_A) * sum_{i in O_A}(x_i - xbar_PBS0). Value reports its Euclidean norm.
+state,ok,stage4_state_covariance,,PBS,16.0,PBS^16,,,-3.97258764595e-15,"S_A is 30x30 sample covariance over O_A. rank=8; trace=43.9216714776; min_eigenvalue=-3.97258764595e-15; symmetry_error=0. Because p=30 exceeds state sample size, S_A is singular; tiny negative eigenvalues from floating-point eigendecomposition are diagnostic only. The hard PSD tolerance is applied to symmetrized Q_var at stage 5."
+state,ok,stage4_state_counts,,PBS,24.0,PBS^24,,,N=11;R=8;I=0;O=8;D=3;U=0,"PBS^24: N=11, R=8, I=0, O=8, D=3, U=0."
+state,ok,stage4_state_a,,PBS,24.0,PBS^24,,,0.727272727273,a_A = |O_A| / N_A; deaths therefore contribute zero to the group-mean eNRI representation.
+state,ok,stage4_state_b,,PBS,24.0,PBS^24,,,16.8572097077,b_A is the 30-vector (1/N_A) * sum_{i in O_A}(x_i - xbar_PBS0). Value reports its Euclidean norm.
+state,ok,stage4_state_covariance,,PBS,24.0,PBS^24,,,-2.32030499696e-15,"S_A is 30x30 sample covariance over O_A. rank=7; trace=2581.1373905; min_eigenvalue=-2.32030499696e-15; symmetry_error=0. Because p=30 exceeds state sample size, S_A is singular; tiny negative eigenvalues from floating-point eigendecomposition are diagnostic only. The hard PSD tolerance is applied to symmetrized Q_var at stage 5."
+state,ok,stage4_state_counts,,LPS,0.0,LPS^0,,,N=14;R=14;I=0;O=14;D=0;U=0,"LPS^0: N=14, R=14, I=0, O=14, D=0, U=0."
+state,ok,stage4_state_a,,LPS,0.0,LPS^0,,,1,a_A = |O_A| / N_A; deaths therefore contribute zero to the group-mean eNRI representation.
+state,ok,stage4_state_b,,LPS,0.0,LPS^0,,,2.32329846393,b_A is the 30-vector (1/N_A) * sum_{i in O_A}(x_i - xbar_PBS0). Value reports its Euclidean norm.
+state,ok,stage4_state_covariance,,LPS,0.0,LPS^0,,,-1.84649565903e-15,"S_A is 30x30 sample covariance over O_A. rank=13; trace=29.5321594539; min_eigenvalue=-1.84649565903e-15; symmetry_error=0. Because p=30 exceeds state sample size, S_A is singular; tiny negative eigenvalues from floating-point eigendecomposition are diagnostic only. The hard PSD tolerance is applied to symmetrized Q_var at stage 5."
+state,ok,stage4_state_counts,,LPS,16.0,LPS^16,,,N=14;R=12;I=0;O=12;D=2;U=0,"LPS^16: N=14, R=12, I=0, O=12, D=2, U=0."
+state,ok,stage4_state_a,,LPS,16.0,LPS^16,,,0.857142857143,a_A = |O_A| / N_A; deaths therefore contribute zero to the group-mean eNRI representation.
+state,ok,stage4_state_b,,LPS,16.0,LPS^16,,,3.16378570041,b_A is the 30-vector (1/N_A) * sum_{i in O_A}(x_i - xbar_PBS0). Value reports its Euclidean norm.
+state,ok,stage4_state_covariance,,LPS,16.0,LPS^16,,,-1.90253927557e-15,"S_A is 30x30 sample covariance over O_A. rank=11; trace=36.4564793918; min_eigenvalue=-1.90253927557e-15; symmetry_error=0. Because p=30 exceeds state sample size, S_A is singular; tiny negative eigenvalues from floating-point eigendecomposition are diagnostic only. The hard PSD tolerance is applied to symmetrized Q_var at stage 5."
+state,ok,stage4_state_counts,,LPS,24.0,LPS^24,,,N=14;R=10;I=1;O=11;D=3;U=0,"LPS^24: N=14, R=10, I=1, O=11, D=3, U=0."
+state,ok,stage4_state_a,,LPS,24.0,LPS^24,,,0.785714285714,a_A = |O_A| / N_A; deaths therefore contribute zero to the group-mean eNRI representation.
+state,ok,stage4_state_b,,LPS,24.0,LPS^24,,,3.27976867281,b_A is the 30-vector (1/N_A) * sum_{i in O_A}(x_i - xbar_PBS0). Value reports its Euclidean norm.
+state,ok,stage4_state_covariance,,LPS,24.0,LPS^24,,,-1.27908290673e-15,"S_A is 30x30 sample covariance over O_A. rank=10; trace=50.8638107682; min_eigenvalue=-1.27908290673e-15; symmetry_error=0. Because p=30 exceeds state sample size, S_A is singular; tiny negative eigenvalues from floating-point eigendecomposition are diagnostic only. The hard PSD tolerance is applied to symmetrized Q_var at stage 5."
+state,ok,stage4_state_counts,,run,0.0,run^0,,,N=15;R=14;I=1;O=15;D=0;U=0,"run^0: N=15, R=14, I=1, O=15, D=0, U=0."
+state,ok,stage4_state_a,,run,0.0,run^0,,,1,a_A = |O_A| / N_A; deaths therefore contribute zero to the group-mean eNRI representation.
+state,ok,stage4_state_b,,run,0.0,run^0,,,1.67024423023,b_A is the 30-vector (1/N_A) * sum_{i in O_A}(x_i - xbar_PBS0). Value reports its Euclidean norm.
+state,ok,stage4_state_covariance,,run,0.0,run^0,,,-1.38373277779e-15,"S_A is 30x30 sample covariance over O_A. rank=14; trace=21.1418100581; min_eigenvalue=-1.38373277779e-15; symmetry_error=0. Because p=30 exceeds state sample size, S_A is singular; tiny negative eigenvalues from floating-point eigendecomposition are diagnostic only. The hard PSD tolerance is applied to symmetrized Q_var at stage 5."
+state,ok,stage4_state_counts,,run,16.0,run^16,,,N=15;R=11;I=1;O=12;D=3;U=0,"run^16: N=15, R=11, I=1, O=12, D=3, U=0."
+state,ok,stage4_state_a,,run,16.0,run^16,,,0.8,a_A = |O_A| / N_A; deaths therefore contribute zero to the group-mean eNRI representation.
+state,ok,stage4_state_b,,run,16.0,run^16,,,1.89440000371,b_A is the 30-vector (1/N_A) * sum_{i in O_A}(x_i - xbar_PBS0). Value reports its Euclidean norm.
+state,ok,stage4_state_covariance,,run,16.0,run^16,,,-3.78241384441e-15,"S_A is 30x30 sample covariance over O_A. rank=11; trace=24.1735984328; min_eigenvalue=-3.78241384441e-15; symmetry_error=0. Because p=30 exceeds state sample size, S_A is singular; tiny negative eigenvalues from floating-point eigendecomposition are diagnostic only. The hard PSD tolerance is applied to symmetrized Q_var at stage 5."
+state,ok,stage4_state_counts,,run,24.0,run^24,,,N=15;R=12;I=0;O=12;D=3;U=0,"run^24: N=15, R=12, I=0, O=12, D=3, U=0."
+state,ok,stage4_state_a,,run,24.0,run^24,,,0.8,a_A = |O_A| / N_A; deaths therefore contribute zero to the group-mean eNRI representation.
+state,ok,stage4_state_b,,run,24.0,run^24,,,6.32743941869,b_A is the 30-vector (1/N_A) * sum_{i in O_A}(x_i - xbar_PBS0). Value reports its Euclidean norm.
+state,ok,stage4_state_covariance,,run,24.0,run^24,,,-9.28098464291e-16,"S_A is 30x30 sample covariance over O_A. rank=11; trace=475.60335312; min_eigenvalue=-9.28098464291e-16; symmetry_error=0. Because p=30 exceeds state sample size, S_A is singular; tiny negative eigenvalues from floating-point eigendecomposition are diagnostic only. The hard PSD tolerance is applied to symmetrized Q_var at stage 5."
+state,ok,stage4_state_counts,,MCC,0.0,MCC^0,,,N=14;R=13;I=1;O=14;D=0;U=0,"MCC^0: N=14, R=13, I=1, O=14, D=0, U=0."
+state,ok,stage4_state_a,,MCC,0.0,MCC^0,,,1,a_A = |O_A| / N_A; deaths therefore contribute zero to the group-mean eNRI representation.
+state,ok,stage4_state_b,,MCC,0.0,MCC^0,,,2.05306847534,b_A is the 30-vector (1/N_A) * sum_{i in O_A}(x_i - xbar_PBS0). Value reports its Euclidean norm.
+state,ok,stage4_state_covariance,,MCC,0.0,MCC^0,,,-1.13665488392e-15,"S_A is 30x30 sample covariance over O_A. rank=13; trace=43.4904971511; min_eigenvalue=-1.13665488392e-15; symmetry_error=0. Because p=30 exceeds state sample size, S_A is singular; tiny negative eigenvalues from floating-point eigendecomposition are diagnostic only. The hard PSD tolerance is applied to symmetrized Q_var at stage 5."
+state,ok,stage4_state_counts,,MCC,16.0,MCC^16,,,N=14;R=11;I=0;O=11;D=3;U=0,"MCC^16: N=14, R=11, I=0, O=11, D=3, U=0."
+state,ok,stage4_state_a,,MCC,16.0,MCC^16,,,0.785714285714,a_A = |O_A| / N_A; deaths therefore contribute zero to the group-mean eNRI representation.
+state,ok,stage4_state_b,,MCC,16.0,MCC^16,,,1439.00239839,b_A is the 30-vector (1/N_A) * sum_{i in O_A}(x_i - xbar_PBS0). Value reports its Euclidean norm.
+state,ok,stage4_state_covariance,,MCC,16.0,MCC^16,,,-1.48507874165e-08,"S_A is 30x30 sample covariance over O_A. rank=10; trace=19687496.7241; min_eigenvalue=-1.48507874165e-08; symmetry_error=0. Because p=30 exceeds state sample size, S_A is singular; tiny negative eigenvalues from floating-point eigendecomposition are diagnostic only. The hard PSD tolerance is applied to symmetrized Q_var at stage 5."
+state,ok,stage4_state_counts,,MCC,24.0,MCC^24,,,N=14;R=11;I=0;O=11;D=3;U=0,"MCC^24: N=14, R=11, I=0, O=11, D=3, U=0."
+state,ok,stage4_state_a,,MCC,24.0,MCC^24,,,0.785714285714,a_A = |O_A| / N_A; deaths therefore contribute zero to the group-mean eNRI representation.
+state,ok,stage4_state_b,,MCC,24.0,MCC^24,,,10.689775567,b_A is the 30-vector (1/N_A) * sum_{i in O_A}(x_i - xbar_PBS0). Value reports its Euclidean norm.
+state,ok,stage4_state_covariance,,MCC,24.0,MCC^24,,,-1.17562514588e-15,"S_A is 30x30 sample covariance over O_A. rank=10; trace=2131.86637254; min_eigenvalue=-1.17562514588e-15; symmetry_error=0. Because p=30 exceeds state sample size, S_A is singular; tiny negative eigenvalues from floating-point eigendecomposition are diagnostic only. The hard PSD tolerance is applied to symmetrized Q_var at stage 5."
+state,ok,stage4_xbar_pbs0,,PBS,0.0,xbar_PBS0,,,1.35411801611,Normalization reference xbar_PBS0 computed from living complete PBS week-0 standardized MODEL_FEATURES. Value reports Euclidean norm.
 state,summary,stage4_status,,,,,,,READY,Stage 4 status=READY; states=12; model_features=30; validation_errors=0.
+qp,ok,stage5_qvar,,,,Q_var,,,3.87043411084e-14,"Q_var is the equal-weight mean of 12 S_A matrices, symmetrized before QP. shape=30x30; rank=29; trace=1641080.13051; min_eigenvalue=3.87043411084e-14; max_eigenvalue=1640623.11521; symmetry_error=0."
+qp,ok,stage5_solver,,,,,,,optimal,"OSQP smoke test with rho=0.1, beta=1.0, lambda=1.0, C=1.0; iterations=1675; solve_time=0.012605083."
+qp,ok,stage5_objective,,,,,,,0.0573293398572,objective=0.0573293398572; variance=0.0195674364074; equality=0.00283415348837; ridge=0.0349277499613; slack=6.69339391631e-22; recomputed_gap=0.
+qp,ok,stage5_weight,,,,OFT_distance,,,0.00223258965642,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_weight,,,,Average_speed_OFT,,,-0.0824549846439,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_weight,,,,Total_time_mobile_OFT,,,-0.0382853495254,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_weight,,,,Absolute_turn_angle_OFT,,,0.0235883705652,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_weight,,,,Time_inCenter_OFT,,,-0.0535048130432,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_weight,,,,Total_distance_travelled_NOR1,,,-0.00130198374079,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_weight,,,,Average_speed_NOR1,,,-7.02188099397e-06,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_weight,,,,Time_investigating_Piramidka_NOR1,,,-0.00602014318881,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_weight,,,,Latency_to_first_investigation_Piramidka_NOR1,,,-0.058245836149,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_weight,,,,Time_investigating_Stakan_NOR1,,,0.0154929437132,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_weight,,,,Latency_to_first_investigation_Stakan_NOR1,,,0.0113224729239,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_weight,,,,Total_distance_travelled_NOR2,,,-0.00243044628082,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_weight,,,,Average_speed_NOR2,,,-0.00751536402077,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_weight,,,,Time_investigating_Piramidka_zone_NOR2,,,-0.0190913880546,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_weight,,,,Latency_to_first_investigation_Piramidka_zone_NOR2,,,-0.0211018287564,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_weight,,,,Time_investigating_Stakan_zone_NOR2,,,0.0459457689388,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_weight,,,,Latency_to_first_investigation_Stakan_zone_NOR2,,,0.0378898817415,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_weight,,,,Learning_T1mean,,,0.014027738142,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_weight,,,,Learning_T1max,,,-0.0252516559399,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_weight,,,,Learning_T1sum,,,0.014027738142,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_weight,,,,Learning_T2mean,,,0.0245447653883,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_weight,,,,Learning_T2max,,,-0.00207044744355,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_weight,,,,Learning_T2sum,,,0.0211453292713,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_weight,,,,Learning_T3mean,,,-0.0355225344798,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_weight,,,,Learning_T3max,,,-0.0201675001065,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_weight,,,,Learning_T3sum,,,-0.0407207730322,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_weight,,,,EnduranceT,,,0.0180576501547,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_weight,,,,rear_support,,,0.0760630513414,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_weight,,,,rear_nosupport,,,-0.0495015724179,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_weight,,,,Weight,,,0.0323658645704,Smoke-test standardized-feature weight; not the final CV-selected model weight.
+qp,ok,stage5_equality_delta,,,,PBS^0>LPS^0,,,0.0209395603779,"Soft equality residual mu_A - mu_B; penalized in the objective, not a hard constraint."
+qp,ok,stage5_equality_delta,,,,PBS^0>run^0,,,0.0299825127386,"Soft equality residual mu_A - mu_B; penalized in the objective, not a hard constraint."
+qp,ok,stage5_equality_delta,,,,PBS^0>MCC^0,,,0.0193357070804,"Soft equality residual mu_A - mu_B; penalized in the objective, not a hard constraint."
+qp,ok,stage5_equality_delta,,,,LPS^16>run^16,,,-0.0329786526338,"Soft equality residual mu_A - mu_B; penalized in the objective, not a hard constraint."
+qp,ok,stage5_equality_delta,,,,LPS^16>MCC^16,,,-0.00593937131251,"Soft equality residual mu_A - mu_B; penalized in the objective, not a hard constraint."
+qp,ok,stage5_order_constraint,,,,PBS^16>LPS^16,,,-2.77552747104e-17,delta=0.1; rho=0.1; slack=3.00905263564e-22; residual=delta-rho+slack=-2.77552747104e-17; violation=2.78e-17.
+qp,ok,stage5_order_constraint,,,,PBS^24>LPS^24,,,0,delta=0.1; rho=0.1; slack=0; residual=delta-rho+slack=0; violation=0.
+qp,ok,stage5_order_constraint,,,,run^24>LPS^24,,,1.38781562419e-17,delta=0.1; rho=0.1; slack=3.68434123067e-22; residual=delta-rho+slack=1.38781562419e-17; violation=0.
+qp,ok,stage5_order_constraint,,,,MCC^24>LPS^24,,,0.037708469857,delta=0.137708469857; rho=0.1; slack=1.00013542012e-30; residual=delta-rho+slack=0.037708469857; violation=0.
+qp,ok,stage5_order_constraint,,,,PBS^0>PBS^16,,,-1.38777878078e-17,delta=0.1; rho=0.1; slack=0; residual=delta-rho+slack=-1.38777878078e-17; violation=1.39e-17.
+qp,ok,stage5_order_constraint,,,,LPS^0>LPS^16,,,0.0790604396221,delta=0.179060439622; rho=0.1; slack=1.00013542012e-30; residual=delta-rho+slack=0.0790604396221; violation=0.
+qp,ok,stage5_order_constraint,,,,run^0>run^16,,,0.0370388346276,delta=0.137038834628; rho=0.1; slack=1.00013542012e-30; residual=delta-rho+slack=0.0370388346276; violation=0.
+qp,ok,stage5_order_constraint,,,,MCC^0>MCC^16,,,0.0747249216071,delta=0.174724921607; rho=0.1; slack=1.00013542012e-30; residual=delta-rho+slack=0.0747249216071; violation=0.
+qp,ok,stage5_order_constraint,,,,PBS^16>PBS^24,,,0,delta=0.1; rho=0.1; slack=0; residual=delta-rho+slack=0; violation=0.
+qp,ok,stage5_order_constraint,,,,LPS^16>LPS^24,,,1.38777878078e-17,delta=0.1; rho=0.1; slack=1.00013542012e-30; residual=delta-rho+slack=1.38777878078e-17; violation=0.
+qp,ok,stage5_group_mean,,,,LPS^0,,,0.979060439622,Smoke-test group mean eNRI including deaths as zero through a_A and b_A.
+qp,ok,stage5_group_mean,,,,LPS^16,,,0.8,Smoke-test group mean eNRI including deaths as zero through a_A and b_A.
+qp,ok,stage5_group_mean,,,,LPS^24,,,0.7,Smoke-test group mean eNRI including deaths as zero through a_A and b_A.
+qp,ok,stage5_group_mean,,,,MCC^0,,,0.98066429292,Smoke-test group mean eNRI including deaths as zero through a_A and b_A.
+qp,ok,stage5_group_mean,,,,MCC^16,,,0.805939371313,Smoke-test group mean eNRI including deaths as zero through a_A and b_A.
+qp,ok,stage5_group_mean,,,,MCC^24,,,0.837708469857,Smoke-test group mean eNRI including deaths as zero through a_A and b_A.
+qp,ok,stage5_group_mean,,,,PBS^0,,,1,Smoke-test group mean eNRI including deaths as zero through a_A and b_A.
+qp,ok,stage5_group_mean,,,,PBS^16,,,0.9,Smoke-test group mean eNRI including deaths as zero through a_A and b_A.
+qp,ok,stage5_group_mean,,,,PBS^24,,,0.8,Smoke-test group mean eNRI including deaths as zero through a_A and b_A.
+qp,ok,stage5_group_mean,,,,run^0,,,0.970017487261,Smoke-test group mean eNRI including deaths as zero through a_A and b_A.
+qp,ok,stage5_group_mean,,,,run^16,,,0.832978652634,Smoke-test group mean eNRI including deaths as zero through a_A and b_A.
+qp,ok,stage5_group_mean,,,,run^24,,,0.8,Smoke-test group mean eNRI including deaths as zero through a_A and b_A.
+qp,ok,stage5_positivity,12.2,LPS,16,observed,,,0.587274897037,Minimum living eNRI=0.587274897037; epsilon=0.001; min residual=0.586274897037; max violation=0. Constraint applies to all observed+imputed living visits.
+qp,ok,stage5_slack,,,,,,,6.69339391631e-22,sum_eta=6.69339391631e-22; max_eta=3.68434123067e-22; nonnegativity_violation=0.
+qp,ok,stage5_pbs0_normalization,,,,PBS^0,,,1,PBS^0 mean eNRI must equal 1 by centering on xbar_PBS0.
+qp,summary,stage5_status,,,,,,,READY,Stage 5 status=READY; solver=optimal; validation_errors=0; rho=0.1; beta=1.0; lambda=1.0; C=1.0.
