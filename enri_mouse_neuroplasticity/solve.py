@@ -12,6 +12,7 @@ from openpyxl.utils import get_column_letter
 from sklearn.experimental import enable_iterative_imputer  # noqa: F401
 from sklearn.impute import IterativeImputer
 from sklearn.linear_model import BayesianRidge
+from sklearn.model_selection import StratifiedKFold
 
 
 ROOT = Path(__file__).resolve().parent
@@ -2051,8 +2052,8 @@ def solve_qp_smoke(final_std, states, xbar,
     X_live = final_std.loc[living, MODEL_FEATURES].to_numpy(dtype=float)
     live_meta = final_std.loc[living, ["mouse_id", "group", "week", "status"]].copy()
 
-    if len(X_live) != 140:
-        errors.append(f"Expected 140 living complete rows for positivity, got {len(X_live)}.")
+    if len(X_live) == 0:
+        errors.append("No living complete rows available for positivity constraints.")
     if not np.isfinite(X_live).all():
         errors.append("Non-finite values in positivity design matrix.")
 
@@ -2480,6 +2481,572 @@ def run_stage5():
     if status != "READY":
         raise RuntimeError("Stage 5 validation failed: " + " | ".join(errors))
 
+
+CV_SEEDS = tuple(range(10))
+CV_GRID = (0.1, 1.0, 10.0)
+CV_SELECTION_TOL = 1e-6
+CV_MIN_TRAIN_O = 5
+CV_MIN_VAL_O = 2
+
+
+def evaluate_validation_metrics(final_std, val_ids, val_states, xbar_train, weights, rho=SMOKE_RHO):
+    val_ids = set(val_ids)
+    val_rows = final_std[final_std["mouse_id"].isin(val_ids)].copy()
+    living = val_rows["status"].isin(["observed", "imputed"])
+    live_rows = val_rows[living]
+
+    X = live_rows[MODEL_FEATURES].to_numpy(dtype=float)
+    w = np.asarray(weights, dtype=float)
+    xbar = np.asarray(xbar_train, dtype=float)
+    enri_live = 1.0 + (X - xbar) @ w
+
+    if len(enri_live) == 0:
+        raise ValueError("Validation split has no living complete observations.")
+
+    V_pos = float(np.mean(enri_live < POSITIVITY_EPSILON))
+
+    order_deltas = []
+    for A, B in ORDER_PAIRS:
+        c_ab, d_ab = pair_affine_components(val_states, A, B)
+        order_deltas.append(float(c_ab + d_ab @ w))
+    order_deltas = np.asarray(order_deltas, dtype=float)
+
+    V_sign = float(np.mean(order_deltas <= 0.0))
+    V_margin = float(np.mean(np.maximum(0.0, rho - order_deltas)))
+
+    eq_deltas = []
+    for A, B in EQUALITY_PAIRS:
+        c_ab, d_ab = pair_affine_components(val_states, A, B)
+        eq_deltas.append(float(c_ab + d_ab @ w))
+    eq_deltas = np.asarray(eq_deltas, dtype=float)
+    V_eq = float(np.sqrt(np.mean(eq_deltas ** 2)))
+
+    state_vars = []
+    for group in STATE_GROUPS:
+        for week in STATE_WEEKS:
+            label = state_label(group, week)
+            S = np.asarray(val_states[label]["S"], dtype=float)
+            state_vars.append(float(w @ S @ w))
+    V_var = float(np.mean(state_vars))
+    V_w = float(np.linalg.norm(w))
+
+    return {
+        "V_pos": V_pos,
+        "V_sign": V_sign,
+        "V_margin": V_margin,
+        "V_eq": V_eq,
+        "V_var": V_var,
+        "V_w": V_w,
+        "validation_living": int(len(enri_live)),
+        "validation_min_enri": float(np.min(enri_live)),
+        "validation_order_deltas": order_deltas.tolist(),
+        "validation_eq_deltas": eq_deltas.tolist(),
+    }
+
+
+def lexicographic_select(aggregate_rows, tol=CV_SELECTION_TOL):
+    if not aggregate_rows:
+        raise ValueError("No aggregate CV rows available for selection.")
+
+    metrics = ["V_pos", "V_sign", "V_margin", "V_eq", "V_var", "V_w"]
+    survivors = list(aggregate_rows)
+    selection_trace = []
+
+    for metric in metrics:
+        best = min(float(row[metric]) for row in survivors)
+        survivors = [
+            row for row in survivors
+            if float(row[metric]) <= best + tol
+        ]
+        selection_trace.append({
+            "metric": metric,
+            "best": float(best),
+            "survivors": int(len(survivors)),
+        })
+
+    selected = min(
+        survivors,
+        key=lambda row: (float(row["beta"]), float(row["lambda"]), float(row["C"])),
+    )
+    return selected, selection_trace
+
+
+def prepare_cv_splits(long_raw, source):
+    mouse_df = source[["mouse_id", "group"]].drop_duplicates().copy()
+    mouse_df = mouse_df.sort_values("mouse_id").reset_index(drop=True)
+    X_dummy = np.zeros((len(mouse_df), 1), dtype=float)
+    y = mouse_df["group"].to_numpy()
+
+    accepted = []
+    rejected = []
+
+    for seed in CV_SEEDS:
+        skf = StratifiedKFold(n_splits=3, shuffle=True, random_state=seed)
+        for fold, (train_idx, val_idx) in enumerate(skf.split(X_dummy, y), start=1):
+            train_ids = mouse_df.iloc[train_idx]["mouse_id"].tolist()
+            val_ids = mouse_df.iloc[val_idx]["mouse_id"].tolist()
+
+            overlap = sorted(set(train_ids) & set(val_ids))
+            if overlap:
+                rejected.append({
+                    "seed": seed,
+                    "fold": fold,
+                    "reason": f"train/validation mouse overlap: {overlap}",
+                })
+                continue
+
+            final_std, prep_stats = fit_transform_stage3(
+                long_raw,
+                fit_mouse_ids=train_ids,
+                random_state=IMPUTATION_SEED,
+            )
+
+            prep_errors = list(prep_stats.get("errors", []))
+            if prep_stats.get("fit_scope") != "train_only":
+                prep_errors.append(
+                    f"Unexpected preprocessing fit scope: {prep_stats.get('fit_scope')}"
+                )
+            if prep_stats.get("deterministic", {}).get("fit_scope") != "train_only":
+                prep_errors.append(
+                    "Censored-latency maxima were not fitted train-only."
+                )
+            if prep_stats.get("scaling", {}).get("fit_scope") != "train_only":
+                prep_errors.append(
+                    "Baseline scaling was not fitted train-only."
+                )
+
+            train_states, xbar_train, train_state_stats = build_experimental_states(
+                final_std,
+                state_mouse_ids=train_ids,
+                reference_xbar=None,
+            )
+            val_states, xbar_val_used, val_state_stats = build_experimental_states(
+                final_std,
+                state_mouse_ids=val_ids,
+                reference_xbar=xbar_train,
+            )
+
+            # Eligibility is determined by O counts after train-only preprocessing.
+            train_o = {
+                label: int(s["O"]) for label, s in train_states.items()
+            }
+            val_o = {
+                label: int(s["O"]) for label, s in val_states.items()
+            }
+            min_train_o = min(train_o.values()) if train_o else 0
+            min_val_o = min(val_o.values()) if val_o else 0
+
+            reasons = []
+            reasons.extend(prep_errors)
+
+            if min_train_o < CV_MIN_TRAIN_O:
+                bad = {k: v for k, v in train_o.items() if v < CV_MIN_TRAIN_O}
+                reasons.append(
+                    "train O_A below 5: " + json.dumps(bad, sort_keys=True)
+                )
+            if min_val_o < CV_MIN_VAL_O:
+                bad = {k: v for k, v in val_o.items() if v < CV_MIN_VAL_O}
+                reasons.append(
+                    "validation O_A below 2: " + json.dumps(bad, sort_keys=True)
+                )
+
+            # If the count thresholds pass, state construction must otherwise be valid.
+            if min_train_o >= CV_MIN_TRAIN_O:
+                reasons.extend(train_state_stats.get("errors", []))
+            if min_val_o >= CV_MIN_VAL_O:
+                reasons.extend(val_state_stats.get("errors", []))
+
+            # The validation state builder must use exactly the train PBS0 reference.
+            if xbar_train is None or xbar_val_used is None:
+                reasons.append("Missing train PBS0 reference for validation.")
+            elif not np.allclose(
+                np.asarray(xbar_train, dtype=float),
+                np.asarray(xbar_val_used, dtype=float),
+                rtol=0,
+                atol=0,
+            ):
+                reasons.append("Validation did not reuse xbar_PBS0_train exactly.")
+
+            split_record = {
+                "seed": int(seed),
+                "fold": int(fold),
+                "train_ids": train_ids,
+                "val_ids": val_ids,
+                "train_n": int(len(train_ids)),
+                "val_n": int(len(val_ids)),
+                "min_train_O": int(min_train_o),
+                "min_val_O": int(min_val_o),
+                "train_group_counts": {
+                    g: int(sum(mouse_df.iloc[train_idx]["group"].eq(g)))
+                    for g in STATE_GROUPS
+                },
+                "val_group_counts": {
+                    g: int(sum(mouse_df.iloc[val_idx]["group"].eq(g)))
+                    for g in STATE_GROUPS
+                },
+            }
+
+            if reasons:
+                split_record["reason"] = " | ".join(reasons)
+                rejected.append(split_record)
+                continue
+
+            # Store preprocessed fold data so exactly the same accepted splits and
+            # preprocessing are reused for every hyperparameter combination.
+            split_record.update({
+                "final_std": final_std,
+                "train_states": train_states,
+                "val_states": val_states,
+                "xbar_train": np.asarray(xbar_train, dtype=float),
+                "prep_stats": prep_stats,
+            })
+            accepted.append(split_record)
+
+    return accepted, rejected
+
+
+def run_cv_grid(accepted_splits):
+    fold_rows = []
+    solver_failures = []
+
+    for beta in CV_GRID:
+        for ridge_lambda in CV_GRID:
+            for C in CV_GRID:
+                for split in accepted_splits:
+                    train_ids = set(split["train_ids"])
+                    train_df = split["final_std"][
+                        split["final_std"]["mouse_id"].isin(train_ids)
+                    ].copy()
+
+                    solution, qp_meta = solve_qp_smoke(
+                        train_df,
+                        split["train_states"],
+                        split["xbar_train"],
+                        rho=SMOKE_RHO,
+                        beta=float(beta),
+                        ridge_lambda=float(ridge_lambda),
+                        C=float(C),
+                    )
+
+                    if solution is None or qp_meta.get("errors"):
+                        solver_failures.append({
+                            "seed": split["seed"],
+                            "fold": split["fold"],
+                            "beta": float(beta),
+                            "lambda": float(ridge_lambda),
+                            "C": float(C),
+                            "status": qp_meta.get("status"),
+                            "errors": qp_meta.get("errors", []),
+                        })
+                        continue
+
+                    metrics = evaluate_validation_metrics(
+                        split["final_std"],
+                        split["val_ids"],
+                        split["val_states"],
+                        split["xbar_train"],
+                        solution["w"],
+                        rho=SMOKE_RHO,
+                    )
+
+                    fold_rows.append({
+                        "seed": int(split["seed"]),
+                        "fold": int(split["fold"]),
+                        "beta": float(beta),
+                        "lambda": float(ridge_lambda),
+                        "C": float(C),
+                        **{k: float(metrics[k]) for k in (
+                            "V_pos", "V_sign", "V_margin", "V_eq", "V_var", "V_w"
+                        )},
+                        "solver_status": solution["solver_status"],
+                        "train_min_live_enri": float(solution["min_live_enri"]),
+                        "train_max_order_violation": float(solution["max_order_violation"]),
+                        "train_slack_sum": float(solution["slack_sum"]),
+                        "validation_living": int(metrics["validation_living"]),
+                        "validation_min_enri": float(metrics["validation_min_enri"]),
+                    })
+
+    return fold_rows, solver_failures
+
+
+def aggregate_cv_grid(fold_rows, accepted_split_count):
+    if not fold_rows:
+        return []
+
+    df = pd.DataFrame(fold_rows)
+    metric_cols = ["V_pos", "V_sign", "V_margin", "V_eq", "V_var", "V_w"]
+    aggregate_rows = []
+
+    for beta in CV_GRID:
+        for ridge_lambda in CV_GRID:
+            for C in CV_GRID:
+                sub = df[
+                    df["beta"].eq(float(beta))
+                    & df["lambda"].eq(float(ridge_lambda))
+                    & df["C"].eq(float(C))
+                ]
+                if len(sub) != accepted_split_count:
+                    continue
+                row = {
+                    "beta": float(beta),
+                    "lambda": float(ridge_lambda),
+                    "C": float(C),
+                    "folds": int(len(sub)),
+                }
+                for metric in metric_cols:
+                    row[metric] = float(sub[metric].mean())
+                aggregate_rows.append(row)
+
+    return aggregate_rows
+
+
+def add_stage6_diag(rows, severity, check, detail, **kwargs):
+    row = {
+        "type": "cv",
+        "severity": severity,
+        "check": check,
+        "mouse_id": "",
+        "group": "",
+        "week": "",
+        "feature": "",
+        "column": "",
+        "excel_cell": "",
+        "value": "",
+        "detail": detail,
+        "seed": np.nan,
+        "fold": np.nan,
+        "beta": np.nan,
+        "lambda": np.nan,
+        "C": np.nan,
+        "V_pos": np.nan,
+        "V_sign": np.nan,
+        "V_margin": np.nan,
+        "V_eq": np.nan,
+        "V_var": np.nan,
+        "V_w": np.nan,
+        "solver_status": "",
+    }
+    row.update(kwargs)
+    rows.append(row)
+
+
+def run_stage6():
+    # Revalidate the complete upstream pipeline and smoke-test before CV.
+    run_stage5()
+
+    source = load_included_source()
+    long_raw = build_long_table(source)
+
+    accepted_splits, rejected_splits = prepare_cv_splits(long_raw, source)
+    errors = []
+
+    if not accepted_splits:
+        errors.append("No valid repeated stratified 3-fold CV splits.")
+    if len(accepted_splits) + len(rejected_splits) != len(CV_SEEDS) * 3:
+        errors.append(
+            "CV split accounting mismatch: accepted + rejected != 30."
+        )
+
+    fold_rows = []
+    solver_failures = []
+    aggregate_rows = []
+    selected = None
+    selection_trace = []
+
+    if accepted_splits:
+        fold_rows, solver_failures = run_cv_grid(accepted_splits)
+        if solver_failures:
+            errors.append(
+                f"{len(solver_failures)} QP fits failed across the fixed accepted split/grid set."
+            )
+
+        aggregate_rows = aggregate_cv_grid(
+            fold_rows,
+            accepted_split_count=len(accepted_splits),
+        )
+        if len(aggregate_rows) != len(CV_GRID) ** 3:
+            errors.append(
+                f"Expected 27 complete hyperparameter aggregates, got {len(aggregate_rows)}."
+            )
+        elif not solver_failures:
+            selected, selection_trace = lexicographic_select(
+                aggregate_rows,
+                tol=CV_SELECTION_TOL,
+            )
+
+    diagnostics_path = RESULTS_DIR / "diagnostics.csv"
+    diagnostics = pd.read_csv(diagnostics_path)
+    diagnostics = diagnostics[
+        ~diagnostics["type"].astype(str).eq("cv")
+    ].copy()
+    rows = []
+
+    # Split diagnostics first.
+    accepted_keys = {(x["seed"], x["fold"]) for x in accepted_splits}
+    for split in accepted_splits:
+        add_stage6_diag(
+            rows,
+            "ok",
+            "stage6_split",
+            (
+                f"Accepted stratified mouse-level split; train_n={split['train_n']}, "
+                f"val_n={split['val_n']}, min_train_O={split['min_train_O']}, "
+                f"min_val_O={split['min_val_O']}; preprocessing/scaling/imputer/censor maxima "
+                "were fitted on train only."
+            ),
+            seed=split["seed"],
+            fold=split["fold"],
+            value="accepted",
+        )
+    for split in rejected_splits:
+        add_stage6_diag(
+            rows,
+            "review",
+            "stage6_split",
+            "Rejected before hyperparameter comparison: " + split.get("reason", "unspecified"),
+            seed=split.get("seed", np.nan),
+            fold=split.get("fold", np.nan),
+            value="rejected",
+        )
+
+    # One row per accepted split × parameter combination, as specified in PLAN.
+    for rec in fold_rows:
+        add_stage6_diag(
+            rows,
+            "ok",
+            "stage6_fold_metrics",
+            (
+                f"Validation metrics on fixed accepted split; "
+                f"validation_living={rec['validation_living']}; "
+                f"validation_min_enri={rec['validation_min_enri']:.12g}; "
+                f"train_slack_sum={rec['train_slack_sum']:.12g}."
+            ),
+            seed=rec["seed"],
+            fold=rec["fold"],
+            beta=rec["beta"],
+            lambda=rec["lambda"],
+            C=rec["C"],
+            V_pos=rec["V_pos"],
+            V_sign=rec["V_sign"],
+            V_margin=rec["V_margin"],
+            V_eq=rec["V_eq"],
+            V_var=rec["V_var"],
+            V_w=rec["V_w"],
+            solver_status=rec["solver_status"],
+            value="fold",
+        )
+
+    for failure in solver_failures:
+        add_stage6_diag(
+            rows,
+            "fatal",
+            "stage6_solver_failure",
+            json.dumps(failure["errors"], ensure_ascii=False),
+            seed=failure["seed"],
+            fold=failure["fold"],
+            beta=failure["beta"],
+            lambda=failure["lambda"],
+            C=failure["C"],
+            solver_status=str(failure["status"]),
+        )
+
+    for agg in aggregate_rows:
+        add_stage6_diag(
+            rows,
+            "ok",
+            "stage6_aggregate",
+            "Arithmetic mean of validation metrics over all accepted seed/fold splits.",
+            beta=agg["beta"],
+            lambda=agg["lambda"],
+            C=agg["C"],
+            V_pos=agg["V_pos"],
+            V_sign=agg["V_sign"],
+            V_margin=agg["V_margin"],
+            V_eq=agg["V_eq"],
+            V_var=agg["V_var"],
+            V_w=agg["V_w"],
+            value=agg["folds"],
+        )
+
+    if selected is not None:
+        add_stage6_diag(
+            rows,
+            "summary",
+            "stage6_selected_hyperparameters",
+            (
+                "Selected by tolerance-aware lexicographic order "
+                "(V_pos,V_sign,V_margin,V_eq,V_var,V_w), tolerance=1e-6; "
+                "remaining exact/tolerance tie resolved by ascending (beta,lambda,C). "
+                "Trace=" + json.dumps(selection_trace, ensure_ascii=False)
+            ),
+            beta=selected["beta"],
+            lambda=selected["lambda"],
+            C=selected["C"],
+            V_pos=selected["V_pos"],
+            V_sign=selected["V_sign"],
+            V_margin=selected["V_margin"],
+            V_eq=selected["V_eq"],
+            V_var=selected["V_var"],
+            V_w=selected["V_w"],
+            value="selected",
+        )
+
+    for err in errors:
+        add_stage6_diag(rows, "fatal", "stage6_validation", err)
+
+    status = "READY" if not errors and selected is not None else "FATAL"
+    add_stage6_diag(
+        rows,
+        "summary",
+        "stage6_status",
+        (
+            f"Stage 6 status={status}; accepted_splits={len(accepted_splits)}; "
+            f"rejected_splits={len(rejected_splits)}; grid_combinations={len(CV_GRID)**3}; "
+            f"fold_metric_rows={len(fold_rows)}; solver_failures={len(solver_failures)}."
+        ),
+        value=status,
+        beta=np.nan if selected is None else selected["beta"],
+        lambda=np.nan if selected is None else selected["lambda"],
+        C=np.nan if selected is None else selected["C"],
+    )
+
+    merged = pd.concat([diagnostics, pd.DataFrame(rows)], ignore_index=True, sort=False)
+    merged.to_csv(diagnostics_path, index=False)
+
+    summary = {
+        "stage": 6,
+        "status": status,
+        "cv_seeds": list(CV_SEEDS),
+        "n_splits_per_seed": 3,
+        "accepted_splits": int(len(accepted_splits)),
+        "rejected_splits": int(len(rejected_splits)),
+        "grid_values": list(CV_GRID),
+        "grid_combinations": int(len(CV_GRID) ** 3),
+        "fold_metric_rows": int(len(fold_rows)),
+        "solver_failures": int(len(solver_failures)),
+        "selection_tolerance": CV_SELECTION_TOL,
+        "selection_trace": selection_trace,
+        "validation_errors": errors,
+        "diagnostics_file": str(diagnostics_path.relative_to(ROOT)),
+    }
+    if selected is not None:
+        summary["selected"] = {
+            "beta": float(selected["beta"]),
+            "lambda": float(selected["lambda"]),
+            "C": float(selected["C"]),
+            "V_pos": float(selected["V_pos"]),
+            "V_sign": float(selected["V_sign"]),
+            "V_margin": float(selected["V_margin"]),
+            "V_eq": float(selected["V_eq"]),
+            "V_var": float(selected["V_var"]),
+            "V_w": float(selected["V_w"]),
+        }
+
+    print("STAGE6_SUMMARY=" + json.dumps(summary, ensure_ascii=False, sort_keys=True))
+
+    if status != "READY":
+        raise RuntimeError("Stage 6 validation failed: " + " | ".join(errors))
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--stage", type=int, required=True)
@@ -2495,6 +3062,8 @@ def main():
         run_stage4()
     elif args.stage == 5:
         run_stage5()
+    elif args.stage == 6:
+        run_stage6()
     else:
         raise SystemExit(f"Stage {args.stage} is not implemented yet.")
 
