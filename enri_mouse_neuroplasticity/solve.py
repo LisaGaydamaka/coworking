@@ -1130,7 +1130,7 @@ def recompute_derived_features(raw_df):
     return out
 
 
-def fit_transform_stage3(long_raw, fit_mouse_ids=None, random_state=IMPUTATION_SEED):
+def fit_transform_stage3(long_raw, fit_mouse_ids=None, random_state=IMPUTATION_SEED, sample_posterior=False):
     processed, deterministic_stats = deterministic_preprocess(
         long_raw, fit_mouse_ids=fit_mouse_ids
     )
@@ -1197,7 +1197,7 @@ def fit_transform_stage3(long_raw, fit_mouse_ids=None, random_state=IMPUTATION_S
     # IterativeImputer is fitted only on fit rows. Group is intentionally absent.
     imputer = IterativeImputer(
         estimator=BayesianRidge(),
-        sample_posterior=False,
+        sample_posterior=bool(sample_posterior),
         max_iter=20,
         tol=1e-3,
         random_state=random_state,
@@ -1364,6 +1364,8 @@ def fit_transform_stage3(long_raw, fit_mouse_ids=None, random_state=IMPUTATION_S
         "deterministic": deterministic_stats,
         "scaling": scaling,
         "imputer_n_iter": int(imputer.n_iter_),
+        "imputation_sample_posterior": bool(sample_posterior),
+        "imputation_random_state": int(random_state),
         "imputed_base_cells": imputed_cell_count,
         "imputed_feature_counts": imputed_feature_counts,
         "max_observed_roundtrip_error": max_observed_roundtrip_error,
@@ -3506,6 +3508,723 @@ def run_stage7():
     if status != "READY":
         raise RuntimeError("Stage 7 validation failed: " + " | ".join(errors))
 
+
+STAGE8_RHO_VALUES = (0.05, 0.2, 0.3)
+STAGE8_STOCHASTIC_SEEDS = tuple(range(10))
+STABILITY_SIGN_TOL = 1e-12
+
+
+def _safe_cosine(a, b):
+    a = np.asarray(a, dtype=float)
+    b = np.asarray(b, dtype=float)
+    na = float(np.linalg.norm(a))
+    nb = float(np.linalg.norm(b))
+    if not (math.isfinite(na) and math.isfinite(nb)) or na <= 0 or nb <= 0:
+        return float("nan")
+    return float((a @ b) / (na * nb))
+
+
+def _sign_vector(v, tol=STABILITY_SIGN_TOL):
+    v = np.asarray(v, dtype=float)
+    out = np.zeros(v.shape, dtype=int)
+    out[v > tol] = 1
+    out[v < -tol] = -1
+    return out
+
+
+def _sign_agreement(a, b, tol=STABILITY_SIGN_TOL):
+    sa = _sign_vector(a, tol=tol)
+    sb = _sign_vector(b, tol=tol)
+    return float(np.mean(sa == sb))
+
+
+def _spearman_from_arrays(a, b):
+    a = np.asarray(a, dtype=float)
+    b = np.asarray(b, dtype=float)
+    if len(a) != len(b) or len(a) < 2:
+        return float("nan")
+    ra = pd.Series(a).rank(method="average").to_numpy(dtype=float)
+    rb = pd.Series(b).rank(method="average").to_numpy(dtype=float)
+    if np.std(ra) <= 0 or np.std(rb) <= 0:
+        return float("nan")
+    return float(np.corrcoef(ra, rb)[0, 1])
+
+
+def _gamma_from_solution(solution, scaling):
+    std = np.asarray([float(scaling["std"][f]) for f in MODEL_FEATURES], dtype=float)
+    w = np.asarray(solution["w"], dtype=float)
+    if std.shape != w.shape or np.any(~np.isfinite(std)) or np.any(std <= 0):
+        raise RuntimeError("Invalid scaling std for raw-scale slopes.")
+    return w / std
+
+
+def _compare_enri_tables(reference_enri, candidate_enri):
+    ref = reference_enri[
+        reference_enri["status"].isin(["observed", "imputed"])
+    ][["mouse_id", "week", "eNRI"]].rename(columns={"eNRI": "ref"})
+    cand = candidate_enri[
+        candidate_enri["status"].isin(["observed", "imputed"])
+    ][["mouse_id", "week", "eNRI"]].rename(columns={"eNRI": "cand"})
+    merged = ref.merge(cand, on=["mouse_id", "week"], how="inner")
+    if len(merged) < 2:
+        return {
+            "common_living": int(len(merged)),
+            "spearman": float("nan"),
+            "max_abs_diff": float("nan"),
+            "median_abs_diff": float("nan"),
+        }
+    diff = np.abs(
+        merged["cand"].to_numpy(dtype=float) - merged["ref"].to_numpy(dtype=float)
+    )
+    return {
+        "common_living": int(len(merged)),
+        "spearman": _spearman_from_arrays(
+            merged["ref"].to_numpy(dtype=float),
+            merged["cand"].to_numpy(dtype=float),
+        ),
+        "max_abs_diff": float(np.max(diff)),
+        "median_abs_diff": float(np.median(diff)),
+    }
+
+
+def _compare_group_means(reference_solution, candidate_solution):
+    labels = [state_label(g, w) for w in STATE_WEEKS for g in STATE_GROUPS]
+    ref = np.asarray([reference_solution["group_means"][x] for x in labels], dtype=float)
+    cand = np.asarray([candidate_solution["group_means"][x] for x in labels], dtype=float)
+    return {
+        "spearman": _spearman_from_arrays(ref, cand),
+        "max_abs_diff": float(np.max(np.abs(cand - ref))),
+        "mean_abs_diff": float(np.mean(np.abs(cand - ref))),
+    }
+
+
+def _feature_stability(gamma_matrix, final_gamma):
+    gamma_matrix = np.asarray(gamma_matrix, dtype=float)
+    final_gamma = np.asarray(final_gamma, dtype=float)
+    if gamma_matrix.ndim != 2 or gamma_matrix.shape[1] != len(MODEL_FEATURES):
+        raise RuntimeError(f"Invalid gamma matrix shape {gamma_matrix.shape}.")
+    rows = []
+    final_sign = _sign_vector(final_gamma)
+    for j, feature in enumerate(MODEL_FEATURES):
+        v = gamma_matrix[:, j]
+        fold_sign = _sign_vector(v)
+        rows.append({
+            "feature": feature,
+            "median": float(np.median(v)),
+            "q10": float(np.quantile(v, 0.10)),
+            "q90": float(np.quantile(v, 0.90)),
+            "positive_frequency": float(np.mean(fold_sign > 0)),
+            "negative_frequency": float(np.mean(fold_sign < 0)),
+            "zero_frequency": float(np.mean(fold_sign == 0)),
+            "final_sign_agreement": float(np.mean(fold_sign == final_sign[j])),
+        })
+    return rows
+
+
+def _pairwise_cosines(vectors):
+    vectors = [np.asarray(v, dtype=float) for v in vectors]
+    values = []
+    for i in range(len(vectors)):
+        for j in range(i + 1, len(vectors)):
+            values.append(_safe_cosine(vectors[i], vectors[j]))
+    return values
+
+
+def _summary_quantiles(values):
+    v = np.asarray([x for x in values if math.isfinite(float(x))], dtype=float)
+    if not len(v):
+        return {
+            "n": 0,
+            "min": float("nan"),
+            "q10": float("nan"),
+            "median": float("nan"),
+            "q90": float("nan"),
+            "max": float("nan"),
+        }
+    return {
+        "n": int(len(v)),
+        "min": float(np.min(v)),
+        "q10": float(np.quantile(v, 0.10)),
+        "median": float(np.median(v)),
+        "q90": float(np.quantile(v, 0.90)),
+        "max": float(np.max(v)),
+    }
+
+
+def _complete_case_mouse_ids(long_raw):
+    processed, stats = deterministic_preprocess(long_raw, fit_mouse_ids=None)
+    ids = []
+    excluded = []
+    for mouse_id, rows in processed.groupby("mouse_id"):
+        living = rows[~rows["death"]]
+        bad = living[living["missing_count"].gt(0)]
+        if bad.empty:
+            ids.append(str(mouse_id))
+        else:
+            excluded.append({
+                "mouse_id": str(mouse_id),
+                "weeks": [int(x) for x in bad["week"].tolist()],
+                "missing_counts": [int(x) for x in bad["missing_count"].tolist()],
+            })
+    return sorted(ids), excluded, stats
+
+
+def add_stage8_diag(rows, diag_type, severity, check, detail, value="", feature="",
+                    seed=np.nan, fold=np.nan, rho=np.nan, **kwargs):
+    row = {
+        "type": diag_type,
+        "severity": severity,
+        "check": check,
+        "mouse_id": "",
+        "group": "",
+        "week": "",
+        "feature": feature,
+        "column": "",
+        "excel_cell": "",
+        "value": value,
+        "detail": detail,
+        "seed": seed,
+        "fold": fold,
+        "beta": np.nan,
+        "lambda": np.nan,
+        "C": np.nan,
+        "V_pos": np.nan,
+        "V_sign": np.nan,
+        "V_margin": np.nan,
+        "V_eq": np.nan,
+        "V_var": np.nan,
+        "V_w": np.nan,
+        "solver_status": "",
+        "rho": rho,
+    }
+    row.update(kwargs)
+    rows.append(row)
+
+
+def run_stage8():
+    # Stage 7 is re-run first so the sensitivity analyses are always tied to the
+    # exact current final model and to the persisted stage-6 selection.
+    run_stage7()
+
+    diagnostics_path = RESULTS_DIR / "diagnostics.csv"
+    selected = load_stage6_selection(diagnostics_path)
+
+    source = load_included_source()
+    long_raw = build_long_table(source)
+
+    # Reconstruct the deterministic full-data final model used as the reference.
+    final_std, base_prep = fit_transform_stage3(
+        long_raw,
+        fit_mouse_ids=None,
+        random_state=IMPUTATION_SEED,
+        sample_posterior=False,
+    )
+    errors = list(base_prep.get("errors", []))
+    states, xbar, state_stats = build_experimental_states(final_std)
+    errors.extend(validate_full_stage4(states, xbar, state_stats))
+
+    base_solution, base_meta = solve_qp_smoke(
+        final_std,
+        states,
+        xbar,
+        rho=SMOKE_RHO,
+        beta=selected["beta"],
+        ridge_lambda=selected["lambda"],
+        C=selected["C"],
+    )
+    errors.extend(base_meta.get("errors", []))
+    if base_solution is None:
+        raise RuntimeError(
+            "Stage 8 could not reconstruct the stage-7 reference model: "
+            + " | ".join(errors or ["unknown error"])
+        )
+
+    base_gamma = _gamma_from_solution(base_solution, base_prep["scaling"])
+    base_enri = build_final_enri_table(final_std, xbar, base_solution["w"])
+
+    rows = []
+
+    # ------------------------------------------------------------------
+    # 8A. Raw-scale slope stability across the exact accepted CV splits.
+    # ------------------------------------------------------------------
+    accepted_splits, rejected_splits = prepare_cv_splits(long_raw, source)
+    cv_gammas = []
+    cv_records = []
+    cv_failures = []
+
+    for split in accepted_splits:
+        train_ids = set(split["train_ids"])
+        train_df = split["final_std"][
+            split["final_std"]["mouse_id"].isin(train_ids)
+        ].copy()
+        sol, meta = solve_qp_smoke(
+            train_df,
+            split["train_states"],
+            split["xbar_train"],
+            rho=SMOKE_RHO,
+            beta=selected["beta"],
+            ridge_lambda=selected["lambda"],
+            C=selected["C"],
+        )
+        if sol is None or meta.get("errors"):
+            cv_failures.append({
+                "seed": int(split["seed"]),
+                "fold": int(split["fold"]),
+                "status": meta.get("status"),
+                "errors": meta.get("errors", []),
+            })
+            continue
+
+        gamma = _gamma_from_solution(sol, split["prep_stats"]["scaling"])
+        cv_gammas.append(gamma)
+        final_cos = _safe_cosine(gamma, base_gamma)
+        cv_records.append({
+            "seed": int(split["seed"]),
+            "fold": int(split["fold"]),
+            "gamma": gamma,
+            "cosine_to_final": final_cos,
+            "sign_agreement_to_final": _sign_agreement(gamma, base_gamma),
+            "slack_sum": float(sol["slack_sum"]),
+            "min_live_enri": float(sol["min_live_enri"]),
+        })
+        add_stage8_diag(
+            rows,
+            "stability",
+            "ok",
+            "stage8_cv_fold",
+            (
+                f"Selected-hyperparameter train fit on accepted CV split; "
+                f"cosine(raw-scale gamma, final)={final_cos:.12g}; "
+                f"sign agreement={_sign_agreement(gamma, base_gamma):.12g}; "
+                f"slack_sum={sol['slack_sum']:.12g}."
+            ),
+            value=f"{final_cos:.12g}",
+            seed=int(split["seed"]),
+            fold=int(split["fold"]),
+            solver_status=str(sol["solver_status"]),
+        )
+
+    if cv_failures:
+        errors.append(
+            f"{len(cv_failures)} selected-hyperparameter CV stability fits failed."
+        )
+        for failure in cv_failures:
+            add_stage8_diag(
+                rows,
+                "stability",
+                "fatal",
+                "stage8_cv_fold_failure",
+                json.dumps(failure["errors"], ensure_ascii=False),
+                seed=failure["seed"],
+                fold=failure["fold"],
+                solver_status=str(failure["status"]),
+            )
+
+    if len(cv_gammas) != len(accepted_splits):
+        errors.append(
+            f"CV gamma count {len(cv_gammas)} != accepted split count {len(accepted_splits)}."
+        )
+
+    cv_feature_rows = []
+    cv_pairwise_summary = _summary_quantiles([])
+    cv_final_cos_summary = _summary_quantiles([])
+    if cv_gammas:
+        cv_gamma_matrix = np.vstack(cv_gammas)
+        cv_feature_rows = _feature_stability(cv_gamma_matrix, base_gamma)
+        for rec in cv_feature_rows:
+            add_stage8_diag(
+                rows,
+                "stability",
+                "ok",
+                "stage8_cv_feature_gamma",
+                (
+                    f"raw-scale gamma across selected-hyperparameter CV train fits: "
+                    f"median={rec['median']:.12g}; q10={rec['q10']:.12g}; "
+                    f"q90={rec['q90']:.12g}; positive_frequency={rec['positive_frequency']:.12g}; "
+                    f"negative_frequency={rec['negative_frequency']:.12g}; "
+                    f"final_sign_agreement={rec['final_sign_agreement']:.12g}."
+                ),
+                value=f"{rec['median']:.12g}",
+                feature=rec["feature"],
+            )
+
+        pairwise_cos = _pairwise_cosines(cv_gammas)
+        cv_pairwise_summary = _summary_quantiles(pairwise_cos)
+        final_cosines = [x["cosine_to_final"] for x in cv_records]
+        cv_final_cos_summary = _summary_quantiles(final_cosines)
+        add_stage8_diag(
+            rows,
+            "stability",
+            "ok",
+            "stage8_cv_pairwise_cosine",
+            (
+                f"Pairwise cosine similarity among {len(cv_gammas)} raw-scale gamma vectors; "
+                f"n_pairs={cv_pairwise_summary['n']}; min={cv_pairwise_summary['min']:.12g}; "
+                f"q10={cv_pairwise_summary['q10']:.12g}; median={cv_pairwise_summary['median']:.12g}; "
+                f"q90={cv_pairwise_summary['q90']:.12g}; max={cv_pairwise_summary['max']:.12g}."
+            ),
+            value=f"{cv_pairwise_summary['median']:.12g}",
+        )
+
+    # ------------------------------------------------------------------
+    # 8B. Complete-case sensitivity, defined at mouse level.
+    # ------------------------------------------------------------------
+    cc_ids, cc_excluded, cc_definition_stats = _complete_case_mouse_ids(long_raw)
+    cc_std_all, cc_prep = fit_transform_stage3(
+        long_raw,
+        fit_mouse_ids=cc_ids,
+        random_state=IMPUTATION_SEED,
+        sample_posterior=False,
+    )
+    cc_errors = list(cc_prep.get("errors", []))
+    cc_df = cc_std_all[cc_std_all["mouse_id"].isin(set(cc_ids))].copy()
+
+    if cc_df[
+        ~cc_df["death"] & ~cc_df["status"].eq("observed")
+    ].shape[0]:
+        cc_errors.append("Complete-case subset contains a non-death row that is not observed.")
+
+    cc_states, cc_xbar, cc_state_stats = build_experimental_states(
+        cc_std_all,
+        state_mouse_ids=cc_ids,
+        reference_xbar=None,
+    )
+    cc_errors.extend(cc_state_stats.get("errors", []))
+    cc_solution, cc_meta = solve_qp_smoke(
+        cc_df,
+        cc_states,
+        cc_xbar,
+        rho=SMOKE_RHO,
+        beta=selected["beta"],
+        ridge_lambda=selected["lambda"],
+        C=selected["C"],
+    )
+    cc_errors.extend(cc_meta.get("errors", []))
+
+    cc_summary = {
+        "included_mice": int(len(cc_ids)),
+        "excluded_mice": int(len(cc_excluded)),
+        "excluded": cc_excluded,
+    }
+    if cc_solution is None or cc_errors:
+        errors.append(
+            "Complete-case sensitivity failed: " + " | ".join(cc_errors or ["no solution"])
+        )
+        for err in cc_errors or ["Complete-case solver returned no solution."]:
+            add_stage8_diag(
+                rows, "sensitivity", "fatal", "stage8_complete_case_failure", err
+            )
+    else:
+        cc_gamma = _gamma_from_solution(cc_solution, cc_prep["scaling"])
+        cc_enri = build_final_enri_table(cc_df, cc_xbar, cc_solution["w"])
+        cc_enri_cmp = _compare_enri_tables(base_enri, cc_enri)
+        cc_group_cmp = _compare_group_means(base_solution, cc_solution)
+        cc_summary.update({
+            "gamma_cosine": _safe_cosine(base_gamma, cc_gamma),
+            "sign_agreement": _sign_agreement(base_gamma, cc_gamma),
+            "living_rank_spearman": cc_enri_cmp["spearman"],
+            "common_living_rows": cc_enri_cmp["common_living"],
+            "individual_max_abs_diff": cc_enri_cmp["max_abs_diff"],
+            "group_rank_spearman": cc_group_cmp["spearman"],
+            "group_max_abs_diff": cc_group_cmp["max_abs_diff"],
+            "slack_sum": float(cc_solution["slack_sum"]),
+            "slack_max": float(cc_solution["slack_max"]),
+            "min_live_enri": float(cc_solution["min_live_enri"]),
+        })
+        add_stage8_diag(
+            rows,
+            "sensitivity",
+            "ok",
+            "stage8_complete_case",
+            (
+                f"Mouse-level complete-case model: included={len(cc_ids)}, excluded={len(cc_excluded)}; "
+                f"gamma cosine={cc_summary['gamma_cosine']:.12g}; "
+                f"sign agreement={cc_summary['sign_agreement']:.12g}; "
+                f"living eNRI rank Spearman={cc_summary['living_rank_spearman']:.12g}; "
+                f"group-rank Spearman={cc_summary['group_rank_spearman']:.12g}; "
+                f"max group mean change={cc_summary['group_max_abs_diff']:.12g}; "
+                f"slack_sum={cc_summary['slack_sum']:.12g}."
+            ),
+            value=f"{cc_summary['gamma_cosine']:.12g}",
+            solver_status=str(cc_solution["solver_status"]),
+        )
+        for feature, g0, g1 in zip(MODEL_FEATURES, base_gamma, cc_gamma):
+            add_stage8_diag(
+                rows,
+                "sensitivity",
+                "ok",
+                "stage8_complete_case_gamma",
+                (
+                    f"final_gamma={float(g0):.12g}; complete_case_gamma={float(g1):.12g}; "
+                    f"same_sign={int(_sign_vector([g0])[0] == _sign_vector([g1])[0])}."
+                ),
+                value=f"{float(g1):.12g}",
+                feature=feature,
+            )
+
+    # ------------------------------------------------------------------
+    # 8C. Margin sensitivity rho in {0.05,0.2,0.3}.
+    # ------------------------------------------------------------------
+    rho_summary = {}
+    for rho in STAGE8_RHO_VALUES:
+        sol, meta = solve_qp_smoke(
+            final_std,
+            states,
+            xbar,
+            rho=float(rho),
+            beta=selected["beta"],
+            ridge_lambda=selected["lambda"],
+            C=selected["C"],
+        )
+        if sol is None or meta.get("errors"):
+            msg = f"rho={rho}: " + " | ".join(meta.get("errors", []) or ["no solution"])
+            errors.append("Margin sensitivity failed: " + msg)
+            add_stage8_diag(
+                rows, "sensitivity", "fatal", "stage8_rho_failure", msg, rho=float(rho),
+                solver_status=str(meta.get("status")),
+            )
+            continue
+
+        gamma = _gamma_from_solution(sol, base_prep["scaling"])
+        enri = build_final_enri_table(final_std, xbar, sol["w"])
+        enri_cmp = _compare_enri_tables(base_enri, enri)
+        group_cmp = _compare_group_means(base_solution, sol)
+        sign_agree = _sign_agreement(base_gamma, gamma)
+        gamma_cos = _safe_cosine(base_gamma, gamma)
+        rec = {
+            "gamma_cosine": gamma_cos,
+            "sign_agreement": sign_agree,
+            "living_rank_spearman": enri_cmp["spearman"],
+            "individual_max_abs_diff": enri_cmp["max_abs_diff"],
+            "group_rank_spearman": group_cmp["spearman"],
+            "group_max_abs_diff": group_cmp["max_abs_diff"],
+            "slack_sum": float(sol["slack_sum"]),
+            "slack_max": float(sol["slack_max"]),
+            "min_live_enri": float(sol["min_live_enri"]),
+            "max_order_violation": float(sol["max_order_violation"]),
+            "max_positivity_violation": float(sol["max_positivity_violation"]),
+        }
+        rho_summary[str(rho)] = rec
+        add_stage8_diag(
+            rows,
+            "sensitivity",
+            "ok",
+            "stage8_rho",
+            (
+                f"rho={rho}; gamma cosine={gamma_cos:.12g}; sign agreement={sign_agree:.12g}; "
+                f"living-rank Spearman={rec['living_rank_spearman']:.12g}; "
+                f"group-rank Spearman={rec['group_rank_spearman']:.12g}; "
+                f"max group mean change={rec['group_max_abs_diff']:.12g}; "
+                f"slack_sum={rec['slack_sum']:.12g}; slack_max={rec['slack_max']:.12g}; "
+                f"max order violation={rec['max_order_violation']:.3g}."
+            ),
+            value=f"{gamma_cos:.12g}",
+            rho=float(rho),
+            solver_status=str(sol["solver_status"]),
+        )
+        for label, mu in sorted(sol["group_means"].items()):
+            add_stage8_diag(
+                rows,
+                "sensitivity",
+                "ok",
+                "stage8_rho_group_mean",
+                f"Group mean eNRI for rho sensitivity; base_rho0.1={base_solution['group_means'][label]:.12g}.",
+                value=f"{float(mu):.12g}",
+                feature=label,
+                rho=float(rho),
+            )
+
+    # ------------------------------------------------------------------
+    # 8D. Ten posterior-sampling imputation sensitivity runs.
+    # ------------------------------------------------------------------
+    stochastic_records = []
+    stochastic_invalid = []
+    stochastic_gammas = []
+
+    for seed in STAGE8_STOCHASTIC_SEEDS:
+        s_std, s_prep = fit_transform_stage3(
+            long_raw,
+            fit_mouse_ids=None,
+            random_state=int(seed),
+            sample_posterior=True,
+        )
+        run_errors = list(s_prep.get("errors", []))
+        if not run_errors:
+            s_states, s_xbar, s_state_stats = build_experimental_states(s_std)
+            run_errors.extend(validate_full_stage4(s_states, s_xbar, s_state_stats))
+        else:
+            s_states, s_xbar = None, None
+
+        s_solution = None
+        s_meta = {"status": "NOT_SOLVED", "errors": []}
+        if not run_errors:
+            s_solution, s_meta = solve_qp_smoke(
+                s_std,
+                s_states,
+                s_xbar,
+                rho=SMOKE_RHO,
+                beta=selected["beta"],
+                ridge_lambda=selected["lambda"],
+                C=selected["C"],
+            )
+            run_errors.extend(s_meta.get("errors", []))
+
+        if s_solution is None or run_errors:
+            rec = {
+                "seed": int(seed),
+                "status": s_meta.get("status"),
+                "errors": run_errors or ["no solution"],
+            }
+            stochastic_invalid.append(rec)
+            add_stage8_diag(
+                rows,
+                "sensitivity",
+                "review",
+                "stage8_stochastic_invalid",
+                json.dumps(rec["errors"], ensure_ascii=False),
+                seed=int(seed),
+                value="invalid",
+                solver_status=str(rec["status"]),
+            )
+            continue
+
+        gamma = _gamma_from_solution(s_solution, s_prep["scaling"])
+        stochastic_gammas.append(gamma)
+        s_enri = build_final_enri_table(s_std, s_xbar, s_solution["w"])
+        enri_cmp = _compare_enri_tables(base_enri, s_enri)
+        group_cmp = _compare_group_means(base_solution, s_solution)
+        rec = {
+            "seed": int(seed),
+            "gamma_cosine": _safe_cosine(base_gamma, gamma),
+            "sign_agreement": _sign_agreement(base_gamma, gamma),
+            "living_rank_spearman": enri_cmp["spearman"],
+            "individual_max_abs_diff": enri_cmp["max_abs_diff"],
+            "group_rank_spearman": group_cmp["spearman"],
+            "group_max_abs_diff": group_cmp["max_abs_diff"],
+            "slack_sum": float(s_solution["slack_sum"]),
+            "slack_max": float(s_solution["slack_max"]),
+            "min_live_enri": float(s_solution["min_live_enri"]),
+        }
+        stochastic_records.append(rec)
+        add_stage8_diag(
+            rows,
+            "sensitivity",
+            "ok",
+            "stage8_stochastic_run",
+            (
+                f"sample_posterior=True; gamma cosine={rec['gamma_cosine']:.12g}; "
+                f"sign agreement={rec['sign_agreement']:.12g}; "
+                f"living-rank Spearman={rec['living_rank_spearman']:.12g}; "
+                f"group-rank Spearman={rec['group_rank_spearman']:.12g}; "
+                f"max group mean change={rec['group_max_abs_diff']:.12g}; "
+                f"slack_sum={rec['slack_sum']:.12g}."
+            ),
+            seed=int(seed),
+            value=f"{rec['gamma_cosine']:.12g}",
+            solver_status=str(s_solution["solver_status"]),
+        )
+
+    stochastic_summary = {
+        "requested_runs": int(len(STAGE8_STOCHASTIC_SEEDS)),
+        "valid_runs": int(len(stochastic_records)),
+        "invalid_runs": int(len(stochastic_invalid)),
+    }
+    if stochastic_records:
+        for metric in (
+            "gamma_cosine", "sign_agreement", "living_rank_spearman",
+            "group_rank_spearman", "group_max_abs_diff", "slack_sum"
+        ):
+            stochastic_summary[metric] = _summary_quantiles(
+                [x[metric] for x in stochastic_records]
+            )
+
+        stochastic_feature_rows = _feature_stability(
+            np.vstack(stochastic_gammas), base_gamma
+        )
+        for rec in stochastic_feature_rows:
+            add_stage8_diag(
+                rows,
+                "sensitivity",
+                "ok",
+                "stage8_stochastic_feature_gamma",
+                (
+                    f"Across valid posterior-imputation runs: median gamma={rec['median']:.12g}; "
+                    f"q10={rec['q10']:.12g}; q90={rec['q90']:.12g}; "
+                    f"final_sign_agreement={rec['final_sign_agreement']:.12g}."
+                ),
+                value=f"{rec['median']:.12g}",
+                feature=rec["feature"],
+            )
+    else:
+        errors.append("No valid stochastic-imputation sensitivity runs.")
+
+    # ------------------------------------------------------------------
+    # Save diagnostics only; the stage-7 core weights/eNRI/model stay unchanged.
+    # ------------------------------------------------------------------
+    diagnostics = pd.read_csv(diagnostics_path)
+    diagnostics = diagnostics[
+        ~diagnostics["type"].astype(str).isin(["stability", "sensitivity"])
+    ].copy()
+
+    for err in errors:
+        add_stage8_diag(rows, "stability", "fatal", "stage8_validation", err)
+
+    status = "READY" if not errors else "FATAL"
+    add_stage8_diag(
+        rows,
+        "stability",
+        "summary",
+        "stage8_status",
+        (
+            f"Stage 8 status={status}; accepted_cv_splits={len(accepted_splits)}; "
+            f"cv_selected_fits={len(cv_gammas)}; complete_case_mice={len(cc_ids)}; "
+            f"rho_runs={len(rho_summary)}/{len(STAGE8_RHO_VALUES)}; "
+            f"stochastic_valid={len(stochastic_records)}/{len(STAGE8_STOCHASTIC_SEEDS)}; "
+            f"validation_errors={len(errors)}."
+        ),
+        value=status,
+    )
+
+    merged = pd.concat([diagnostics, pd.DataFrame(rows)], ignore_index=True, sort=False)
+    merged.to_csv(diagnostics_path, index=False)
+
+    feature_sign_agreements = [
+        x["final_sign_agreement"] for x in cv_feature_rows
+    ] if cv_feature_rows else []
+
+    summary = {
+        "stage": 8,
+        "status": status,
+        "selected_hyperparameters": {
+            "beta": float(selected["beta"]),
+            "lambda": float(selected["lambda"]),
+            "C": float(selected["C"]),
+            "rho": float(SMOKE_RHO),
+        },
+        "cv_stability": {
+            "accepted_splits": int(len(accepted_splits)),
+            "rejected_splits": int(len(rejected_splits)),
+            "successful_selected_fits": int(len(cv_gammas)),
+            "pairwise_gamma_cosine": cv_pairwise_summary,
+            "cosine_to_final": cv_final_cos_summary,
+            "feature_final_sign_agreement": _summary_quantiles(feature_sign_agreements),
+        },
+        "complete_case": cc_summary,
+        "rho_sensitivity": rho_summary,
+        "stochastic_imputation": stochastic_summary,
+        "validation_errors": errors,
+        "diagnostics_file": str(diagnostics_path.relative_to(ROOT)),
+        "core_artifacts_unchanged": [
+            "results/weights.csv",
+            "results/enri.csv",
+            "results/model.json",
+        ],
+    }
+    print("STAGE8_SUMMARY=" + json.dumps(summary, ensure_ascii=False, sort_keys=True))
+
+    if status != "READY":
+        raise RuntimeError("Stage 8 validation failed: " + " | ".join(errors))
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--stage", type=int, required=True)
@@ -3525,6 +4244,8 @@ def main():
         run_stage6()
     elif args.stage == 7:
         run_stage7()
+    elif args.stage == 8:
+        run_stage8()
     else:
         raise SystemExit(f"Stage {args.stage} is not implemented yet.")
 
