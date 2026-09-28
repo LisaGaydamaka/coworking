@@ -2800,7 +2800,7 @@ def aggregate_cv_grid(fold_rows, accepted_split_count):
     return aggregate_rows
 
 
-def add_stage6_diag(rows, severity, check, detail, **kwargs):
+def add_stage6_diag(rows, severity, check, detail, lambda_value=np.nan, **kwargs):
     row = {
         "type": "cv",
         "severity": severity,
@@ -2816,7 +2816,7 @@ def add_stage6_diag(rows, severity, check, detail, **kwargs):
         "seed": np.nan,
         "fold": np.nan,
         "beta": np.nan,
-        "lambda": np.nan,
+        "lambda": lambda_value,
         "C": np.nan,
         "V_pos": np.nan,
         "V_sign": np.nan,
@@ -2924,7 +2924,7 @@ def run_stage6():
             seed=rec["seed"],
             fold=rec["fold"],
             beta=rec["beta"],
-            lambda=rec["lambda"],
+            lambda_value=rec["lambda"],
             C=rec["C"],
             V_pos=rec["V_pos"],
             V_sign=rec["V_sign"],
@@ -2945,7 +2945,7 @@ def run_stage6():
             seed=failure["seed"],
             fold=failure["fold"],
             beta=failure["beta"],
-            lambda=failure["lambda"],
+            lambda_value=failure["lambda"],
             C=failure["C"],
             solver_status=str(failure["status"]),
         )
@@ -2957,7 +2957,7 @@ def run_stage6():
             "stage6_aggregate",
             "Arithmetic mean of validation metrics over all accepted seed/fold splits.",
             beta=agg["beta"],
-            lambda=agg["lambda"],
+            lambda_value=agg["lambda"],
             C=agg["C"],
             V_pos=agg["V_pos"],
             V_sign=agg["V_sign"],
@@ -2980,7 +2980,7 @@ def run_stage6():
                 "Trace=" + json.dumps(selection_trace, ensure_ascii=False)
             ),
             beta=selected["beta"],
-            lambda=selected["lambda"],
+            lambda_value=selected["lambda"],
             C=selected["C"],
             V_pos=selected["V_pos"],
             V_sign=selected["V_sign"],
@@ -3006,7 +3006,7 @@ def run_stage6():
         ),
         value=status,
         beta=np.nan if selected is None else selected["beta"],
-        lambda=np.nan if selected is None else selected["lambda"],
+        lambda_value=np.nan if selected is None else selected["lambda"],
         C=np.nan if selected is None else selected["C"],
     )
 
