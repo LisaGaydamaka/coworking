@@ -8,6 +8,10 @@ import numpy as np
 import pandas as pd
 from openpyxl.utils import get_column_letter
 
+from sklearn.experimental import enable_iterative_imputer  # noqa: F401
+from sklearn.impute import IterativeImputer
+from sklearn.linear_model import BayesianRidge
+
 
 ROOT = Path(__file__).resolve().parent
 DATA_FILE = ROOT / "Данные по мышам.xlsx"
@@ -1008,6 +1012,500 @@ def run_stage2():
     if errors:
         raise RuntimeError("Stage 2 validation failed: " + " | ".join(errors))
 
+
+DERIVED_FEATURES = [
+    "Latency_to_first_investigation_NOR1",
+    "Total_time_investigating_NOR1",
+    "DI_NOR2",
+    "Latency_to_first_investigation_NOR2",
+    "Total_time_investigating_NOR2",
+]
+BASE_FEATURES = [f for f in FEATURE_COLUMNS if f not in DERIVED_FEATURES]
+IMPUTATION_SEED = 20260928
+
+
+def compute_baseline_scaling(processed, fit_mouse_ids=None):
+    living = ~processed["death"]
+    if fit_mouse_ids is None:
+        fit_mask = living
+        fit_scope = "all_included"
+    else:
+        fit_mouse_ids = set(fit_mouse_ids)
+        fit_mask = living & processed["mouse_id"].isin(fit_mouse_ids)
+        fit_scope = "train_only"
+
+    baseline_mask = fit_mask & processed["week"].eq(0)
+    mean = {}
+    std = {}
+    n_obs = {}
+    errors = []
+
+    for feature in FEATURE_COLUMNS:
+        vals = pd.to_numeric(
+            processed.loc[baseline_mask, feature], errors="coerce"
+        ).dropna().astype(float)
+        n_obs[feature] = int(len(vals))
+        if len(vals) < 2:
+            mean[feature] = None
+            std[feature] = None
+            errors.append(
+                f"{feature}: fewer than 2 available baseline fit values ({len(vals)})."
+            )
+            continue
+
+        m = float(vals.mean())
+        s = float(vals.std(ddof=1))
+        mean[feature] = m
+        std[feature] = s
+
+        if not math.isfinite(m):
+            errors.append(f"{feature}: non-finite baseline mean.")
+        if not math.isfinite(s) or s <= 0:
+            errors.append(f"{feature}: invalid baseline sample std={s}.")
+
+    return {
+        "fit_scope": fit_scope,
+        "mean": mean,
+        "std": std,
+        "n_obs": n_obs,
+        "errors": errors,
+    }
+
+
+def recompute_derived_features(raw_df):
+    out = raw_df.copy(deep=True)
+    living = ~out["death"]
+    zero_exploration = np.zeros(len(out), dtype=int)
+
+    for cfg in NOR_BLOCKS.values():
+        tp = cfg["time_p"]
+        ts = cfg["time_s"]
+        total = cfg["total"]
+        lp = cfg["lat_p"]
+        ls = cfg["lat_s"]
+        first = cfg["lat_first"]
+
+        idxs = out.index[living]
+        tpv = pd.to_numeric(out.loc[idxs, tp], errors="coerce")
+        tsv = pd.to_numeric(out.loc[idxs, ts], errors="coerce")
+        both_time = tpv.notna() & tsv.notna()
+
+        out.loc[idxs, total] = np.nan
+        out.loc[idxs[both_time], total] = (
+            tpv.loc[both_time].astype(float) + tsv.loc[both_time].astype(float)
+        ).to_numpy()
+
+        lpv = pd.to_numeric(out.loc[idxs, lp], errors="coerce")
+        lsv = pd.to_numeric(out.loc[idxs, ls], errors="coerce")
+        both_lat = lpv.notna() & lsv.notna()
+
+        out.loc[idxs, first] = np.nan
+        out.loc[idxs[both_lat], first] = np.minimum(
+            lpv.loc[both_lat].astype(float).to_numpy(),
+            lsv.loc[both_lat].astype(float).to_numpy(),
+        )
+
+        if cfg["di"] is not None:
+            di = cfg["di"]
+            out.loc[idxs, di] = np.nan
+            valid_idx = idxs[both_time]
+            tpa = out.loc[valid_idx, tp].astype(float).to_numpy()
+            tsa = out.loc[valid_idx, ts].astype(float).to_numpy()
+            denom = tpa + tsa
+            numer = tpa - tsa
+            di_vals = np.divide(
+                numer,
+                denom,
+                out=np.zeros_like(numer, dtype=float),
+                where=np.abs(denom) > FLOAT_TOL,
+            )
+            out.loc[valid_idx, di] = di_vals
+            zero_idx = valid_idx[np.abs(denom) <= FLOAT_TOL]
+            if len(zero_idx):
+                out.loc[zero_idx, "zero_exploration"] = 1
+
+    return out
+
+
+def fit_transform_stage3(long_raw, fit_mouse_ids=None, random_state=IMPUTATION_SEED):
+    processed, deterministic_stats = deterministic_preprocess(
+        long_raw, fit_mouse_ids=fit_mouse_ids
+    )
+    errors = list(deterministic_stats["errors"])
+
+    living = ~processed["death"]
+    if fit_mouse_ids is None:
+        fit_mask = living
+        fit_scope = "all_included_living"
+    else:
+        fit_mouse_ids = set(fit_mouse_ids)
+        fit_mask = living & processed["mouse_id"].isin(fit_mouse_ids)
+        fit_scope = "train_only"
+
+    if (processed.loc[fit_mask, "status"] == "missing_visit").any():
+        bad = processed.loc[
+            fit_mask & processed["status"].eq("missing_visit"),
+            ["mouse_id", "week", "missing_count"],
+        ]
+        errors.append(
+            "Fit data contains missing_visit rows: " + bad.to_json(orient="records")
+        )
+
+    scaling = compute_baseline_scaling(processed, fit_mouse_ids=fit_mouse_ids)
+    errors.extend(scaling["errors"])
+
+    if errors:
+        return processed, {
+            "fit_scope": fit_scope,
+            "deterministic": deterministic_stats,
+            "scaling": scaling,
+            "errors": errors,
+        }
+
+    means = scaling["mean"]
+    stds = scaling["std"]
+
+    # Standardize the 30 base features with baseline fit parameters.
+    standardized_base = pd.DataFrame(
+        index=processed.index, columns=BASE_FEATURES, dtype=float
+    )
+    for feature in BASE_FEATURES:
+        standardized_base[feature] = (
+            pd.to_numeric(processed[feature], errors="coerce") - means[feature]
+        ) / stds[feature]
+
+    living_idx = processed.index[living]
+    fit_idx = processed.index[fit_mask]
+
+    design = standardized_base.loc[living_idx, BASE_FEATURES].copy()
+    design["week_16"] = processed.loc[living_idx, "week"].eq(16).astype(float).to_numpy()
+    design["week_24"] = processed.loc[living_idx, "week"].eq(24).astype(float).to_numpy()
+
+    fit_design = design.loc[fit_idx]
+    if fit_design.empty:
+        errors.append("No living fit rows for IterativeImputer.")
+        return processed, {
+            "fit_scope": fit_scope,
+            "deterministic": deterministic_stats,
+            "scaling": scaling,
+            "errors": errors,
+        }
+
+    # IterativeImputer is fitted only on fit rows. Group is intentionally absent.
+    imputer = IterativeImputer(
+        estimator=BayesianRidge(),
+        sample_posterior=False,
+        max_iter=20,
+        tol=1e-3,
+        random_state=random_state,
+    )
+    imputer.fit(fit_design)
+    transformed = imputer.transform(design)
+
+    if transformed.shape[1] != len(BASE_FEATURES) + 2:
+        errors.append(
+            f"Unexpected imputer output width {transformed.shape[1]}; "
+            f"expected {len(BASE_FEATURES) + 2}."
+        )
+        return processed, {
+            "fit_scope": fit_scope,
+            "deterministic": deterministic_stats,
+            "scaling": scaling,
+            "errors": errors,
+        }
+
+    transformed_base = transformed[:, : len(BASE_FEATURES)]
+    result_raw = processed.copy(deep=True)
+
+    missing_base_before = standardized_base.loc[living_idx, BASE_FEATURES].isna()
+    imputed_cell_count = int(missing_base_before.to_numpy().sum())
+    imputed_feature_counts = {
+        feature: int(missing_base_before[feature].sum())
+        for feature in BASE_FEATURES
+        if int(missing_base_before[feature].sum()) > 0
+    }
+
+    # Return imputed base features to raw scale.
+    for j, feature in enumerate(BASE_FEATURES):
+        raw_vals = transformed_base[:, j] * stds[feature] + means[feature]
+        result_raw.loc[living_idx, feature] = raw_vals
+
+    # Derivatives are recomputed only after all base values are available.
+    result_raw = recompute_derived_features(result_raw)
+
+    # Final standardized 35-dimensional vector.
+    final_std = result_raw.copy(deep=True)
+    for feature in FEATURE_COLUMNS:
+        final_std.loc[living_idx, feature] = (
+            pd.to_numeric(result_raw.loc[living_idx, feature], errors="coerce")
+            - means[feature]
+        ) / stds[feature]
+        final_std.loc[~living, feature] = np.nan
+
+    # Preserve stage-2 missing_count as the number of missing values before
+    # statistical imputation; update the final status only.
+    final_std.loc[living & processed["missing_count"].eq(0), "status"] = "observed"
+    final_std.loc[living & processed["missing_count"].gt(0), "status"] = "imputed"
+    final_std.loc[~living, "status"] = "death"
+
+    # Diagnostics: observed base cells must remain unchanged after imputer roundtrip.
+    max_observed_roundtrip_error = 0.0
+    for feature in BASE_FEATURES:
+        obs_mask = living & processed[feature].notna()
+        if obs_mask.any():
+            before = processed.loc[obs_mask, feature].astype(float).to_numpy()
+            after = result_raw.loc[obs_mask, feature].astype(float).to_numpy()
+            err = float(np.max(np.abs(before - after)))
+            max_observed_roundtrip_error = max(max_observed_roundtrip_error, err)
+
+    # Physical checks on the raw post-imputation representation.
+    nonnegative_features = [f for f in FEATURE_COLUMNS if f != "DI_NOR2"]
+    negative_values = []
+    for feature in nonnegative_features:
+        vals = pd.to_numeric(result_raw.loc[living, feature], errors="coerce")
+        bad = vals < -FLOAT_TOL
+        if bad.any():
+            for idx in vals.index[bad]:
+                negative_values.append({
+                    "mouse_id": result_raw.at[idx, "mouse_id"],
+                    "week": int(result_raw.at[idx, "week"]),
+                    "feature": feature,
+                    "value": float(vals.loc[idx]),
+                })
+
+    di_vals = pd.to_numeric(result_raw.loc[living, "DI_NOR2"], errors="coerce")
+    di_bad = di_vals.notna() & ((di_vals < -1 - FLOAT_TOL) | (di_vals > 1 + FLOAT_TOL))
+    di_violations = [
+        {
+            "mouse_id": result_raw.at[idx, "mouse_id"],
+            "week": int(result_raw.at[idx, "week"]),
+            "value": float(di_vals.loc[idx]),
+        }
+        for idx in di_vals.index[di_bad]
+    ]
+
+    remaining_raw_missing = int(
+        result_raw.loc[living, list(FEATURE_COLUMNS)].isna().to_numpy().sum()
+    )
+    remaining_std_missing = int(
+        final_std.loc[living, list(FEATURE_COLUMNS)].isna().to_numpy().sum()
+    )
+    finite_final = np.isfinite(
+        final_std.loc[living, list(FEATURE_COLUMNS)].to_numpy(dtype=float)
+    ).all()
+
+    # Validate exact derived identities after imputation.
+    derived_errors = []
+    for block_name, cfg in NOR_BLOCKS.items():
+        tp, ts = cfg["time_p"], cfg["time_s"]
+        total, lp, ls, first = cfg["total"], cfg["lat_p"], cfg["lat_s"], cfg["lat_first"]
+        idxs = result_raw.index[living]
+
+        total_expected = (
+            result_raw.loc[idxs, tp].astype(float).to_numpy()
+            + result_raw.loc[idxs, ts].astype(float).to_numpy()
+        )
+        total_actual = result_raw.loc[idxs, total].astype(float).to_numpy()
+        if not np.allclose(total_actual, total_expected, rtol=0, atol=FLOAT_TOL):
+            derived_errors.append(f"{block_name} TotalTime identity failed after imputation.")
+
+        first_expected = np.minimum(
+            result_raw.loc[idxs, lp].astype(float).to_numpy(),
+            result_raw.loc[idxs, ls].astype(float).to_numpy(),
+        )
+        first_actual = result_raw.loc[idxs, first].astype(float).to_numpy()
+        if not np.allclose(first_actual, first_expected, rtol=0, atol=FLOAT_TOL):
+            derived_errors.append(f"{block_name} first-latency identity failed after imputation.")
+
+        if cfg["di"] is not None:
+            di = cfg["di"]
+            tpv = result_raw.loc[idxs, tp].astype(float).to_numpy()
+            tsv = result_raw.loc[idxs, ts].astype(float).to_numpy()
+            denom = tpv + tsv
+            expected = np.divide(
+                tpv - tsv,
+                denom,
+                out=np.zeros_like(denom, dtype=float),
+                where=np.abs(denom) > FLOAT_TOL,
+            )
+            actual = result_raw.loc[idxs, di].astype(float).to_numpy()
+            if not np.allclose(actual, expected, rtol=0, atol=FLOAT_TOL):
+                derived_errors.append("NOR2 DI identity failed after imputation.")
+
+    errors.extend(derived_errors)
+    if remaining_raw_missing:
+        errors.append(f"{remaining_raw_missing} raw living feature cells remain missing after imputation.")
+    if remaining_std_missing:
+        errors.append(f"{remaining_std_missing} standardized living feature cells remain missing.")
+    if not finite_final:
+        errors.append("At least one final standardized living feature value is non-finite.")
+    if max_observed_roundtrip_error > 1e-7:
+        errors.append(
+            f"Observed base values changed during imputer roundtrip; max error={max_observed_roundtrip_error}."
+        )
+    if negative_values:
+        errors.append(
+            "Negative post-imputation values in nonnegative features: "
+            + json.dumps(negative_values, ensure_ascii=False)
+        )
+    if di_violations:
+        errors.append(
+            "Post-imputation DI outside [-1,1]: "
+            + json.dumps(di_violations, ensure_ascii=False)
+        )
+
+    stats = {
+        "fit_scope": fit_scope,
+        "deterministic": deterministic_stats,
+        "scaling": scaling,
+        "imputer_n_iter": int(imputer.n_iter_),
+        "imputed_base_cells": imputed_cell_count,
+        "imputed_feature_counts": imputed_feature_counts,
+        "max_observed_roundtrip_error": max_observed_roundtrip_error,
+        "remaining_raw_missing": remaining_raw_missing,
+        "remaining_std_missing": remaining_std_missing,
+        "negative_values": negative_values,
+        "di_violations": di_violations,
+        "errors": errors,
+    }
+    return final_std, stats
+
+
+def add_stage3_diag(rows, severity, check, detail, value="", feature="", week="", group="", mouse_id=""):
+    rows.append({
+        "type": "stage3",
+        "severity": severity,
+        "check": check,
+        "mouse_id": mouse_id,
+        "group": group,
+        "week": week,
+        "feature": feature,
+        "column": "",
+        "excel_cell": "",
+        "value": value,
+        "detail": detail,
+    })
+
+
+def run_stage3():
+    # Stage 3 includes and revalidates stages 1-2 before fitting statistical preprocessing.
+    run_stage2()
+
+    source = load_included_source()
+    long_raw = build_long_table(source)
+    final_std, stats = fit_transform_stage3(
+        long_raw,
+        fit_mouse_ids=None,
+        random_state=IMPUTATION_SEED,
+    )
+    errors = list(stats.get("errors", []))
+
+    diagnostics_path = RESULTS_DIR / "diagnostics.csv"
+    diagnostics = pd.read_csv(diagnostics_path)
+    diagnostics = diagnostics[diagnostics["type"].astype(str) != "stage3"].copy()
+    rows = []
+
+    scaling = stats["scaling"]
+    for feature in FEATURE_COLUMNS:
+        add_stage3_diag(
+            rows,
+            "ok",
+            "baseline_scaling",
+            "Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.",
+            value=f"n={scaling['n_obs'][feature]}; mean={scaling['mean'][feature]:.12g}; std={scaling['std'][feature]:.12g}",
+            feature=feature,
+            week=0,
+        )
+
+    add_stage3_diag(
+        rows,
+        "ok",
+        "imputer_fit",
+        "IterativeImputer(BayesianRidge, sample_posterior=False, max_iter=20, tol=1e-3) fitted on standardized 30 base features plus week_16/week_24 indicators; group is not used.",
+        value=stats["imputer_n_iter"],
+    )
+    add_stage3_diag(
+        rows,
+        "ok",
+        "imputed_base_cells",
+        "Number of missing base-feature cells filled by IterativeImputer.",
+        value=stats["imputed_base_cells"],
+    )
+
+    for feature, count in sorted(stats["imputed_feature_counts"].items()):
+        add_stage3_diag(
+            rows,
+            "ok",
+            "imputed_feature_count",
+            "Missing base-feature cells filled by IterativeImputer.",
+            value=count,
+            feature=feature,
+        )
+
+    status_counts = final_std["status"].value_counts().to_dict()
+    for status in ("observed", "imputed", "death", "missing_visit"):
+        count = int(status_counts.get(status, 0))
+        add_stage3_diag(
+            rows,
+            "ok" if status != "missing_visit" or count == 0 else "fatal",
+            "status_count",
+            "Final stage-3 visit status.",
+            value=count,
+            feature=status,
+        )
+
+    add_stage3_diag(
+        rows,
+        "ok" if stats["remaining_std_missing"] == 0 else "fatal",
+        "complete_35d_living",
+        "All living eligible visits must have a complete standardized 35-dimensional vector after imputation and deterministic recomputation.",
+        value=stats["remaining_std_missing"],
+    )
+    add_stage3_diag(
+        rows,
+        "ok" if stats["max_observed_roundtrip_error"] <= 1e-7 else "fatal",
+        "observed_values_preserved",
+        "Maximum raw-scale absolute change among originally observed base values after standardize/impute/inverse-transform.",
+        value=stats["max_observed_roundtrip_error"],
+    )
+
+    for err in errors:
+        add_stage3_diag(rows, "fatal", "stage3_validation", err)
+
+    status = "READY" if not errors else "FATAL"
+    add_stage3_diag(
+        rows,
+        "summary",
+        "stage3_status",
+        f"Stage 3 status={status}; validation_errors={len(errors)}; imputed_base_cells={stats['imputed_base_cells']}; final living standardized missing={stats['remaining_std_missing']}.",
+        value=status,
+    )
+
+    merged = pd.concat([diagnostics, pd.DataFrame(rows)], ignore_index=True)
+    merged.to_csv(diagnostics_path, index=False)
+
+    summary = {
+        "stage": 3,
+        "status": status,
+        "fit_scope_stage3_audit": stats["fit_scope"],
+        "base_features": len(BASE_FEATURES),
+        "derived_features": len(DERIVED_FEATURES),
+        "living_rows": int((~final_std["death"]).sum()),
+        "death_rows": int(final_std["death"].sum()),
+        "status_counts": {k: int(v) for k, v in status_counts.items()},
+        "imputed_base_cells": int(stats["imputed_base_cells"]),
+        "imputed_feature_counts": stats["imputed_feature_counts"],
+        "imputer_n_iter": int(stats["imputer_n_iter"]),
+        "remaining_standardized_missing": int(stats["remaining_std_missing"]),
+        "max_observed_roundtrip_error": float(stats["max_observed_roundtrip_error"]),
+        "validation_errors": errors,
+        "diagnostics_file": str(diagnostics_path.relative_to(ROOT)),
+    }
+    print("STAGE3_SUMMARY=" + json.dumps(summary, ensure_ascii=False, sort_keys=True))
+
+    if errors:
+        raise RuntimeError("Stage 3 validation failed: " + " | ".join(errors))
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--stage", type=int, required=True)
@@ -1017,6 +1515,8 @@ def main():
         run_stage1()
     elif args.stage == 2:
         run_stage2()
+    elif args.stage == 3:
+        run_stage3()
     else:
         raise SystemExit(f"Stage {args.stage} is not implemented yet.")
 
