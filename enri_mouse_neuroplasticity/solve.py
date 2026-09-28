@@ -813,8 +813,16 @@ def validate_stage2(long_raw, processed, stats):
 
     living = ~processed["death"]
     if (processed.loc[living, "missing_count"] > MAX_MISSING_PER_VISIT).any():
-        bad = processed.loc[living & (processed["missing_count"] > MAX_MISSING_PER_VISIT), ["mouse_id", "week", "missing_count"]]
-        errors.append("Living missing_visit remains after deterministic preprocessing: " + bad.to_json(orient="records"))
+        bad_rows = []
+        for idx in processed.index[living & (processed["missing_count"] > MAX_MISSING_PER_VISIT)]:
+            missing_features = [f for f in FEATURE_COLUMNS if pd.isna(processed.at[idx, f])]
+            bad_rows.append({
+                "mouse_id": processed.at[idx, "mouse_id"],
+                "week": int(processed.at[idx, "week"]),
+                "missing_count": int(processed.at[idx, "missing_count"]),
+                "missing_features": missing_features,
+            })
+        errors.append("Living missing_visit remains after deterministic preprocessing: " + json.dumps(bad_rows, ensure_ascii=False))
 
     # Censored values must be finite and equal to the fitted maximum.
     for _, latency_feature in OBJECT_LATENCY_PAIRS:
