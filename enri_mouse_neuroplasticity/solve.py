@@ -161,7 +161,7 @@ NOR_TIME_LATENCY_PAIRS = {
     },
 }
 
-STRONG_SCALE_CANDIDATES = {
+ACCEPTED_SCALE_VALUES = {
     ("8.2", 16, "Average_speed_NOR1"),
     ("8.3", 16, "Average_speed_NOR1"),
     ("8.4", 16, "Average_speed_NOR1"),
@@ -384,10 +384,19 @@ def run_stage1():
                     out = (~dead_mask) & vals.notna() & ((vals - med).abs() > 10 * mad)
                     for idx, row in included[out].iterrows():
                         key = (row["mouse_id"], week, feature)
-                        severity = "blocker" if key in STRONG_SCALE_CANDIDATES else "review"
+                        if key in ACCEPTED_SCALE_VALUES:
+                            severity = "accepted"
+                            check = "accepted_scale_value"
+                            detail = (
+                                f"|x-median| > 10*MAD; median={med:.8g}, MAD={mad:.8g}. "
+                                "Reviewed by user and accepted as correct source data; retained unchanged."
+                            )
+                        else:
+                            severity = "review"
+                            check = "scale_outlier"
+                            detail = f"|x-median| > 10*MAD; median={med:.8g}, MAD={mad:.8g}."
                         add_diag(
-                            diagnostics, severity, "scale_outlier",
-                            f"|x-median| > 10*MAD; median={med:.8g}, MAD={mad:.8g}.",
+                            diagnostics, severity, check, detail,
                             mouse_id=row["mouse_id"], group=row["group"], week=week,
                             feature=feature, column=col, excel_cell=excel_cell(df, idx, col),
                             value=float(vals.loc[idx]),
@@ -438,27 +447,28 @@ def run_stage1():
             for idx, row in included[mask].iterrows():
                 structural_count += 1
                 add_diag(
-                    diagnostics, "blocker", "structural_nor_latency",
-                    "Time=0 and object latency is missing; T_NOR must be confirmed before deterministic replacement.",
+                    diagnostics, "info", "structural_nor_latency",
+                    "Time=0 and object latency is missing; at stage 2 it will be encoded as the maximum observed value of the same latency feature computed from train only, with censored_latency=1.",
                     mouse_id=row["mouse_id"], group=row["group"], week=week,
                     feature=label, column=lat_col, excel_cell=excel_cell(df, idx, lat_col),
                 )
 
-    # Specific strong scale candidates must all be visible in the current data.
-    found_strong = {
+    # The eight reviewed scale values are retained unchanged and must remain auditable.
+    found_accepted = {
         (r["mouse_id"], int(r["week"]), r["feature"])
         for r in diagnostics
-        if r["check"] == "scale_outlier" and r["severity"] == "blocker"
+        if r["check"] == "accepted_scale_value"
     }
-    missing_expected_candidates = sorted(STRONG_SCALE_CANDIDATES - found_strong)
-    if missing_expected_candidates:
+    missing_accepted = sorted(ACCEPTED_SCALE_VALUES - found_accepted)
+    if missing_accepted:
         add_diag(
-            diagnostics, "review", "strong_scale_candidate_set_changed",
-            f"Expected strong scale candidates no longer all satisfy the current rule: {missing_expected_candidates}.",
+            diagnostics, "review", "accepted_scale_value_set_changed",
+            f"Some previously accepted values no longer satisfy the current MAD rule: {missing_accepted}. Source values remain unchanged.",
         )
 
     blocker_count = sum(r["severity"] == "blocker" for r in diagnostics)
     review_count = sum(r["severity"] == "review" for r in diagnostics)
+    accepted_count = sum(r["severity"] == "accepted" for r in diagnostics)
 
     if fatal_errors:
         status = "FATAL"
@@ -469,7 +479,7 @@ def run_stage1():
 
     add_diag(
         diagnostics, "summary", "stage1_status",
-        f"Stage 1 status={status}; blockers={blocker_count}; review_flags={review_count}; structural_NOR_latency={structural_count}; max_missing_living={max_missing}.",
+        f"Stage 1 status={status}; blockers={blocker_count}; review_flags={review_count}; accepted_scale_values={accepted_count}; structural_NOR_latency={structural_count}; max_missing_living={max_missing}.",
         value=status,
     )
 
@@ -489,6 +499,8 @@ def run_stage1():
         "structural_nor_latency_count": structural_count,
         "blocker_rows": blocker_count,
         "review_rows": review_count,
+        "accepted_scale_values": accepted_count,
+        "censored_latency_rule": "train_feature_max",
         "fatal_errors": fatal_errors,
         "diagnostics_file": str(out.relative_to(ROOT)),
     }
