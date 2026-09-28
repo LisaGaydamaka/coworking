@@ -4401,6 +4401,7 @@ def run_stage9():
 
     weights_df = pd.read_csv(weights_path)
     enri_df = pd.read_csv(enri_path)
+    enri_df["mouse_id"] = enri_df["mouse_id"].map(norm_id)
     model = json.loads(model_path.read_text(encoding="utf-8"))
     deterministic_df, deterministic_stats = deterministic_preprocess(
         long_raw, fit_mouse_ids=None
