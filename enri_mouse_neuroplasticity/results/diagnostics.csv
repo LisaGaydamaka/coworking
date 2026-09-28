@@ -89,3 +89,59 @@ stage2,ok,status_count,,,,death,,,22,Stage-2 status count. 'imputed' means eligi
 stage2,ok,status_count,,,,missing_visit,,,0,Stage-2 status count. 'imputed' means eligible for statistical imputation at stage 3; no statistical imputation has yet been performed.
 stage2,ok,missingness_after_deterministic,,,,,,,9,Maximum living missing_count changed from 7/35 before deterministic preprocessing to 9/35 after it.
 stage2,summary,stage2_status,,,,,,,READY,Stage 2 status=READY; validation_errors=0; censored_latency_cells=28; censored_visits=15; max_missing_after=9.
+stage3,ok,baseline_scaling,,,0,OFT_distance,,,n=54; mean=15.2166666667; std=6.12124047115,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Average_speed_OFT,,,n=54; mean=0.0257407407407; std=0.0105690634083,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Total_time_mobile_OFT,,,n=54; mean=268.137037037; std=96.7835716145,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Absolute_turn_angle_OFT,,,n=54; mean=31891.7592593; std=11454.7817698,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Time_inCenter_OFT,,,n=54; mean=43.3666666667; std=41.4176427634,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Total_distance_travelled_NOR1,,,n=54; mean=11.9787962963; std=5.62829428358,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Average_speed_NOR1,,,n=54; mean=0.0199814814815; std=0.00937779541366,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Time_investigating_Piramidka_NOR1,,,n=54; mean=6.08148148148; std=4.60176643992,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Latency_to_first_investigation_Piramidka_NOR1,,,n=54; mean=119.755555556; std=125.737737939,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Time_investigating_Stakan_NOR1,,,n=54; mean=6.87777777778; std=6.07430923681,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Latency_to_first_investigation_Stakan_NOR1,,,n=54; mean=116.844444444; std=119.348294273,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Latency_to_first_investigation_NOR1,,,n=54; mean=55.8759259259; std=72.2595216294,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Total_time_investigating_NOR1,,,n=54; mean=12.9592592593; std=10.2646769016,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Total_distance_travelled_NOR2,,,n=54; mean=11.7128888889; std=5.8571579001,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Average_speed_NOR2,,,n=54; mean=0.0195925925926; std=0.00972357283221,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Time_investigating_Piramidka_zone_NOR2,,,n=54; mean=8.46851851852; std=8.12052661351,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Latency_to_first_investigation_Piramidka_zone_NOR2,,,n=54; mean=137.953703704; std=139.296990598,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Time_investigating_Stakan_zone_NOR2,,,n=54; mean=6.54259259259; std=5.25840214815,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Latency_to_first_investigation_Stakan_zone_NOR2,,,n=54; mean=148.9; std=118.187771931,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,DI_NOR2,,,n=54; mean=0.103291887072; std=0.324969859899,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Latency_to_first_investigation_NOR2,,,n=54; mean=91.9111111111; std=100.197604134,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Total_time_investigating_NOR2,,,n=54; mean=15.0111111111; std=12.5185397103,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Learning_T1mean,,,n=54; mean=35.1805555556; std=5.82901344987,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Learning_T1max,,,n=54; mean=41.962962963; std=7.23190771294,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Learning_T1sum,,,n=54; mean=140.722222222; std=23.3160537995,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Learning_T2mean,,,n=54; mean=39.7037037037; std=8.33200723201,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Learning_T2max,,,n=54; mean=46.6666666667; std=9.69341344166,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Learning_T2sum,,,n=54; mean=158.814814815; std=33.3280289281,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Learning_T3mean,,,n=54; mean=38.4074074074; std=12.1296354975,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Learning_T3max,,,n=54; mean=44.8518518519; std=13.4197930522,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Learning_T3sum,,,n=54; mean=153.62962963; std=48.5185419901,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,EnduranceT,,,n=52; mean=172.769230769; std=59.0913601012,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,rear_support,,,n=54; mean=21.0555555556; std=9.78720124326,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,rear_nosupport,,,n=54; mean=11.3333333333; std=7.89554448037,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,baseline_scaling,,,0,Weight,,,n=54; mean=28.8846296296; std=2.43696897493,Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.
+stage3,ok,imputer_fit,,,,,,,1,"IterativeImputer(BayesianRidge, sample_posterior=False, max_iter=20, tol=1e-3) fitted on standardized 30 base features plus week_16/week_24 indicators; group is not used."
+stage3,ok,imputed_base_cells,,,,,,,15,Number of missing base-feature cells filled by IterativeImputer.
+stage3,ok,imputed_feature_count,,,,Absolute_turn_angle_OFT,,,1,Missing base-feature cells filled by IterativeImputer.
+stage3,ok,imputed_feature_count,,,,Average_speed_NOR2,,,1,Missing base-feature cells filled by IterativeImputer.
+stage3,ok,imputed_feature_count,,,,Average_speed_OFT,,,1,Missing base-feature cells filled by IterativeImputer.
+stage3,ok,imputed_feature_count,,,,EnduranceT,,,2,Missing base-feature cells filled by IterativeImputer.
+stage3,ok,imputed_feature_count,,,,Latency_to_first_investigation_Piramidka_zone_NOR2,,,1,Missing base-feature cells filled by IterativeImputer.
+stage3,ok,imputed_feature_count,,,,Latency_to_first_investigation_Stakan_zone_NOR2,,,2,Missing base-feature cells filled by IterativeImputer.
+stage3,ok,imputed_feature_count,,,,OFT_distance,,,1,Missing base-feature cells filled by IterativeImputer.
+stage3,ok,imputed_feature_count,,,,Time_inCenter_OFT,,,1,Missing base-feature cells filled by IterativeImputer.
+stage3,ok,imputed_feature_count,,,,Time_investigating_Piramidka_zone_NOR2,,,1,Missing base-feature cells filled by IterativeImputer.
+stage3,ok,imputed_feature_count,,,,Time_investigating_Stakan_zone_NOR2,,,2,Missing base-feature cells filled by IterativeImputer.
+stage3,ok,imputed_feature_count,,,,Total_distance_travelled_NOR2,,,1,Missing base-feature cells filled by IterativeImputer.
+stage3,ok,imputed_feature_count,,,,Total_time_mobile_OFT,,,1,Missing base-feature cells filled by IterativeImputer.
+stage3,ok,status_count,,,,observed,,,135,Final stage-3 visit status.
+stage3,ok,status_count,,,,imputed,,,5,Final stage-3 visit status.
+stage3,ok,status_count,,,,death,,,22,Final stage-3 visit status.
+stage3,ok,status_count,,,,missing_visit,,,0,Final stage-3 visit status.
+stage3,ok,complete_35d_living,,,,,,,0,All living eligible visits must have a complete standardized 35-dimensional vector after imputation and deterministic recomputation.
+stage3,ok,observed_values_preserved,,,,,,,3.637978807091713e-12,Maximum raw-scale absolute change among originally observed base values after standardize/impute/inverse-transform.
+stage3,summary,stage3_status,,,,,,,READY,Stage 3 status=READY; validation_errors=0; imputed_base_cells=15; final living standardized missing=0.
