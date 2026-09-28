@@ -6,6 +6,7 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+import cvxpy as cp
 from openpyxl.utils import get_column_letter
 
 from sklearn.experimental import enable_iterative_imputer  # noqa: F401
@@ -1930,6 +1931,555 @@ def run_stage4():
     if errors:
         raise RuntimeError("Stage 4 validation failed: " + " | ".join(errors))
 
+
+EQUALITY_PAIRS = [
+    ("PBS^0", "LPS^0"),
+    ("PBS^0", "run^0"),
+    ("PBS^0", "MCC^0"),
+    ("LPS^16", "run^16"),
+    ("LPS^16", "MCC^16"),
+]
+
+ORDER_PAIRS = [
+    ("PBS^16", "LPS^16"),
+    ("PBS^24", "LPS^24"),
+    ("run^24", "LPS^24"),
+    ("MCC^24", "LPS^24"),
+    ("PBS^0", "PBS^16"),
+    ("LPS^0", "LPS^16"),
+    ("run^0", "run^16"),
+    ("MCC^0", "MCC^16"),
+    ("PBS^16", "PBS^24"),
+    ("LPS^16", "LPS^24"),
+]
+
+SMOKE_RHO = 0.1
+SMOKE_BETA = 1.0
+SMOKE_LAMBDA = 1.0
+SMOKE_C = 1.0
+POSITIVITY_EPSILON = 1e-3
+QP_TOLERANCE = 1e-7
+
+
+def assemble_qvar(states):
+    mats = [np.asarray(states[state_label(g, w)]["S"], dtype=float)
+            for w in STATE_WEEKS for g in STATE_GROUPS]
+    Q = np.mean(np.stack(mats, axis=0), axis=0)
+    Q = 0.5 * (Q + Q.T)
+    finite = bool(np.isfinite(Q).all())
+    if finite:
+        eigvals = np.linalg.eigvalsh(Q)
+        min_eig = float(eigvals.min())
+        max_eig = float(eigvals.max())
+        rank = int(np.linalg.matrix_rank(Q, tol=1e-10))
+        symmetry_error = float(np.max(np.abs(Q - Q.T)))
+        trace = float(np.trace(Q))
+    else:
+        min_eig = float("nan")
+        max_eig = float("nan")
+        rank = 0
+        symmetry_error = float("nan")
+        trace = float("nan")
+    return Q, {
+        "finite": finite,
+        "min_eigenvalue": min_eig,
+        "max_eigenvalue": max_eig,
+        "rank": rank,
+        "symmetry_error": symmetry_error,
+        "trace": trace,
+    }
+
+
+def pair_affine_components(states, A, B):
+    c_ab = float(states[A]["a"] - states[B]["a"])
+    d_ab = np.asarray(states[A]["b"] - states[B]["b"], dtype=float)
+    return c_ab, d_ab
+
+
+def solve_qp_smoke(final_std, states, xbar,
+                   rho=SMOKE_RHO, beta=SMOKE_BETA,
+                   ridge_lambda=SMOKE_LAMBDA, C=SMOKE_C):
+    errors = []
+
+    # The sets used by the QP are fixed by the experimental design.
+    expected_E = {
+        ("PBS^0", "LPS^0"),
+        ("PBS^0", "run^0"),
+        ("PBS^0", "MCC^0"),
+        ("LPS^16", "run^16"),
+        ("LPS^16", "MCC^16"),
+    }
+    expected_O = {
+        ("PBS^16", "LPS^16"),
+        ("PBS^24", "LPS^24"),
+        ("run^24", "LPS^24"),
+        ("MCC^24", "LPS^24"),
+        ("PBS^0", "PBS^16"),
+        ("LPS^0", "LPS^16"),
+        ("run^0", "run^16"),
+        ("MCC^0", "MCC^16"),
+        ("PBS^16", "PBS^24"),
+        ("LPS^16", "LPS^24"),
+    }
+    if set(EQUALITY_PAIRS) != expected_E:
+        errors.append("Equality-pair set does not match PLAN.")
+    if set(ORDER_PAIRS) != expected_O:
+        errors.append("Order-pair set does not match PLAN.")
+
+    # All states used by E or O must have no living missing_visit rows.
+    involved_states = {x for pair in EQUALITY_PAIRS + ORDER_PAIRS for x in pair}
+    for label in sorted(involved_states):
+        if states[label]["U"] != 0:
+            errors.append(f"{label}: U_A={states[label]['U']} but QP requires U_A=0.")
+
+    Q_var, q_stats = assemble_qvar(states)
+    if not q_stats["finite"]:
+        errors.append("Q_var contains non-finite values.")
+    if q_stats["symmetry_error"] > 1e-12:
+        errors.append(
+            f"Q_var symmetry error {q_stats['symmetry_error']} exceeds tolerance."
+        )
+    if q_stats["min_eigenvalue"] < -1e-8:
+        errors.append(
+            f"Q_var minimum eigenvalue {q_stats['min_eigenvalue']} < -1e-8."
+        )
+
+    if xbar is None or np.asarray(xbar).shape != (len(MODEL_FEATURES),):
+        errors.append("Invalid xbar_PBS0 for QP.")
+
+    living = final_std["status"].isin(["observed", "imputed"])
+    X_live = final_std.loc[living, MODEL_FEATURES].to_numpy(dtype=float)
+    live_meta = final_std.loc[living, ["mouse_id", "group", "week", "status"]].copy()
+
+    if len(X_live) != 140:
+        errors.append(f"Expected 140 living complete rows for positivity, got {len(X_live)}.")
+    if not np.isfinite(X_live).all():
+        errors.append("Non-finite values in positivity design matrix.")
+
+    if errors:
+        return None, {
+            "status": "NOT_SOLVED",
+            "errors": errors,
+            "qvar": q_stats,
+        }
+
+    p = len(MODEL_FEATURES)
+    m = len(ORDER_PAIRS)
+    w = cp.Variable(p, name="w")
+    eta = cp.Variable(m, nonneg=True, name="eta")
+
+    # Q_var has already passed the explicit numerical PSD check above.
+    # psd_wrap prevents CVXPY's independent eigenvalue classifier from
+    # rejecting a numerically valid PSD matrix due to roundoff.
+    objective_terms = [
+        cp.quad_form(w, cp.psd_wrap(Q_var)),
+        ridge_lambda * cp.sum_squares(w),
+        C * cp.sum(eta),
+    ]
+
+    equality_exprs = []
+    for A, B in EQUALITY_PAIRS:
+        c_ab, d_ab = pair_affine_components(states, A, B)
+        expr = c_ab + d_ab @ w
+        equality_exprs.append(expr)
+    objective_terms.append(beta * cp.sum_squares(cp.hstack(equality_exprs)))
+
+    constraints = []
+    order_exprs = []
+    for k, (A, B) in enumerate(ORDER_PAIRS):
+        c_ab, d_ab = pair_affine_components(states, A, B)
+        expr = c_ab + d_ab @ w
+        order_exprs.append(expr)
+        constraints.append(expr >= rho - eta[k])
+
+    centered_live = X_live - np.asarray(xbar, dtype=float)
+    positivity_expr = 1.0 + centered_live @ w
+    constraints.append(positivity_expr >= POSITIVITY_EPSILON)
+
+    problem = cp.Problem(cp.Minimize(sum(objective_terms)), constraints)
+    try:
+        objective_value = problem.solve(
+            solver=cp.OSQP,
+            eps_abs=1e-8,
+            eps_rel=1e-8,
+            max_iter=100000,
+            verbose=False,
+        )
+    except Exception as exc:
+        return None, {
+            "status": "SOLVER_EXCEPTION",
+            "errors": [f"OSQP exception: {type(exc).__name__}: {exc}"],
+            "qvar": q_stats,
+        }
+
+    solver_status = str(problem.status)
+    if solver_status not in {cp.OPTIMAL, cp.OPTIMAL_INACCURATE}:
+        errors.append(f"Unexpected solver status: {solver_status}.")
+    if w.value is None or eta.value is None:
+        errors.append("Solver returned no primal solution.")
+        return None, {
+            "status": solver_status,
+            "errors": errors,
+            "qvar": q_stats,
+            "objective": None if objective_value is None else float(objective_value),
+        }
+
+    wv = np.asarray(w.value, dtype=float).reshape(-1)
+    etav = np.asarray(eta.value, dtype=float).reshape(-1)
+
+    if len(wv) != p or not np.isfinite(wv).all():
+        errors.append("Weight vector is missing, wrong-sized, or non-finite.")
+    if len(etav) != m or not np.isfinite(etav).all():
+        errors.append("Slack vector is missing, wrong-sized, or non-finite.")
+
+    equality_deltas = {}
+    for A, B in EQUALITY_PAIRS:
+        c_ab, d_ab = pair_affine_components(states, A, B)
+        equality_deltas[f"{A}>{B}"] = float(c_ab + d_ab @ wv)
+
+    order_results = {}
+    max_order_violation = 0.0
+    min_order_residual = float("inf")
+    for k, (A, B) in enumerate(ORDER_PAIRS):
+        c_ab, d_ab = pair_affine_components(states, A, B)
+        delta = float(c_ab + d_ab @ wv)
+        residual = float(delta - rho + etav[k])
+        violation = max(0.0, -residual)
+        max_order_violation = max(max_order_violation, violation)
+        min_order_residual = min(min_order_residual, residual)
+        order_results[f"{A}>{B}"] = {
+            "delta": delta,
+            "slack": float(etav[k]),
+            "residual": residual,
+            "violation": violation,
+        }
+
+    eta_nonneg_violation = max(0.0, float(-np.min(etav)))
+    live_enri = 1.0 + centered_live @ wv
+    min_live_enri = float(np.min(live_enri))
+    positivity_residuals = live_enri - POSITIVITY_EPSILON
+    min_positivity_residual = float(np.min(positivity_residuals))
+    max_positivity_violation = max(0.0, -min_positivity_residual)
+
+    # Locate the positivity constraint closest to binding for diagnostics.
+    min_idx = int(np.argmin(live_enri))
+    min_meta = live_meta.iloc[min_idx].to_dict()
+    min_meta["week"] = int(min_meta["week"])
+
+    group_means = {}
+    for label, state in states.items():
+        group_means[label] = float(state["a"] + state["b"] @ wv)
+
+    # PBS^0 normalization should be exactly one up to floating-point noise.
+    pbs0_normalization_error = abs(group_means["PBS^0"] - 1.0)
+
+    # Recompute objective components from the numerical solution.
+    variance_term = float(wv @ Q_var @ wv)
+    equality_term = float(beta * sum(v * v for v in equality_deltas.values()))
+    ridge_term = float(ridge_lambda * (wv @ wv))
+    slack_term = float(C * np.sum(etav))
+    objective_recomputed = variance_term + equality_term + ridge_term + slack_term
+    objective_solver = float(problem.value)
+    objective_gap = abs(objective_recomputed - objective_solver)
+
+    if max_order_violation > QP_TOLERANCE:
+        errors.append(
+            f"Maximum order-constraint violation {max_order_violation} > {QP_TOLERANCE}."
+        )
+    if eta_nonneg_violation > QP_TOLERANCE:
+        errors.append(
+            f"Slack nonnegativity violation {eta_nonneg_violation} > {QP_TOLERANCE}."
+        )
+    if max_positivity_violation > QP_TOLERANCE:
+        errors.append(
+            f"Maximum positivity violation {max_positivity_violation} > {QP_TOLERANCE}."
+        )
+    if pbs0_normalization_error > QP_TOLERANCE:
+        errors.append(
+            f"PBS^0 normalization error {pbs0_normalization_error} > {QP_TOLERANCE}."
+        )
+    if objective_gap > 1e-6 * max(1.0, abs(objective_solver)):
+        errors.append(
+            f"Recomputed objective differs from solver objective by {objective_gap}."
+        )
+
+    solver_stats = problem.solver_stats
+    extra = getattr(solver_stats, "extra_stats", None)
+    num_iters = getattr(solver_stats, "num_iters", None)
+    solve_time = getattr(solver_stats, "solve_time", None)
+
+    result = {
+        "w": wv,
+        "eta": etav,
+        "qvar": Q_var,
+        "qvar_stats": q_stats,
+        "solver_status": solver_status,
+        "solver_name": str(solver_stats.solver_name),
+        "solver_num_iters": None if num_iters is None else int(num_iters),
+        "solver_time": None if solve_time is None else float(solve_time),
+        "objective": objective_solver,
+        "objective_components": {
+            "variance": variance_term,
+            "equality": equality_term,
+            "ridge": ridge_term,
+            "slack": slack_term,
+        },
+        "objective_recomputed": objective_recomputed,
+        "objective_gap": objective_gap,
+        "equality_deltas": equality_deltas,
+        "order_results": order_results,
+        "group_means": group_means,
+        "min_live_enri": min_live_enri,
+        "min_live_enri_meta": min_meta,
+        "min_positivity_residual": min_positivity_residual,
+        "max_positivity_violation": max_positivity_violation,
+        "max_order_violation": max_order_violation,
+        "min_order_residual": min_order_residual,
+        "eta_nonneg_violation": eta_nonneg_violation,
+        "pbs0_normalization_error": pbs0_normalization_error,
+        "weight_l2_norm": float(np.linalg.norm(wv)),
+        "weight_max_abs": float(np.max(np.abs(wv))),
+        "slack_sum": float(np.sum(etav)),
+        "slack_max": float(np.max(etav)),
+        "errors": errors,
+    }
+    return result, {"status": solver_status, "errors": errors, "qvar": q_stats}
+
+
+def add_stage5_diag(rows, severity, check, detail, value="", feature="", week="", group="", mouse_id=""):
+    rows.append({
+        "type": "qp",
+        "severity": severity,
+        "check": check,
+        "mouse_id": mouse_id,
+        "group": group,
+        "week": week,
+        "feature": feature,
+        "column": "",
+        "excel_cell": "",
+        "value": value,
+        "detail": detail,
+    })
+
+
+def run_stage5():
+    # Stage 5 revalidates stages 1-4, then solves the first full-data smoke-test QP.
+    run_stage4()
+
+    source = load_included_source()
+    long_raw = build_long_table(source)
+    final_std, stage3_stats = fit_transform_stage3(
+        long_raw,
+        fit_mouse_ids=None,
+        random_state=IMPUTATION_SEED,
+    )
+    upstream_errors = list(stage3_stats.get("errors", []))
+
+    states, xbar, state_stats = build_experimental_states(final_std)
+    upstream_errors.extend(validate_full_stage4(states, xbar, state_stats))
+
+    solution, qp_meta = solve_qp_smoke(
+        final_std,
+        states,
+        xbar,
+        rho=SMOKE_RHO,
+        beta=SMOKE_BETA,
+        ridge_lambda=SMOKE_LAMBDA,
+        C=SMOKE_C,
+    )
+
+    errors = upstream_errors + list(qp_meta.get("errors", []))
+    diagnostics_path = RESULTS_DIR / "diagnostics.csv"
+    diagnostics = pd.read_csv(diagnostics_path)
+    diagnostics = diagnostics[
+        ~(
+            diagnostics["type"].astype(str).eq("qp")
+            & diagnostics["check"].astype(str).str.startswith("stage5_")
+        )
+    ].copy()
+    rows = []
+
+    q_stats = qp_meta["qvar"]
+    add_stage5_diag(
+        rows,
+        "ok" if q_stats["finite"] and q_stats["min_eigenvalue"] >= -1e-8 else "fatal",
+        "stage5_qvar",
+        (
+            f"Q_var is the equal-weight mean of 12 S_A matrices, symmetrized before QP. "
+            f"shape=30x30; rank={q_stats['rank']}; trace={q_stats['trace']:.12g}; "
+            f"min_eigenvalue={q_stats['min_eigenvalue']:.12g}; "
+            f"max_eigenvalue={q_stats['max_eigenvalue']:.12g}; "
+            f"symmetry_error={q_stats['symmetry_error']:.3g}."
+        ),
+        value=f"{q_stats['min_eigenvalue']:.12g}",
+        feature="Q_var",
+    )
+
+    if solution is not None:
+        add_stage5_diag(
+            rows,
+            "ok" if solution["solver_status"] in {cp.OPTIMAL, cp.OPTIMAL_INACCURATE} else "fatal",
+            "stage5_solver",
+            (
+                f"OSQP smoke test with rho={SMOKE_RHO}, beta={SMOKE_BETA}, "
+                f"lambda={SMOKE_LAMBDA}, C={SMOKE_C}; "
+                f"iterations={solution['solver_num_iters']}; solve_time={solution['solver_time']}."
+            ),
+            value=solution["solver_status"],
+        )
+        add_stage5_diag(
+            rows,
+            "ok",
+            "stage5_objective",
+            (
+                f"objective={solution['objective']:.12g}; "
+                f"variance={solution['objective_components']['variance']:.12g}; "
+                f"equality={solution['objective_components']['equality']:.12g}; "
+                f"ridge={solution['objective_components']['ridge']:.12g}; "
+                f"slack={solution['objective_components']['slack']:.12g}; "
+                f"recomputed_gap={solution['objective_gap']:.3g}."
+            ),
+            value=f"{solution['objective']:.12g}",
+        )
+
+        for feature, weight in zip(MODEL_FEATURES, solution["w"]):
+            add_stage5_diag(
+                rows,
+                "ok",
+                "stage5_weight",
+                "Smoke-test standardized-feature weight; not the final CV-selected model weight.",
+                value=f"{float(weight):.12g}",
+                feature=feature,
+            )
+
+        for pair, delta in solution["equality_deltas"].items():
+            add_stage5_diag(
+                rows,
+                "ok",
+                "stage5_equality_delta",
+                "Soft equality residual mu_A - mu_B; penalized in the objective, not a hard constraint.",
+                value=f"{delta:.12g}",
+                feature=pair,
+            )
+
+        for pair, rec in solution["order_results"].items():
+            add_stage5_diag(
+                rows,
+                "ok" if rec["violation"] <= QP_TOLERANCE else "fatal",
+                "stage5_order_constraint",
+                (
+                    f"delta={rec['delta']:.12g}; rho={SMOKE_RHO}; "
+                    f"slack={rec['slack']:.12g}; residual=delta-rho+slack={rec['residual']:.12g}; "
+                    f"violation={rec['violation']:.3g}."
+                ),
+                value=f"{rec['residual']:.12g}",
+                feature=pair,
+            )
+
+        for label, mu in sorted(solution["group_means"].items()):
+            add_stage5_diag(
+                rows,
+                "ok",
+                "stage5_group_mean",
+                "Smoke-test group mean eNRI including deaths as zero through a_A and b_A.",
+                value=f"{mu:.12g}",
+                feature=label,
+            )
+
+        min_meta = solution["min_live_enri_meta"]
+        add_stage5_diag(
+            rows,
+            "ok" if solution["max_positivity_violation"] <= QP_TOLERANCE else "fatal",
+            "stage5_positivity",
+            (
+                f"Minimum living eNRI={solution['min_live_enri']:.12g}; "
+                f"epsilon={POSITIVITY_EPSILON}; "
+                f"min residual={solution['min_positivity_residual']:.12g}; "
+                f"max violation={solution['max_positivity_violation']:.3g}. "
+                "Constraint applies to all observed+imputed living visits."
+            ),
+            value=f"{solution['min_live_enri']:.12g}",
+            mouse_id=str(min_meta["mouse_id"]),
+            group=str(min_meta["group"]),
+            week=int(min_meta["week"]),
+            feature=str(min_meta["status"]),
+        )
+        add_stage5_diag(
+            rows,
+            "ok" if solution["eta_nonneg_violation"] <= QP_TOLERANCE else "fatal",
+            "stage5_slack",
+            (
+                f"sum_eta={solution['slack_sum']:.12g}; "
+                f"max_eta={solution['slack_max']:.12g}; "
+                f"nonnegativity_violation={solution['eta_nonneg_violation']:.3g}."
+            ),
+            value=f"{solution['slack_sum']:.12g}",
+        )
+        add_stage5_diag(
+            rows,
+            "ok" if solution["pbs0_normalization_error"] <= QP_TOLERANCE else "fatal",
+            "stage5_pbs0_normalization",
+            "PBS^0 mean eNRI must equal 1 by centering on xbar_PBS0.",
+            value=f"{solution['group_means']['PBS^0']:.12g}",
+            feature="PBS^0",
+        )
+
+    for err in errors:
+        add_stage5_diag(rows, "fatal", "stage5_validation", err)
+
+    status = "READY" if not errors and solution is not None else "FATAL"
+    add_stage5_diag(
+        rows,
+        "summary",
+        "stage5_status",
+        (
+            f"Stage 5 status={status}; solver={qp_meta.get('status')}; "
+            f"validation_errors={len(errors)}; "
+            f"rho={SMOKE_RHO}; beta={SMOKE_BETA}; lambda={SMOKE_LAMBDA}; C={SMOKE_C}."
+        ),
+        value=status,
+    )
+
+    merged = pd.concat([diagnostics, pd.DataFrame(rows)], ignore_index=True)
+    merged.to_csv(diagnostics_path, index=False)
+
+    summary = {
+        "stage": 5,
+        "status": status,
+        "solver_status": qp_meta.get("status"),
+        "rho": SMOKE_RHO,
+        "beta": SMOKE_BETA,
+        "lambda": SMOKE_LAMBDA,
+        "C": SMOKE_C,
+        "model_features": len(MODEL_FEATURES),
+        "equality_pairs": len(EQUALITY_PAIRS),
+        "order_pairs": len(ORDER_PAIRS),
+        "positivity_rows": int(final_std["status"].isin(["observed", "imputed"]).sum()),
+        "qvar_min_eigenvalue": float(q_stats["min_eigenvalue"]),
+        "qvar_rank": int(q_stats["rank"]),
+        "validation_errors": errors,
+        "diagnostics_file": str(diagnostics_path.relative_to(ROOT)),
+    }
+    if solution is not None:
+        summary.update({
+            "objective": float(solution["objective"]),
+            "objective_components": solution["objective_components"],
+            "weight_l2_norm": float(solution["weight_l2_norm"]),
+            "weight_max_abs": float(solution["weight_max_abs"]),
+            "slack_sum": float(solution["slack_sum"]),
+            "slack_max": float(solution["slack_max"]),
+            "max_order_violation": float(solution["max_order_violation"]),
+            "max_positivity_violation": float(solution["max_positivity_violation"]),
+            "min_live_enri": float(solution["min_live_enri"]),
+            "pbs0_mean": float(solution["group_means"]["PBS^0"]),
+            "group_means": solution["group_means"],
+        })
+
+    print("STAGE5_SUMMARY=" + json.dumps(summary, ensure_ascii=False, sort_keys=True))
+
+    if status != "READY":
+        raise RuntimeError("Stage 5 validation failed: " + " | ".join(errors))
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--stage", type=int, required=True)
@@ -1943,6 +2493,8 @@ def main():
         run_stage3()
     elif args.stage == 4:
         run_stage4()
+    elif args.stage == 5:
+        run_stage5()
     else:
         raise SystemExit(f"Stage {args.stage} is not implemented yet.")
 
