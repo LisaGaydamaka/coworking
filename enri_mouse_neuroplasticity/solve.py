@@ -417,22 +417,22 @@ def run_stage1():
                 continue
             vals = [
                 pd.to_numeric(pd.Series([row[FEATURE_COLUMNS[f][week]]]), errors="coerce").iloc[0]
-                for f in FEATURE_COLUMNS
+                for f in MODEL_FEATURES
             ]
             missing = int(pd.isna(vals).sum())
             max_missing = max(max_missing, missing)
-            if missing == len(FEATURE_COLUMNS):
+            if missing == len(MODEL_FEATURES):
                 fully_missing_living.append((row["mouse_id"], week))
     add_diag(
         diagnostics, "ok" if not fully_missing_living else "blocker",
         "living_visit_missingness",
-        f"Maximum missing among living visits: {max_missing}/35; fully missing living visits: {len(fully_missing_living)}.",
+        f"Maximum missing among living visits: {max_missing}/30 model features; fully missing model vectors: {len(fully_missing_living)}.",
         value=max_missing,
     )
     for mid, week in fully_missing_living:
         add_diag(
             diagnostics, "blocker", "fully_missing_living_visit",
-            "Living visit has all 35 model features missing.",
+            "Living visit has all 30 model features missing.",
             mouse_id=mid, week=week,
         )
 
@@ -549,7 +549,7 @@ ROTAROD_FEATURES = [
     "Learning_T3mean", "Learning_T3max", "Learning_T3sum",
 ]
 
-MAX_MISSING_PER_VISIT = 9
+MAX_MISSING_PER_VISIT = 7
 FLOAT_TOL = 1e-8
 
 
@@ -587,7 +587,7 @@ def build_long_table(source):
                 row[feature] = np.nan if dead else value
             if not dead:
                 row["missing_count_before"] = int(
-                    sum(pd.isna(row[feature]) for feature in FEATURE_COLUMNS)
+                    sum(pd.isna(row[feature]) for feature in MODEL_FEATURES)
                 )
             rows.append(row)
     long_df = pd.DataFrame(rows)
@@ -753,11 +753,11 @@ def deterministic_preprocess(long_df, fit_mouse_ids=None):
 
     for idx in out.index:
         if out.at[idx, "death"]:
-            out.at[idx, "missing_count"] = 35
+            out.at[idx, "missing_count"] = len(MODEL_FEATURES)
             out.at[idx, "status"] = "death"
             continue
 
-        missing = int(sum(pd.isna(out.at[idx, feature]) for feature in FEATURE_COLUMNS))
+        missing = int(sum(pd.isna(out.at[idx, feature]) for feature in MODEL_FEATURES))
         out.at[idx, "missing_count"] = missing
         if missing == 0:
             out.at[idx, "status"] = "observed"
@@ -819,7 +819,7 @@ def validate_stage2(long_raw, processed, stats):
     if (processed.loc[living, "missing_count"] > MAX_MISSING_PER_VISIT).any():
         bad_rows = []
         for idx in processed.index[living & (processed["missing_count"] > MAX_MISSING_PER_VISIT)]:
-            missing_features = [f for f in FEATURE_COLUMNS if pd.isna(processed.at[idx, f])]
+            missing_features = [f for f in MODEL_FEATURES if pd.isna(processed.at[idx, f])]
             bad_rows.append({
                 "mouse_id": processed.at[idx, "mouse_id"],
                 "week": int(processed.at[idx, "week"]),
@@ -916,7 +916,7 @@ def run_stage2():
     )
     add_stage2_diag(
         stage2_rows, "ok", "death_rows",
-        "Death rows have all 35 functional features unavailable for feature processing.",
+        "Death rows have all 35 processed functional features unavailable; the eNRI model uses 30 MODEL_FEATURES.",
         value=int(processed["death"].sum()),
     )
 
@@ -970,7 +970,7 @@ def run_stage2():
     max_missing_before = int(processed.loc[~processed["death"], "missing_count_before"].max())
     add_stage2_diag(
         stage2_rows, "ok", "missingness_after_deterministic",
-        f"Maximum living missing_count changed from {max_missing_before}/35 before deterministic preprocessing to {max_missing_after}/35 after it.",
+        f"Maximum living missing_count over 30 MODEL_FEATURES changed from {max_missing_before}/30 before deterministic preprocessing to {max_missing_after}/30 after it.",
         value=max_missing_after,
     )
 
@@ -1020,7 +1020,8 @@ DERIVED_FEATURES = [
     "Latency_to_first_investigation_NOR2",
     "Total_time_investigating_NOR2",
 ]
-BASE_FEATURES = [f for f in FEATURE_COLUMNS if f not in DERIVED_FEATURES]
+MODEL_FEATURES = [f for f in FEATURE_COLUMNS if f not in DERIVED_FEATURES]
+BASE_FEATURES = MODEL_FEATURES  # compatibility alias; these 30 features define eNRI
 IMPUTATION_SEED = 20260928
 
 
@@ -1040,7 +1041,7 @@ def compute_baseline_scaling(processed, fit_mouse_ids=None):
     n_obs = {}
     errors = []
 
-    for feature in FEATURE_COLUMNS:
+    for feature in MODEL_FEATURES:
         vals = pd.to_numeric(
             processed.loc[baseline_mask, feature], errors="coerce"
         ).dropna().astype(float)
@@ -1165,7 +1166,7 @@ def fit_transform_stage3(long_raw, fit_mouse_ids=None, random_state=IMPUTATION_S
     means = scaling["mean"]
     stds = scaling["std"]
 
-    # Standardize the 30 base features with baseline fit parameters.
+    # Standardize the 30 MODEL_FEATURES with baseline fit parameters.
     standardized_base = pd.DataFrame(
         index=processed.index, columns=BASE_FEATURES, dtype=float
     )
@@ -1225,7 +1226,7 @@ def fit_transform_stage3(long_raw, fit_mouse_ids=None, random_state=IMPUTATION_S
         if int(missing_base_before[feature].sum()) > 0
     }
 
-    # Return imputed base features to raw scale.
+    # Return imputed MODEL_FEATURES to raw scale.
     for j, feature in enumerate(BASE_FEATURES):
         raw_vals = transformed_base[:, j] * stds[feature] + means[feature]
         result_raw.loc[living_idx, feature] = raw_vals
@@ -1233,9 +1234,11 @@ def fit_transform_stage3(long_raw, fit_mouse_ids=None, random_state=IMPUTATION_S
     # Derivatives are recomputed only after all base values are available.
     result_raw = recompute_derived_features(result_raw)
 
-    # Final standardized 35-dimensional vector.
+    # Final standardized 30-dimensional MODEL_FEATURES vector.
+    # The five deterministic derived features remain in raw units for QC only
+    # and are never passed to the eNRI optimization.
     final_std = result_raw.copy(deep=True)
-    for feature in FEATURE_COLUMNS:
+    for feature in MODEL_FEATURES:
         final_std.loc[living_idx, feature] = (
             pd.to_numeric(result_raw.loc[living_idx, feature], errors="coerce")
             - means[feature]
@@ -1248,7 +1251,7 @@ def fit_transform_stage3(long_raw, fit_mouse_ids=None, random_state=IMPUTATION_S
     final_std.loc[living & processed["missing_count"].gt(0), "status"] = "imputed"
     final_std.loc[~living, "status"] = "death"
 
-    # Diagnostics: observed base cells must remain unchanged after imputer roundtrip.
+    # Diagnostics: observed MODEL_FEATURE cells must remain unchanged after imputer roundtrip.
     max_observed_roundtrip_error = 0.0
     for feature in BASE_FEATURES:
         obs_mask = living & processed[feature].notna()
@@ -1259,7 +1262,7 @@ def fit_transform_stage3(long_raw, fit_mouse_ids=None, random_state=IMPUTATION_S
             max_observed_roundtrip_error = max(max_observed_roundtrip_error, err)
 
     # Physical checks on the raw post-imputation representation.
-    nonnegative_features = [f for f in FEATURE_COLUMNS if f != "DI_NOR2"]
+    nonnegative_features = list(MODEL_FEATURES)
     negative_values = []
     for feature in nonnegative_features:
         vals = pd.to_numeric(result_raw.loc[living, feature], errors="coerce")
@@ -1285,13 +1288,13 @@ def fit_transform_stage3(long_raw, fit_mouse_ids=None, random_state=IMPUTATION_S
     ]
 
     remaining_raw_missing = int(
-        result_raw.loc[living, list(FEATURE_COLUMNS)].isna().to_numpy().sum()
+        result_raw.loc[living, MODEL_FEATURES].isna().to_numpy().sum()
     )
     remaining_std_missing = int(
-        final_std.loc[living, list(FEATURE_COLUMNS)].isna().to_numpy().sum()
+        final_std.loc[living, MODEL_FEATURES].isna().to_numpy().sum()
     )
     finite_final = np.isfinite(
-        final_std.loc[living, list(FEATURE_COLUMNS)].to_numpy(dtype=float)
+        final_std.loc[living, MODEL_FEATURES].to_numpy(dtype=float)
     ).all()
 
     # Validate exact derived identities after imputation.
@@ -1334,11 +1337,11 @@ def fit_transform_stage3(long_raw, fit_mouse_ids=None, random_state=IMPUTATION_S
 
     errors.extend(derived_errors)
     if remaining_raw_missing:
-        errors.append(f"{remaining_raw_missing} raw living feature cells remain missing after imputation.")
+        errors.append(f"{remaining_raw_missing} raw living MODEL_FEATURE cells remain missing after imputation.")
     if remaining_std_missing:
-        errors.append(f"{remaining_std_missing} standardized living feature cells remain missing.")
+        errors.append(f"{remaining_std_missing} standardized living MODEL_FEATURE cells remain missing.")
     if not finite_final:
-        errors.append("At least one final standardized living feature value is non-finite.")
+        errors.append("At least one final standardized living MODEL_FEATURE value is non-finite.")
     if max_observed_roundtrip_error > 1e-7:
         errors.append(
             f"Observed base values changed during imputer roundtrip; max error={max_observed_roundtrip_error}."
@@ -1406,12 +1409,12 @@ def run_stage3():
     rows = []
 
     scaling = stats["scaling"]
-    for feature in FEATURE_COLUMNS:
+    for feature in MODEL_FEATURES:
         add_stage3_diag(
             rows,
             "ok",
             "baseline_scaling",
-            "Baseline mean and sample std (ddof=1) fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.",
+            "Baseline mean and sample std (ddof=1) for a MODEL_FEATURE fitted on available week-0 values. Full-data audit uses all included mice; CV will fit train only.",
             value=f"n={scaling['n_obs'][feature]}; mean={scaling['mean'][feature]:.12g}; std={scaling['std'][feature]:.12g}",
             feature=feature,
             week=0,
@@ -1421,14 +1424,14 @@ def run_stage3():
         rows,
         "ok",
         "imputer_fit",
-        "IterativeImputer(BayesianRidge, sample_posterior=False, max_iter=20, tol=1e-3) fitted on standardized 30 base features plus week_16/week_24 indicators; group is not used.",
+        "IterativeImputer(BayesianRidge, sample_posterior=False, max_iter=20, tol=1e-3) fitted on standardized 30 MODEL_FEATURES plus week_16/week_24 indicators; group and five deterministic derived QC features are not used.",
         value=stats["imputer_n_iter"],
     )
     add_stage3_diag(
         rows,
         "ok",
         "imputed_base_cells",
-        "Number of missing base-feature cells filled by IterativeImputer.",
+        "Number of missing MODEL_FEATURE cells filled by IterativeImputer.",
         value=stats["imputed_base_cells"],
     )
 
@@ -1437,7 +1440,7 @@ def run_stage3():
             rows,
             "ok",
             "imputed_feature_count",
-            "Missing base-feature cells filled by IterativeImputer.",
+            "Missing MODEL_FEATURE cells filled by IterativeImputer.",
             value=count,
             feature=feature,
         )
@@ -1458,14 +1461,14 @@ def run_stage3():
         rows,
         "ok" if stats["remaining_std_missing"] == 0 else "fatal",
         "complete_35d_living",
-        "All living eligible visits must have a complete standardized 35-dimensional vector after imputation and deterministic recomputation.",
+        "All living eligible visits must have a complete standardized 30-dimensional MODEL_FEATURES vector after imputation. Five deterministic derived features are QC-only.",
         value=stats["remaining_std_missing"],
     )
     add_stage3_diag(
         rows,
         "ok" if stats["max_observed_roundtrip_error"] <= 1e-7 else "fatal",
         "observed_values_preserved",
-        "Maximum raw-scale absolute change among originally observed base values after standardize/impute/inverse-transform.",
+        "Maximum raw-scale absolute change among originally observed MODEL_FEATURES after standardize/impute/inverse-transform.",
         value=stats["max_observed_roundtrip_error"],
     )
 
@@ -1488,8 +1491,8 @@ def run_stage3():
         "stage": 3,
         "status": status,
         "fit_scope_stage3_audit": stats["fit_scope"],
-        "base_features": len(BASE_FEATURES),
-        "derived_features": len(DERIVED_FEATURES),
+        "model_features": len(MODEL_FEATURES),
+        "derived_qc_features": len(DERIVED_FEATURES),
         "living_rows": int((~final_std["death"]).sum()),
         "death_rows": int(final_std["death"].sum()),
         "status_counts": {k: int(v) for k, v in status_counts.items()},
