@@ -3211,13 +3211,14 @@ def add_stage7_diag(rows, severity, check, detail, value="", feature="", week=""
 
 
 def run_stage7():
-    # Revalidate deterministic/statistical preprocessing and state construction.
-    # Stage 6 itself is not recomputed here: its selected hyperparameters are
-    # read from the persisted READY diagnostics produced by the completed CV run.
-    run_stage4()
-
+    # Read the persisted stage-6 selection before upstream revalidation because
+    # stage 1 intentionally rebuilds diagnostics.csv from scratch.
     diagnostics_path = RESULTS_DIR / "diagnostics.csv"
     selected = load_stage6_selection(diagnostics_path)
+
+    # Revalidate deterministic/statistical preprocessing and state construction.
+    # Stage 6 itself is not recomputed here.
+    run_stage4()
 
     source = load_included_source()
     long_raw = build_long_table(source)
