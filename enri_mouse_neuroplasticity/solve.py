@@ -3211,9 +3211,13 @@ def add_stage7_diag(rows, severity, check, detail, value="", feature="", week=""
 
 
 def run_stage7():
-    # Read the persisted stage-6 selection before upstream revalidation because
-    # stage 1 intentionally rebuilds diagnostics.csv from scratch.
+    # Read and preserve the completed stage-6 CV diagnostics before upstream
+    # revalidation because stage 1 intentionally rebuilds diagnostics.csv.
     diagnostics_path = RESULTS_DIR / "diagnostics.csv"
+    persisted_diagnostics = pd.read_csv(diagnostics_path)
+    persisted_cv = persisted_diagnostics[
+        persisted_diagnostics["type"].astype(str).eq("cv")
+    ].copy()
     selected = load_stage6_selection(diagnostics_path)
 
     # Revalidate deterministic/statistical preprocessing and state construction.
@@ -3448,7 +3452,16 @@ def run_stage7():
         value=status,
     )
 
-    merged = pd.concat([diagnostics, pd.DataFrame(rows)], ignore_index=True, sort=False)
+    # Restore the full stage-6 CV record so final diagnostics retain the
+    # hyperparameter-selection evidence together with stage-7 results.
+    diagnostics = diagnostics[
+        ~diagnostics["type"].astype(str).eq("cv")
+    ].copy()
+    merged = pd.concat(
+        [diagnostics, persisted_cv, pd.DataFrame(rows)],
+        ignore_index=True,
+        sort=False,
+    )
     merged.to_csv(diagnostics_path, index=False)
 
     summary = {
