@@ -3047,6 +3047,451 @@ def run_stage6():
     if status != "READY":
         raise RuntimeError("Stage 6 validation failed: " + " | ".join(errors))
 
+
+def load_stage6_selection(diagnostics_path):
+    if not diagnostics_path.exists():
+        raise RuntimeError("Stage 6 diagnostics are missing.")
+
+    d = pd.read_csv(diagnostics_path)
+    selected = d[
+        d["check"].astype(str).eq("stage6_selected_hyperparameters")
+        & d["severity"].astype(str).eq("summary")
+    ]
+    status_rows = d[
+        d["check"].astype(str).eq("stage6_status")
+        & d["severity"].astype(str).eq("summary")
+    ]
+    if len(status_rows) != 1 or str(status_rows.iloc[0]["value"]) != "READY":
+        raise RuntimeError("Stage 6 is not recorded as READY in diagnostics.")
+    if len(selected) != 1:
+        raise RuntimeError(
+            f"Expected exactly one stage6_selected_hyperparameters row, got {len(selected)}."
+        )
+
+    row = selected.iloc[0]
+    values = {
+        "beta": float(row["beta"]),
+        "lambda": float(row["lambda"]),
+        "C": float(row["C"]),
+    }
+    if not all(math.isfinite(v) and v > 0 for v in values.values()):
+        raise RuntimeError(f"Invalid selected hyperparameters: {values}")
+    return values
+
+
+def build_final_enri_table(final_std, xbar, weights):
+    out = final_std[
+        ["mouse_id", "group", "week", "status", "missing_count", "death"]
+    ].copy()
+    out["eNRI"] = np.nan
+
+    living = out["status"].isin(["observed", "imputed"])
+    X = final_std.loc[living, MODEL_FEATURES].to_numpy(dtype=float)
+    xbar = np.asarray(xbar, dtype=float)
+    w = np.asarray(weights, dtype=float)
+    out.loc[living, "eNRI"] = 1.0 + (X - xbar) @ w
+
+    death = out["status"].eq("death")
+    out.loc[death, "eNRI"] = 0.0
+
+    # missing_visit, if it ever exists in a future dataset, remains NaN by design.
+    return out[["mouse_id", "group", "week", "eNRI", "status", "missing_count"]]
+
+
+def validate_stage7_outputs(enri_df, weights, solution, states):
+    errors = []
+    w = np.asarray(weights, dtype=float)
+
+    if len(w) != len(MODEL_FEATURES):
+        errors.append(f"Expected {len(MODEL_FEATURES)} final weights, got {len(w)}.")
+    if not np.isfinite(w).all():
+        errors.append("Final weights contain non-finite values.")
+
+    living = enri_df["status"].isin(["observed", "imputed"])
+    deaths = enri_df["status"].eq("death")
+    missing = enri_df["status"].eq("missing_visit")
+    imputed = enri_df["status"].eq("imputed")
+
+    live_vals = pd.to_numeric(enri_df.loc[living, "eNRI"], errors="coerce")
+    if live_vals.isna().any() or not np.isfinite(live_vals.to_numpy(dtype=float)).all():
+        errors.append("At least one living observed/imputed row has non-finite eNRI.")
+    if len(live_vals) and float(live_vals.min()) < POSITIVITY_EPSILON - QP_TOLERANCE:
+        errors.append(
+            f"Minimum living eNRI {float(live_vals.min())} violates positivity."
+        )
+
+    death_vals = pd.to_numeric(enri_df.loc[deaths, "eNRI"], errors="coerce")
+    if len(death_vals) and not np.allclose(
+        death_vals.to_numpy(dtype=float), 0.0, rtol=0, atol=0
+    ):
+        errors.append("At least one death row does not have eNRI=0 exactly.")
+
+    if imputed.any():
+        imp_vals = pd.to_numeric(enri_df.loc[imputed, "eNRI"], errors="coerce")
+        if imp_vals.isna().any() or not np.isfinite(imp_vals.to_numpy(dtype=float)).all():
+            errors.append("At least one imputed row has non-finite eNRI.")
+
+    if missing.any() and enri_df.loc[missing, "eNRI"].notna().any():
+        errors.append("A missing_visit row has non-NaN eNRI.")
+
+    # Verify direct group means from per-row eNRI against the QP state representation.
+    group_mean_errors = {}
+    for group in STATE_GROUPS:
+        for week in STATE_WEEKS:
+            label = state_label(group, week)
+            rows = enri_df[
+                enri_df["group"].eq(group) & enri_df["week"].eq(week)
+            ]
+            if len(rows) != states[label]["N"]:
+                errors.append(
+                    f"{label}: enri.csv row count {len(rows)} != state N {states[label]['N']}."
+                )
+                continue
+            # There are no missing_visit rows in the current final model. If there
+            # were, a group mean would need an explicit policy before comparison.
+            if rows["status"].eq("missing_visit").any():
+                continue
+            direct_mean = float(rows["eNRI"].astype(float).mean())
+            model_mean = float(solution["group_means"][label])
+            err = abs(direct_mean - model_mean)
+            group_mean_errors[label] = err
+            if err > 1e-10:
+                errors.append(
+                    f"{label}: direct mean {direct_mean} != QP mean {model_mean}; error={err}."
+                )
+
+    pbs0 = enri_df[
+        enri_df["group"].eq("PBS") & enri_df["week"].eq(0)
+    ]["eNRI"].astype(float)
+    pbs0_mean = float(pbs0.mean())
+    if abs(pbs0_mean - 1.0) > QP_TOLERANCE:
+        errors.append(f"PBS^0 mean eNRI={pbs0_mean}, expected 1.")
+
+    if solution["max_order_violation"] > QP_TOLERANCE:
+        errors.append(
+            f"Final QP order violation {solution['max_order_violation']} exceeds tolerance."
+        )
+    if solution["max_positivity_violation"] > QP_TOLERANCE:
+        errors.append(
+            f"Final QP positivity violation {solution['max_positivity_violation']} exceeds tolerance."
+        )
+    if solution["eta_nonneg_violation"] > QP_TOLERANCE:
+        errors.append(
+            f"Final QP eta nonnegativity violation {solution['eta_nonneg_violation']} exceeds tolerance."
+        )
+
+    return errors, {
+        "living_rows": int(living.sum()),
+        "death_rows": int(deaths.sum()),
+        "imputed_rows": int(imputed.sum()),
+        "missing_visit_rows": int(missing.sum()),
+        "min_live_enri": None if not len(live_vals) else float(live_vals.min()),
+        "max_live_enri": None if not len(live_vals) else float(live_vals.max()),
+        "pbs0_mean": pbs0_mean,
+        "max_group_mean_reconstruction_error": (
+            0.0 if not group_mean_errors else float(max(group_mean_errors.values()))
+        ),
+    }
+
+
+def add_stage7_diag(rows, severity, check, detail, value="", feature="", week="", group="", mouse_id=""):
+    rows.append({
+        "type": "qp",
+        "severity": severity,
+        "check": check,
+        "mouse_id": mouse_id,
+        "group": group,
+        "week": week,
+        "feature": feature,
+        "column": "",
+        "excel_cell": "",
+        "value": value,
+        "detail": detail,
+    })
+
+
+def run_stage7():
+    # Revalidate deterministic/statistical preprocessing and state construction.
+    # Stage 6 itself is not recomputed here: its selected hyperparameters are
+    # read from the persisted READY diagnostics produced by the completed CV run.
+    run_stage4()
+
+    diagnostics_path = RESULTS_DIR / "diagnostics.csv"
+    selected = load_stage6_selection(diagnostics_path)
+
+    source = load_included_source()
+    long_raw = build_long_table(source)
+    final_std, stage3_stats = fit_transform_stage3(
+        long_raw,
+        fit_mouse_ids=None,
+        random_state=IMPUTATION_SEED,
+    )
+    errors = list(stage3_stats.get("errors", []))
+
+    states, xbar, state_stats = build_experimental_states(final_std)
+    errors.extend(validate_full_stage4(states, xbar, state_stats))
+
+    solution, qp_meta = solve_qp_smoke(
+        final_std,
+        states,
+        xbar,
+        rho=SMOKE_RHO,
+        beta=selected["beta"],
+        ridge_lambda=selected["lambda"],
+        C=selected["C"],
+    )
+    errors.extend(qp_meta.get("errors", []))
+
+    if solution is None:
+        raise RuntimeError(
+            "Stage 7 final QP did not return a solution: "
+            + " | ".join(errors or ["unknown solver failure"])
+        )
+
+    weights = np.asarray(solution["w"], dtype=float)
+    enri_df = build_final_enri_table(final_std, xbar, weights)
+    validation_errors, output_stats = validate_stage7_outputs(
+        enri_df, weights, solution, states
+    )
+    errors.extend(validation_errors)
+
+    # Stage-7 final model artifacts. Stage 8 may append robustness diagnostics;
+    # stage 9 will perform the final packaging/checklist without changing the
+    # core weights unless an explicit sensitivity decision requires it.
+    weights_path = RESULTS_DIR / "weights.csv"
+    enri_path = RESULTS_DIR / "enri.csv"
+    model_path = RESULTS_DIR / "model.json"
+
+    pd.DataFrame({
+        "feature": MODEL_FEATURES,
+        "weight": [float(x) for x in weights],
+    }).to_csv(weights_path, index=False)
+
+    enri_df.to_csv(enri_path, index=False)
+
+    scaling = stage3_stats["scaling"]
+    censor_maxima = stage3_stats["deterministic"]["censor_maxima"]
+    model = {
+        "excluded_mouse_ids": sorted(EXCLUDED_MOUSE_IDS),
+        "group_map": GROUP_MAP,
+        "features": list(MODEL_FEATURES),
+        "feature_columns": {
+            feature: {str(week): column for week, column in FEATURE_COLUMNS[feature].items()}
+            for feature in MODEL_FEATURES
+        },
+        "derived_features": list(DERIVED_FEATURES),
+        "censored_latency_rule": "train_feature_max",
+        "censored_latency_final_maxima": {
+            k: None if v is None else float(v) for k, v in censor_maxima.items()
+        },
+        "max_missing_per_visit": int(MAX_MISSING_PER_VISIT),
+        "mean": [float(scaling["mean"][f]) for f in MODEL_FEATURES],
+        "std": [float(scaling["std"][f]) for f in MODEL_FEATURES],
+        "xbar_pbs0": [float(x) for x in np.asarray(xbar, dtype=float)],
+        "weights": [float(x) for x in weights],
+        "rho": float(SMOKE_RHO),
+        "beta": float(selected["beta"]),
+        "lambda": float(selected["lambda"]),
+        "C": float(selected["C"]),
+        "epsilon": float(POSITIVITY_EPSILON),
+        "cv_tolerance": float(CV_SELECTION_TOL),
+        "random_seeds": list(CV_SEEDS),
+        "imputation_method": "IterativeImputer(BayesianRidge)",
+        "imputation_sample_posterior": False,
+        "imputation_seed": int(IMPUTATION_SEED),
+        "solver_status": str(solution["solver_status"]),
+        "solver_name": str(solution["solver_name"]),
+        "stage": 7,
+    }
+    model_path.write_text(
+        json.dumps(model, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+    diagnostics = pd.read_csv(diagnostics_path)
+    diagnostics = diagnostics[
+        ~(
+            diagnostics["type"].astype(str).eq("qp")
+            & diagnostics["check"].astype(str).str.startswith("stage7_")
+        )
+    ].copy()
+    rows = []
+
+    add_stage7_diag(
+        rows,
+        "ok",
+        "stage7_hyperparameters",
+        "Final model uses the hyperparameters selected by stage-6 repeated stratified CV.",
+        value=(
+            f"beta={selected['beta']};lambda={selected['lambda']};C={selected['C']}"
+        ),
+    )
+    add_stage7_diag(
+        rows,
+        "ok" if solution["solver_status"] in {cp.OPTIMAL, cp.OPTIMAL_INACCURATE} else "fatal",
+        "stage7_solver",
+        (
+            f"Final full-data QP; solver={solution['solver_name']}; "
+            f"iterations={solution['solver_num_iters']}; objective={solution['objective']:.12g}."
+        ),
+        value=solution["solver_status"],
+    )
+
+    for feature, weight in zip(MODEL_FEATURES, weights):
+        add_stage7_diag(
+            rows,
+            "ok",
+            "stage7_weight",
+            "Final standardized-feature eNRI weight selected after CV hyperparameters.",
+            value=f"{float(weight):.12g}",
+            feature=feature,
+        )
+
+    for pair, delta in solution["equality_deltas"].items():
+        add_stage7_diag(
+            rows,
+            "ok",
+            "stage7_equality_delta",
+            "Final soft-equality residual mu_A - mu_B.",
+            value=f"{delta:.12g}",
+            feature=pair,
+        )
+
+    for pair, rec in solution["order_results"].items():
+        add_stage7_diag(
+            rows,
+            "ok" if rec["violation"] <= QP_TOLERANCE else "fatal",
+            "stage7_order_constraint",
+            (
+                f"delta={rec['delta']:.12g}; rho={SMOKE_RHO}; "
+                f"eta={rec['slack']:.12g}; residual={rec['residual']:.12g}; "
+                f"violation={rec['violation']:.3g}."
+            ),
+            value=f"{rec['residual']:.12g}",
+            feature=pair,
+        )
+
+    for label, mu in sorted(solution["group_means"].items()):
+        state = states[label]
+        add_stage7_diag(
+            rows,
+            "ok",
+            "stage7_group_mean",
+            (
+                f"Final mean eNRI including deaths as zero; "
+                f"N={state['N']}, O={state['O']}, D={state['D']}, I={state['I']}."
+            ),
+            value=f"{mu:.12g}",
+            feature=label,
+            group=state["group"],
+            week=state["week"],
+        )
+
+    add_stage7_diag(
+        rows,
+        "ok" if output_stats["min_live_enri"] >= POSITIVITY_EPSILON - QP_TOLERANCE else "fatal",
+        "stage7_positivity",
+        (
+            f"Living rows={output_stats['living_rows']}; "
+            f"min eNRI={output_stats['min_live_enri']:.12g}; "
+            f"max eNRI={output_stats['max_live_enri']:.12g}; epsilon={POSITIVITY_EPSILON}."
+        ),
+        value=f"{output_stats['min_live_enri']:.12g}",
+    )
+    add_stage7_diag(
+        rows,
+        "ok" if abs(output_stats["pbs0_mean"] - 1.0) <= QP_TOLERANCE else "fatal",
+        "stage7_pbs0_normalization",
+        "Direct mean from final enri.csv for PBS week 0.",
+        value=f"{output_stats['pbs0_mean']:.12g}",
+        feature="PBS^0",
+    )
+    add_stage7_diag(
+        rows,
+        "ok",
+        "stage7_output_counts",
+        (
+            f"living={output_stats['living_rows']}; death={output_stats['death_rows']}; "
+            f"imputed={output_stats['imputed_rows']}; "
+            f"missing_visit={output_stats['missing_visit_rows']}."
+        ),
+        value=len(enri_df),
+    )
+    add_stage7_diag(
+        rows,
+        "ok",
+        "stage7_objective",
+        (
+            f"variance={solution['objective_components']['variance']:.12g}; "
+            f"equality={solution['objective_components']['equality']:.12g}; "
+            f"ridge={solution['objective_components']['ridge']:.12g}; "
+            f"slack={solution['objective_components']['slack']:.12g}; "
+            f"sum_eta={solution['slack_sum']:.12g}."
+        ),
+        value=f"{solution['objective']:.12g}",
+    )
+
+    for err in errors:
+        add_stage7_diag(rows, "fatal", "stage7_validation", err)
+
+    status = "READY" if not errors else "FATAL"
+    add_stage7_diag(
+        rows,
+        "summary",
+        "stage7_status",
+        (
+            f"Stage 7 status={status}; final_weights={len(weights)}; "
+            f"enri_rows={len(enri_df)}; validation_errors={len(errors)}; "
+            f"beta={selected['beta']}; lambda={selected['lambda']}; C={selected['C']}."
+        ),
+        value=status,
+    )
+
+    merged = pd.concat([diagnostics, pd.DataFrame(rows)], ignore_index=True, sort=False)
+    merged.to_csv(diagnostics_path, index=False)
+
+    summary = {
+        "stage": 7,
+        "status": status,
+        "solver_status": solution["solver_status"],
+        "beta": float(selected["beta"]),
+        "lambda": float(selected["lambda"]),
+        "C": float(selected["C"]),
+        "rho": float(SMOKE_RHO),
+        "model_features": int(len(MODEL_FEATURES)),
+        "final_weights": int(len(weights)),
+        "weight_l2_norm": float(solution["weight_l2_norm"]),
+        "weight_max_abs": float(solution["weight_max_abs"]),
+        "objective": float(solution["objective"]),
+        "objective_components": solution["objective_components"],
+        "slack_sum": float(solution["slack_sum"]),
+        "slack_max": float(solution["slack_max"]),
+        "max_order_violation": float(solution["max_order_violation"]),
+        "max_positivity_violation": float(solution["max_positivity_violation"]),
+        "living_rows": int(output_stats["living_rows"]),
+        "death_rows": int(output_stats["death_rows"]),
+        "imputed_rows": int(output_stats["imputed_rows"]),
+        "missing_visit_rows": int(output_stats["missing_visit_rows"]),
+        "min_live_enri": float(output_stats["min_live_enri"]),
+        "max_live_enri": float(output_stats["max_live_enri"]),
+        "pbs0_mean": float(output_stats["pbs0_mean"]),
+        "max_group_mean_reconstruction_error": float(
+            output_stats["max_group_mean_reconstruction_error"]
+        ),
+        "group_means": solution["group_means"],
+        "validation_errors": errors,
+        "outputs": {
+            "weights": str(weights_path.relative_to(ROOT)),
+            "enri": str(enri_path.relative_to(ROOT)),
+            "diagnostics": str(diagnostics_path.relative_to(ROOT)),
+            "model": str(model_path.relative_to(ROOT)),
+        },
+    }
+    print("STAGE7_SUMMARY=" + json.dumps(summary, ensure_ascii=False, sort_keys=True))
+
+    if status != "READY":
+        raise RuntimeError("Stage 7 validation failed: " + " | ".join(errors))
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--stage", type=int, required=True)
@@ -3064,6 +3509,8 @@ def main():
         run_stage5()
     elif args.stage == 6:
         run_stage6()
+    elif args.stage == 7:
+        run_stage7()
     else:
         raise SystemExit(f"Stage {args.stage} is not implemented yet.")
 
