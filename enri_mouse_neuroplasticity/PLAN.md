@@ -409,10 +409,12 @@ IterativeImputer(
 Для текущего датасета фиксируется
 
 \[
-MAX\_MISSING\_PER\_VISIT=7.
+MAX\_MISSING\_PER\_VISIT=9.
 \]
 
-Если у живого визита после детерминированного восстановления missing_count > 7, он получает статус missing_visit и статистически не импутируется.
+Порог 9 выбран после этапа 2: у живой мыши 3.3 на неделе 16 после приведения производных NOR2 к детерминированным определениям отсутствует весь 9-признаковый блок NOR2, тогда как остальные 26 из 35 признаков присутствуют. Поэтому исходный предварительный порог 7 был слишком строгим.
+
+Если у живого визита после детерминированного восстановления missing_count > 9, он получает статус missing_visit и статистически не импутируется.
 
 Статусы:
 
@@ -947,7 +949,7 @@ enri_mouse_neuroplasticity/
 - GROUP_MAP для Group_24;
 - CENSORED_LATENCY_RULE = "train_feature_max";
 - DERIVED_FEATURES;
-- MAX_MISSING_PER_VISIT = 7;
+- MAX_MISSING_PER_VISIT = 9;
 - \(\mathcal E,\mathcal O,\mathcal G\);
 - \(\varepsilon=10^{-3}\);
 - \(\rho=0.1\);
@@ -1377,7 +1379,7 @@ results/
   "feature_columns": {},
   "derived_features": [],
   "censored_latency_rule": "train_feature_max",
-  "max_missing_per_visit": 7,
+  "max_missing_per_visit": 9,
   "mean": [],
   "std": [],
   "xbar_pbs0": [],
