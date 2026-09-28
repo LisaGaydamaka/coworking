@@ -4647,21 +4647,32 @@ def run_stage9():
     )
 
     # 17. Deterministic derived identities.
+    # MODEL_FEATURES are standardized in final_std, while the five derived QC
+    # features stay in raw units. Reconstruct the raw model-feature values
+    # before checking the NOR identities.
     derived_ok = True
     derived_max_err = 0.0
     living_final = ~final_std["death"]
+    idx = final_std.index[living_final]
+    scaling = stage3_stats["scaling"]
+
+    def raw_model_values(feature):
+        vals = final_std.loc[idx, feature].astype(float).to_numpy()
+        if feature in MODEL_FEATURES:
+            return vals * float(scaling["std"][feature]) + float(scaling["mean"][feature])
+        return vals
+
     for cfg in NOR_BLOCKS.values():
-        idx = final_std.index[living_final]
-        tp = final_std.loc[idx, cfg["time_p"]].astype(float).to_numpy()
-        ts = final_std.loc[idx, cfg["time_s"]].astype(float).to_numpy()
-        total = final_std.loc[idx, cfg["total"]].astype(float).to_numpy()
+        tp = raw_model_values(cfg["time_p"])
+        ts = raw_model_values(cfg["time_s"])
+        total = raw_model_values(cfg["total"])
         err = float(np.max(np.abs(total - (tp + ts))))
         derived_max_err = max(derived_max_err, err)
         derived_ok = derived_ok and err <= FLOAT_TOL
 
-        lp = final_std.loc[idx, cfg["lat_p"]].astype(float).to_numpy()
-        ls = final_std.loc[idx, cfg["lat_s"]].astype(float).to_numpy()
-        first = final_std.loc[idx, cfg["lat_first"]].astype(float).to_numpy()
+        lp = raw_model_values(cfg["lat_p"])
+        ls = raw_model_values(cfg["lat_s"])
+        first = raw_model_values(cfg["lat_first"])
         err = float(np.max(np.abs(first - np.minimum(lp, ls))))
         derived_max_err = max(derived_max_err, err)
         derived_ok = derived_ok and err <= FLOAT_TOL
@@ -4671,7 +4682,7 @@ def run_stage9():
             expected_di = np.divide(
                 tp - ts, denom, out=np.zeros_like(denom), where=np.abs(denom) > FLOAT_TOL
             )
-            actual_di = final_std.loc[idx, cfg["di"]].astype(float).to_numpy()
+            actual_di = raw_model_values(cfg["di"])
             err = float(np.max(np.abs(actual_di - expected_di)))
             derived_max_err = max(derived_max_err, err)
             derived_ok = derived_ok and err <= FLOAT_TOL
