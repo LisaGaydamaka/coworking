@@ -1525,16 +1525,19 @@ pip install -r requirements.txt
 python solve.py
 ~~~
 
-requirements.txt:
+requirements.txt фиксируется по версиям, использованным в финальном GitHub Actions окружении:
 
 ~~~text
-pandas
-numpy
-openpyxl
-scikit-learn
-cvxpy
-osqp
+pandas==3.0.6
+numpy==2.5.3
+openpyxl==3.1.5
+scikit-learn==1.9.1
+scipy==1.18.1
+cvxpy==1.9.3
+osqp==1.1.3
 ~~~
+
+Фиксация версий выполнена на этапе 9 для воспроизводимости финального расчёта.
 
 ## 15. Порядок программирования
 
