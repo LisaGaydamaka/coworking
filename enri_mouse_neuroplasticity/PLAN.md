@@ -1043,7 +1043,13 @@ enri_mouse_neuroplasticity/
 PBS,\ LPS,\ run,\ MCC.
 \]
 
-Использовать repeated stratified 3-fold с 10 фиксированными seed.
+Использовать repeated stratified 3-fold с 10 фиксированными seed:
+
+~~~text
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+~~~
+
+Разбиение выполняется только на уровне mouse_id со стратификацией по фиксированной группе; все три недели одной мыши остаются в одной части split.
 
 Все недели одной мыши всегда находятся только в train или только в validation.
 
@@ -1242,6 +1248,8 @@ V_w
 ).
 \]
 
+На каждом шаге сохраняются все комбинации, значение текущей метрики которых не превышает минимум по оставшимся комбинациям более чем на \(10^{-6}\). Если после всех шести метрик остаётся несколько комбинаций, используется детерминированный tie-break по возрастанию \((\beta,\lambda,C)\).
+
 ## 9. Стабильность весов
 
 Стандартизация различается между folds, поэтому сравнивать напрямую \(\mathbf w\) между folds нельзя.
@@ -1417,7 +1425,7 @@ results/
   "feature_columns": {},
   "derived_features": [],
   "censored_latency_rule": "train_feature_max",
-  "max_missing_per_visit": 9,
+  "max_missing_per_visit": 7,
   "mean": [],
   "std": [],
   "xbar_pbs0": [],
@@ -1428,7 +1436,7 @@ results/
   "C": null,
   "epsilon": 0.001,
   "cv_tolerance": 0.000001,
-  "random_seeds": [],
+  "random_seeds": [0,1,2,3,4,5,6,7,8,9],
   "imputation_method": "IterativeImputer",
   "imputation_sample_posterior": false,
   "imputation_seed": null,
