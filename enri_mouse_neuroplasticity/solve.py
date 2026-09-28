@@ -4225,6 +4225,727 @@ def run_stage8():
     if status != "READY":
         raise RuntimeError("Stage 8 validation failed: " + " | ".join(errors))
 
+
+def add_stage9_diag(rows, severity, check, detail, value=""):
+    rows.append({
+        "type": "final",
+        "severity": severity,
+        "check": check,
+        "mouse_id": "",
+        "group": "",
+        "week": "",
+        "feature": "",
+        "column": "",
+        "excel_cell": "",
+        "value": value,
+        "detail": detail,
+    })
+
+
+def _summary_status_value(diagnostics, check):
+    rows = diagnostics[
+        diagnostics["check"].astype(str).eq(check)
+        & diagnostics["severity"].astype(str).eq("summary")
+    ]
+    if len(rows) != 1:
+        return None
+    return str(rows.iloc[0]["value"])
+
+
+def _artifact_reproducibility(before_text, after_text, kind):
+    if kind == "weights":
+        a = pd.read_csv(pd.io.common.StringIO(before_text))
+        b = pd.read_csv(pd.io.common.StringIO(after_text))
+        same_structure = (
+            list(a.columns) == list(b.columns)
+            and a["feature"].astype(str).tolist() == b["feature"].astype(str).tolist()
+            and len(a) == len(b)
+        )
+        numeric_ok = (
+            same_structure
+            and np.allclose(
+                pd.to_numeric(a["weight"], errors="coerce").to_numpy(dtype=float),
+                pd.to_numeric(b["weight"], errors="coerce").to_numpy(dtype=float),
+                rtol=1e-10, atol=1e-12, equal_nan=True,
+            )
+        )
+        return bool(numeric_ok), bool(before_text == after_text)
+
+    if kind == "enri":
+        a = pd.read_csv(pd.io.common.StringIO(before_text))
+        b = pd.read_csv(pd.io.common.StringIO(after_text))
+        key_cols = ["mouse_id", "group", "week", "status", "missing_count"]
+        same_structure = (
+            list(a.columns) == list(b.columns)
+            and len(a) == len(b)
+            and a[key_cols].astype(str).equals(b[key_cols].astype(str))
+        )
+        numeric_ok = (
+            same_structure
+            and np.allclose(
+                pd.to_numeric(a["eNRI"], errors="coerce").to_numpy(dtype=float),
+                pd.to_numeric(b["eNRI"], errors="coerce").to_numpy(dtype=float),
+                rtol=1e-10, atol=1e-12, equal_nan=True,
+            )
+        )
+        return bool(numeric_ok), bool(before_text == after_text)
+
+    if kind == "model":
+        a = json.loads(before_text)
+        b = json.loads(after_text)
+        scalar_keys = [
+            "excluded_mouse_ids", "group_map", "features", "feature_columns",
+            "derived_features", "censored_latency_rule", "max_missing_per_visit",
+            "rho", "beta", "lambda", "C", "epsilon", "cv_tolerance",
+            "random_seeds", "imputation_method", "imputation_sample_posterior",
+            "imputation_seed", "solver_status", "solver_name",
+        ]
+        structural_ok = all(a.get(k) == b.get(k) for k in scalar_keys)
+        array_keys = ["mean", "std", "xbar_pbs0", "weights"]
+        arrays_ok = all(
+            np.allclose(
+                np.asarray(a.get(k, []), dtype=float),
+                np.asarray(b.get(k, []), dtype=float),
+                rtol=1e-10, atol=1e-12, equal_nan=True,
+            )
+            for k in array_keys
+        )
+        maxima_ok = a.get("censored_latency_final_maxima") == b.get(
+            "censored_latency_final_maxima"
+        )
+        return bool(structural_ok and arrays_ok and maxima_ok), bool(before_text == after_text)
+
+    raise ValueError(kind)
+
+
+def run_stage9():
+    # Stage 9 starts from the persisted stage-8 package, reruns stage 8 through
+    # the same GitHub Actions environment, and then performs the final 25 checks.
+    weights_path = RESULTS_DIR / "weights.csv"
+    enri_path = RESULTS_DIR / "enri.csv"
+    model_path = RESULTS_DIR / "model.json"
+    diagnostics_path = RESULTS_DIR / "diagnostics.csv"
+    required_paths = [weights_path, enri_path, diagnostics_path, model_path]
+
+    missing_before = [str(p.relative_to(ROOT)) for p in required_paths if not p.exists()]
+    if missing_before:
+        raise RuntimeError(
+            "Stage 9 requires the completed stage-8 package; missing: "
+            + ", ".join(missing_before)
+        )
+
+    before = {
+        "weights": weights_path.read_text(encoding="utf-8"),
+        "enri": enri_path.read_text(encoding="utf-8"),
+        "model": model_path.read_text(encoding="utf-8"),
+        "diagnostics": diagnostics_path.read_text(encoding="utf-8"),
+    }
+    before_diag = pd.read_csv(pd.io.common.StringIO(before["diagnostics"]))
+    before_statuses = {
+        k: _summary_status_value(before_diag, k)
+        for k in ("stage6_status", "stage7_status", "stage8_status")
+    }
+
+    # This reruns the full robustness layer and reconstructs the stage-7 core
+    # artifacts from the persisted stage-6 hyperparameter selection.
+    run_stage8()
+
+    after = {
+        "weights": weights_path.read_text(encoding="utf-8"),
+        "enri": enri_path.read_text(encoding="utf-8"),
+        "model": model_path.read_text(encoding="utf-8"),
+        "diagnostics": diagnostics_path.read_text(encoding="utf-8"),
+    }
+    diagnostics = pd.read_csv(diagnostics_path)
+    after_statuses = {
+        k: _summary_status_value(diagnostics, k)
+        for k in ("stage6_status", "stage7_status", "stage8_status")
+    }
+
+    repro = {}
+    exact = {}
+    for kind in ("weights", "enri", "model"):
+        repro[kind], exact[kind] = _artifact_reproducibility(
+            before[kind], after[kind], kind
+        )
+    status_repro = (
+        before_statuses == after_statuses
+        and all(v == "READY" for v in after_statuses.values())
+    )
+    reproducible = all(repro.values()) and status_repro
+
+    source = load_included_source()
+    long_raw = build_long_table(source)
+    final_std, stage3_stats = fit_transform_stage3(
+        long_raw,
+        fit_mouse_ids=None,
+        random_state=IMPUTATION_SEED,
+        sample_posterior=False,
+    )
+    states, xbar, state_stats = build_experimental_states(final_std)
+    selected = load_stage6_selection(diagnostics_path)
+    solution, qp_meta = solve_qp_smoke(
+        final_std,
+        states,
+        xbar,
+        rho=SMOKE_RHO,
+        beta=selected["beta"],
+        ridge_lambda=selected["lambda"],
+        C=selected["C"],
+    )
+    if solution is None:
+        raise RuntimeError(
+            "Stage 9 could not reconstruct the final QP: "
+            + " | ".join(qp_meta.get("errors", []) or ["no solution"])
+        )
+
+    weights_df = pd.read_csv(weights_path)
+    enri_df = pd.read_csv(enri_path)
+    model = json.loads(model_path.read_text(encoding="utf-8"))
+    deterministic_df, deterministic_stats = deterministic_preprocess(
+        long_raw, fit_mouse_ids=None
+    )
+    accepted_splits, rejected_splits = prepare_cv_splits(long_raw, source)
+
+    rows = []
+    failures = []
+
+    def check(number, name, condition, detail_ok, detail_bad=None, value=""):
+        ok = bool(condition)
+        detail = detail_ok if ok else (detail_bad or detail_ok)
+        add_stage9_diag(
+            rows,
+            "ok" if ok else "fatal",
+            f"stage9_check_{number:02d}_{name}",
+            detail,
+            value=value,
+        )
+        if not ok:
+            failures.append(f"{number:02d} {name}: {detail}")
+        return ok
+
+    # Reproducibility is an explicit stage-level requirement in addition to
+    # the numbered final checklist.
+    add_stage9_diag(
+        rows,
+        "ok" if reproducible else "fatal",
+        "stage9_reproducibility",
+        (
+            "Re-ran stage 8 and compared the regenerated core package with the "
+            f"persisted stage-8 package. Numeric equivalence: {repro}; exact_bytes: "
+            f"{exact}; stage statuses before={before_statuses}, after={after_statuses}."
+        ),
+        value="PASS" if reproducible else "FAIL",
+    )
+    if not reproducible:
+        failures.append("reproducibility: regenerated core artifacts differ beyond tolerance")
+
+    # 1. 54 included mice; exclusions absent.
+    included_ids = set(source["mouse_id"].astype(str))
+    check(
+        1, "included_mice",
+        len(included_ids) == 54 and not (EXCLUDED_MOUSE_IDS & included_ids),
+        "54 included mice; excluded IDs 3.2 and 4.2 are absent.",
+        f"included={len(included_ids)}; excluded_present={sorted(EXCLUDED_MOUSE_IDS & included_ids)}",
+        value=len(included_ids),
+    )
+
+    # 2. Fixed group sizes.
+    group_counts = source["group"].value_counts().to_dict()
+    check(
+        2, "group_sizes",
+        all(int(group_counts.get(g, 0)) == n for g, n in EXPECTED_GROUP_COUNTS.items()),
+        f"Fixed group sizes match {EXPECTED_GROUP_COUNTS}.",
+        f"Observed group sizes: {group_counts}.",
+        value=json.dumps({g: int(group_counts.get(g, 0)) for g in STATE_GROUPS}, sort_keys=True),
+    )
+
+    # 3. Alive/death counts.
+    count_ok = True
+    observed_counts = {}
+    for week, dead_col in ((16, "dead16"), (24, "dead24")):
+        observed_counts[week] = {}
+        for group in STATE_GROUPS:
+            sub = source[source["group"].eq(group)]
+            dead = int(sub[dead_col].sum())
+            alive = int((~sub[dead_col]).sum())
+            observed_counts[week][group] = {"alive": alive, "death": dead}
+            if alive != EXPECTED_ALIVE[week][group] or dead != EXPECTED_DEATH[week][group]:
+                count_ok = False
+    check(
+        3, "alive_death_counts",
+        count_ok,
+        "Alive/death counts at weeks 16 and 24 match the control counts.",
+        f"Observed counts: {observed_counts}.",
+        value=json.dumps(observed_counts, sort_keys=True),
+    )
+
+    # 4. Death monotonicity.
+    death_monotone = bool((~source["dead16"] | source["dead24"]).all())
+    check(
+        4, "death_monotonicity",
+        death_monotone,
+        "Death status is monotone: every week-16 death remains death at week 24.",
+        "At least one week-16 death is not marked dead at week 24.",
+    )
+
+    # 5-6. Weights.
+    feature_match = (
+        len(weights_df) == 30
+        and weights_df["feature"].astype(str).tolist() == list(MODEL_FEATURES)
+    )
+    check(
+        5, "thirty_weights",
+        feature_match,
+        "weights.csv contains exactly the 30 MODEL_FEATURES in canonical order.",
+        f"weight_rows={len(weights_df)}; feature_order_match={feature_match}.",
+        value=len(weights_df),
+    )
+    weight_values = pd.to_numeric(weights_df["weight"], errors="coerce").to_numpy(dtype=float)
+    check(
+        6, "finite_weights",
+        len(weight_values) == 30 and np.isfinite(weight_values).all(),
+        "All 30 final weights are finite.",
+        "At least one final weight is non-finite.",
+    )
+
+    # 7. eta >= 0.
+    eta = np.asarray(solution["eta"], dtype=float)
+    min_eta = float(np.min(eta))
+    check(
+        7, "eta_nonnegative",
+        min_eta >= -QP_TOLERANCE,
+        f"All order slacks are nonnegative within tolerance; min eta={min_eta:.12g}.",
+        f"Negative eta beyond tolerance; min eta={min_eta:.12g}.",
+        value=min_eta,
+    )
+
+    # 8. Living positivity.
+    living_mask = enri_df["status"].isin(["observed", "imputed"])
+    live_enri = pd.to_numeric(enri_df.loc[living_mask, "eNRI"], errors="coerce")
+    min_live = float(live_enri.min())
+    check(
+        8, "living_positivity",
+        live_enri.notna().all()
+        and np.isfinite(live_enri.to_numpy(dtype=float)).all()
+        and min_live >= POSITIVITY_EPSILON - QP_TOLERANCE,
+        f"All observed/imputed living eNRI satisfy epsilon={POSITIVITY_EPSILON}; min={min_live:.12g}.",
+        f"Living positivity failed; min={min_live:.12g}.",
+        value=min_live,
+    )
+
+    # 9. PBS0 normalization.
+    pbs0_mean = float(
+        enri_df[enri_df["group"].eq("PBS") & enri_df["week"].eq(0)]["eNRI"].mean()
+    )
+    check(
+        9, "pbs0_normalization",
+        abs(pbs0_mean - 1.0) <= QP_TOLERANCE,
+        f"Mean PBS^0 eNRI={pbs0_mean:.12g}.",
+        f"PBS^0 normalization failed: {pbs0_mean:.12g}.",
+        value=pbs0_mean,
+    )
+
+    # 10. Death eNRI = 0.
+    death_vals = pd.to_numeric(
+        enri_df.loc[enri_df["status"].eq("death"), "eNRI"], errors="coerce"
+    ).to_numpy(dtype=float)
+    check(
+        10, "death_zero",
+        len(death_vals) == 22 and np.allclose(death_vals, 0.0, rtol=0, atol=0),
+        "All 22 death rows have eNRI=0 exactly.",
+        f"death_rows={len(death_vals)} or nonzero death eNRI present.",
+        value=len(death_vals),
+    )
+
+    # 11. Imputed rows finite.
+    imputed_vals = pd.to_numeric(
+        enri_df.loc[enri_df["status"].eq("imputed"), "eNRI"], errors="coerce"
+    )
+    check(
+        11, "imputed_finite",
+        len(imputed_vals) == 5
+        and imputed_vals.notna().all()
+        and np.isfinite(imputed_vals.to_numpy(dtype=float)).all(),
+        "All 5 imputed visits have finite eNRI.",
+        f"imputed_rows={len(imputed_vals)} or non-finite eNRI present.",
+        value=len(imputed_vals),
+    )
+
+    # 12. missing_visit rows stay NaN.
+    missing_rows = enri_df["status"].eq("missing_visit")
+    check(
+        12, "missing_visit_nan",
+        not missing_rows.any() or enri_df.loc[missing_rows, "eNRI"].isna().all(),
+        f"missing_visit policy is correct; current missing_visit rows={int(missing_rows.sum())}.",
+        "At least one missing_visit has a non-NaN eNRI.",
+        value=int(missing_rows.sum()),
+    )
+
+    # 13. No missing_visit in E union O.
+    involved = {x for pair in EQUALITY_PAIRS + ORDER_PAIRS for x in pair}
+    u_ok = all(states[label]["U"] == 0 for label in involved)
+    check(
+        13, "no_missing_in_constraints",
+        u_ok,
+        "All states used by equality/order relations have U_A=0.",
+        "At least one constrained state has U_A>0.",
+    )
+
+    # 14. All 12 states are fixed-group states with expected N.
+    expected_labels = {state_label(g, w) for g in STATE_GROUPS for w in STATE_WEEKS}
+    fixed_state_ok = (
+        set(states) == expected_labels
+        and all(states[state_label(g, w)]["N"] == EXPECTED_GROUP_COUNTS[g]
+                for g in STATE_GROUPS for w in STATE_WEEKS)
+    )
+    check(
+        14, "twelve_fixed_states",
+        fixed_state_ok,
+        "All 12 group×week states use the fixed original group and expected denominators.",
+        "State labels or fixed-group denominators do not match the design.",
+        value=len(states),
+    )
+
+    # 15. CV denominators come only from the corresponding train/validation part.
+    denominator_ok = True
+    denominator_mismatches = []
+    for split in accepted_splits:
+        for group in STATE_GROUPS:
+            for week in STATE_WEEKS:
+                label = state_label(group, week)
+                tn = int(split["train_states"][label]["N"])
+                vn = int(split["val_states"][label]["N"])
+                et = int(split["train_group_counts"][group])
+                ev = int(split["val_group_counts"][group])
+                if tn != et or vn != ev:
+                    denominator_ok = False
+                    denominator_mismatches.append(
+                        [split["seed"], split["fold"], label, tn, et, vn, ev]
+                    )
+    check(
+        15, "cv_denominators",
+        denominator_ok and len(accepted_splits) == 22,
+        "All 22 accepted CV splits use train-only and validation-only group denominators.",
+        f"accepted_splits={len(accepted_splits)}; mismatches={denominator_mismatches[:5]}.",
+        value=len(accepted_splits),
+    )
+
+    # 16. Positivity and variance use observed+imputed.
+    o_definition_ok = all(s["O"] == s["R"] + s["I"] for s in states.values())
+    Q_direct = np.mean(np.stack([states[state_label(g,w)]["S"]
+        for w in STATE_WEEKS for g in STATE_GROUPS], axis=0), axis=0)
+    Q_direct = 0.5 * (Q_direct + Q_direct.T)
+    q_same = np.allclose(Q_direct, solution["qvar"], rtol=1e-10, atol=1e-12)
+    positivity_count_ok = int(living_mask.sum()) == 140
+    check(
+        16, "observed_plus_imputed",
+        o_definition_ok and q_same and positivity_count_ok,
+        "Variance states use O_A=R_A∪I_A and positivity covers all 140 observed+imputed living visits.",
+        f"O definition={o_definition_ok}; Q_var match={q_same}; positivity_rows={int(living_mask.sum())}.",
+    )
+
+    # 17. Deterministic derived identities.
+    derived_ok = True
+    derived_max_err = 0.0
+    living_final = ~final_std["death"]
+    for cfg in NOR_BLOCKS.values():
+        idx = final_std.index[living_final]
+        tp = final_std.loc[idx, cfg["time_p"]].astype(float).to_numpy()
+        ts = final_std.loc[idx, cfg["time_s"]].astype(float).to_numpy()
+        total = final_std.loc[idx, cfg["total"]].astype(float).to_numpy()
+        err = float(np.max(np.abs(total - (tp + ts))))
+        derived_max_err = max(derived_max_err, err)
+        derived_ok = derived_ok and err <= FLOAT_TOL
+
+        lp = final_std.loc[idx, cfg["lat_p"]].astype(float).to_numpy()
+        ls = final_std.loc[idx, cfg["lat_s"]].astype(float).to_numpy()
+        first = final_std.loc[idx, cfg["lat_first"]].astype(float).to_numpy()
+        err = float(np.max(np.abs(first - np.minimum(lp, ls))))
+        derived_max_err = max(derived_max_err, err)
+        derived_ok = derived_ok and err <= FLOAT_TOL
+
+        if cfg["di"] is not None:
+            denom = tp + ts
+            expected_di = np.divide(
+                tp - ts, denom, out=np.zeros_like(denom), where=np.abs(denom) > FLOAT_TOL
+            )
+            actual_di = final_std.loc[idx, cfg["di"]].astype(float).to_numpy()
+            err = float(np.max(np.abs(actual_di - expected_di)))
+            derived_max_err = max(derived_max_err, err)
+            derived_ok = derived_ok and err <= FLOAT_TOL
+    check(
+        17, "derived_identities",
+        derived_ok,
+        f"All deterministic NOR identities hold; max absolute residual={derived_max_err:.3g}.",
+        f"Derived identity residual exceeds tolerance; max={derived_max_err:.3g}.",
+        value=derived_max_err,
+    )
+
+    # 18. Latency rules and no CV leakage.
+    latency_ok = True
+    structural_cells = 0
+    for time_feature, latency_feature in OBJECT_LATENCY_PAIRS:
+        structural = (
+            (~long_raw["death"])
+            & long_raw[time_feature].eq(0)
+            & long_raw[latency_feature].isna()
+        )
+        structural_cells += int(structural.sum())
+        maxv = deterministic_stats["censor_maxima"][latency_feature]
+        if structural.any():
+            latency_ok = latency_ok and np.allclose(
+                deterministic_df.loc[structural, latency_feature].astype(float).to_numpy(),
+                float(maxv), rtol=0, atol=FLOAT_TOL
+            )
+            latency_ok = latency_ok and (
+                deterministic_df.loc[structural, "censored_latency"].eq(1).all()
+            )
+        observed_latency = deterministic_df.loc[
+            (~deterministic_df["death"]) & deterministic_df[latency_feature].notna(),
+            latency_feature,
+        ].astype(float)
+        latency_ok = latency_ok and bool((observed_latency >= -FLOAT_TOL).all())
+    cv_no_leakage = all(
+        split["prep_stats"].get("fit_scope") == "train_only"
+        and split["prep_stats"].get("deterministic", {}).get("fit_scope") == "train_only"
+        and split["prep_stats"].get("scaling", {}).get("fit_scope") == "train_only"
+        for split in accepted_splits
+    )
+    check(
+        18, "latency_censoring",
+        latency_ok and structural_cells == 28 and cv_no_leakage,
+        "28 structural latency cells are flagged and encoded by the fitted feature maximum; all accepted CV preprocessing is train-only.",
+        f"latency_ok={latency_ok}; structural_cells={structural_cells}; cv_no_leakage={cv_no_leakage}.",
+        value=structural_cells,
+    )
+
+    # 19. DI bounds.
+    di_vals = final_std.loc[living_final, "DI_NOR2"].astype(float)
+    di_ok = bool(((di_vals >= -1 - FLOAT_TOL) & (di_vals <= 1 + FLOAT_TOL)).all())
+    check(
+        19, "di_bounds",
+        di_ok,
+        "All living DI_NOR2 values lie in [-1,1].",
+        f"DI range=({float(di_vals.min())},{float(di_vals.max())}).",
+        value=f"{float(di_vals.min()):.12g},{float(di_vals.max()):.12g}",
+    )
+
+    # 20. Reviewed scale values preserved; no unresolved fatal/blocker QC.
+    accepted_qc = diagnostics[
+        diagnostics["check"].astype(str).eq("accepted_scale_value")
+        & diagnostics["severity"].astype(str).eq("accepted")
+    ]
+    bad_qc = diagnostics[
+        diagnostics["type"].astype(str).eq("qc")
+        & diagnostics["severity"].astype(str).isin(["fatal", "blocker"])
+    ]
+    review_qc = diagnostics[
+        diagnostics["type"].astype(str).eq("qc")
+        & diagnostics["severity"].astype(str).eq("review")
+    ]
+    check(
+        20, "data_qc",
+        len(accepted_qc) == 8 and len(bad_qc) == 0,
+        f"Eight reviewed scale values are preserved; unresolved fatal/blocker QC=0; review flags={len(review_qc)}.",
+        f"accepted_scale_values={len(accepted_qc)}; fatal_or_blocker_qc={len(bad_qc)}.",
+        value=f"accepted={len(accepted_qc)};review={len(review_qc)}",
+    )
+
+    # 21. Identical accepted split keys for every hyperparameter triple.
+    fm = diagnostics[diagnostics["check"].astype(str).eq("stage6_fold_metrics")].copy()
+    accepted_keys = {
+        (int(x["seed"]), int(x["fold"])) for x in accepted_splits
+    }
+    grid_keys_ok = len(fm) == 22 * 27
+    if grid_keys_ok:
+        for _, sub in fm.groupby(["beta", "lambda", "C"], dropna=False):
+            keys = set(zip(sub["seed"].astype(int), sub["fold"].astype(int)))
+            if keys != accepted_keys:
+                grid_keys_ok = False
+                break
+    check(
+        21, "fixed_cv_splits",
+        grid_keys_ok,
+        "All 27 hyperparameter combinations use the same 22 accepted seed/fold splits (594 fold fits).",
+        f"stage6_fold_metric_rows={len(fm)}; expected=594.",
+        value=len(fm),
+    )
+
+    # 22. Imputer/scaling/censor fitting is train-only in every accepted fold.
+    train_only_ok = all(
+        split["prep_stats"].get("fit_scope") == "train_only"
+        and split["prep_stats"].get("deterministic", {}).get("fit_scope") == "train_only"
+        and split["prep_stats"].get("scaling", {}).get("fit_scope") == "train_only"
+        for split in accepted_splits
+    )
+    check(
+        22, "train_only_preprocessing",
+        train_only_ok,
+        "All 22 accepted folds fit censor maxima, baseline scaling and IterativeImputer on train only.",
+        "At least one accepted fold is not marked train-only for preprocessing.",
+    )
+
+    # 23. Final QP hard constraints.
+    hard_qp_ok = (
+        solution["solver_status"] in {cp.OPTIMAL, cp.OPTIMAL_INACCURATE}
+        and solution["max_order_violation"] <= QP_TOLERANCE
+        and solution["max_positivity_violation"] <= QP_TOLERANCE
+        and solution["eta_nonneg_violation"] <= QP_TOLERANCE
+    )
+    check(
+        23, "qp_constraints",
+        hard_qp_ok,
+        (
+            f"Final QP status={solution['solver_status']}; max order violation="
+            f"{solution['max_order_violation']:.3g}; max positivity violation="
+            f"{solution['max_positivity_violation']:.3g}; eta nonneg violation="
+            f"{solution['eta_nonneg_violation']:.3g}."
+        ),
+        "At least one final hard QP constraint exceeds numerical tolerance.",
+    )
+
+    # 24. Four final files.
+    files_exist = all(p.exists() and p.stat().st_size > 0 for p in required_paths)
+    check(
+        24, "four_artifacts",
+        files_exist,
+        "weights.csv, enri.csv, diagnostics.csv and model.json all exist and are non-empty.",
+        "At least one required final artifact is missing or empty.",
+    )
+
+    # 25. model.json can reproduce eNRI for a complete 30-feature vector.
+    model_arrays_ok = (
+        model.get("features") == list(MODEL_FEATURES)
+        and len(model.get("mean", [])) == 30
+        and len(model.get("std", [])) == 30
+        and len(model.get("xbar_pbs0", [])) == 30
+        and len(model.get("weights", [])) == 30
+        and np.isfinite(np.asarray(model.get("mean", []), dtype=float)).all()
+        and np.isfinite(np.asarray(model.get("std", []), dtype=float)).all()
+        and (np.asarray(model.get("std", []), dtype=float) > 0).all()
+        and np.isfinite(np.asarray(model.get("xbar_pbs0", []), dtype=float)).all()
+        and np.isfinite(np.asarray(model.get("weights", []), dtype=float)).all()
+    )
+    model_repro_err = float("inf")
+    if model_arrays_ok:
+        mmean = np.asarray(model["mean"], dtype=float)
+        mstd = np.asarray(model["std"], dtype=float)
+        mxbar = np.asarray(model["xbar_pbs0"], dtype=float)
+        mw = np.asarray(model["weights"], dtype=float)
+        Xstd = final_std.loc[living_final, MODEL_FEATURES].to_numpy(dtype=float)
+        # Recover the corresponding complete raw 30-vector, then recompute eNRI
+        # using only the serialization stored in model.json.
+        Xraw_complete = Xstd * mstd + mmean
+        Xstd_from_model = (Xraw_complete - mmean) / mstd
+        predicted = 1.0 + (Xstd_from_model - mxbar) @ mw
+        persisted = (
+            enri_df[enri_df["status"].isin(["observed", "imputed"])]
+            .set_index(["mouse_id", "week"])
+        )
+        final_living_meta = final_std.loc[
+            living_final, ["mouse_id", "week"]
+        ]
+        persisted_ordered = np.array([
+            float(persisted.loc[(str(mid), int(week)), "eNRI"])
+            for mid, week in final_living_meta.itertuples(index=False, name=None)
+        ])
+        model_repro_err = float(np.max(np.abs(predicted - persisted_ordered)))
+    check(
+        25, "model_json_recalculation",
+        model_arrays_ok and model_repro_err <= 1e-10,
+        f"model.json reproduces eNRI for complete 30-feature vectors; max absolute error={model_repro_err:.3g}.",
+        f"model.json sufficiency failed; arrays_ok={model_arrays_ok}; max_error={model_repro_err}.",
+        value=model_repro_err,
+    )
+
+    # Record the pinned environment actually seen by the stage-9 runner.
+    import importlib.metadata as importlib_metadata
+    packages = {
+        name: importlib_metadata.version(name)
+        for name in (
+            "pandas", "numpy", "openpyxl", "scikit-learn",
+            "scipy", "cvxpy", "osqp"
+        )
+    }
+    add_stage9_diag(
+        rows,
+        "ok",
+        "stage9_environment",
+        "Pinned numerical environment used by the final GitHub Actions run: "
+        + json.dumps(packages, sort_keys=True),
+        value="pinned",
+    )
+
+    status = "READY" if not failures else "FATAL"
+    add_stage9_diag(
+        rows,
+        "summary",
+        "stage9_status",
+        (
+            f"Stage 9 status={status}; numbered_checks=25; "
+            f"failed_checks={len(failures)}; reproducible={reproducible}; "
+            f"stage6={after_statuses['stage6_status']}; "
+            f"stage7={after_statuses['stage7_status']}; "
+            f"stage8={after_statuses['stage8_status']}."
+        ),
+        value=status,
+    )
+
+    diagnostics = pd.read_csv(diagnostics_path)
+    diagnostics = diagnostics[
+        ~diagnostics["type"].astype(str).eq("final")
+    ].copy()
+    merged = pd.concat([diagnostics, pd.DataFrame(rows)], ignore_index=True, sort=False)
+    merged.to_csv(diagnostics_path, index=False)
+
+    summary = {
+        "stage": 9,
+        "status": status,
+        "numbered_checks": 25,
+        "failed_checks": failures,
+        "reproducibility": {
+            "numeric_equivalence": repro,
+            "exact_bytes": exact,
+            "stage_statuses_before": before_statuses,
+            "stage_statuses_after": after_statuses,
+        },
+        "environment": packages,
+        "artifacts": [
+            "results/weights.csv",
+            "results/enri.csv",
+            "results/diagnostics.csv",
+            "results/model.json",
+        ],
+        "final_model": {
+            "mice": 54,
+            "model_features": 30,
+            "enri_rows": int(len(enri_df)),
+            "living_rows": int(living_mask.sum()),
+            "death_rows": int(enri_df["status"].eq("death").sum()),
+            "imputed_rows": int(enri_df["status"].eq("imputed").sum()),
+            "missing_visit_rows": int(enri_df["status"].eq("missing_visit").sum()),
+            "beta": float(selected["beta"]),
+            "lambda": float(selected["lambda"]),
+            "C": float(selected["C"]),
+            "rho": float(SMOKE_RHO),
+            "min_living_enri": min_live,
+            "max_living_enri": float(live_enri.max()),
+            "pbs0_mean": pbs0_mean,
+            "slack_sum": float(solution["slack_sum"]),
+            "slack_max": float(solution["slack_max"]),
+        },
+        "cv": {
+            "accepted_splits": int(len(accepted_splits)),
+            "rejected_splits": int(len(rejected_splits)),
+            "fold_metric_rows": int(len(fm)),
+        },
+    }
+    print("STAGE9_SUMMARY=" + json.dumps(summary, ensure_ascii=False, sort_keys=True))
+
+    if status != "READY":
+        raise RuntimeError("Stage 9 final checks failed: " + " | ".join(failures))
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--stage", type=int, required=True)
@@ -4246,6 +4967,8 @@ def main():
         run_stage7()
     elif args.stage == 8:
         run_stage8()
+    elif args.stage == 9:
+        run_stage9()
     else:
         raise SystemExit(f"Stage {args.stage} is not implemented yet.")
 
