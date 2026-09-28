@@ -545,7 +545,7 @@ ROTAROD_FEATURES = [
     "Learning_T3mean", "Learning_T3max", "Learning_T3sum",
 ]
 
-MAX_MISSING_PER_VISIT = 7
+MAX_MISSING_PER_VISIT = 9
 FLOAT_TOL = 1e-8
 
 
