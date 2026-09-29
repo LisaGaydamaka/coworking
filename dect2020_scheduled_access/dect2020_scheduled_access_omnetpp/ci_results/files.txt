@@ -7,7 +7,7 @@ baseline_run.log 8018 bytes
 baseline_scalars.csv 63559 bytes
 baseline_status.txt 14 bytes
 build_status.txt 11 bytes
-files.txt 511 bytes
+files.txt 0 bytes
 omnetpp_help.txt 7297 bytes
 omnetpp_version.txt 101 bytes
 phase2_grid_run.log 224037 bytes
@@ -18,3 +18,7 @@ phase3_highload_metrics.csv 343371 bytes
 phase3_highload_run.log 115411 bytes
 phase3_highload_scalars.csv 1121045 bytes
 phase3_highload_status.txt 21 bytes
+phase4_crosscheck_run.log 90962 bytes
+phase4_crosscheck_status.txt 23 bytes
+phase4_metrics.csv 149642 bytes
+phase4_scalars.csv 880629 bytes
