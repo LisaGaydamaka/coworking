@@ -22,6 +22,7 @@ This repository is a shared remote execution workspace for multiple independent 
 
 ## Current project
 
+- `mouse_neuroplasticity_enri/` — eNRI mouse neuroplasticity project containing the baseline, fine-grid, and no-treatment-order model variants.
 - `dect2020_scheduled_access/` — DECT-2020 NR scheduled-access queueing project.
   - `dect2020_scheduled_access_simulator/` — analytical/reference and Python validation tools.
   - `dect2020_scheduled_access_omnetpp/` — independent OMNeT++ discrete-event simulator and validation results.
