@@ -40,5 +40,6 @@ jobs:
           git add "$DIR"
           if ! git diff --cached --quiet; then
             git commit -m "Run $DIR"
+            git pull --rebase origin main
             git push
           fi
