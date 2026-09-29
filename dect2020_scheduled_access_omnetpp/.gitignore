@@ -7,3 +7,4 @@
 *.vci
 *.sca
 *.elog
+/src/dect2020_sa
