@@ -1,0 +1,9 @@
+/src/Makefile
+/src/Makefile.vc
+/src/out/
+/simulations/results/
+/simulations/exported/
+*.vec
+*.vci
+*.sca
+*.elog
