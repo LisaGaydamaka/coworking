@@ -4,20 +4,20 @@ simple ScheduledAccessQueue
 {
     parameters:
         int D = default(10);                         // PT devices in the DECT leaf cluster
-        simtime_t frameDuration = default(10ms);
-        simtime_t meanType1ServiceTime = default(0.4166666667ms);
+        double frameDuration @unit(s) = default(10ms);
+        double meanType1ServiceTime @unit(s) = default(0.4166666667ms);
 
         bool deriveDectParametersFromD = default(true);
         int L = default(2);                          // used when deriveDectParametersFromD=false
-        simtime_t type2ServiceTime = default(9ms); // used when deriveDectParametersFromD=false
+        double type2ServiceTime @unit(s) = default(9ms); // used when deriveDectParametersFromD=false
 
         bool deriveLambdaFromRho = default(true);
         double rho = default(0.05);                 // rho = lambda * E[B]
         double lambdaPerMs = default(0.12);         // used when deriveLambdaFromRho=false
 
         int r = default(30);                         // waiting-buffer capacity
-        long warmupCompletedPackets = default(200000);
-        long targetCompletedPackets = default(1000000);
+        int warmupCompletedPackets = default(200000);
+        int targetCompletedPackets = default(1000000);
         int rngIndex = default(0);
         bool recordVectors = default(false);
 
