@@ -39,6 +39,25 @@ docker run --rm \
     test -x src/dect2020_sa
     echo "build=PASS" > ci_results/build_status.txt
 
+    if [[ "$RUN_MODE" == article-representative* ]]; then
+      echo "=== ARTICLE REPRESENTATIVE OMNET++ RUNS ==="
+      rm -f ci_results/article_representative_*.csv ci_results/article_representative_*.log ci_results/article_representative_status.txt
+      cd simulations
+      rm -rf results_article
+      mkdir -p results_article
+      ../src/dect2020_sa -u Cmdenv -n ../src -f omnetpp.ini -c ArticleRepresentative 2>&1 | tee ../ci_results/article_representative_run.log
+      opp_scavetool x results_article/*.sca -F CSV-R -o ../ci_results/article_representative_scalars.csv
+      {
+        head -n 1 ../ci_results/article_representative_scalars.csv
+        grep -E ",scalar,DectScheduledAccessNetwork\\.queue,(D|r|L_effective|rho|rho_sat|lambda_per_ms|lambda_sat_per_ms|mean_delay_direct_ms|mean_delay_little_ms|little_vs_direct_relative_error|blocking_probability|mean_type1_number|effective_throughput_departures_per_ms),,," ../ci_results/article_representative_scalars.csv
+      } > ../ci_results/article_representative_metrics.csv
+      echo "article_representative=PASS" > ../ci_results/article_representative_status.txt
+      cd ..
+      find ci_results -maxdepth 1 -type f -printf "%f %s bytes\\n" | sort | tee ci_results/files.txt
+      echo "OMNeT++ article representative runs completed."
+      exit 0
+    fi
+
     if [[ "$RUN_MODE" == phase3-highload* ]]; then
       echo "=== PHASE 3 HIGH-LOAD AUDIT ==="
       rm -f ci_results/phase3_highload_*.csv ci_results/phase3_highload_*.log ci_results/phase3_highload_status.txt
