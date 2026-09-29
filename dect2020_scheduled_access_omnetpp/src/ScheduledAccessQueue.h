@@ -11,7 +11,7 @@ class ScheduledAccessQueue : public omnetpp::cSimpleModule
     enum class ServiceMode { TYPE1, TYPE2 };
 
     struct PacketMeta {
-        omnetpp::simtime_t arrivalTime = omnetpp::SIMTIME_ZERO;
+        omnetpp::simtime_t arrivalTime = SIMTIME_ZERO;
         bool measured = false;
     };
 
