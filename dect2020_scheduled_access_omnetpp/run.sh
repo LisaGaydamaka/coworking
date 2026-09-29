@@ -29,7 +29,8 @@ docker run --rm \
 
     echo "opp_makemake=$(command -v opp_makemake)"
     echo "opp_scavetool=$(command -v opp_scavetool)"
-    (opp_run --version || opp_run -h | head -20) 2>&1 | tee ci_results/omnetpp_version.txt
+    opp_run -h 2>&1 | tee ci_results/omnetpp_help.txt >/dev/null
+    grep -m1 "^Version:" ci_results/omnetpp_help.txt | tee ci_results/omnetpp_version.txt
 
     echo "=== BUILD ==="
     bash build.sh
