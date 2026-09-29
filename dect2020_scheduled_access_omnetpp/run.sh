@@ -44,7 +44,7 @@ docker run --rm \
     ../src/dect2020_sa -u Cmdenv -n ../src -f omnetpp.ini -c Baseline 2>&1 | tee ../ci_results/baseline_run.log
 
     opp_scavetool x results/*.sca -F CSV-R -o ../ci_results/baseline_scalars.csv
-    awk -F, 'NR==1 || ($2=="scalar" && ($4=="D" || $4=="r" || $4=="L_effective" || $4=="rho" || $4=="rho_sat" || $4=="mean_delay_direct_ms" || $4=="mean_delay_little_ms" || $4=="little_vs_direct_relative_error" || $4=="blocking_probability" || $4=="mean_type1_number" || $4=="effective_throughput_departures_per_ms"))' ../ci_results/baseline_scalars.csv > ../ci_results/baseline_metrics.csv
+    { head -n 1 ../ci_results/baseline_scalars.csv; grep -E ",scalar,DectScheduledAccessNetwork\\.queue,(D|r|L_effective|rho|rho_sat|mean_delay_direct_ms|mean_delay_little_ms|little_vs_direct_relative_error|blocking_probability|mean_type1_number|effective_throughput_departures_per_ms),,," ../ci_results/baseline_scalars.csv; } > ../ci_results/baseline_metrics.csv
     echo "baseline=PASS" > ../ci_results/baseline_status.txt
 
     echo "=== FULL PHASE-2 GRID ==="
@@ -53,7 +53,7 @@ docker run --rm \
 
     cd simulations
     opp_scavetool x results/*.sca -F CSV-R -o ../ci_results/phase2_scalars.csv
-    awk -F, 'NR==1 || ($2=="scalar" && ($4=="D" || $4=="r" || $4=="L_effective" || $4=="rho" || $4=="rho_sat" || $4=="mean_delay_direct_ms" || $4=="mean_delay_little_ms" || $4=="little_vs_direct_relative_error" || $4=="blocking_probability" || $4=="mean_type1_number" || $4=="effective_throughput_departures_per_ms"))' ../ci_results/phase2_scalars.csv > ../ci_results/phase2_metrics.csv
+    { head -n 1 ../ci_results/phase2_scalars.csv; grep -E ",scalar,DectScheduledAccessNetwork\\.queue,(D|r|L_effective|rho|rho_sat|mean_delay_direct_ms|mean_delay_little_ms|little_vs_direct_relative_error|blocking_probability|mean_type1_number|effective_throughput_departures_per_ms),,," ../ci_results/phase2_scalars.csv; } > ../ci_results/phase2_metrics.csv
     echo "phase2_grid=PASS" > ../ci_results/phase2_grid_status.txt
 
     cd ..
