@@ -1,0 +1,2 @@
+included_mice,excluded_mice,gamma_cosine,sign_agreement,living_rank_spearman,common_living_rows,individual_max_abs_diff,group_rank_spearman,group_max_abs_diff,slack_sum,slack_max,min_live_enri,run24_minus_LPS24,MCC24_minus_LPS24
+49,5,0.998597658058789,0.9,0.7620395106861643,127,0.24645199075923874,0.8321678321678322,0.04236951782979492,0.20376215668156625,0.10470283856907231,0.8135768811434108,0.04677888685424059,0.12652589640348888

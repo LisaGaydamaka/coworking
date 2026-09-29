@@ -1,0 +1,357 @@
+{
+  "stage": 8,
+  "status": "READY",
+  "configuration": {
+    "removed_order_pairs": [
+      [
+        "MCC^24",
+        "LPS^24"
+      ],
+      [
+        "run^24",
+        "LPS^24"
+      ]
+    ],
+    "remaining_order_pairs": [
+      [
+        "PBS^16",
+        "LPS^16"
+      ],
+      [
+        "PBS^24",
+        "LPS^24"
+      ],
+      [
+        "PBS^0",
+        "PBS^16"
+      ],
+      [
+        "LPS^0",
+        "LPS^16"
+      ],
+      [
+        "run^0",
+        "run^16"
+      ],
+      [
+        "MCC^0",
+        "MCC^16"
+      ],
+      [
+        "PBS^16",
+        "PBS^24"
+      ],
+      [
+        "LPS^16",
+        "LPS^24"
+      ]
+    ],
+    "beta": 0.5,
+    "lambda": 0.1,
+    "C": 0.03,
+    "rho": 0.1
+  },
+  "reference": {
+    "weight_l2_norm": 0.08207343430487062,
+    "weight_max_abs": 0.03966326508616537,
+    "slack_sum": 0.19994304247481287,
+    "min_live_enri": 0.8284479730541734,
+    "run24_minus_LPS24": 0.055840863980602506,
+    "MCC24_minus_LPS24": 0.062435890452877896
+  },
+  "cv_stability": {
+    "accepted_splits": 22,
+    "rejected_splits": 8,
+    "successful_selected_fits": 22,
+    "pairwise_gamma_cosine": {
+      "n": 231,
+      "min": -0.9674355064095834,
+      "q10": 0.07613124452902156,
+      "median": 0.886136110225974,
+      "q90": 0.9964662524110818,
+      "max": 0.9999072704900456
+    },
+    "cosine_to_final": {
+      "n": 22,
+      "min": 0.027138143989108205,
+      "q10": 0.25892927183372605,
+      "median": 0.9828318378615433,
+      "q90": 0.9979893932945314,
+      "max": 0.9998517721778083
+    },
+    "sign_agreement_to_final": {
+      "n": 22,
+      "min": 0.3333333333333333,
+      "q10": 0.5033333333333333,
+      "median": 0.7,
+      "q90": 0.8,
+      "max": 0.8666666666666667
+    },
+    "feature_final_sign_agreement": {
+      "n": 30,
+      "min": 0.3181818181818182,
+      "q10": 0.4090909090909091,
+      "median": 0.6818181818181819,
+      "q90": 0.9136363636363637,
+      "max": 1.0
+    },
+    "unconstrained_treatment_differences": {
+      "run24_minus_LPS24": {
+        "n": 22,
+        "min": 0.0020055554388803687,
+        "q10": 0.0216886798839991,
+        "median": 0.08106252484495735,
+        "q90": 0.1123857795791222,
+        "max": 0.24152099131516935,
+        "positive_fraction": 1.0,
+        "negative_fraction": 0.0
+      },
+      "MCC24_minus_LPS24": {
+        "n": 22,
+        "min": -0.05164272375688894,
+        "q10": -5.946332269412776e-06,
+        "median": 0.08076804737577603,
+        "q90": 0.1724917979824671,
+        "max": 0.1761307164651873,
+        "positive_fraction": 0.8636363636363636,
+        "negative_fraction": 0.13636363636363635
+      }
+    }
+  },
+  "complete_case": {
+    "included_mice": 49,
+    "excluded_mice": 5,
+    "excluded": [
+      {
+        "mouse_id": "10.1",
+        "weeks": [
+          0
+        ],
+        "missing_counts": [
+          1
+        ]
+      },
+      {
+        "mouse_id": "11.1",
+        "weeks": [
+          0
+        ],
+        "missing_counts": [
+          1
+        ]
+      },
+      {
+        "mouse_id": "18.2",
+        "weeks": [
+          16
+        ],
+        "missing_counts": [
+          5
+        ]
+      },
+      {
+        "mouse_id": "3.3",
+        "weeks": [
+          16
+        ],
+        "missing_counts": [
+          6
+        ]
+      },
+      {
+        "mouse_id": "6.3",
+        "weeks": [
+          24
+        ],
+        "missing_counts": [
+          2
+        ]
+      }
+    ],
+    "gamma_cosine": 0.998597658058789,
+    "sign_agreement": 0.9,
+    "living_rank_spearman": 0.7620395106861643,
+    "common_living_rows": 127,
+    "individual_max_abs_diff": 0.24645199075923874,
+    "group_rank_spearman": 0.8321678321678322,
+    "group_max_abs_diff": 0.04236951782979492,
+    "slack_sum": 0.20376215668156625,
+    "slack_max": 0.10470283856907231,
+    "min_live_enri": 0.8135768811434108,
+    "run24_minus_LPS24": 0.04677888685424059,
+    "MCC24_minus_LPS24": 0.12652589640348888
+  },
+  "rho_sensitivity": {
+    "0.05": {
+      "gamma_cosine": 0.9872767888545142,
+      "sign_agreement": 0.9,
+      "living_rank_spearman": 0.8457370273993572,
+      "individual_max_abs_diff": 0.10223954374900379,
+      "group_rank_spearman": 0.9720279720279721,
+      "group_max_abs_diff": 0.03640884979436976,
+      "slack_sum": 0.08273087251736504,
+      "slack_max": 0.057549505076600026,
+      "min_live_enri": 0.8514142232687676,
+      "max_order_violation": 1.3877787807814457e-17,
+      "max_positivity_violation": 0.0,
+      "run24_minus_LPS24": 0.058635144092216596,
+      "MCC24_minus_LPS24": 0.07344966423259947
+    },
+    "0.2": {
+      "gamma_cosine": 0.9984647371354064,
+      "sign_agreement": 0.9,
+      "living_rank_spearman": 0.8598762327524,
+      "individual_max_abs_diff": 0.14810814045524245,
+      "group_rank_spearman": 0.965034965034965,
+      "group_max_abs_diff": 0.08513454993995584,
+      "slack_sum": 0.4753174588481703,
+      "slack_max": 0.2049997438092992,
+      "min_live_enri": 0.7116311582448718,
+      "max_order_violation": 8.326672684688674e-17,
+      "max_positivity_violation": 0.0,
+      "run24_minus_LPS24": 0.09908824441841468,
+      "MCC24_minus_LPS24": 0.09386472655068101
+    },
+    "0.3": {
+      "gamma_cosine": 0.9992007838556772,
+      "sign_agreement": 0.8,
+      "living_rank_spearman": 0.6020598718593515,
+      "individual_max_abs_diff": 0.31040901828562517,
+      "group_rank_spearman": 0.9160839160839163,
+      "group_max_abs_diff": 0.18908692013469786,
+      "slack_sum": 0.8649499630439217,
+      "slack_max": 0.3186546915175459,
+      "min_live_enri": 0.5493302804144891,
+      "max_order_violation": 2.220446049250313e-16,
+      "max_positivity_violation": 0.0,
+      "run24_minus_LPS24": 0.11369917410732255,
+      "MCC24_minus_LPS24": 0.10925155892943339
+    }
+  },
+  "stochastic_imputation": {
+    "requested_runs": 10,
+    "valid_runs": 4,
+    "invalid_runs": 6,
+    "gamma_cosine": {
+      "n": 4,
+      "min": 0.999597441747759,
+      "q10": 0.9996223206956072,
+      "median": 0.9998190704988243,
+      "q90": 0.9999844600355172,
+      "max": 0.9999958988691409
+    },
+    "sign_agreement": {
+      "n": 4,
+      "min": 1.0,
+      "q10": 1.0,
+      "median": 1.0,
+      "q90": 1.0,
+      "max": 1.0
+    },
+    "living_rank_spearman": {
+      "n": 4,
+      "min": 0.985642124598194,
+      "q10": 0.9865133060724675,
+      "median": 0.9909776737880214,
+      "q90": 0.9937797117928759,
+      "max": 0.9939384662482782
+    },
+    "group_rank_spearman": {
+      "n": 4,
+      "min": 0.9860139860139862,
+      "q10": 0.9881118881118882,
+      "median": 0.9930069930069931,
+      "q90": 0.9979020979020979,
+      "max": 1.0
+    },
+    "group_max_abs_diff": {
+      "n": 4,
+      "min": 0.0025047665557645926,
+      "q10": 0.002737963352731643,
+      "median": 0.003678586947338136,
+      "q90": 0.0050699885198322026,
+      "max": 0.00549637587875107
+    },
+    "slack_sum": {
+      "n": 4,
+      "min": 0.19090953367838087,
+      "q10": 0.19274948556034033,
+      "median": 0.19848432483542788,
+      "q90": 0.20668470359331348,
+      "max": 0.20958131525361492
+    },
+    "run24_minus_LPS24": {
+      "n": 4,
+      "min": 0.053246773276931614,
+      "q10": 0.0546703248145338,
+      "median": 0.05808575814179068,
+      "q90": 0.05880417286248486,
+      "max": 0.05907185928298875,
+      "positive_fraction": 1.0,
+      "negative_fraction": 0.0
+    },
+    "MCC24_minus_LPS24": {
+      "n": 4,
+      "min": 0.059245629112317566,
+      "q10": 0.06121420947379078,
+      "median": 0.06614901878126545,
+      "q90": 0.06783019489713225,
+      "max": 0.06840436103363068,
+      "positive_fraction": 1.0,
+      "negative_fraction": 0.0
+    }
+  },
+  "invalid_stochastic_runs": [
+    {
+      "seed": 0,
+      "status": "NOT_SOLVED",
+      "errors": [
+        "Negative post-imputation values in nonnegative features: [{\"mouse_id\": \"18.2\", \"week\": 16, \"feature\": \"OFT_distance\", \"value\": -19.080164868372297}]"
+      ]
+    },
+    {
+      "seed": 1,
+      "status": "NOT_SOLVED",
+      "errors": [
+        "Negative post-imputation values in nonnegative features: [{\"mouse_id\": \"6.3\", \"week\": 24, \"feature\": \"Time_investigating_Stakan_zone_NOR2\", \"value\": -0.5250429082282215}]"
+      ]
+    },
+    {
+      "seed": 3,
+      "status": "NOT_SOLVED",
+      "errors": [
+        "Negative post-imputation values in nonnegative features: [{\"mouse_id\": \"18.2\", \"week\": 16, \"feature\": \"OFT_distance\", \"value\": -68.1183276564812}, {\"mouse_id\": \"6.3\", \"week\": 24, \"feature\": \"Time_investigating_Stakan_zone_NOR2\", \"value\": -3.377334200105314}]"
+      ]
+    },
+    {
+      "seed": 4,
+      "status": "NOT_SOLVED",
+      "errors": [
+        "Negative post-imputation values in nonnegative features: [{\"mouse_id\": \"18.2\", \"week\": 16, \"feature\": \"OFT_distance\", \"value\": -63.411156740421205}]"
+      ]
+    },
+    {
+      "seed": 6,
+      "status": "NOT_SOLVED",
+      "errors": [
+        "Negative post-imputation values in nonnegative features: [{\"mouse_id\": \"18.2\", \"week\": 16, \"feature\": \"OFT_distance\", \"value\": -71.61534187257938}, {\"mouse_id\": \"18.2\", \"week\": 16, \"feature\": \"Time_inCenter_OFT\", \"value\": -11.76334559529127}, {\"mouse_id\": \"6.3\", \"week\": 24, \"feature\": \"Time_investigating_Stakan_zone_NOR2\", \"value\": -1.0489685180696604}, {\"mouse_id\": \"3.3\", \"week\": 16, \"feature\": \"Latency_to_first_investigation_Stakan_zone_NOR2\", \"value\": -12.547639474321869}]"
+      ]
+    },
+    {
+      "seed": 9,
+      "status": "NOT_SOLVED",
+      "errors": [
+        "Negative post-imputation values in nonnegative features: [{\"mouse_id\": \"18.2\", \"week\": 16, \"feature\": \"Time_inCenter_OFT\", \"value\": -6.579288143751356}, {\"mouse_id\": \"6.3\", \"week\": 24, \"feature\": \"Latency_to_first_investigation_Stakan_zone_NOR2\", \"value\": -4.245517541008638}]"
+      ]
+    }
+  ],
+  "validation_errors": [],
+  "outputs": {
+    "cv_stability": "stage8_new/cv_stability.csv",
+    "cv_feature_stability": "stage8_new/cv_feature_stability.csv",
+    "complete_case": "stage8_new/complete_case.csv",
+    "rho_sensitivity": "stage8_new/rho_sensitivity.csv",
+    "stochastic_imputation": "stage8_new/stochastic_imputation.csv",
+    "stochastic_invalid": "stage8_new/stochastic_imputation_invalid.csv"
+  }
+}
