@@ -1,0 +1,6 @@
+MONETEC PAoI plot reproduction using canonical OMNeT++ simulator
+runs=576 groups=192
+PAoI per run = mean_delay_direct_ms + 1/effective_throughput_departures_per_ms
+D=10, L=2, mB=0.416666667 ms, mF=9 ms
+rho range=0.010..2.583
+PAoI range=19.849..251.068 ms
