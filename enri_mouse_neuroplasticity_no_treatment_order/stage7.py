@@ -13,6 +13,9 @@ spec = importlib.util.spec_from_file_location("enri_solve", BASE / "solve.py")
 m = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(m)
 
+from dynamic_qp import install as install_dynamic_qp
+install_dynamic_qp(m)
+
 REMOVED = {("run^24","LPS^24"), ("MCC^24","LPS^24")}
 m.ORDER_PAIRS = [p for p in m.ORDER_PAIRS if p not in REMOVED]
 
