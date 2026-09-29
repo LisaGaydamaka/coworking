@@ -1,0 +1,1 @@
+Version: 6.3.0, build: 251110-bb3d6a4731, edition: Academic Public License -- NOT FOR COMMERCIAL USE

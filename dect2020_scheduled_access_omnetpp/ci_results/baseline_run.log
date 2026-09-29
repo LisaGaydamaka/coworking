@@ -1,0 +1,181 @@
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.3.0, build: 251110-bb3d6a4731, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from ../src:  2
+
+Preparing for running configuration Baseline, run #0...
+Assigned runID=Baseline-0-20260929-10:35:46-67
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3032173   t=6005.695946721206   Elapsed: 0.329789s (0m 00s)
+     Speed:     ev/sec=9.19462e+06   simsec/sec=18211.4   ev/simsec=504.883
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=6005.695946721206s, event #3032173
+
+Calling finish() at end of Run #0...
+
+Preparing for running configuration Baseline, run #1...
+Assigned runID=Baseline-1-20260929-10:35:46-67
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3032049   t=6003.234001013533   Elapsed: 0.30826s (0m 00s)
+     Speed:     ev/sec=9.83627e+06   simsec/sec=19475.1   ev/simsec=505.069
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=6003.234001013533s, event #3032049
+
+Calling finish() at end of Run #1...
+
+Preparing for running configuration Baseline, run #2...
+Assigned runID=Baseline-2-20260929-10:35:47-67
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.6e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3032255   t=5997.946392592003   Elapsed: 0.308143s (0m 00s)
+     Speed:     ev/sec=9.84144e+06   simsec/sec=19466.8   ev/simsec=505.549
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=5997.946392592003s, event #3032255
+
+Calling finish() at end of Run #2...
+
+Preparing for running configuration Baseline, run #3...
+Assigned runID=Baseline-3-20260929-10:35:47-67
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3031929   t=6004.783041580777   Elapsed: 0.307857s (0m 00s)
+     Speed:     ev/sec=9.84879e+06   simsec/sec=19505.7   ev/simsec=504.919
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=6004.783041580777s, event #3031929
+
+Calling finish() at end of Run #3...
+
+Preparing for running configuration Baseline, run #4...
+Assigned runID=Baseline-4-20260929-10:35:47-67
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3031316   t=6006.648462853899   Elapsed: 0.307886s (0m 00s)
+     Speed:     ev/sec=9.84584e+06   simsec/sec=19509.8   ev/simsec=504.66
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=6006.648462853899s, event #3031316
+
+Calling finish() at end of Run #4...
+
+Preparing for running configuration Baseline, run #5...
+Assigned runID=Baseline-5-20260929-10:35:47-67
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3031221   t=6001.963903738733   Elapsed: 0.308805s (0m 00s)
+     Speed:     ev/sec=9.81629e+06   simsec/sec=19436.7   ev/simsec=505.038
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=6001.963903738733s, event #3031221
+
+Calling finish() at end of Run #5...
+
+Preparing for running configuration Baseline, run #6...
+Assigned runID=Baseline-6-20260929-10:35:48-67
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3031706   t=6002.190034143548   Elapsed: 0.309334s (0m 00s)
+     Speed:     ev/sec=9.80104e+06   simsec/sec=19404.2   ev/simsec=505.1
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=6002.190034143548s, event #3031706
+
+Calling finish() at end of Run #6...
+
+Preparing for running configuration Baseline, run #7...
+Assigned runID=Baseline-7-20260929-10:35:48-67
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.5e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3032052   t=6003.719034539854   Elapsed: 0.308283s (0m 00s)
+     Speed:     ev/sec=9.83624e+06   simsec/sec=19476.6   ev/simsec=505.029
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=6003.719034539854s, event #3032052
+
+Calling finish() at end of Run #7...
+
+Preparing for running configuration Baseline, run #8...
+Assigned runID=Baseline-8-20260929-10:35:48-67
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3031718   t=6000.08547820372   Elapsed: 0.31192s (0m 00s)
+     Speed:     ev/sec=9.71982e+06   simsec/sec=19236.5   ev/simsec=505.279
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=6000.08547820372s, event #3031718
+
+Calling finish() at end of Run #8...
+
+Preparing for running configuration Baseline, run #9...
+Assigned runID=Baseline-9-20260929-10:35:49-67
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3031480   t=6002.676594753665   Elapsed: 0.308253s (0m 00s)
+     Speed:     ev/sec=9.83468e+06   simsec/sec=19473.8   ev/simsec=505.021
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=6002.676594753665s, event #3031480
+
+Calling finish() at end of Run #9...
+
+Run statistics: total 10, successful 10
+
+End.

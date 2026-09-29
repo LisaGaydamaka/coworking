@@ -1,0 +1,121 @@
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.3.0, build: 251110-bb3d6a4731, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Command line options:
+  <inifile> or -f <inifile>
+                Use the given ini file instead of omnetpp.ini. More than one
+                ini file can be specified.
+  --<configuration-option>=<value>
+                Configuration options and parameter values can be specified
+                on the command line, and they take precedence over options
+                specified in the ini file(s). Examples:
+                      --debug-on-errors=true
+                      --record-eventlog=true
+                      --sim-time-limit=1000s
+                      --**.serviceTime=100ms
+  -u <ui>       Selects the user interface. Standard choices are Cmdenv
+                and Qtenv. Specify -h userinterfaces to see the list
+                of the user interfaces available in your simulation program.
+  -c <configname>
+                Select a configuration for execution. With inifile-based
+                configuration database, this selects the [Config <configname>]
+                section; the default is the [General] section.
+                See also: -r.
+  -r <runfilter>
+                With -c: select runs from the specified configuration. A
+                missing -r option selects all runs in the given configuration.
+                <runfilter> is either a comma-separated list of run numbers or
+                run number ranges (for example 1,2,5-10), or a match expression.
+                The match expression may contain a wildcard pattern that is
+                matched against the iteration variables string (see -q runs),
+                matchers for individual iteration variables in the
+                name(valuepattern) syntax, or their combination using AND and
+                OR. Parentheses may be used to change evaluation order. Values
+                containing spaces etc need to be enclosed in quotes. Patterns
+                may contain elements matching numeric ranges, in the {a..b}
+                syntax. See also: -q.
+  -n <nedpath>  List of folders to load NED files from. Folders are separated
+                with a semicolon (on non-Windows systems, colon may also be used).
+                Multiple -n options may be present. The effective NED path is
+                produced by concatenating the values of the -n options, the
+                ned-path configuration option, and the OMNETPP_NED_PATH environment
+                variable. If the result is empty, the NED path defaults to '.',
+                that is, NED files will be loaded from the current directory and
+                its subfolders.
+  -x <ned-packages-to-exclude>
+                Semicolon-separated list of NED packages to exclude when loading
+                NED files. Sub-packages of excluded ones are also excluded.
+                Multiple -x options may be present, and additional packages may be
+                specified in the ned-package-exclusions configuration option and the
+                OMNETPP_NED_PACKAGE_EXCLUSIONS environment variable.
+  -i <imgpath>  List of folders to load images from. Folders are separated
+                with a semicolon (on non-Windows systems, colon may also be used).
+                Multiple -i options may be present. The effective image path is
+                produced by concatenating the values of the -i options, the
+                image-path configuration option, and the OMNETPP_IMAGE_PATH
+                environment variable. When the environment variable is not
+                present, a hardcoded folder (determined at compile time) pointing
+                to <omnetpp>/images is used instead.
+  -l <library>  Load the specified shared library (.so or .dll) on startup.
+                The file name should be given without the .so or .dll suffix
+                (it will be appended automatically.) The loaded module may
+                contain simple modules, plugins, etc. Multiple -l options
+                can be present.
+  -s            Make the output less verbose.
+  -S            Silent mode: suppress all output by the simulation framework.
+  -v            Print version and build info, and exit.
+  -m            Merge standard error into standard output, i.e. report errors on
+                the standard output instead of the default standard error.
+  -a            Print all config names and number of runs in them, and exit.
+  -q <what>     To be used together with -c and -r. Prints information about
+                the specified configuration and runs, and exits.
+    -q numruns  Prints the number of runs in the given configuration and the
+                number of runs selected by the run filter (-r option).
+    -q runnumbers
+                Prints the run numbers of the runs selected by the run filter
+                (-r option).
+    -q runs     Like -q numruns, but also prints one line of information with the
+                iteration variables about each run that the run filter matches.
+    -q rundetails
+                Like -q numruns, but also prints the values of the iteration
+                variables and a summary of the configuration (the expanded
+                values of configuration entries that contain iteration variables)
+                for each matching run.
+    -q runconfig
+                Like -q numruns, but also prints the values of the iteration
+                variables and the full configuration for each matching run.
+    -q sectioninheritance
+                Print the section fallback chain of the specified configuration.
+  -e <option>   Prints the value of the given configuration option in the
+                simulation run denoted by the -c and -r options. (The run filter
+                should match exactly one simulation run.)
+  -X <option>   Experimental options that may come and go without notice
+  -h            Print this help and exit.
+  -h <category> Lists registered components:
+    -h config         Prints the list of available configuration options
+    -h configdetails  Prints the list of available configuration options, with
+                      their documentation
+    -h configvars     Prints the list of variables that can be used in configuration values
+    -h userinterfaces Lists available user interfaces (see -u option)
+    -h classes        Lists registered C++ classes (including module classes)
+    -h classdesc      Lists C++ classes that have associated reflection
+                      information (needed for Qtenv inspectors)
+    -h nedfunctions   Lists registered NED functions
+    -h neddecls       Lists built-in NED component declarations
+    -h units          Lists recognized physical units
+    -h enums          Lists registered enums
+    -h resultfilters  Lists result filters
+    -h resultrecorders Lists result recorders
+    -h figures        Lists available figure types
+    -h all            Union of all the above
+
+Cmdenv-specific information:
+    Cmdenv executes all runs denoted by the -c and -r options. The number
+    of runs executed and the number of runs that ended with an error are
+    reported at the end.
+
+
+End.
