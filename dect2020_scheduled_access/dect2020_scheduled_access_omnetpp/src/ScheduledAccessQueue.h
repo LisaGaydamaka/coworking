@@ -4,6 +4,7 @@
 #include <omnetpp.h>
 #include <cstdint>
 #include <deque>
+#include <vector>
 
 class ScheduledAccessQueue : public omnetpp::cSimpleModule
 {
@@ -46,6 +47,12 @@ class ScheduledAccessQueue : public omnetpp::cSimpleModule
     omnetpp::simtime_t collectionStart;
     omnetpp::simtime_t lastAreaUpdate;
     double systemSizeAreaSeconds = 0.0;
+    double type1ServiceAreaSeconds = 0.0;
+    double type2ServiceAreaSeconds = 0.0;
+    double fullType1AreaSeconds = 0.0;
+    double fullType2AreaSeconds = 0.0;
+    double nonFullAreaSeconds = 0.0;
+    std::vector<double> fullType1PhaseAreaSeconds;
 
     std::int64_t measuredArrivals = 0;
     std::int64_t measuredBlockedArrivals = 0;
