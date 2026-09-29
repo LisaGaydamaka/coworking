@@ -70,6 +70,11 @@ docker run --rm   -v "$ROOT:/exp"   -w /exp/_scratch   "$IMAGE"   bash -lc '
     ./src/dect2020_sa -u Cmdenv -n src -f paper_plot.ini -c MonetecPaperPlot 2>&1 | tee /exp/run.log
 
     opp_scavetool x results_monetec/*.sca -F CSV-R -o /exp/scalars.csv
+
+    # Docker creates build/result files as root. Remove the isolated scratch
+    # inside the container so the host runner never needs to touch root-owned
+    # files and the workflow cannot accidentally commit scratch artifacts.
+    rm -rf /exp/_scratch
   '
 
 python3 "$ROOT/analyze.py" "$ROOT/scalars.csv" "$ROOT"
