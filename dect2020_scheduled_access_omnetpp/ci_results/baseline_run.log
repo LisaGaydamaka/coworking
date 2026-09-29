@@ -7,16 +7,16 @@ Setting up Cmdenv...
 Loading NED files from ../src:  2
 
 Preparing for running configuration Baseline, run #0...
-Assigned runID=Baseline-0-20260929-10:44:22-67
+Assigned runID=Baseline-0-20260929-10:48:31-67
 Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
 Initializing...
 
 Running simulation...
-** Event #0   t=0   Elapsed: 1e-05s (0m 00s)
+** Event #0   t=0   Elapsed: 8e-06s (0m 00s)
      Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
      Messages:  created: 2   present: 2   in FES: 2
-** Event #3032173   t=6005.695946721206   Elapsed: 0.311583s (0m 00s)
-     Speed:     ev/sec=9.73185e+06   simsec/sec=19275.5   ev/simsec=504.883
+** Event #3032173   t=6005.695946721206   Elapsed: 0.280462s (0m 00s)
+     Speed:     ev/sec=1.08117e+07   simsec/sec=21414.2   ev/simsec=504.883
      Messages:  created: 2   present: 2   in FES: 1
 
 <!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=6005.695946721206s, event #3032173
@@ -24,16 +24,16 @@ Running simulation...
 Calling finish() at end of Run #0...
 
 Preparing for running configuration Baseline, run #1...
-Assigned runID=Baseline-1-20260929-10:44:22-67
+Assigned runID=Baseline-1-20260929-10:48:31-67
 Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
 Initializing...
 
 Running simulation...
-** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
      Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
      Messages:  created: 2   present: 2   in FES: 2
-** Event #3032049   t=6003.234001013533   Elapsed: 0.306079s (0m 00s)
-     Speed:     ev/sec=9.90633e+06   simsec/sec=19613.8   ev/simsec=505.069
+** Event #3032049   t=6003.234001013533   Elapsed: 0.281103s (0m 00s)
+     Speed:     ev/sec=1.07865e+07   simsec/sec=21356.4   ev/simsec=505.069
      Messages:  created: 2   present: 2   in FES: 1
 
 <!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=6003.234001013533s, event #3032049
@@ -41,16 +41,16 @@ Running simulation...
 Calling finish() at end of Run #1...
 
 Preparing for running configuration Baseline, run #2...
-Assigned runID=Baseline-2-20260929-10:44:23-67
+Assigned runID=Baseline-2-20260929-10:48:32-67
 Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
 Initializing...
 
 Running simulation...
-** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+** Event #0   t=0   Elapsed: 2.3e-05s (0m 00s)
      Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
      Messages:  created: 2   present: 2   in FES: 2
-** Event #3032255   t=5997.946392592003   Elapsed: 0.304935s (0m 00s)
-     Speed:     ev/sec=9.94417e+06   simsec/sec=19670   ev/simsec=505.549
+** Event #3032255   t=5997.946392592003   Elapsed: 0.280288s (0m 00s)
+     Speed:     ev/sec=1.08194e+07   simsec/sec=21401.2   ev/simsec=505.549
      Messages:  created: 2   present: 2   in FES: 1
 
 <!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=5997.946392592003s, event #3032255
@@ -58,16 +58,16 @@ Running simulation...
 Calling finish() at end of Run #2...
 
 Preparing for running configuration Baseline, run #3...
-Assigned runID=Baseline-3-20260929-10:44:23-67
+Assigned runID=Baseline-3-20260929-10:48:32-67
 Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
 Initializing...
 
 Running simulation...
-** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
      Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
      Messages:  created: 2   present: 2   in FES: 2
-** Event #3031929   t=6004.783041580777   Elapsed: 0.305964s (0m 00s)
-     Speed:     ev/sec=9.90969e+06   simsec/sec=19626.3   ev/simsec=504.919
+** Event #3031929   t=6004.783041580777   Elapsed: 0.280144s (0m 00s)
+     Speed:     ev/sec=1.0823e+07   simsec/sec=21435.2   ev/simsec=504.919
      Messages:  created: 2   present: 2   in FES: 1
 
 <!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=6004.783041580777s, event #3031929
@@ -75,92 +75,7 @@ Running simulation...
 Calling finish() at end of Run #3...
 
 Preparing for running configuration Baseline, run #4...
-Assigned runID=Baseline-4-20260929-10:44:23-67
-Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
-Initializing...
-
-Running simulation...
-** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
-     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
-     Messages:  created: 2   present: 2   in FES: 2
-** Event #3031316   t=6006.648462853899   Elapsed: 0.30472s (0m 00s)
-     Speed:     ev/sec=9.94813e+06   simsec/sec=19712.5   ev/simsec=504.66
-     Messages:  created: 2   present: 2   in FES: 1
-
-<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=6006.648462853899s, event #3031316
-
-Calling finish() at end of Run #4...
-
-Preparing for running configuration Baseline, run #5...
-Assigned runID=Baseline-5-20260929-10:44:24-67
-Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
-Initializing...
-
-Running simulation...
-** Event #0   t=0   Elapsed: 5e-06s (0m 00s)
-     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
-     Messages:  created: 2   present: 2   in FES: 2
-** Event #3031221   t=6001.963903738733   Elapsed: 0.327254s (0m 00s)
-     Speed:     ev/sec=9.26282e+06   simsec/sec=18340.8   ev/simsec=505.038
-     Messages:  created: 2   present: 2   in FES: 1
-
-<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=6001.963903738733s, event #3031221
-
-Calling finish() at end of Run #5...
-
-Preparing for running configuration Baseline, run #6...
-Assigned runID=Baseline-6-20260929-10:44:24-67
-Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
-Initializing...
-
-Running simulation...
-** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
-     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
-     Messages:  created: 2   present: 2   in FES: 2
-** Event #3031706   t=6002.190034143548   Elapsed: 0.304386s (0m 00s)
-     Speed:     ev/sec=9.96027e+06   simsec/sec=19719.4   ev/simsec=505.1
-     Messages:  created: 2   present: 2   in FES: 1
-
-<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=6002.190034143548s, event #3031706
-
-Calling finish() at end of Run #6...
-
-Preparing for running configuration Baseline, run #7...
-Assigned runID=Baseline-7-20260929-10:44:24-67
-Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
-Initializing...
-
-Running simulation...
-** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
-     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
-     Messages:  created: 2   present: 2   in FES: 2
-** Event #3032052   t=6003.719034539854   Elapsed: 0.306225s (0m 00s)
-     Speed:     ev/sec=9.90168e+06   simsec/sec=19606.2   ev/simsec=505.029
-     Messages:  created: 2   present: 2   in FES: 1
-
-<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=6003.719034539854s, event #3032052
-
-Calling finish() at end of Run #7...
-
-Preparing for running configuration Baseline, run #8...
-Assigned runID=Baseline-8-20260929-10:44:25-67
-Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
-Initializing...
-
-Running simulation...
-** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
-     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
-     Messages:  created: 2   present: 2   in FES: 2
-** Event #3031718   t=6000.08547820372   Elapsed: 0.307237s (0m 00s)
-     Speed:     ev/sec=9.86791e+06   simsec/sec=19529.6   ev/simsec=505.279
-     Messages:  created: 2   present: 2   in FES: 1
-
-<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=6000.08547820372s, event #3031718
-
-Calling finish() at end of Run #8...
-
-Preparing for running configuration Baseline, run #9...
-Assigned runID=Baseline-9-20260929-10:44:25-67
+Assigned runID=Baseline-4-20260929-10:48:32-67
 Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
 Initializing...
 
@@ -168,8 +83,93 @@ Running simulation...
 ** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
      Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
      Messages:  created: 2   present: 2   in FES: 2
-** Event #3031480   t=6002.676594753665   Elapsed: 0.304524s (0m 00s)
-     Speed:     ev/sec=9.95504e+06   simsec/sec=19712.1   ev/simsec=505.021
+** Event #3031316   t=6006.648462853899   Elapsed: 0.281633s (0m 00s)
+     Speed:     ev/sec=1.07636e+07   simsec/sec=21328.5   ev/simsec=504.66
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=6006.648462853899s, event #3031316
+
+Calling finish() at end of Run #4...
+
+Preparing for running configuration Baseline, run #5...
+Assigned runID=Baseline-5-20260929-10:48:33-67
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.2e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3031221   t=6001.963903738733   Elapsed: 0.280486s (0m 00s)
+     Speed:     ev/sec=1.08076e+07   simsec/sec=21399.7   ev/simsec=505.038
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=6001.963903738733s, event #3031221
+
+Calling finish() at end of Run #5...
+
+Preparing for running configuration Baseline, run #6...
+Assigned runID=Baseline-6-20260929-10:48:33-67
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.6e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3031706   t=6002.190034143548   Elapsed: 0.279459s (0m 00s)
+     Speed:     ev/sec=1.08492e+07   simsec/sec=21479.3   ev/simsec=505.1
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=6002.190034143548s, event #3031706
+
+Calling finish() at end of Run #6...
+
+Preparing for running configuration Baseline, run #7...
+Assigned runID=Baseline-7-20260929-10:48:33-67
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 5e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3032052   t=6003.719034539854   Elapsed: 0.279854s (0m 00s)
+     Speed:     ev/sec=1.08346e+07   simsec/sec=21453.5   ev/simsec=505.029
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=6003.719034539854s, event #3032052
+
+Calling finish() at end of Run #7...
+
+Preparing for running configuration Baseline, run #8...
+Assigned runID=Baseline-8-20260929-10:48:33-67
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3031718   t=6000.08547820372   Elapsed: 0.281416s (0m 00s)
+     Speed:     ev/sec=1.07733e+07   simsec/sec=21321.5   ev/simsec=505.279
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=6000.08547820372s, event #3031718
+
+Calling finish() at end of Run #8...
+
+Preparing for running configuration Baseline, run #9...
+Assigned runID=Baseline-9-20260929-10:48:34-67
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.9e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3031480   t=6002.676594753665   Elapsed: 0.285792s (0m 00s)
+     Speed:     ev/sec=1.06081e+07   simsec/sec=21005.3   ev/simsec=505.021
      Messages:  created: 2   present: 2   in FES: 1
 
 <!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=6002.676594753665s, event #3031480
