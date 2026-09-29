@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <cmath>
 #include <limits>
+#include <string>
 
 using namespace omnetpp;
 
@@ -203,6 +204,12 @@ void ScheduledAccessQueue::beginCollection()
     collectionStart = simTime();
     lastAreaUpdate = simTime();
     systemSizeAreaSeconds = 0.0;
+    type1ServiceAreaSeconds = 0.0;
+    type2ServiceAreaSeconds = 0.0;
+    fullType1AreaSeconds = 0.0;
+    fullType2AreaSeconds = 0.0;
+    nonFullAreaSeconds = 0.0;
+    fullType1PhaseAreaSeconds.assign(effectiveL, 0.0);
 
     measuredArrivals = 0;
     measuredBlockedArrivals = 0;
@@ -217,7 +224,29 @@ void ScheduledAccessQueue::updateSystemSizeArea()
         return;
 
     const simtime_t dt = simTime() - lastAreaUpdate;
-    systemSizeAreaSeconds += currentType1SystemSize() * dt.dbl();
+    const double dtSeconds = dt.dbl();
+    const long n = currentType1SystemSize();
+    systemSizeAreaSeconds += n * dtSeconds;
+
+    if (serviceMode == ServiceMode::TYPE1 && hasCurrentPacket) {
+        type1ServiceAreaSeconds += dtSeconds;
+        if (n == r + 1) {
+            fullType1AreaSeconds += dtSeconds;
+            if (servedSinceType2 >= 0 && servedSinceType2 < effectiveL)
+                fullType1PhaseAreaSeconds[servedSinceType2] += dtSeconds;
+        }
+        else {
+            nonFullAreaSeconds += dtSeconds;
+        }
+    }
+    else if (serviceMode == ServiceMode::TYPE2) {
+        type2ServiceAreaSeconds += dtSeconds;
+        if (static_cast<int>(waitingQueue.size()) == r)
+            fullType2AreaSeconds += dtSeconds;
+        else
+            nonFullAreaSeconds += dtSeconds;
+    }
+
     lastAreaUpdate = simTime();
 }
 
@@ -257,6 +286,7 @@ void ScheduledAccessQueue::finish()
     recordScalar("lambda_per_ms", lambdaPerMs);
     recordScalar("lambda_sat_per_ms", lambdaSatPerMs);
     recordScalar("rho_sat", rhoSat);
+    recordScalar("load_factor_rho_over_rho_sat", rhoSat > 0.0 ? rho / rhoSat : std::numeric_limits<double>::quiet_NaN());
     recordScalar("mean_type1_service_ms", meanType1ServiceTime.dbl() * 1000.0);
     recordScalar("type2_service_ms", type2ServiceTime.dbl() * 1000.0);
     recordScalar("warmup_type1_completions", static_cast<double>(warmupCompletedPackets));
@@ -295,4 +325,17 @@ void ScheduledAccessQueue::finish()
     recordScalar("little_vs_direct_relative_error", meanDelayMs > 0.0
         ? std::fabs(littleDelayMs / meanDelayMs - 1.0)
         : std::numeric_limits<double>::quiet_NaN());
+
+    recordScalar("type1_service_fraction", type1ServiceAreaSeconds / observationSeconds);
+    recordScalar("type2_service_fraction", type2ServiceAreaSeconds / observationSeconds);
+    recordScalar("full_type1_fraction", fullType1AreaSeconds / observationSeconds);
+    recordScalar("full_type2_fraction", fullType2AreaSeconds / observationSeconds);
+    recordScalar("nonfull_state_fraction", nonFullAreaSeconds / observationSeconds);
+    recordScalar("saturated_full_state_fraction",
+        (fullType1AreaSeconds + fullType2AreaSeconds) / observationSeconds);
+
+    for (int l = 0; l < effectiveL; ++l) {
+        const std::string scalarName = "full_type1_phase_" + std::to_string(l) + "_fraction";
+        recordScalar(scalarName.c_str(), fullType1PhaseAreaSeconds[l] / observationSeconds);
+    }
 }
