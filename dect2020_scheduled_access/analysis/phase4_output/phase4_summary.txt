@@ -1,0 +1,12 @@
+PHASE 4 ANALYTICAL DIMENSIONING
+===============================
+Figure B: D=2..24, r=30, rho in [0,0.55], blocking map and 1/5/10/50% contours.
+Figure C: D=10, r=1..50, normalized loads 0.8, 1.0, 1.2.
+
+Selected operating points (r=30):
+D= 2, L=12, rho_sat=0.500000, rho(pi<=1%)=0.483730, rho(pi<=5%)=0.522513, rho(pi<=10%)=0.555006
+D= 6, L= 4, rho_sat=0.166667, rho(pi<=1%)=0.163521, rho(pi<=5%)=0.174834, rho(pi<=10%)=0.185136
+D=10, L= 2, rho_sat=0.084746, rho(pi<=1%)=0.083349, rho(pi<=5%)=0.088948, rho(pi<=10%)=0.094144
+D=13, L= 1, rho_sat=0.043189, rho(pi<=1%)=0.042517, rho(pi<=5%)=0.045340, rho(pi<=10%)=0.047980
+D=20, L= 1, rho_sat=0.042017, rho(pi<=1%)=0.041363, rho(pi<=5%)=0.044109, rho(pi<=10%)=0.046677
+D=24, L= 1, rho_sat=0.041667, rho(pi<=1%)=0.041018, rho(pi<=5%)=0.043741, rho(pi<=10%)=0.046288
