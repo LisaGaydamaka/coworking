@@ -89,3 +89,28 @@ Verified run:
 - compact scalar outputs are committed under `ci_results/baseline_metrics.csv` and `ci_results/phase2_metrics.csv`.
 
 During CI verification, the DECT-derived `L` calculation was corrected to use the unquantized NED parameter values before converting them to `SimTime`. This prevents an integer ratio such as `D=6 -> L=4` from being rounded down because of simulation-time quantization.
+
+
+## Phase 3 high-load audit
+
+The high-load theorem and Corollary 1 were independently checked in OMNeT++ in GitHub Actions run #38.
+
+Audit grid:
+
+- (D = 6,10,20);
+- (r = 5,30,50);
+- (ho/ho_{sat} = 5,10,20,50);
+- 3 repetitions per point;
+- 20,000 warm-up type-1 completions;
+- 50,000 measured type-1 completions.
+
+At normalized load 50, the mean/max absolute relative errors against the analytical high-load limits were 0.171%/0.413% for mean delay and 0.176%/0.429% for mean type-1 population. Mean/max throughput-limit errors were 0.063%/0.116%.
+
+The complete audit and reproducible files are in:
+
+- `PHASE3_HIGHLOAD_AUDIT.md`;
+- `ci_results/phase3_highload_metrics.csv`;
+- `ci_results/phase3_highload_scalars.csv`;
+- `run_phase3_highload.sh`.
+
+All new simulation work for the manuscript should use this OMNeT++ implementation; the older Python DES is retained only as a legacy/reference artifact.
