@@ -27,6 +27,20 @@ source=m.load_included_source()
 long_raw=m.build_long_table(source)
 final_std,stage3_stats=m.fit_transform_stage3(long_raw,fit_mouse_ids=None,random_state=m.IMPUTATION_SEED)
 errors=list(stage3_stats.get("errors",[]))
+
+# Compact training-ready table used by the final model:
+# identifiers + state metadata + exactly the 30 standardized MODEL_FEATURES.
+# The five deterministic derived QC features and all preprocessing/QC helper
+# columns are intentionally excluded. Death rows keep blank feature values;
+# all living rows must be complete after imputation.
+training_cols=["mouse_id","group","week","status"]+m.MODEL_FEATURES
+training_ready=final_std.loc[:,training_cols].copy()
+living_training=training_ready["status"].isin(["observed","imputed"])
+if len(training_ready) != 162:
+    errors.append(f"training_ready row count {len(training_ready)} != 162")
+if training_ready.loc[living_training,m.MODEL_FEATURES].isna().any().any():
+    errors.append("training_ready contains missing MODEL_FEATURES among living rows")
+
 states,xbar,state_stats=m.build_experimental_states(final_std)
 errors.extend(m.validate_full_stage4(states,xbar,state_stats))
 
@@ -42,6 +56,7 @@ errors.extend(validation_errors)
 
 pd.DataFrame({"feature":m.MODEL_FEATURES,"weight":weights}).to_csv(OUT/"weights.csv",index=False)
 enri.to_csv(OUT/"enri.csv",index=False)
+training_ready.to_csv(OUT/"training_ready_standardized.csv",index=False)
 
 group=pd.DataFrame([{
     "state":label,"group":states[label]["group"],"week":states[label]["week"],
