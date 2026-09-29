@@ -1,6 +1,6 @@
 # DECT-2020 NR scheduled-access simulator for OMNeT++
 
-This directory contains an independent discrete-event implementation of the canonical scheduled-access queueing model used in the DECT-2020 NR manuscript. It is intentionally implemented in C++/NED rather than by translating the analytical transition matrix, so it can be used as an independent validation model.
+This directory contains the OMNeT++ discrete-event implementation of the canonical scheduled-access queueing model used in the DECT-2020 NR manuscript. It is implemented in C++/NED and is the simulation source used for all manuscript validation results.
 
 ## Model implemented
 
@@ -55,7 +55,7 @@ The `omnetpp.ini` file contains three configurations (`Phase2_D6`, `Phase2_D10`,
 - `D = 6, 10, 20`;
 - `r = 5, 20, 50`;
 - load at `0.5`, `1.0`, and `1.5` times the corresponding saturation threshold;
-- 10 independent repetitions per parameter point.
+- 10 separate repetitions per parameter point.
 
 Each run uses 200,000 completed type-1 packets for warm-up and then collects 1,000,000 measured type-1 completions.
 
@@ -71,10 +71,6 @@ This uses `opp_scavetool` to create `simulations/exported/phase2_scalars.csv` fr
 
 The `TailExample` configuration enables vector output for packet sojourn times. It is separate from the Phase-2 grid because vector recording substantially increases result-file size. It can later be used for P95/P99/P99.9 analysis.
 
-## Important distinction from the old Python simulator
-
-This OMNeT++ implementation follows the frozen canonical model from the mathematical audit. It is not a line-by-line port of the original `sim.py`, whose transition logic was one of the reasons for re-validating the model.
-
 ## Current verification status
 
 The project has been compiled and executed successfully in GitHub Actions with the official `ghcr.io/omnetpp/omnetpp:u24.04-6.3.0` image.
@@ -83,7 +79,7 @@ Verified run:
 
 - GitHub Actions run #36;
 - build completed successfully;
-- Baseline: 10 independent repetitions completed;
+- Baseline: 10 separate repetitions completed;
 - full Phase-2 grid: 270 runs completed (90 runs for each of `D=6`, `D=10`, and `D=20`);
 - each Phase-2 run uses 200,000 completed type-1 packets for warm-up and 1,000,000 measured type-1 completions;
 - compact scalar outputs are committed under `ci_results/baseline_metrics.csv` and `ci_results/phase2_metrics.csv`.
@@ -93,7 +89,7 @@ During CI verification, the DECT-derived `L` calculation was corrected to use th
 
 ## Phase 3 high-load audit
 
-The high-load theorem and Corollary 1 were independently checked in OMNeT++ in GitHub Actions run #38.
+The high-load theorem and Corollary 1 were separately checked in OMNeT++ in GitHub Actions run #38.
 
 Audit grid:
 
