@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - '**/.run'
+      - '**/.run-reorg-disabled'
 
 permissions:
   contents: write
