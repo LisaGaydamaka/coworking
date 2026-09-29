@@ -77,4 +77,15 @@ This OMNeT++ implementation follows the frozen canonical model from the mathemat
 
 ## Current verification status
 
-The files have been structured against the OMNeT++ 6.x documented C++/NED interfaces. The environment used to prepare this repository does not contain an OMNeT++ compiler/runtime, so the project still needs one compilation/run in an OMNeT++ installation before its numerical output can replace the existing independent DES results in the manuscript.
+The project has been compiled and executed successfully in GitHub Actions with the official `ghcr.io/omnetpp/omnetpp:u24.04-6.3.0` image.
+
+Verified run:
+
+- GitHub Actions run #36;
+- build completed successfully;
+- Baseline: 10 independent repetitions completed;
+- full Phase-2 grid: 270 runs completed (90 runs for each of `D=6`, `D=10`, and `D=20`);
+- each Phase-2 run uses 200,000 completed type-1 packets for warm-up and 1,000,000 measured type-1 completions;
+- compact scalar outputs are committed under `ci_results/baseline_metrics.csv` and `ci_results/phase2_metrics.csv`.
+
+During CI verification, the DECT-derived `L` calculation was corrected to use the unquantized NED parameter values before converting them to `SimTime`. This prevents an integer ratio such as `D=6 -> L=4` from being rounded down because of simulation-time quantization.
