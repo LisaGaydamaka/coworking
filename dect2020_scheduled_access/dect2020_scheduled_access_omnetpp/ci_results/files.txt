@@ -10,3 +10,7 @@ phase2_grid_run.log 224037 bytes
 phase2_grid_status.txt 17 bytes
 phase2_metrics.csv 313165 bytes
 phase2_scalars.csv 1830713 bytes
+phase3_highload_metrics.csv 343371 bytes
+phase3_highload_run.log 115411 bytes
+phase3_highload_scalars.csv 1121045 bytes
+phase3_highload_status.txt 21 bytes

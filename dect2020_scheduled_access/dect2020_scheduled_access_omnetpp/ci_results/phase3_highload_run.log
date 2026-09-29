@@ -1,0 +1,2569 @@
+=== Phase3_D6 ===
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.3.0, build: 251110-bb3d6a4731, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from /workspace/src:  2
+
+Preparing for running configuration Phase3_D6, run #0...
+Scenario: $r=5, $rho=0.833333333333, $repetition=0
+Assigned runID=Phase3_D6-0-20260929-13:03:12-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #438108   t=175.25305054437   Elapsed: 0.056285s (0m 00s)
+     Speed:     ev/sec=7.78554e+06   simsec/sec=3114.39   ev/simsec=2499.86
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.25305054437s, event #438108
+
+Calling finish() at end of Run #0...
+
+Preparing for running configuration Phase3_D6, run #1...
+Scenario: $r=5, $rho=0.833333333333, $repetition=1
+Assigned runID=Phase3_D6-1-20260929-13:03:12-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #437596   t=175.051496524614   Elapsed: 0.046932s (0m 00s)
+     Speed:     ev/sec=9.32543e+06   simsec/sec=3730.45   ev/simsec=2499.82
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.051496524614s, event #437596
+
+Calling finish() at end of Run #1...
+
+Preparing for running configuration Phase3_D6, run #2...
+Scenario: $r=5, $rho=0.833333333333, $repetition=2
+Assigned runID=Phase3_D6-2-20260929-13:03:12-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #437788   t=175.010884374289   Elapsed: 0.048243s (0m 00s)
+     Speed:     ev/sec=9.07596e+06   simsec/sec=3628.21   ev/simsec=2501.5
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.010884374289s, event #437788
+
+Calling finish() at end of Run #2...
+
+Preparing for running configuration Phase3_D6, run #3...
+Scenario: $r=5, $rho=1.666666666667, $repetition=0
+Assigned runID=Phase3_D6-3-20260929-13:03:12-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #787554   t=174.937725668792   Elapsed: 0.083594s (0m 00s)
+     Speed:     ev/sec=9.42185e+06   simsec/sec=2092.85   ev/simsec=4501.92
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=174.937725668792s, event #787554
+
+Calling finish() at end of Run #3...
+
+Preparing for running configuration Phase3_D6, run #4...
+Scenario: $r=5, $rho=1.666666666667, $repetition=1
+Assigned runID=Phase3_D6-4-20260929-13:03:12-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.8e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #788081   t=175.133939748299   Elapsed: 0.091283s (0m 00s)
+     Speed:     ev/sec=8.6366e+06   simsec/sec=1919.3   ev/simsec=4499.88
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.133939748299s, event #788081
+
+Calling finish() at end of Run #4...
+
+Preparing for running configuration Phase3_D6, run #5...
+Scenario: $r=5, $rho=1.666666666667, $repetition=2
+Assigned runID=Phase3_D6-5-20260929-13:03:12-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.8e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #789157   t=175.077333669627   Elapsed: 0.083876s (0m 00s)
+     Speed:     ev/sec=9.4112e+06   simsec/sec=2087.91   ev/simsec=4507.48
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.077333669627s, event #789157
+
+Calling finish() at end of Run #5...
+
+Preparing for running configuration Phase3_D6, run #6...
+Scenario: $r=5, $rho=3.333333333333, $repetition=0
+Assigned runID=Phase3_D6-6-20260929-13:03:12-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.5e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #1487520   t=175.175237405102   Elapsed: 0.156106s (0m 00s)
+     Speed:     ev/sec=9.53074e+06   simsec/sec=1122.37   ev/simsec=8491.61
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.175237405102s, event #1487520
+
+Calling finish() at end of Run #6...
+
+Preparing for running configuration Phase3_D6, run #7...
+Scenario: $r=5, $rho=3.333333333333, $repetition=1
+Assigned runID=Phase3_D6-7-20260929-13:03:13-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #1488659   t=175.198602407109   Elapsed: 0.15633s (0m 00s)
+     Speed:     ev/sec=9.52309e+06   simsec/sec=1120.76   ev/simsec=8496.98
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.198602407109s, event #1488659
+
+Calling finish() at end of Run #7...
+
+Preparing for running configuration Phase3_D6, run #8...
+Scenario: $r=5, $rho=3.333333333333, $repetition=2
+Assigned runID=Phase3_D6-8-20260929-13:03:13-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #1487825   t=174.860423852869   Elapsed: 0.157277s (0m 00s)
+     Speed:     ev/sec=9.46044e+06   simsec/sec=1111.86   ev/simsec=8508.65
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=174.860423852869s, event #1487825
+
+Calling finish() at end of Run #8...
+
+Preparing for running configuration Phase3_D6, run #9...
+Scenario: $r=5, $rho=8.333333333333, $repetition=0
+Assigned runID=Phase3_D6-9-20260929-13:03:13-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3586580   t=175.130730172151   Elapsed: 0.377595s (0m 00s)
+     Speed:     ev/sec=9.49871e+06   simsec/sec=463.817   ev/simsec=20479.5
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.130730172151s, event #3586580
+
+Calling finish() at end of Run #9...
+
+Preparing for running configuration Phase3_D6, run #10...
+Scenario: $r=5, $rho=8.333333333333, $repetition=1
+Assigned runID=Phase3_D6-10-20260929-13:03:13-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3585884   t=175.023411284714   Elapsed: 0.373998s (0m 00s)
+     Speed:     ev/sec=9.58823e+06   simsec/sec=467.992   ev/simsec=20488
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.023411284714s, event #3585884
+
+Calling finish() at end of Run #10...
+
+Preparing for running configuration Phase3_D6, run #11...
+Scenario: $r=5, $rho=8.333333333333, $repetition=2
+Assigned runID=Phase3_D6-11-20260929-13:03:14-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3589121   t=175.055963981107   Elapsed: 0.375686s (0m 00s)
+     Speed:     ev/sec=9.55372e+06   simsec/sec=465.973   ev/simsec=20502.7
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.055963981107s, event #3589121
+
+Calling finish() at end of Run #11...
+
+Preparing for running configuration Phase3_D6, run #12...
+Scenario: $r=30, $rho=0.833333333333, $repetition=0
+Assigned runID=Phase3_D6-12-20260929-13:03:14-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.1e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #438267   t=175.315381561633   Elapsed: 0.04676s (0m 00s)
+     Speed:     ev/sec=9.3775e+06   simsec/sec=3751.17   ev/simsec=2499.89
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.315381561633s, event #438267
+
+Calling finish() at end of Run #12...
+
+Preparing for running configuration Phase3_D6, run #13...
+Scenario: $r=30, $rho=0.833333333333, $repetition=1
+Assigned runID=Phase3_D6-13-20260929-13:03:14-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #437763   t=175.123081589515   Elapsed: 0.046786s (0m 00s)
+     Speed:     ev/sec=9.35831e+06   simsec/sec=3743.71   ev/simsec=2499.75
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.123081589515s, event #437763
+
+Calling finish() at end of Run #13...
+
+Preparing for running configuration Phase3_D6, run #14...
+Scenario: $r=30, $rho=0.833333333333, $repetition=2
+Assigned runID=Phase3_D6-14-20260929-13:03:14-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #437934   t=175.073035803039   Elapsed: 0.047268s (0m 00s)
+     Speed:     ev/sec=9.2657e+06   simsec/sec=3704.15   ev/simsec=2501.44
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.073035803039s, event #437934
+
+Calling finish() at end of Run #14...
+
+Preparing for running configuration Phase3_D6, run #15...
+Scenario: $r=30, $rho=1.666666666667, $repetition=0
+Assigned runID=Phase3_D6-15-20260929-13:03:14-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #787868   t=175.007369517653   Elapsed: 0.08333s (0m 00s)
+     Speed:     ev/sec=9.4557e+06   simsec/sec=2100.37   ev/simsec=4501.91
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.007369517653s, event #787868
+
+Calling finish() at end of Run #15...
+
+Preparing for running configuration Phase3_D6, run #16...
+Scenario: $r=30, $rho=1.666666666667, $repetition=1
+Assigned runID=Phase3_D6-16-20260929-13:03:14-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.2e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #788389   t=175.20591982143   Elapsed: 0.083901s (0m 00s)
+     Speed:     ev/sec=9.39979e+06   simsec/sec=2088.94   ev/simsec=4499.79
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.20591982143s, event #788389
+
+Calling finish() at end of Run #16...
+
+Preparing for running configuration Phase3_D6, run #17...
+Scenario: $r=30, $rho=1.666666666667, $repetition=2
+Assigned runID=Phase3_D6-17-20260929-13:03:14-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #789420   t=175.140196684582   Elapsed: 0.084002s (0m 00s)
+     Speed:     ev/sec=9.39842e+06   simsec/sec=2085.12   ev/simsec=4507.36
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.140196684582s, event #789420
+
+Calling finish() at end of Run #17...
+
+Preparing for running configuration Phase3_D6, run #18...
+Scenario: $r=30, $rho=3.333333333333, $repetition=0
+Assigned runID=Phase3_D6-18-20260929-13:03:14-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #1488097   t=175.24239775097   Elapsed: 0.156098s (0m 00s)
+     Speed:     ev/sec=9.53364e+06   simsec/sec=1122.71   ev/simsec=8491.65
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.24239775097s, event #1488097
+
+Calling finish() at end of Run #18...
+
+Preparing for running configuration Phase3_D6, run #19...
+Scenario: $r=30, $rho=3.333333333333, $repetition=1
+Assigned runID=Phase3_D6-19-20260929-13:03:15-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #1489220   t=175.262374385555   Elapsed: 0.158063s (0m 00s)
+     Speed:     ev/sec=9.42216e+06   simsec/sec=1108.87   ev/simsec=8497.1
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.262374385555s, event #1489220
+
+Calling finish() at end of Run #19...
+
+Preparing for running configuration Phase3_D6, run #20...
+Scenario: $r=30, $rho=3.333333333333, $repetition=2
+Assigned runID=Phase3_D6-20-20260929-13:03:15-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #1488407   t=174.92889648245   Elapsed: 0.158778s (0m 00s)
+     Speed:     ev/sec=9.37467e+06   simsec/sec=1101.78   ev/simsec=8508.66
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=174.92889648245s, event #1488407
+
+Calling finish() at end of Run #20...
+
+Preparing for running configuration Phase3_D6, run #21...
+Scenario: $r=30, $rho=8.333333333333, $repetition=0
+Assigned runID=Phase3_D6-21-20260929-13:03:15-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3587811   t=175.191477639002   Elapsed: 0.376832s (0m 00s)
+     Speed:     ev/sec=9.52124e+06   simsec/sec=464.918   ev/simsec=20479.4
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.191477639002s, event #3587811
+
+Calling finish() at end of Run #21...
+
+Preparing for running configuration Phase3_D6, run #22...
+Scenario: $r=30, $rho=8.333333333333, $repetition=1
+Assigned runID=Phase3_D6-22-20260929-13:03:15-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.9e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3587082   t=175.08303714239   Elapsed: 0.375032s (0m 00s)
+     Speed:     ev/sec=9.56535e+06   simsec/sec=466.878   ev/simsec=20487.9
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.08303714239s, event #3587082
+
+Calling finish() at end of Run #22...
+
+Preparing for running configuration Phase3_D6, run #23...
+Scenario: $r=30, $rho=8.333333333333, $repetition=2
+Assigned runID=Phase3_D6-23-20260929-13:03:16-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3590440   t=175.120320727842   Elapsed: 0.37691s (0m 00s)
+     Speed:     ev/sec=9.52622e+06   simsec/sec=464.632   ev/simsec=20502.7
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.120320727842s, event #3590440
+
+Calling finish() at end of Run #23...
+
+Preparing for running configuration Phase3_D6, run #24...
+Scenario: $r=50, $rho=0.833333333333, $repetition=0
+Assigned runID=Phase3_D6-24-20260929-13:03:16-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #438391   t=175.366379370485   Elapsed: 0.046598s (0m 00s)
+     Speed:     ev/sec=9.40935e+06   simsec/sec=3763.95   ev/simsec=2499.86
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.366379370485s, event #438391
+
+Calling finish() at end of Run #24...
+
+Preparing for running configuration Phase3_D6, run #25...
+Scenario: $r=50, $rho=0.833333333333, $repetition=1
+Assigned runID=Phase3_D6-25-20260929-13:03:16-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #437882   t=175.171661216268   Elapsed: 0.046908s (0m 00s)
+     Speed:     ev/sec=9.3365e+06   simsec/sec=3735   ev/simsec=2499.73
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.171661216268s, event #437882
+
+Calling finish() at end of Run #25...
+
+Preparing for running configuration Phase3_D6, run #26...
+Scenario: $r=50, $rho=0.833333333333, $repetition=2
+Assigned runID=Phase3_D6-26-20260929-13:03:16-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #438046   t=175.126333908735   Elapsed: 0.046541s (0m 00s)
+     Speed:     ev/sec=9.41306e+06   simsec/sec=3763.24   ev/simsec=2501.32
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.126333908735s, event #438046
+
+Calling finish() at end of Run #26...
+
+Preparing for running configuration Phase3_D6, run #27...
+Scenario: $r=50, $rho=1.666666666667, $repetition=0
+Assigned runID=Phase3_D6-27-20260929-13:03:16-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.6e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #788078   t=175.060475032979   Elapsed: 0.083806s (0m 00s)
+     Speed:     ev/sec=9.40708e+06   simsec/sec=2089.65   ev/simsec=4501.75
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.060475032979s, event #788078
+
+Calling finish() at end of Run #27...
+
+Preparing for running configuration Phase3_D6, run #28...
+Scenario: $r=50, $rho=1.666666666667, $repetition=1
+Assigned runID=Phase3_D6-28-20260929-13:03:16-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #788626   t=175.259668348952   Elapsed: 0.083353s (0m 00s)
+     Speed:     ev/sec=9.46219e+06   simsec/sec=2102.82   ev/simsec=4499.77
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.259668348952s, event #788626
+
+Calling finish() at end of Run #28...
+
+Preparing for running configuration Phase3_D6, run #29...
+Scenario: $r=50, $rho=1.666666666667, $repetition=2
+Assigned runID=Phase3_D6-29-20260929-13:03:16-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.1e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #789658   t=175.188788433627   Elapsed: 0.083963s (0m 00s)
+     Speed:     ev/sec=9.40763e+06   simsec/sec=2087.12   ev/simsec=4507.47
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.188788433627s, event #789658
+
+Calling finish() at end of Run #29...
+
+Preparing for running configuration Phase3_D6, run #30...
+Scenario: $r=50, $rho=3.333333333333, $repetition=0
+Assigned runID=Phase3_D6-30-20260929-13:03:16-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.5e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #1488497   t=175.289516398298   Elapsed: 0.156384s (0m 00s)
+     Speed:     ev/sec=9.52004e+06   simsec/sec=1121.11   ev/simsec=8491.65
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.289516398298s, event #1488497
+
+Calling finish() at end of Run #30...
+
+Preparing for running configuration Phase3_D6, run #31...
+Scenario: $r=50, $rho=3.333333333333, $repetition=1
+Assigned runID=Phase3_D6-31-20260929-13:03:17-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.6e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #1489646   t=175.312861737336   Elapsed: 0.157041s (0m 00s)
+     Speed:     ev/sec=9.48759e+06   simsec/sec=1116.57   ev/simsec=8497.07
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.312861737336s, event #1489646
+
+Calling finish() at end of Run #31...
+
+Preparing for running configuration Phase3_D6, run #32...
+Scenario: $r=50, $rho=3.333333333333, $repetition=2
+Assigned runID=Phase3_D6-32-20260929-13:03:17-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #1488791   t=174.975976858262   Elapsed: 0.157081s (0m 00s)
+     Speed:     ev/sec=9.4784e+06   simsec/sec=1113.99   ev/simsec=8508.55
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=174.975976858262s, event #1488791
+
+Calling finish() at end of Run #32...
+
+Preparing for running configuration Phase3_D6, run #33...
+Scenario: $r=50, $rho=8.333333333333, $repetition=0
+Assigned runID=Phase3_D6-33-20260929-13:03:17-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3588801   t=175.242255213802   Elapsed: 0.376193s (0m 00s)
+     Speed:     ev/sec=9.54001e+06   simsec/sec=465.841   ev/simsec=20479.1
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.242255213802s, event #3588801
+
+Calling finish() at end of Run #33...
+
+Preparing for running configuration Phase3_D6, run #34...
+Scenario: $r=50, $rho=8.333333333333, $repetition=1
+Assigned runID=Phase3_D6-34-20260929-13:03:17-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3588103   t=175.132812784634   Elapsed: 0.372717s (0m 00s)
+     Speed:     ev/sec=9.62709e+06   simsec/sec=469.892   ev/simsec=20487.9
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.132812784634s, event #3588103
+
+Calling finish() at end of Run #34...
+
+Preparing for running configuration Phase3_D6, run #35...
+Scenario: $r=50, $rho=8.333333333333, $repetition=2
+Assigned runID=Phase3_D6-35-20260929-13:03:18-72
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3591369   t=175.166609022889   Elapsed: 0.375957s (0m 00s)
+     Speed:     ev/sec=9.55283e+06   simsec/sec=465.933   ev/simsec=20502.6
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=175.166609022889s, event #3591369
+
+Calling finish() at end of Run #35...
+
+Run statistics: total 36, successful 36
+
+End.
+=== Phase3_D10 ===
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.3.0, build: 251110-bb3d6a4731, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from /workspace/src:  2
+
+Preparing for running configuration Phase3_D10, run #0...
+Scenario: $r=5, $rho=0.423728813559, $repetition=0
+Assigned runID=Phase3_D10-0-20260929-13:03:18-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #455025   t=344.324318415973   Elapsed: 0.050348s (0m 00s)
+     Speed:     ev/sec=9.03939e+06   simsec/sec=6840.24   ev/simsec=1321.5
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.324318415973s, event #455025
+
+Calling finish() at end of Run #0...
+
+Preparing for running configuration Phase3_D10, run #1...
+Scenario: $r=5, $rho=0.423728813559, $repetition=1
+Assigned runID=Phase3_D10-1-20260929-13:03:18-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.2e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #454414   t=344.052536016816   Elapsed: 0.048162s (0m 00s)
+     Speed:     ev/sec=9.44001e+06   simsec/sec=7147.36   ev/simsec=1320.77
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.052536016816s, event #454414
+
+Calling finish() at end of Run #1...
+
+Preparing for running configuration Phase3_D10, run #2...
+Scenario: $r=5, $rho=0.423728813559, $repetition=2
+Assigned runID=Phase3_D10-2-20260929-13:03:18-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #455593   t=344.292469510425   Elapsed: 0.048136s (0m 00s)
+     Speed:     ev/sec=9.46588e+06   simsec/sec=7153.38   ev/simsec=1323.27
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.292469510425s, event #455593
+
+Calling finish() at end of Run #2...
+
+Preparing for running configuration Phase3_D10, run #3...
+Scenario: $r=5, $rho=0.847457627119, $repetition=0
+Assigned runID=Phase3_D10-3-20260929-13:03:18-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #805073   t=344.092133399766   Elapsed: 0.085407s (0m 00s)
+     Speed:     ev/sec=9.42731e+06   simsec/sec=4029.27   ev/simsec=2339.71
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.092133399766s, event #805073
+
+Calling finish() at end of Run #3...
+
+Preparing for running configuration Phase3_D10, run #4...
+Scenario: $r=5, $rho=0.847457627119, $repetition=1
+Assigned runID=Phase3_D10-4-20260929-13:03:18-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #804941   t=344.210993523572   Elapsed: 0.085291s (0m 00s)
+     Speed:     ev/sec=9.43869e+06   simsec/sec=4036.2   ev/simsec=2338.51
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.210993523572s, event #804941
+
+Calling finish() at end of Run #4...
+
+Preparing for running configuration Phase3_D10, run #5...
+Scenario: $r=5, $rho=0.847457627119, $repetition=2
+Assigned runID=Phase3_D10-5-20260929-13:03:18-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.5e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #805556   t=344.03490734226   Elapsed: 0.085228s (0m 00s)
+     Speed:     ev/sec=9.45522e+06   simsec/sec=4038.1   ev/simsec=2341.5
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.03490734226s, event #805556
+
+Calling finish() at end of Run #5...
+
+Preparing for running configuration Phase3_D10, run #6...
+Scenario: $r=5, $rho=1.694915254237, $repetition=0
+Assigned runID=Phase3_D10-6-20260929-13:03:18-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.6e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #1503139   t=344.163371311832   Elapsed: 0.158817s (0m 00s)
+     Speed:     ev/sec=9.46651e+06   simsec/sec=2167.48   ev/simsec=4367.52
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.163371311832s, event #1503139
+
+Calling finish() at end of Run #6...
+
+Preparing for running configuration Phase3_D10, run #7...
+Scenario: $r=5, $rho=1.694915254237, $repetition=1
+Assigned runID=Phase3_D10-7-20260929-13:03:19-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #1504661   t=344.261014537242   Elapsed: 0.158994s (0m 00s)
+     Speed:     ev/sec=9.46411e+06   simsec/sec=2165.35   ev/simsec=4370.7
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.261014537242s, event #1504661
+
+Calling finish() at end of Run #7...
+
+Preparing for running configuration Phase3_D10, run #8...
+Scenario: $r=5, $rho=1.694915254237, $repetition=2
+Assigned runID=Phase3_D10-8-20260929-13:03:19-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #1507047   t=344.211635122847   Elapsed: 0.164214s (0m 00s)
+     Speed:     ev/sec=9.17784e+06   simsec/sec=2096.23   ev/simsec=4378.26
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.211635122847s, event #1507047
+
+Calling finish() at end of Run #8...
+
+Preparing for running configuration Phase3_D10, run #9...
+Scenario: $r=5, $rho=4.237288135593, $repetition=0
+Assigned runID=Phase3_D10-9-20260929-13:03:19-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3.7e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3602003   t=344.229678906116   Elapsed: 0.376934s (0m 00s)
+     Speed:     ev/sec=9.55712e+06   simsec/sec=913.338   ev/simsec=10464
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.229678906116s, event #3602003
+
+Calling finish() at end of Run #9...
+
+Preparing for running configuration Phase3_D10, run #10...
+Scenario: $r=5, $rho=4.237288135593, $repetition=1
+Assigned runID=Phase3_D10-10-20260929-13:03:19-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.6e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3604181   t=344.274409458976   Elapsed: 0.382608s (0m 00s)
+     Speed:     ev/sec=9.4208e+06   simsec/sec=899.882   ev/simsec=10468.9
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.274409458976s, event #3604181
+
+Calling finish() at end of Run #10...
+
+Preparing for running configuration Phase3_D10, run #11...
+Scenario: $r=5, $rho=4.237288135593, $repetition=2
+Assigned runID=Phase3_D10-11-20260929-13:03:20-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3607253   t=344.319172166301   Elapsed: 0.378177s (0m 00s)
+     Speed:     ev/sec=9.53873e+06   simsec/sec=910.49   ev/simsec=10476.5
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.319172166301s, event #3607253
+
+Calling finish() at end of Run #11...
+
+Preparing for running configuration Phase3_D10, run #12...
+Scenario: $r=30, $rho=0.423728813559, $repetition=0
+Assigned runID=Phase3_D10-12-20260929-13:03:20-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.8e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #455174   t=344.445376834956   Elapsed: 0.04887s (0m 00s)
+     Speed:     ev/sec=9.32027e+06   simsec/sec=7052.96   ev/simsec=1321.47
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.445376834956s, event #455174
+
+Calling finish() at end of Run #12...
+
+Preparing for running configuration Phase3_D10, run #13...
+Scenario: $r=30, $rho=0.423728813559, $repetition=1
+Assigned runID=Phase3_D10-13-20260929-13:03:20-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #454584   t=344.177326524655   Elapsed: 0.047805s (0m 00s)
+     Speed:     ev/sec=9.51092e+06   simsec/sec=7200.96   ev/simsec=1320.78
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.177326524655s, event #454584
+
+Calling finish() at end of Run #13...
+
+Preparing for running configuration Phase3_D10, run #14...
+Scenario: $r=30, $rho=0.423728813559, $repetition=2
+Assigned runID=Phase3_D10-14-20260929-13:03:20-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #455734   t=344.411608379465   Elapsed: 0.048593s (0m 00s)
+     Speed:     ev/sec=9.37975e+06   simsec/sec=7088.54   ev/simsec=1323.23
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.411608379465s, event #455734
+
+Calling finish() at end of Run #14...
+
+Preparing for running configuration Phase3_D10, run #15...
+Scenario: $r=30, $rho=0.847457627119, $repetition=0
+Assigned runID=Phase3_D10-15-20260929-13:03:20-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #805353   t=344.210117138722   Elapsed: 0.084993s (0m 00s)
+     Speed:     ev/sec=9.47652e+06   simsec/sec=4050.29   ev/simsec=2339.72
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.210117138722s, event #805353
+
+Calling finish() at end of Run #15...
+
+Preparing for running configuration Phase3_D10, run #16...
+Scenario: $r=30, $rho=0.847457627119, $repetition=1
+Assigned runID=Phase3_D10-16-20260929-13:03:20-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #805198   t=344.329070353759   Elapsed: 0.087401s (0m 00s)
+     Speed:     ev/sec=9.21448e+06   simsec/sec=3940.41   ev/simsec=2338.46
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.329070353759s, event #805198
+
+Calling finish() at end of Run #16...
+
+Preparing for running configuration Phase3_D10, run #17...
+Scenario: $r=30, $rho=0.847457627119, $repetition=2
+Assigned runID=Phase3_D10-17-20260929-13:03:20-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #805848   t=344.155501332847   Elapsed: 0.085201s (0m 00s)
+     Speed:     ev/sec=9.4592e+06   simsec/sec=4039.76   ev/simsec=2341.52
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.155501332847s, event #805848
+
+Calling finish() at end of Run #17...
+
+Preparing for running configuration Phase3_D10, run #18...
+Scenario: $r=30, $rho=1.694915254237, $repetition=0
+Assigned runID=Phase3_D10-18-20260929-13:03:20-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #1503696   t=344.284791423962   Elapsed: 0.1583s (0m 00s)
+     Speed:     ev/sec=9.49957e+06   simsec/sec=2175.01   ev/simsec=4367.59
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.284791423962s, event #1503696
+
+Calling finish() at end of Run #18...
+
+Preparing for running configuration Phase3_D10, run #19...
+Scenario: $r=30, $rho=1.694915254237, $repetition=1
+Assigned runID=Phase3_D10-19-20260929-13:03:21-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.5e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #1505164   t=344.376168906929   Elapsed: 0.158593s (0m 00s)
+     Speed:     ev/sec=9.49253e+06   simsec/sec=2171.86   ev/simsec=4370.7
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.376168906929s, event #1505164
+
+Calling finish() at end of Run #19...
+
+Preparing for running configuration Phase3_D10, run #20...
+Scenario: $r=30, $rho=1.694915254237, $repetition=2
+Assigned runID=Phase3_D10-20-20260929-13:03:21-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.9e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #1507547   t=344.331103054804   Elapsed: 0.160576s (0m 00s)
+     Speed:     ev/sec=9.38983e+06   simsec/sec=2144.68   ev/simsec=4378.19
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.331103054804s, event #1507547
+
+Calling finish() at end of Run #20...
+
+Preparing for running configuration Phase3_D10, run #21...
+Scenario: $r=30, $rho=4.237288135593, $repetition=0
+Assigned runID=Phase3_D10-21-20260929-13:03:21-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3603193   t=344.350064550857   Elapsed: 0.381521s (0m 00s)
+     Speed:     ev/sec=9.44451e+06   simsec/sec=902.593   ev/simsec=10463.8
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.350064550857s, event #3603193
+
+Calling finish() at end of Run #21...
+
+Preparing for running configuration Phase3_D10, run #22...
+Scenario: $r=30, $rho=4.237288135593, $repetition=1
+Assigned runID=Phase3_D10-22-20260929-13:03:21-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3605412   t=344.393035620477   Elapsed: 0.377851s (0m 00s)
+     Speed:     ev/sec=9.54209e+06   simsec/sec=911.471   ev/simsec=10468.9
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.393035620477s, event #3605412
+
+Calling finish() at end of Run #22...
+
+Preparing for running configuration Phase3_D10, run #23...
+Scenario: $r=30, $rho=4.237288135593, $repetition=2
+Assigned runID=Phase3_D10-23-20260929-13:03:22-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.7e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3608455   t=344.43663997469   Elapsed: 0.378316s (0m 00s)
+     Speed:     ev/sec=9.53901e+06   simsec/sec=910.524   ev/simsec=10476.4
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.43663997469s, event #3608455
+
+Calling finish() at end of Run #23...
+
+Preparing for running configuration Phase3_D10, run #24...
+Scenario: $r=50, $rho=0.423728813559, $repetition=0
+Assigned runID=Phase3_D10-24-20260929-13:03:22-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #455297   t=344.543183421901   Elapsed: 0.049406s (0m 00s)
+     Speed:     ev/sec=9.21971e+06   simsec/sec=6976.95   ev/simsec=1321.45
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.543183421901s, event #455297
+
+Calling finish() at end of Run #24...
+
+Preparing for running configuration Phase3_D10, run #25...
+Scenario: $r=50, $rho=0.423728813559, $repetition=1
+Assigned runID=Phase3_D10-25-20260929-13:03:22-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #454719   t=344.27324569792   Elapsed: 0.048186s (0m 00s)
+     Speed:     ev/sec=9.43812e+06   simsec/sec=7145.71   ev/simsec=1320.81
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.27324569792s, event #454719
+
+Calling finish() at end of Run #25...
+
+Preparing for running configuration Phase3_D10, run #26...
+Scenario: $r=50, $rho=0.423728813559, $repetition=2
+Assigned runID=Phase3_D10-26-20260929-13:03:22-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #455862   t=344.509867066655   Elapsed: 0.048203s (0m 00s)
+     Speed:     ev/sec=9.4585e+06   simsec/sec=7148.1   ev/simsec=1323.22
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.509867066655s, event #455862
+
+Calling finish() at end of Run #26...
+
+Preparing for running configuration Phase3_D10, run #27...
+Scenario: $r=50, $rho=0.847457627119, $repetition=0
+Assigned runID=Phase3_D10-27-20260929-13:03:22-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.3e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #805551   t=344.307942868565   Elapsed: 0.086568s (0m 00s)
+     Speed:     ev/sec=9.30853e+06   simsec/sec=3978.64   ev/simsec=2339.63
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.307942868565s, event #805551
+
+Calling finish() at end of Run #27...
+
+Preparing for running configuration Phase3_D10, run #28...
+Scenario: $r=50, $rho=0.847457627119, $repetition=1
+Assigned runID=Phase3_D10-28-20260929-13:03:22-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #805415   t=344.427667320139   Elapsed: 0.085221s (0m 00s)
+     Speed:     ev/sec=9.45179e+06   simsec/sec=4041.96   ev/simsec=2338.42
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.427667320139s, event #805415
+
+Calling finish() at end of Run #28...
+
+Preparing for running configuration Phase3_D10, run #29...
+Scenario: $r=50, $rho=0.847457627119, $repetition=2
+Assigned runID=Phase3_D10-29-20260929-13:03:22-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.3e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #806096   t=344.253535900798   Elapsed: 0.085223s (0m 00s)
+     Speed:     ev/sec=9.46178e+06   simsec/sec=4040.77   ev/simsec=2341.58
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.253535900798s, event #806096
+
+Calling finish() at end of Run #29...
+
+Preparing for running configuration Phase3_D10, run #30...
+Scenario: $r=50, $rho=1.694915254237, $repetition=0
+Assigned runID=Phase3_D10-30-20260929-13:03:22-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.6e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #1504115   t=344.383152484202   Elapsed: 0.159812s (0m 00s)
+     Speed:     ev/sec=9.4136e+06   simsec/sec=2155.34   ev/simsec=4367.56
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.383152484202s, event #1504115
+
+Calling finish() at end of Run #30...
+
+Preparing for running configuration Phase3_D10, run #31...
+Scenario: $r=50, $rho=1.694915254237, $repetition=1
+Assigned runID=Phase3_D10-31-20260929-13:03:23-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.4e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #1505588   t=344.47197651479   Elapsed: 0.158328s (0m 00s)
+     Speed:     ev/sec=9.51104e+06   simsec/sec=2176.08   ev/simsec=4370.72
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.47197651479s, event #1505588
+
+Calling finish() at end of Run #31...
+
+Preparing for running configuration Phase3_D10, run #32...
+Scenario: $r=50, $rho=1.694915254237, $repetition=2
+Assigned runID=Phase3_D10-32-20260929-13:03:23-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #1507971   t=344.431696264412   Elapsed: 0.158618s (0m 00s)
+     Speed:     ev/sec=9.50735e+06   simsec/sec=2171.55   ev/simsec=4378.14
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.431696264412s, event #1507971
+
+Calling finish() at end of Run #32...
+
+Preparing for running configuration Phase3_D10, run #33...
+Scenario: $r=50, $rho=4.237288135593, $repetition=0
+Assigned runID=Phase3_D10-33-20260929-13:03:23-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3604230   t=344.449001074526   Elapsed: 0.377089s (0m 00s)
+     Speed:     ev/sec=9.55824e+06   simsec/sec=913.461   ev/simsec=10463.8
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.449001074526s, event #3604230
+
+Calling finish() at end of Run #33...
+
+Preparing for running configuration Phase3_D10, run #34...
+Scenario: $r=50, $rho=4.237288135593, $repetition=1
+Assigned runID=Phase3_D10-34-20260929-13:03:23-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3606427   t=344.492182537217   Elapsed: 0.384744s (0m 00s)
+     Speed:     ev/sec=9.37377e+06   simsec/sec=895.398   ev/simsec=10468.8
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.492182537217s, event #3606427
+
+Calling finish() at end of Run #34...
+
+Preparing for running configuration Phase3_D10, run #35...
+Scenario: $r=50, $rho=4.237288135593, $repetition=2
+Assigned runID=Phase3_D10-35-20260929-13:03:24-73
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.8e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3609507   t=344.537476709362   Elapsed: 0.377743s (0m 00s)
+     Speed:     ev/sec=9.55629e+06   simsec/sec=912.174   ev/simsec=10476.4
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.537476709362s, event #3609507
+
+Calling finish() at end of Run #35...
+
+Run statistics: total 36, successful 36
+
+End.
+=== Phase3_D20 ===
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.3.0, build: 251110-bb3d6a4731, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from /workspace/src:  2
+
+Preparing for running configuration Phase3_D20, run #0...
+Scenario: $r=5, $rho=0.210084033613, $repetition=0
+Assigned runID=Phase3_D20-0-20260929-13:03:24-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #490085   t=694.398805941084   Elapsed: 0.052518s (0m 00s)
+     Speed:     ev/sec=9.33371e+06   simsec/sec=13224.9   ev/simsec=705.769
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.398805941084s, event #490085
+
+Calling finish() at end of Run #0...
+
+Preparing for running configuration Phase3_D20, run #1...
+Scenario: $r=5, $rho=0.210084033613, $repetition=1
+Assigned runID=Phase3_D20-1-20260929-13:03:24-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #490250   t=694.326809405288   Elapsed: 0.051002s (0m 00s)
+     Speed:     ev/sec=9.6135e+06   simsec/sec=13615.3   ev/simsec=706.08
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.326809405288s, event #490250
+
+Calling finish() at end of Run #1...
+
+Preparing for running configuration Phase3_D20, run #2...
+Scenario: $r=5, $rho=0.210084033613, $repetition=2
+Assigned runID=Phase3_D20-2-20260929-13:03:24-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #489997   t=694.103312011514   Elapsed: 0.05241s (0m 00s)
+     Speed:     ev/sec=9.35073e+06   simsec/sec=13245.7   ev/simsec=705.943
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.103312011514s, event #489997
+
+Calling finish() at end of Run #2...
+
+Preparing for running configuration Phase3_D20, run #3...
+Scenario: $r=5, $rho=0.420168067227, $repetition=0
+Assigned runID=Phase3_D20-3-20260929-13:03:24-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #840727   t=694.276316762127   Elapsed: 0.088573s (0m 00s)
+     Speed:     ev/sec=9.49277e+06   simsec/sec=7839.17   ev/simsec=1210.94
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.276316762127s, event #840727
+
+Calling finish() at end of Run #3...
+
+Preparing for running configuration Phase3_D20, run #4...
+Scenario: $r=5, $rho=0.420168067227, $repetition=1
+Assigned runID=Phase3_D20-4-20260929-13:03:24-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.1e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #840348   t=694.370838724648   Elapsed: 0.089826s (0m 00s)
+     Speed:     ev/sec=9.35789e+06   simsec/sec=7732.32   ev/simsec=1210.23
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.370838724648s, event #840348
+
+Calling finish() at end of Run #4...
+
+Preparing for running configuration Phase3_D20, run #5...
+Scenario: $r=5, $rho=0.420168067227, $repetition=2
+Assigned runID=Phase3_D20-5-20260929-13:03:24-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #841049   t=694.149031426264   Elapsed: 0.090721s (0m 00s)
+     Speed:     ev/sec=9.27164e+06   simsec/sec=7652.23   ev/simsec=1211.63
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.149031426264s, event #841049
+
+Calling finish() at end of Run #5...
+
+Preparing for running configuration Phase3_D20, run #6...
+Scenario: $r=5, $rho=0.840336134454, $repetition=0
+Assigned runID=Phase3_D20-6-20260929-13:03:25-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #1538877   t=694.333990970452   Elapsed: 0.16414s (0m 00s)
+     Speed:     ev/sec=9.37579e+06   simsec/sec=4230.31   ev/simsec=2216.34
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.333990970452s, event #1538877
+
+Calling finish() at end of Run #6...
+
+Preparing for running configuration Phase3_D20, run #7...
+Scenario: $r=5, $rho=0.840336134454, $repetition=1
+Assigned runID=Phase3_D20-7-20260929-13:03:25-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #1538841   t=694.128035701215   Elapsed: 0.162531s (0m 00s)
+     Speed:     ev/sec=9.46897e+06   simsec/sec=4271.19   ev/simsec=2216.94
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.128035701215s, event #1538841
+
+Calling finish() at end of Run #7...
+
+Preparing for running configuration Phase3_D20, run #8...
+Scenario: $r=5, $rho=0.840336134454, $repetition=2
+Assigned runID=Phase3_D20-8-20260929-13:03:25-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #1542446   t=694.345760253561   Elapsed: 0.164428s (0m 00s)
+     Speed:     ev/sec=9.38113e+06   simsec/sec=4223   ev/simsec=2221.44
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.345760253561s, event #1542446
+
+Calling finish() at end of Run #8...
+
+Preparing for running configuration Phase3_D20, run #9...
+Scenario: $r=5, $rho=2.100840336134, $repetition=0
+Assigned runID=Phase3_D20-9-20260929-13:03:25-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3636728   t=694.241419809343   Elapsed: 0.382437s (0m 00s)
+     Speed:     ev/sec=9.50958e+06   simsec/sec=1815.35   ev/simsec=5238.42
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.241419809343s, event #3636728
+
+Calling finish() at end of Run #9...
+
+Preparing for running configuration Phase3_D20, run #10...
+Scenario: $r=5, $rho=2.100840336134, $repetition=1
+Assigned runID=Phase3_D20-10-20260929-13:03:25-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3638826   t=694.302453036146   Elapsed: 0.388422s (0m 00s)
+     Speed:     ev/sec=9.36842e+06   simsec/sec=1787.53   ev/simsec=5240.98
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.302453036146s, event #3638826
+
+Calling finish() at end of Run #10...
+
+Preparing for running configuration Phase3_D20, run #11...
+Scenario: $r=5, $rho=2.100840336134, $repetition=2
+Assigned runID=Phase3_D20-11-20260929-13:03:26-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3639983   t=694.124854793758   Elapsed: 0.382728s (0m 00s)
+     Speed:     ev/sec=9.51083e+06   simsec/sec=1813.66   ev/simsec=5243.99
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.124854793758s, event #3639983
+
+Calling finish() at end of Run #11...
+
+Preparing for running configuration Phase3_D20, run #12...
+Scenario: $r=30, $rho=0.210084033613, $repetition=0
+Assigned runID=Phase3_D20-12-20260929-13:03:26-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #490253   t=694.646998503606   Elapsed: 0.050555s (0m 00s)
+     Speed:     ev/sec=9.69857e+06   simsec/sec=13742   ev/simsec=705.759
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.646998503606s, event #490253
+
+Calling finish() at end of Run #12...
+
+Preparing for running configuration Phase3_D20, run #13...
+Scenario: $r=30, $rho=0.210084033613, $repetition=1
+Assigned runID=Phase3_D20-13-20260929-13:03:26-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #490419   t=694.573756089316   Elapsed: 0.050408s (0m 00s)
+     Speed:     ev/sec=9.73034e+06   simsec/sec=13780.9   ev/simsec=706.072
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.573756089316s, event #490419
+
+Calling finish() at end of Run #13...
+
+Preparing for running configuration Phase3_D20, run #14...
+Scenario: $r=30, $rho=0.210084033613, $repetition=2
+Assigned runID=Phase3_D20-14-20260929-13:03:26-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #490161   t=694.350516778765   Elapsed: 0.05054s (0m 00s)
+     Speed:     ev/sec=9.69982e+06   simsec/sec=13740.5   ev/simsec=705.928
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.350516778765s, event #490161
+
+Calling finish() at end of Run #14...
+
+Preparing for running configuration Phase3_D20, run #15...
+Scenario: $r=30, $rho=0.420168067227, $repetition=0
+Assigned runID=Phase3_D20-15-20260929-13:03:26-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #840999   t=694.524705398557   Elapsed: 0.087014s (0m 00s)
+     Speed:     ev/sec=9.66599e+06   simsec/sec=7982.49   ev/simsec=1210.9
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.524705398557s, event #840999
+
+Calling finish() at end of Run #15...
+
+Preparing for running configuration Phase3_D20, run #16...
+Scenario: $r=30, $rho=0.420168067227, $repetition=1
+Assigned runID=Phase3_D20-16-20260929-13:03:26-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #840625   t=694.6186537435   Elapsed: 0.087168s (0m 00s)
+     Speed:     ev/sec=9.64462e+06   simsec/sec=7969.46   ev/simsec=1210.2
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.6186537435s, event #840625
+
+Calling finish() at end of Run #16...
+
+Preparing for running configuration Phase3_D20, run #17...
+Scenario: $r=30, $rho=0.420168067227, $repetition=2
+Assigned runID=Phase3_D20-17-20260929-13:03:27-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #841355   t=694.395577544471   Elapsed: 0.087107s (0m 00s)
+     Speed:     ev/sec=9.65975e+06   simsec/sec=7972.48   ev/simsec=1211.64
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.395577544471s, event #841355
+
+Calling finish() at end of Run #17...
+
+Preparing for running configuration Phase3_D20, run #18...
+Scenario: $r=30, $rho=0.840336134454, $repetition=0
+Assigned runID=Phase3_D20-18-20260929-13:03:27-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #1539442   t=694.582384262773   Elapsed: 0.161529s (0m 00s)
+     Speed:     ev/sec=9.53097e+06   simsec/sec=4300.29   ev/simsec=2216.36
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.582384262773s, event #1539442
+
+Calling finish() at end of Run #18...
+
+Preparing for running configuration Phase3_D20, run #19...
+Scenario: $r=30, $rho=0.840336134454, $repetition=1
+Assigned runID=Phase3_D20-19-20260929-13:03:27-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #1539386   t=694.377012797507   Elapsed: 0.159548s (0m 00s)
+     Speed:     ev/sec=9.64884e+06   simsec/sec=4352.33   ev/simsec=2216.94
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.377012797507s, event #1539386
+
+Calling finish() at end of Run #19...
+
+Preparing for running configuration Phase3_D20, run #20...
+Scenario: $r=30, $rho=0.840336134454, $repetition=2
+Assigned runID=Phase3_D20-20-20260929-13:03:27-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #1542996   t=694.596672793353   Elapsed: 0.164258s (0m 00s)
+     Speed:     ev/sec=9.39419e+06   simsec/sec=4228.9   ev/simsec=2221.43
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.596672793353s, event #1542996
+
+Calling finish() at end of Run #20...
+
+Preparing for running configuration Phase3_D20, run #21...
+Scenario: $r=30, $rho=2.100840336134, $repetition=0
+Assigned runID=Phase3_D20-21-20260929-13:03:27-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3637949   t=694.489443459164   Elapsed: 0.376592s (0m 00s)
+     Speed:     ev/sec=9.66039e+06   simsec/sec=1844.18   ev/simsec=5238.31
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.489443459164s, event #3637949
+
+Calling finish() at end of Run #21...
+
+Preparing for running configuration Phase3_D20, run #22...
+Scenario: $r=30, $rho=2.100840336134, $repetition=1
+Assigned runID=Phase3_D20-22-20260929-13:03:27-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3640054   t=694.54735015238   Elapsed: 0.378817s (0m 00s)
+     Speed:     ev/sec=9.60921e+06   simsec/sec=1833.5   ev/simsec=5240.9
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.54735015238s, event #3640054
+
+Calling finish() at end of Run #22...
+
+Preparing for running configuration Phase3_D20, run #23...
+Scenario: $r=30, $rho=2.100840336134, $repetition=2
+Assigned runID=Phase3_D20-23-20260929-13:03:28-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3641313   t=694.373384474252   Elapsed: 0.376827s (0m 00s)
+     Speed:     ev/sec=9.66332e+06   simsec/sec=1842.73   ev/simsec=5244.03
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.373384474252s, event #3641313
+
+Calling finish() at end of Run #23...
+
+Preparing for running configuration Phase3_D20, run #24...
+Scenario: $r=50, $rho=0.210084033613, $repetition=0
+Assigned runID=Phase3_D20-24-20260929-13:03:28-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.3e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #490398   t=694.845657938106   Elapsed: 0.050823s (0m 00s)
+     Speed:     ev/sec=9.65445e+06   simsec/sec=13679.4   ev/simsec=705.765
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.845657938106s, event #490398
+
+Calling finish() at end of Run #24...
+
+Preparing for running configuration Phase3_D20, run #25...
+Scenario: $r=50, $rho=0.210084033613, $repetition=1
+Assigned runID=Phase3_D20-25-20260929-13:03:28-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #490559   t=694.770973746911   Elapsed: 0.050337s (0m 00s)
+     Speed:     ev/sec=9.74685e+06   simsec/sec=13804.3   ev/simsec=706.073
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.770973746911s, event #490559
+
+Calling finish() at end of Run #25...
+
+Preparing for running configuration Phase3_D20, run #26...
+Scenario: $r=50, $rho=0.210084033613, $repetition=2
+Assigned runID=Phase3_D20-26-20260929-13:03:28-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #490314   t=694.54684438381   Elapsed: 0.050387s (0m 00s)
+     Speed:     ev/sec=9.73753e+06   simsec/sec=13793.6   ev/simsec=705.948
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.54684438381s, event #490314
+
+Calling finish() at end of Run #26...
+
+Preparing for running configuration Phase3_D20, run #27...
+Scenario: $r=50, $rho=0.420168067227, $repetition=0
+Assigned runID=Phase3_D20-27-20260929-13:03:28-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #841237   t=694.721273774135   Elapsed: 0.087253s (0m 00s)
+     Speed:     ev/sec=9.64224e+06   simsec/sec=7962.87   ev/simsec=1210.9
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.721273774135s, event #841237
+
+Calling finish() at end of Run #27...
+
+Preparing for running configuration Phase3_D20, run #28...
+Scenario: $r=50, $rho=0.420168067227, $repetition=1
+Assigned runID=Phase3_D20-28-20260929-13:03:28-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #840865   t=694.818265572302   Elapsed: 0.088927s (0m 00s)
+     Speed:     ev/sec=9.45642e+06   simsec/sec=7813.97   ev/simsec=1210.19
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.818265572302s, event #840865
+
+Calling finish() at end of Run #28...
+
+Preparing for running configuration Phase3_D20, run #29...
+Scenario: $r=50, $rho=0.420168067227, $repetition=2
+Assigned runID=Phase3_D20-29-20260929-13:03:29-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #841575   t=694.591025426602   Elapsed: 0.087076s (0m 00s)
+     Speed:     ev/sec=9.66739e+06   simsec/sec=7978.94   ev/simsec=1211.61
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.591025426602s, event #841575
+
+Calling finish() at end of Run #29...
+
+Preparing for running configuration Phase3_D20, run #30...
+Scenario: $r=50, $rho=0.840336134454, $repetition=0
+Assigned runID=Phase3_D20-30-20260929-13:03:29-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #1539853   t=694.781208477623   Elapsed: 0.160155s (0m 00s)
+     Speed:     ev/sec=9.61531e+06   simsec/sec=4338.42   ev/simsec=2216.31
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.781208477623s, event #1539853
+
+Calling finish() at end of Run #30...
+
+Preparing for running configuration Phase3_D20, run #31...
+Scenario: $r=50, $rho=0.840336134454, $repetition=1
+Assigned runID=Phase3_D20-31-20260929-13:03:29-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.5e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #1539823   t=694.575994857434   Elapsed: 0.159855s (0m 00s)
+     Speed:     ev/sec=9.63383e+06   simsec/sec=4345.58   ev/simsec=2216.93
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.575994857434s, event #1539823
+
+Calling finish() at end of Run #31...
+
+Preparing for running configuration Phase3_D20, run #32...
+Scenario: $r=50, $rho=0.840336134454, $repetition=2
+Assigned runID=Phase3_D20-32-20260929-13:03:29-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #1543415   t=694.795845761377   Elapsed: 0.160559s (0m 00s)
+     Speed:     ev/sec=9.61324e+06   simsec/sec=4327.57   ev/simsec=2221.39
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.795845761377s, event #1543415
+
+Calling finish() at end of Run #32...
+
+Preparing for running configuration Phase3_D20, run #33...
+Scenario: $r=50, $rho=2.100840336134, $repetition=0
+Assigned runID=Phase3_D20-33-20260929-13:03:29-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3638964   t=694.686995929716   Elapsed: 0.377175s (0m 00s)
+     Speed:     ev/sec=9.64818e+06   simsec/sec=1841.86   ev/simsec=5238.28
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.686995929716s, event #3638964
+
+Calling finish() at end of Run #33...
+
+Preparing for running configuration Phase3_D20, run #34...
+Scenario: $r=50, $rho=2.100840336134, $repetition=1
+Assigned runID=Phase3_D20-34-20260929-13:03:30-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.5e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3641072   t=694.744491866152   Elapsed: 0.378879s (0m 00s)
+     Speed:     ev/sec=9.61088e+06   simsec/sec=1833.83   ev/simsec=5240.88
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.744491866152s, event #3641072
+
+Calling finish() at end of Run #34...
+
+Preparing for running configuration Phase3_D20, run #35...
+Scenario: $r=50, $rho=2.100840336134, $repetition=2
+Assigned runID=Phase3_D20-35-20260929-13:03:30-74
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.1e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3642303   t=694.569106287781   Elapsed: 0.377397s (0m 00s)
+     Speed:     ev/sec=9.65178e+06   simsec/sec=1840.55   ev/simsec=5243.98
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=694.569106287781s, event #3642303
+
+Calling finish() at end of Run #35...
+
+Run statistics: total 36, successful 36
+
+End.
+=== Phase3_CorR ===
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.3.0, build: 251110-bb3d6a4731, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from /workspace/src:  2
+
+Preparing for running configuration Phase3_CorR, run #0...
+Scenario: $r=5, $repetition=0
+Assigned runID=Phase3_CorR-0-20260929-13:03:30-75
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 9e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3602003   t=344.229678906116   Elapsed: 0.384999s (0m 00s)
+     Speed:     ev/sec=9.35617e+06   simsec/sec=894.133   ev/simsec=10464
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.229678906116s, event #3602003
+
+Calling finish() at end of Run #0...
+
+Preparing for running configuration Phase3_CorR, run #1...
+Scenario: $r=5, $repetition=1
+Assigned runID=Phase3_CorR-1-20260929-13:03:31-75
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3604181   t=344.274409458976   Elapsed: 0.383181s (0m 00s)
+     Speed:     ev/sec=9.40617e+06   simsec/sec=898.485   ev/simsec=10468.9
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.274409458976s, event #3604181
+
+Calling finish() at end of Run #1...
+
+Preparing for running configuration Phase3_CorR, run #2...
+Scenario: $r=5, $repetition=2
+Assigned runID=Phase3_CorR-2-20260929-13:03:31-75
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.6e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3607253   t=344.319172166301   Elapsed: 0.383755s (0m 00s)
+     Speed:     ev/sec=9.40067e+06   simsec/sec=897.312   ev/simsec=10476.5
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.319172166301s, event #3607253
+
+Calling finish() at end of Run #2...
+
+Preparing for running configuration Phase3_CorR, run #3...
+Scenario: $r=10, $repetition=0
+Assigned runID=Phase3_CorR-3-20260929-13:03:31-75
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3602208   t=344.250985510025   Elapsed: 0.382999s (0m 00s)
+     Speed:     ev/sec=9.40546e+06   simsec/sec=898.849   ev/simsec=10463.9
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.250985510025s, event #3602208
+
+Calling finish() at end of Run #3...
+
+Preparing for running configuration Phase3_CorR, run #4...
+Scenario: $r=10, $repetition=1
+Assigned runID=Phase3_CorR-4-20260929-13:03:32-75
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3604390   t=344.294990831815   Elapsed: 0.381294s (0m 00s)
+     Speed:     ev/sec=9.45325e+06   simsec/sec=902.983   ev/simsec=10468.9
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.294990831815s, event #3604390
+
+Calling finish() at end of Run #4...
+
+Preparing for running configuration Phase3_CorR, run #5...
+Scenario: $r=10, $repetition=2
+Assigned runID=Phase3_CorR-5-20260929-13:03:32-75
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.2e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3607474   t=344.338731300303   Elapsed: 0.382096s (0m 00s)
+     Speed:     ev/sec=9.44194e+06   simsec/sec=901.247   ev/simsec=10476.5
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.338731300303s, event #3607474
+
+Calling finish() at end of Run #5...
+
+Preparing for running configuration Phase3_CorR, run #6...
+Scenario: $r=20, $repetition=0
+Assigned runID=Phase3_CorR-6-20260929-13:03:33-75
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3602711   t=344.301759087462   Elapsed: 0.381194s (0m 00s)
+     Speed:     ev/sec=9.45132e+06   simsec/sec=903.238   ev/simsec=10463.8
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.301759087462s, event #3602711
+
+Calling finish() at end of Run #6...
+
+Preparing for running configuration Phase3_CorR, run #7...
+Scenario: $r=20, $repetition=1
+Assigned runID=Phase3_CorR-7-20260929-13:03:33-75
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3604893   t=344.343042356502   Elapsed: 0.381175s (0m 00s)
+     Speed:     ev/sec=9.45754e+06   simsec/sec=903.394   ev/simsec=10468.9
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.343042356502s, event #3604893
+
+Calling finish() at end of Run #7...
+
+Preparing for running configuration Phase3_CorR, run #8...
+Scenario: $r=20, $repetition=2
+Assigned runID=Phase3_CorR-8-20260929-13:03:33-75
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.5e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3607942   t=344.385558291434   Elapsed: 0.381545s (0m 00s)
+     Speed:     ev/sec=9.45688e+06   simsec/sec=902.679   ev/simsec=10476.5
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.385558291434s, event #3607942
+
+Calling finish() at end of Run #8...
+
+Preparing for running configuration Phase3_CorR, run #9...
+Scenario: $r=30, $repetition=0
+Assigned runID=Phase3_CorR-9-20260929-13:03:34-75
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3603193   t=344.350064550857   Elapsed: 0.38095s (0m 00s)
+     Speed:     ev/sec=9.45866e+06   simsec/sec=903.946   ev/simsec=10463.8
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.350064550857s, event #3603193
+
+Calling finish() at end of Run #9...
+
+Preparing for running configuration Phase3_CorR, run #10...
+Scenario: $r=30, $repetition=1
+Assigned runID=Phase3_CorR-10-20260929-13:03:34-75
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3605412   t=344.393035620477   Elapsed: 0.381689s (0m 00s)
+     Speed:     ev/sec=9.44614e+06   simsec/sec=902.306   ev/simsec=10468.9
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.393035620477s, event #3605412
+
+Calling finish() at end of Run #10...
+
+Preparing for running configuration Phase3_CorR, run #11...
+Scenario: $r=30, $repetition=2
+Assigned runID=Phase3_CorR-11-20260929-13:03:35-75
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3608455   t=344.43663997469   Elapsed: 0.382013s (0m 00s)
+     Speed:     ev/sec=9.44612e+06   simsec/sec=901.657   ev/simsec=10476.4
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.43663997469s, event #3608455
+
+Calling finish() at end of Run #11...
+
+Preparing for running configuration Phase3_CorR, run #12...
+Scenario: $r=40, $repetition=0
+Assigned runID=Phase3_CorR-12-20260929-13:03:35-75
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3603734   t=344.399832483766   Elapsed: 0.382489s (0m 00s)
+     Speed:     ev/sec=9.42202e+06   simsec/sec=900.438   ev/simsec=10463.8
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.399832483766s, event #3603734
+
+Calling finish() at end of Run #12...
+
+Preparing for running configuration Phase3_CorR, run #13...
+Scenario: $r=40, $repetition=1
+Assigned runID=Phase3_CorR-13-20260929-13:03:35-75
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3605900   t=344.441597870648   Elapsed: 0.3827s (0m 00s)
+     Speed:     ev/sec=9.42248e+06   simsec/sec=900.051   ev/simsec=10468.8
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.441597870648s, event #3605900
+
+Calling finish() at end of Run #13...
+
+Preparing for running configuration Phase3_CorR, run #14...
+Scenario: $r=40, $repetition=2
+Assigned runID=Phase3_CorR-14-20260929-13:03:36-75
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3609004   t=344.487988323046   Elapsed: 0.382213s (0m 00s)
+     Speed:     ev/sec=9.44261e+06   simsec/sec=901.32   ev/simsec=10476.4
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.487988323046s, event #3609004
+
+Calling finish() at end of Run #14...
+
+Preparing for running configuration Phase3_CorR, run #15...
+Scenario: $r=50, $repetition=0
+Assigned runID=Phase3_CorR-15-20260929-13:03:36-75
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3604230   t=344.449001074526   Elapsed: 0.381244s (0m 00s)
+     Speed:     ev/sec=9.45407e+06   simsec/sec=903.506   ev/simsec=10463.8
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.449001074526s, event #3604230
+
+Calling finish() at end of Run #15...
+
+Preparing for running configuration Phase3_CorR, run #16...
+Scenario: $r=50, $repetition=1
+Assigned runID=Phase3_CorR-16-20260929-13:03:36-75
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.8e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3606427   t=344.492182537217   Elapsed: 0.381577s (0m 00s)
+     Speed:     ev/sec=9.45222e+06   simsec/sec=902.892   ev/simsec=10468.8
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.492182537217s, event #3606427
+
+Calling finish() at end of Run #16...
+
+Preparing for running configuration Phase3_CorR, run #17...
+Scenario: $r=50, $repetition=2
+Assigned runID=Phase3_CorR-17-20260929-13:03:37-75
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3609507   t=344.537476709362   Elapsed: 0.381966s (0m 00s)
+     Speed:     ev/sec=9.45006e+06   simsec/sec=902.033   ev/simsec=10476.4
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.537476709362s, event #3609507
+
+Calling finish() at end of Run #17...
+
+Run statistics: total 18, successful 18
+
+End.
+=== Phase3_CorL1 ===
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.3.0, build: 251110-bb3d6a4731, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from /workspace/src:  2
+
+Preparing for running configuration Phase3_CorL1, run #0...
+Assigned runID=Phase3_CorL1-0-20260929-13:03:37-76
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.1e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3638211   t=659.478571703768   Elapsed: 0.384193s (0m 00s)
+     Speed:     ev/sec=9.47007e+06   simsec/sec=1716.59   ev/simsec=5516.8
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=659.478571703768s, event #3638211
+
+Calling finish() at end of Run #0...
+
+Preparing for running configuration Phase3_CorL1, run #1...
+Assigned runID=Phase3_CorL1-1-20260929-13:03:38-76
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3639378   t=659.414729809228   Elapsed: 0.381956s (0m 00s)
+     Speed:     ev/sec=9.52849e+06   simsec/sec=1726.46   ev/simsec=5519.1
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=659.414729809228s, event #3639378
+
+Calling finish() at end of Run #1...
+
+Preparing for running configuration Phase3_CorL1, run #2...
+Assigned runID=Phase3_CorL1-2-20260929-13:03:38-76
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3641616   t=659.377135132731   Elapsed: 0.377562s (0m 00s)
+     Speed:     ev/sec=9.64531e+06   simsec/sec=1746.45   ev/simsec=5522.81
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=659.377135132731s, event #3641616
+
+Calling finish() at end of Run #2...
+
+Run statistics: total 3, successful 3
+
+End.
+=== Phase3_CorL2 ===
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.3.0, build: 251110-bb3d6a4731, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from /workspace/src:  2
+
+Preparing for running configuration Phase3_CorL2, run #0...
+Assigned runID=Phase3_CorL2-0-20260929-13:03:38-77
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 9e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3602711   t=344.301759087462   Elapsed: 0.389463s (0m 00s)
+     Speed:     ev/sec=9.2507e+06   simsec/sec=884.064   ev/simsec=10463.8
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.301759087462s, event #3602711
+
+Calling finish() at end of Run #0...
+
+Preparing for running configuration Phase3_CorL2, run #1...
+Assigned runID=Phase3_CorL2-1-20260929-13:03:39-77
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.4e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3604893   t=344.343042356502   Elapsed: 0.379413s (0m 00s)
+     Speed:     ev/sec=9.50199e+06   simsec/sec=907.64   ev/simsec=10468.9
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.343042356502s, event #3604893
+
+Calling finish() at end of Run #1...
+
+Preparing for running configuration Phase3_CorL2, run #2...
+Assigned runID=Phase3_CorL2-2-20260929-13:03:39-77
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3607942   t=344.385558291434   Elapsed: 0.386696s (0m 00s)
+     Speed:     ev/sec=9.33042e+06   simsec/sec=890.607   ev/simsec=10476.5
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=344.385558291434s, event #3607942
+
+Calling finish() at end of Run #2...
+
+Run statistics: total 3, successful 3
+
+End.
+=== Phase3_CorL3 ===
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.3.0, build: 251110-bb3d6a4731, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from /workspace/src:  2
+
+Preparing for running configuration Phase3_CorL3, run #0...
+Assigned runID=Phase3_CorL3-0-20260929-13:03:40-78
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.5e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3590212   t=239.210182572439   Elapsed: 0.380751s (0m 00s)
+     Speed:     ev/sec=9.42996e+06   simsec/sec=628.303   ev/simsec=15008.6
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=239.210182572439s, event #3590212
+
+Calling finish() at end of Run #0...
+
+Preparing for running configuration Phase3_CorL3, run #1...
+Assigned runID=Phase3_CorL3-1-20260929-13:03:40-78
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 5e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3592581   t=239.254998478633   Elapsed: 0.388185s (0m 00s)
+     Speed:     ev/sec=9.25506e+06   simsec/sec=616.358   ev/simsec=15015.7
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=239.254998478633s, event #3592581
+
+Calling finish() at end of Run #1...
+
+Preparing for running configuration Phase3_CorL3, run #2...
+Assigned runID=Phase3_CorL3-2-20260929-13:03:40-78
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3597391   t=239.390090023999   Elapsed: 0.391604s (0m 00s)
+     Speed:     ev/sec=9.18649e+06   simsec/sec=611.319   ev/simsec=15027.3
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=239.390090023999s, event #3597391
+
+Calling finish() at end of Run #2...
+
+Run statistics: total 3, successful 3
+
+End.
+=== Phase3_CorL4 ===
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.3.0, build: 251110-bb3d6a4731, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from /workspace/src:  2
+
+Preparing for running configuration Phase3_CorL4, run #0...
+Assigned runID=Phase3_CorL4-0-20260929-13:03:41-79
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 8e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3586613   t=186.809611770482   Elapsed: 0.383919s (0m 00s)
+     Speed:     ev/sec=9.34238e+06   simsec/sec=486.6   ev/simsec=19199.3
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=186.809611770482s, event #3586613
+
+Calling finish() at end of Run #0...
+
+Preparing for running configuration Phase3_CorL4, run #1...
+Assigned runID=Phase3_CorL4-1-20260929-13:03:41-79
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3585309   t=186.667915990567   Elapsed: 0.377807s (0m 00s)
+     Speed:     ev/sec=9.48999e+06   simsec/sec=494.093   ev/simsec=19206.9
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=186.667915990567s, event #3585309
+
+Calling finish() at end of Run #1...
+
+Preparing for running configuration Phase3_CorL4, run #2...
+Assigned runID=Phase3_CorL4-2-20260929-13:03:41-79
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3.6e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #3589499   t=186.747155028981   Elapsed: 0.378871s (0m 00s)
+     Speed:     ev/sec=9.47527e+06   simsec/sec=492.96   ev/simsec=19221.2
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=186.747155028981s, event #3589499
+
+Calling finish() at end of Run #2...
+
+Run statistics: total 3, successful 3
+
+End.
+Phase-3 OMNeT++ high-load audit completed.
