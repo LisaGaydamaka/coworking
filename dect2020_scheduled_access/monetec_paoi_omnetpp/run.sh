@@ -59,7 +59,7 @@ docker run --rm   -v "$ROOT:/exp"   -w /exp/_scratch   "$IMAGE"   bash -lc '
     opp_run -h 2>&1 | grep -m1 "^Version:" || true
 
     cd /exp/_scratch/src
-    opp_makemake -f --deep
+    opp_makemake -f --deep -o dect2020_sa
     make -j2
 
     cd /exp/_scratch
