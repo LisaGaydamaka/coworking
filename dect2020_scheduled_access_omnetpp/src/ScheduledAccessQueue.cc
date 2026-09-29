@@ -28,15 +28,20 @@ void ScheduledAccessQueue::initialize()
     if (r < 1)
         throw cRuntimeError("r must be at least 1");
 
-    frameDuration = SimTime(par("frameDuration").doubleValueInUnit("s"));
-    meanType1ServiceTime = SimTime(par("meanType1ServiceTime").doubleValueInUnit("s"));
+    const double frameSeconds = par("frameDuration").doubleValueInUnit("s");
+    const double meanBSeconds = par("meanType1ServiceTime").doubleValueInUnit("s");
+    frameDuration = SimTime(frameSeconds);
+    meanType1ServiceTime = SimTime(meanBSeconds);
     if (meanType1ServiceTime <= SIMTIME_ZERO)
         throw cRuntimeError("meanType1ServiceTime must be positive");
 
     if (par("deriveDectParametersFromD").boolValue()) {
-        const double allocationSeconds = frameDuration.dbl() / D;
-        type2ServiceTime = SimTime(frameDuration.dbl() - allocationSeconds);
-        const double serviceSlotsPerAllocation = allocationSeconds / meanType1ServiceTime.dbl();
+        const double allocationSeconds = frameSeconds / D;
+        type2ServiceTime = SimTime(frameSeconds - allocationSeconds);
+        // Derive L from the unquantized NED parameter values. Using SimTime::dbl()
+        // here can move an exact integer ratio (e.g. D=6 -> 4 slots) slightly
+        // below the integer because of simulation-time quantization.
+        const double serviceSlotsPerAllocation = allocationSeconds / meanBSeconds;
         effectiveL = static_cast<int>(std::floor(serviceSlotsPerAllocation + 1e-9));
         effectiveL = std::max(1, effectiveL);
     }
