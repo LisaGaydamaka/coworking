@@ -39,6 +39,28 @@ docker run --rm \
     test -x src/dect2020_sa
     echo "build=PASS" > ci_results/build_status.txt
 
+    if [[ "$RUN_MODE" == phase4-crosscheck* ]]; then
+      echo "=== PHASE 4 DIMENSIONING CROSS-CHECK ==="
+      rm -f ci_results/phase4_*.csv ci_results/phase4_*.log ci_results/phase4_crosscheck_status.txt
+      cd simulations
+      rm -rf results_phase4
+      mkdir -p results_phase4
+      for cfg in Phase4_D2 Phase4_D6 Phase4_D10 Phase4_D13 Phase4_D20 Phase4_D24 Phase4_Trade; do
+        echo "=== $cfg ==="
+        ../src/dect2020_sa -u Cmdenv -n ../src -f omnetpp.ini -c "$cfg"
+      done 2>&1 | tee ../ci_results/phase4_crosscheck_run.log
+      opp_scavetool x results_phase4/*.sca -F CSV-R -o ../ci_results/phase4_scalars.csv
+      {
+        head -n 1 ../ci_results/phase4_scalars.csv
+        grep -E ",scalar,DectScheduledAccessNetwork\\.queue,(D|r|L_effective|rho|rho_sat|lambda_per_ms|lambda_sat_per_ms|mean_delay_direct_ms|mean_delay_little_ms|little_vs_direct_relative_error|blocking_probability|mean_type1_number|effective_throughput_departures_per_ms),,," ../ci_results/phase4_scalars.csv
+      } > ../ci_results/phase4_metrics.csv
+      echo "phase4_crosscheck=PASS" > ../ci_results/phase4_crosscheck_status.txt
+      cd ..
+      find ci_results -maxdepth 1 -type f -printf "%f %s bytes\\n" | sort | tee ci_results/files.txt
+      echo "OMNeT++ Phase-4 dimensioning cross-check completed."
+      exit 0
+    fi
+
     if [[ "$RUN_MODE" == article-representative* ]]; then
       echo "=== ARTICLE REPRESENTATIVE OMNET++ RUNS ==="
       rm -f ci_results/article_representative_*.csv ci_results/article_representative_*.log ci_results/article_representative_status.txt
