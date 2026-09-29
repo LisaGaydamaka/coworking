@@ -36,7 +36,8 @@ void ScheduledAccessQueue::initialize()
     if (par("deriveDectParametersFromD").boolValue()) {
         const double allocationSeconds = frameDuration.dbl() / D;
         type2ServiceTime = SimTime(frameDuration.dbl() - allocationSeconds);
-        effectiveL = static_cast<int>(std::floor(allocationSeconds / meanType1ServiceTime.dbl() + 1e-12));
+        const double serviceSlotsPerAllocation = allocationSeconds / meanType1ServiceTime.dbl();
+        effectiveL = static_cast<int>(std::floor(serviceSlotsPerAllocation + 1e-9));
         effectiveL = std::max(1, effectiveL);
     }
     else {
