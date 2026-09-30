@@ -231,3 +231,85 @@ w_j=0
 - `stage_e/block_ablation.csv`;
 - `stage_e/block_ablation_folds.csv`;
 - `stage_e/stage_e_summary.json`.
+
+
+## Этап F — block-aware ranking, compression и S_k
+
+Внутри каждого correlation block признаки ранжированы по заранее заданной последовательности:
+
+[
+\pi_j
+\rightarrow
+sign\ consistency
+\rightarrow
+paired\ ablation
+\rightarrow
+median|\gamma_j|
+\rightarrow
+canonical\ order.
+]
+
+Primary representatives:
+
+- B01: `OFT_distance`;
+- B02: `Average_speed_NOR1`;
+- B03: `Average_speed_NOR2`;
+- B04: `Learning_T1max`;
+- B05: `Learning_T2mean`;
+- B06: `Learning_T3sum`.
+
+Within-block one-SE compression на тех же 22 development splits оставила:
+
+- B01: `OFT_distance`, `Average_speed_OFT`, `Absolute_turn_angle_OFT`;
+- B02: `Average_speed_NOR1`, `Total_distance_travelled_NOR1`;
+- B03: только `Average_speed_NOR2`;
+- B04: только `Learning_T1max`;
+- B05: только `Learning_T2mean`;
+- B06: только `Learning_T3sum`.
+
+После compression development pool содержит 18 признаков. Первые 15, используемые для S3...S15:
+
+1. `OFT_distance`
+2. `Time_inCenter_OFT`
+3. `Latency_to_first_investigation_Stakan_zone_NOR2`
+4. `Latency_to_first_investigation_Piramidka_NOR1`
+5. `Average_speed_NOR1`
+6. `rear_support`
+7. `Time_investigating_Stakan_zone_NOR2`
+8. `EnduranceT`
+9. `Average_speed_OFT`
+10. `Learning_T3sum`
+11. `Absolute_turn_angle_OFT`
+12. `Learning_T1max`
+13. `Time_investigating_Piramidka_zone_NOR2`
+14. `Latency_to_first_investigation_Stakan_NOR1`
+15. `rear_nosupport`
+
+Для каждого S3...S15 выполнен новый reduced fit с автономным preprocessing:
+
+- statistical imputer использует только weighted features текущего S_k + `week_16` + `week_24`;
+- group не используется;
+- остальные MODEL_FEATURES не используются как statistical predictors;
+- после фиксации subset используется constrained QP с `lambda1=0`, `lambda2=0.1`, `beta=0.1`, `C=0.1`, `rho=0.1`;
+- старые full-model weights не переносятся.
+
+Все 13 subset sizes × 22 splits рассчитаны без solver/preprocessing failures.
+
+Важный diagnostic: на split `seed=1, fold=3` после появления `Average_speed_NOR1` в S5 reduced модель становится крайне нестабильной out-of-sample. Для S5:
+
+- `V_pos=0.06`;
+- minimum validation eNRI = `-1476.17`;
+- `V_eq=184.86`;
+- `V_var=33472.02`.
+
+Для S3 и S4 на том же split такого эффекта нет. Аналогичная экстремальная нестабильность сохраняется для S6...S15. Это не solver failure: train positivity остаётся выполненной; проблема проявляется именно на validation. Поэтому mean/SE для `V_eq` и `V_var` у S5+ сильно искажены этим split. Stage G должен соблюдать заранее заданный lexicographic порядок, начиная с `V_pos`, а этот diagnostic должен сохраняться как важная robustness-информация.
+
+Результаты:
+
+- `stage_f/within_block_ranking.csv`;
+- `stage_f/block_compression.csv`;
+- `stage_f/block_aware_ranking.csv`;
+- `stage_f/candidate_sets.csv`;
+- `stage_f/subset_cv.csv`;
+- `stage_f/subset_cv_folds.csv`;
+- `stage_f/stage_f_summary.json`.
