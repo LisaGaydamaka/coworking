@@ -101,6 +101,66 @@ def stratified_split(mouse_df: pd.DataFrame, train_fraction: float, seed: int):
     return train_ids, val_ids
 
 
+def quick_state_count_precheck(
+    long_raw,
+    train_ids,
+    val_ids,
+    required_min_train_o,
+    required_min_val_o,
+):
+    """
+    Cheap split feasibility filter based only on fixed group/week/death structure.
+
+    O_A after preprocessing equals the number of living rows in the state,
+    because stage-3 imputes admissible missing feature values rather than
+    dropping living rows. Therefore impossible train/validation state counts
+    can be rejected before the expensive IterativeImputer fit.
+    """
+    train_ids = set(train_ids)
+    val_ids = set(val_ids)
+    train_min = math.inf
+    val_min = math.inf
+    counts = {}
+
+    for group in ("PBS", "LPS", "run", "MCC"):
+        for week in (0, 16, 24):
+            label = f"{group}^{week}"
+            rows = long_raw[
+                long_raw["group"].eq(group)
+                & long_raw["week"].eq(week)
+            ]
+            train_o = int(
+                (
+                    rows["mouse_id"].isin(train_ids)
+                    & ~rows["death"].astype(bool)
+                ).sum()
+            )
+            val_o = int(
+                (
+                    rows["mouse_id"].isin(val_ids)
+                    & ~rows["death"].astype(bool)
+                ).sum()
+            )
+            counts[label] = {
+                "train_O": train_o,
+                "validation_O": val_o,
+            }
+            train_min = min(train_min, train_o)
+            val_min = min(val_min, val_o)
+
+    train_min = int(train_min if math.isfinite(train_min) else 0)
+    val_min = int(val_min if math.isfinite(val_min) else 0)
+    ok = (
+        train_min >= int(required_min_train_o)
+        and val_min >= int(required_min_val_o)
+    )
+    return ok, {
+        "min_train_O": train_min,
+        "min_validation_O": val_min,
+        "state_counts": counts,
+    }
+
+
 def prepare_full_feature_split(
     base, long_raw, train_ids, val_ids, seed, split_index,
     required_min_train_o, required_min_val_o,
@@ -216,6 +276,27 @@ def collect_inner_splits(base, outer_index, outer_train_raw, outer_train_mouse_d
         train_ids, val_ids = stratified_split(
             outer_train_mouse_df, INNER_TRAIN_FRACTION, seed
         )
+        quick_ok, quick_stats = quick_state_count_precheck(
+            outer_train_raw,
+            train_ids,
+            val_ids,
+            required_min_train_o=INNER_MIN_TRAIN_O,
+            required_min_val_o=INNER_MIN_VAL_O,
+        )
+        if not quick_ok:
+            rejected.append({
+                "seed": int(seed),
+                "split_index": int(len(accepted)),
+                "phase": "cheap_state_count_precheck",
+                **quick_stats,
+                "errors": [
+                    f"cheap precheck min train O={quick_stats['min_train_O']} "
+                    f"or min validation O={quick_stats['min_validation_O']} "
+                    "below nested inner threshold"
+                ],
+            })
+            continue
+
         split, reject = prepare_full_feature_split(
             base,
             outer_train_raw,
@@ -231,6 +312,17 @@ def collect_inner_splits(base, outer_index, outer_train_raw, outer_train_mouse_d
         else:
             split["inner_candidate_index"] = int(candidate_index)
             accepted.append(split)
+            if (
+                len(accepted) == 1
+                or len(accepted) % 5 == 0
+                or len(accepted) == INNER_TARGET
+            ):
+                print(
+                    f"STAGE_H_INNER_PROGRESS outer={outer_index} "
+                    f"valid={len(accepted)}/{INNER_TARGET} "
+                    f"candidate_index={candidate_index}",
+                    flush=True,
+                )
 
     if len(accepted) < INNER_TARGET:
         raise OuterSelectionFailure(
@@ -412,6 +504,17 @@ def stability_selection(
         if record is not None:
             record["resample_index"] = len(valid_records) + 1
             valid_records.append(record)
+            if (
+                len(valid_records) == 1
+                or len(valid_records) % 25 == 0
+                or len(valid_records) == STABILITY_TARGET
+            ):
+                print(
+                    f"STAGE_H_STABILITY_PROGRESS outer={outer_index} "
+                    f"valid={len(valid_records)}/{STABILITY_TARGET} "
+                    f"candidate_index={candidate_index}",
+                    flush=True,
+                )
         else:
             rejected.append(reject)
 
