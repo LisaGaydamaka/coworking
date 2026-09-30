@@ -411,3 +411,17 @@ Smoke-test полного nested pipeline успешно пройден.
 Inner-порог \(4/2\) вместо \(5/2\) нужен из-за структуры nested выборки: после outer split для некоторых состояний в outer-train остаётся 6 живых наблюдений, поэтому одновременно выделить 5 в inner-train и 2 в inner-validation математически невозможно. Это правило зафиксировано до production nested результатов.
 
 Внутри каждого outer-train заново выполняется весь selection pipeline. Outer-validation используется только для финальной оценки и не участвует в correlations, выборе \(\lambda_1\), stability selection, ablation, ranking, выборе \(k\) или subset.
+
+
+### Исполнение production Stage H
+
+Монолитный запуск Stage H заменён на фиксированную matrix-схему:
+
+1. \`stage_h_prepare.py\` заранее формирует детерминированный manifest из 30 outer splits. Выбор этих splits зависит только от mouse-level stratification и outer-критерия \(O^{train}\ge5,\ O^{val}\ge2\), а не от успеха nested model selection.
+2. \`stage_h_worker.py --outer-index N\` считает ровно один заранее фиксированный outer split. Если он падает, seed не заменяется другим.
+3. \`stage_h_aggregate.py\` принимает результаты только после успешного завершения всех outer workers и строит итоговые nested summaries.
+4. GitHub Actions workflow \`.github/workflows/stage-h-nested.yml\` запускает 30 outer workers как matrix с \`max-parallel: 6\`.
+5. Каждый worker имеет \`timeout-minutes: 180\`, поэтому бесконечный зависший процесс невозможен.
+6. Перед дорогим inner preprocessing добавлен дешёвый precheck living state counts, чтобы невозможные inner splits отбрасывались до \`IterativeImputer\`.
+
+Архитектура проверена smoke-test конфигурацией \(2\ outer \times 3\ inner \times 10\ stability\); оба fixed outer workers и aggregate завершились успешно.
