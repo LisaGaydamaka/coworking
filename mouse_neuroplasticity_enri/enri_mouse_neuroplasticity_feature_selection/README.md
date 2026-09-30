@@ -313,3 +313,86 @@ Within-block one-SE compression на тех же 22 development splits оста�
 - `stage_f/subset_cv.csv`;
 - `stage_f/subset_cv_folds.csv`;
 - `stage_f/stage_f_summary.json`.
+
+
+## Этап G — выбор минимального достаточного k
+
+К S3...S15 применено заранее зафиксированное последовательное one-SE правило:
+
+[
+V_{pos}
+ightarrow
+V_{sign}
+ightarrow
+V_{margin}
+ightarrow
+V_{eq}
+ightarrow
+V_{var}
+ightarrow
+V_w.
+]
+
+На каждом шаге оставались модели с
+
+[
+mean(V)
+le
+best mean(V)+SE(best),
+]
+
+где
+
+[
+SE=SD/sqrt{22}.
+]
+
+Это эвристическая мера стабильности, а не классическая независимая inferential SE, поскольку development splits перекрываются.
+
+Результат:
+
+[
+oxed{k^*=4}
+]
+
+Development subset:
+
+1. `OFT_distance`
+2. `Time_inCenter_OFT`
+3. `Latency_to_first_investigation_Stakan_zone_NOR2`
+4. `Latency_to_first_investigation_Piramidka_NOR1`
+
+Логика отбора:
+
+- по `V_pos` только S3 и S4 сохранили нулевую validation positivity violation на всех 22 splits;
+- S5...S15 были исключены уже на первом шаге из-за positivity failure на одном development split;
+- среди S3 и S4 значение `V_sign` для S4 ниже:
+  - S3: mean `V_sign=0.3773`, SE `0.03285`;
+  - S4: mean `V_sign=0.3182`, SE `0.02989`;
+  - one-SE threshold для S4 = `0.3481`, поэтому S3 не проходит следующий шаг;
+- после этого единственным survivor остаётся S4.
+
+Для S4 development metrics:
+
+- `V_pos = 0`;
+- mean `V_sign = 0.3182`;
+- mean `V_margin = 0.09175`;
+- mean `V_eq = 0.12660`;
+- mean `V_var = 0.00991`;
+- mean `V_w = 0.09978`.
+
+Paired S4 − S3:
+
+- `V_sign` улучшается в 59.1% splits, median delta = `-0.10`;
+- `V_margin` улучшается в 81.8% splits, median delta = `-0.00896`;
+- при этом `V_eq`, `V_var` и `V_w` у S4 чаще хуже, но они имеют меньший приоритет по заранее заданному lexicographic rule.
+
+Это только development selection. S4 нельзя объявлять финальным reduced eNRI до Stage H: внутри каждого outer-train весь selection pipeline должен быть выполнен заново.
+
+Результаты:
+
+- `stage_g/k_selection_trace.csv`;
+- `stage_g/k_selection_status.csv`;
+- `stage_g/selected_subset.csv`;
+- `stage_g/selected_k_fold_metrics.csv`;
+- `stage_g/stage_g_summary.json`.
