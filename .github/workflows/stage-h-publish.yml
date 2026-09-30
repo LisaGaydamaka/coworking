@@ -1,0 +1,41 @@
+name: Publish Stage H results
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection/.run_stage_h_publish'
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/download-artifact@v4
+        with:
+          name: stage-h-production-results
+          path: mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection/stage_h_production
+          run-id: 36751035784
+          github-token: ${{ github.token }}
+      - name: Commit Stage H production outputs
+        shell: bash
+        run: |
+          DIR="mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection/stage_h_production"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$DIR"
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish Stage H production results"
+            git reset --hard HEAD
+            git clean -fd
+            git pull --rebase origin main
+            git push
+          fi
