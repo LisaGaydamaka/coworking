@@ -1,0 +1,191 @@
+{
+  "inputs": {
+    "correlation_blocks": "stage_a/correlation_blocks.csv",
+    "stability_coefficients": "stage_c/stability_coefficients.csv",
+    "stability_summary": "stage_c/stability_selection.csv",
+    "valid_resamples": 200
+  },
+  "outputs": {
+    "block_member_stability": "stage_d/block_member_stability.csv",
+    "block_pair_selection": "stage_d/block_pair_selection.csv",
+    "block_stability": "stage_d/block_stability.csv",
+    "block_stability_ranked": "stage_d/block_stability_ranked.csv"
+  },
+  "purpose": "development_block_stability",
+  "results": {
+    "block_member_rows": 17,
+    "block_pair_rows": 17,
+    "blocks": [
+      {
+        "block_gain_over_best_member": 0.020000000000000018,
+        "block_id": "B01",
+        "members": [
+          "OFT_distance",
+          "Average_speed_OFT",
+          "Total_time_mobile_OFT",
+          "Absolute_turn_angle_OFT"
+        ],
+        "p_exactly_one_selected": 0.055,
+        "p_multiple_selected": 0.94,
+        "pi_block_any_selected": 0.995,
+        "primary_member_by_pi": "OFT_distance",
+        "primary_member_pi": 0.975
+      },
+      {
+        "block_gain_over_best_member": 0.015000000000000013,
+        "block_id": "B02",
+        "members": [
+          "Total_distance_travelled_NOR1",
+          "Average_speed_NOR1"
+        ],
+        "p_exactly_one_selected": 0.835,
+        "p_multiple_selected": 0.08,
+        "pi_block_any_selected": 0.915,
+        "primary_member_by_pi": "Average_speed_NOR1",
+        "primary_member_pi": 0.9
+      },
+      {
+        "block_gain_over_best_member": 0.0,
+        "block_id": "B06",
+        "members": [
+          "Learning_T3mean",
+          "Learning_T3max",
+          "Learning_T3sum"
+        ],
+        "p_exactly_one_selected": 0.175,
+        "p_multiple_selected": 0.585,
+        "pi_block_any_selected": 0.76,
+        "primary_member_by_pi": "Learning_T3sum",
+        "primary_member_pi": 0.76
+      },
+      {
+        "block_gain_over_best_member": 0.06499999999999995,
+        "block_id": "B04",
+        "members": [
+          "Learning_T1mean",
+          "Learning_T1max",
+          "Learning_T1sum"
+        ],
+        "p_exactly_one_selected": 0.595,
+        "p_multiple_selected": 0.125,
+        "pi_block_any_selected": 0.72,
+        "primary_member_by_pi": "Learning_T1max",
+        "primary_member_pi": 0.655
+      },
+      {
+        "block_gain_over_best_member": 0.08999999999999997,
+        "block_id": "B05",
+        "members": [
+          "Learning_T2mean",
+          "Learning_T2max",
+          "Learning_T2sum"
+        ],
+        "p_exactly_one_selected": 0.295,
+        "p_multiple_selected": 0.27,
+        "pi_block_any_selected": 0.565,
+        "primary_member_by_pi": "Learning_T2mean",
+        "primary_member_pi": 0.475
+      },
+      {
+        "block_gain_over_best_member": 0.11500000000000002,
+        "block_id": "B03",
+        "members": [
+          "Total_distance_travelled_NOR2",
+          "Average_speed_NOR2"
+        ],
+        "p_exactly_one_selected": 0.255,
+        "p_multiple_selected": 0.075,
+        "pi_block_any_selected": 0.33,
+        "primary_member_by_pi": "Average_speed_NOR2",
+        "primary_member_pi": 0.215
+      }
+    ],
+    "correlation_blocks": 6,
+    "top_substitution_pairs": [
+      {
+        "block_id": "B02",
+        "feature_a": "Total_distance_travelled_NOR1",
+        "feature_b": "Average_speed_NOR1",
+        "p_any_selected": 0.915,
+        "p_both_selected": 0.08,
+        "p_exactly_one_selected": 0.835
+      },
+      {
+        "block_id": "B06",
+        "feature_a": "Learning_T3max",
+        "feature_b": "Learning_T3sum",
+        "p_any_selected": 0.76,
+        "p_both_selected": 0.04,
+        "p_exactly_one_selected": 0.72
+      },
+      {
+        "block_id": "B04",
+        "feature_a": "Learning_T1mean",
+        "feature_b": "Learning_T1max",
+        "p_any_selected": 0.72,
+        "p_both_selected": 0.06,
+        "p_exactly_one_selected": 0.66
+      },
+      {
+        "block_id": "B04",
+        "feature_a": "Learning_T1max",
+        "feature_b": "Learning_T1sum",
+        "p_any_selected": 0.72,
+        "p_both_selected": 0.06,
+        "p_exactly_one_selected": 0.66
+      },
+      {
+        "block_id": "B06",
+        "feature_a": "Learning_T3mean",
+        "feature_b": "Learning_T3max",
+        "p_any_selected": 0.585,
+        "p_both_selected": 0.03,
+        "p_exactly_one_selected": 0.555
+      },
+      {
+        "block_id": "B01",
+        "feature_a": "OFT_distance",
+        "feature_b": "Total_time_mobile_OFT",
+        "p_any_selected": 0.99,
+        "p_both_selected": 0.455,
+        "p_exactly_one_selected": 0.535
+      },
+      {
+        "block_id": "B01",
+        "feature_a": "Average_speed_OFT",
+        "feature_b": "Total_time_mobile_OFT",
+        "p_any_selected": 0.875,
+        "p_both_selected": 0.385,
+        "p_exactly_one_selected": 0.49
+      },
+      {
+        "block_id": "B05",
+        "feature_a": "Learning_T2mean",
+        "feature_b": "Learning_T2max",
+        "p_any_selected": 0.555,
+        "p_both_selected": 0.07,
+        "p_exactly_one_selected": 0.485
+      },
+      {
+        "block_id": "B01",
+        "feature_a": "Total_time_mobile_OFT",
+        "feature_b": "Absolute_turn_angle_OFT",
+        "p_any_selected": 0.775,
+        "p_both_selected": 0.355,
+        "p_exactly_one_selected": 0.42
+      },
+      {
+        "block_id": "B01",
+        "feature_a": "Average_speed_OFT",
+        "feature_b": "Absolute_turn_angle_OFT",
+        "p_any_selected": 0.91,
+        "p_both_selected": 0.54,
+        "p_exactly_one_selected": 0.37
+      }
+    ]
+  },
+  "stage": "D",
+  "status": "READY",
+  "validation_errors": [],
+  "warning": "Blocks come from Stage-A full-data diagnostic correlations. In final nested validation, block construction and block stability must be recomputed inside each outer-train."
+}

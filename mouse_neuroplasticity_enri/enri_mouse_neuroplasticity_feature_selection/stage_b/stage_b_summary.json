@@ -14,12 +14,12 @@
     "selected_cv_active_count_mean": 17.136363636363637,
     "selected_cv_active_count_median": 16.5,
     "selected_cv_metrics": {
-      "V_eq": 0.12453816739119589,
-      "V_margin": 0.09771552742482904,
+      "V_eq": 0.12453816739119596,
+      "V_margin": 0.09771552742482906,
       "V_pos": 0.0,
       "V_sign": 0.35000000000000003,
-      "V_var": 0.012612062820723026,
-      "V_w": 0.11964856429719087
+      "V_var": 0.01261206282072303,
+      "V_w": 0.11964856429719085
     },
     "selected_full_active_count": 18,
     "selected_full_active_features": [
@@ -42,7 +42,7 @@
       "rear_support",
       "rear_nosupport"
     ],
-    "selected_full_slack_sum": 0.15956822259634612
+    "selected_full_slack_sum": 0.15956822259634615
   },
   "extension_rule": "append lambda1=1,3 if full-data lambda1=0.3 leaves more than 15 active features",
   "fixed_hyperparameters": {
@@ -66,7 +66,7 @@
     0.3
   ],
   "lambda1_zero_reproduction": {
-    "max_abs_weight_diff_vs_original": 1.759709866017145e-08,
+    "max_abs_weight_diff_vs_original": 1.75970970087147e-08,
     "pass": true
   },
   "outputs": {

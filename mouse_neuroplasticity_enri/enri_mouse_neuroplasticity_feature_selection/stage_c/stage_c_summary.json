@@ -11,49 +11,49 @@
   "candidate_features": [
     {
       "feature": "Average_speed_OFT",
-      "gamma_median_selected": -3.400563748218957,
+      "gamma_median_selected": -3.400563748218956,
       "modal_sign": -1,
       "pi_selection": 0.79,
       "sign_consistency": 1.0
     },
     {
       "feature": "Learning_T3sum",
-      "gamma_median_selected": -0.0003040786249576255,
+      "gamma_median_selected": -0.00030407862495762417,
       "modal_sign": -1,
       "pi_selection": 0.76,
       "sign_consistency": 1.0
     },
     {
       "feature": "Absolute_turn_angle_OFT",
-      "gamma_median_selected": 2.7737180326633534e-06,
+      "gamma_median_selected": 2.773718032663357e-06,
       "modal_sign": 1,
       "pi_selection": 0.66,
       "sign_consistency": 0.9924242424242424
     },
     {
       "feature": "Learning_T1max",
-      "gamma_median_selected": -0.0026908480402981906,
+      "gamma_median_selected": -0.0026908480402981854,
       "modal_sign": -1,
       "pi_selection": 0.655,
       "sign_consistency": 0.9923664122137404
     },
     {
       "feature": "Time_investigating_Piramidka_zone_NOR2",
-      "gamma_median_selected": -0.002229178800089165,
+      "gamma_median_selected": -0.002229178800089166,
       "modal_sign": -1,
       "pi_selection": 0.64,
       "sign_consistency": 0.9921875
     },
     {
       "feature": "Latency_to_first_investigation_Stakan_NOR1",
-      "gamma_median_selected": 0.00010901931985619773,
+      "gamma_median_selected": 0.00010901931985619765,
       "modal_sign": 1,
       "pi_selection": 0.64,
       "sign_consistency": 0.9765625
     },
     {
       "feature": "rear_nosupport",
-      "gamma_median_selected": -0.001414587555420302,
+      "gamma_median_selected": -0.0014145875554203127,
       "modal_sign": -1,
       "pi_selection": 0.615,
       "sign_consistency": 0.975609756097561
@@ -62,42 +62,42 @@
   "core_features": [
     {
       "feature": "Time_inCenter_OFT",
-      "gamma_median_selected": -0.000828420692193365,
+      "gamma_median_selected": -0.0008284206921933661,
       "modal_sign": -1,
       "pi_selection": 0.94,
       "sign_consistency": 1.0
     },
     {
       "feature": "Latency_to_first_investigation_Stakan_zone_NOR2",
-      "gamma_median_selected": 0.0002217038627062078,
+      "gamma_median_selected": 0.00022170386270620727,
       "modal_sign": 1,
       "pi_selection": 0.92,
       "sign_consistency": 1.0
     },
     {
       "feature": "Latency_to_first_investigation_Piramidka_NOR1",
-      "gamma_median_selected": -0.00027713327890253815,
+      "gamma_median_selected": -0.0002771332789025382,
       "modal_sign": -1,
       "pi_selection": 0.915,
       "sign_consistency": 1.0
     },
     {
       "feature": "rear_support",
-      "gamma_median_selected": 0.00392347645254949,
+      "gamma_median_selected": 0.003923476452549491,
       "modal_sign": 1,
       "pi_selection": 0.89,
       "sign_consistency": 1.0
     },
     {
       "feature": "Time_investigating_Stakan_zone_NOR2",
-      "gamma_median_selected": 0.0030786992911943536,
+      "gamma_median_selected": 0.0030786992911943562,
       "modal_sign": 1,
       "pi_selection": 0.815,
       "sign_consistency": 0.9938650306748467
     },
     {
       "feature": "EnduranceT",
-      "gamma_median_selected": 0.0005065125562150679,
+      "gamma_median_selected": 0.0005065125562150677,
       "modal_sign": 1,
       "pi_selection": 0.81,
       "sign_consistency": 1.0
@@ -129,8 +129,8 @@
   },
   "slack_sum": {
     "mean": 0.12469852644390719,
-    "median": 0.12373576867776198,
-    "q10": 0.0014909162960797641,
+    "median": 0.1237357686777619,
+    "q10": 0.0014909162960798155,
     "q90": 0.25891207200809685
   },
   "stage": "C",
