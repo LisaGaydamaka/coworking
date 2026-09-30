@@ -142,3 +142,35 @@ Candidate:
 - `stage_c/stability_resamples.csv`;
 - `stage_c/stability_coefficients.csv`;
 - `stage_c/stage_c_summary.json`.
+
+
+## Этап D — block stability
+
+Использованы 6 correlation blocks из Stage A и active/inactive решения по 200 resamples из Stage C.
+
+Для каждого блока рассчитаны:
+
+- `P(any member selected)`;
+- `P(exactly one selected)`;
+- `P(multiple selected)`;
+- частоты выбора каждого представителя;
+- pairwise joint-selection и XOR/substitution frequencies.
+
+Основные результаты:
+
+- B01 OFT: `P(any)=0.995`; в 94.0% resamples выбиралось минимум два представителя блока. Это устойчивый блок, но не простой случай взаимозаменяемости одного признака другим.
+- B02 NOR1 distance/speed: `P(any)=0.915`; ровно один представитель выбирался в 83.5% resamples. Основной представитель — `Average_speed_NOR1` (`pi=0.90`), но его знак нестабилен.
+- B04 Learning T1: `P(any)=0.72`; основной представитель — `Learning_T1max` (`pi=0.655`).
+- B06 Learning T3: `P(any)=0.76`; основной представитель — `Learning_T3sum` (`pi=0.76`).
+- B05 Learning T2: `P(any)=0.565`.
+- B03 NOR2 distance/speed: `P(any)=0.33`; блок выбирается редко.
+
+Это development block stability. В финальном nested validation сами correlation blocks и их stability будут пересчитываться только внутри outer-train.
+
+Результаты:
+
+- `stage_d/block_stability.csv`;
+- `stage_d/block_stability_ranked.csv`;
+- `stage_d/block_member_stability.csv`;
+- `stage_d/block_pair_selection.csv`;
+- `stage_d/stage_d_summary.json`.
