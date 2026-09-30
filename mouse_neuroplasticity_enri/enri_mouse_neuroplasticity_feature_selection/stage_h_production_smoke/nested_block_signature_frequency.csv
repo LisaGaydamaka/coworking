@@ -1,0 +1,10 @@
+block_signature,outer_present_count,outer_present_frequency,outer_selected_count,outer_selected_frequency,selected_given_present
+Absolute_turn_angle_OFT|Average_speed_OFT|OFT_distance|Total_time_mobile_OFT,2,1.0,2,1.0,1.0
+Average_speed_NOR1|Total_distance_travelled_NOR1,2,1.0,2,1.0,1.0
+Learning_T1max|Learning_T1mean|Learning_T1sum,2,1.0,1,0.5,0.5
+Learning_T2max|Learning_T2mean|Learning_T2sum,2,1.0,1,0.5,0.5
+Learning_T3max|Learning_T3mean|Learning_T3sum,2,1.0,1,0.5,0.5
+Latency_to_first_investigation_Piramidka_NOR1|Latency_to_first_investigation_Stakan_NOR1,1,0.5,1,0.5,1.0
+Time_investigating_Piramidka_NOR1|Time_investigating_Stakan_NOR1,1,0.5,1,0.5,1.0
+Average_speed_NOR2|Time_investigating_Piramidka_zone_NOR2|Total_distance_travelled_NOR2,1,0.5,0,0.0,0.0
+Average_speed_NOR2|Total_distance_travelled_NOR2,1,0.5,0,0.0,0.0

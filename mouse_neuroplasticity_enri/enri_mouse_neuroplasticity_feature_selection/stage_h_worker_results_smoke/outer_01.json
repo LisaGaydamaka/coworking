@@ -1,0 +1,354 @@
+{
+  "detail": {
+    "block_primary": {
+      "B01": "OFT_distance",
+      "B02": "Average_speed_NOR1",
+      "B03": "Time_investigating_Piramidka_NOR1",
+      "B04": "Total_distance_travelled_NOR2",
+      "B05": "Learning_T1max",
+      "B06": "Learning_T2mean",
+      "B07": "Learning_T3sum"
+    },
+    "candidate_features": [],
+    "candidate_pool": [
+      "OFT_distance",
+      "Average_speed_NOR1",
+      "rear_nosupport",
+      "Learning_T1max",
+      "Weight",
+      "Latency_to_first_investigation_Piramidka_NOR1",
+      "Latency_to_first_investigation_Stakan_NOR1",
+      "Time_investigating_Piramidka_NOR1",
+      "Time_investigating_Stakan_NOR1",
+      "Learning_T3sum",
+      "EnduranceT",
+      "Learning_T2mean",
+      "Time_investigating_Stakan_zone_NOR2",
+      "Time_inCenter_OFT",
+      "rear_support",
+      "Total_distance_travelled_NOR2",
+      "Latency_to_first_investigation_Piramidka_zone_NOR2",
+      "Latency_to_first_investigation_Stakan_zone_NOR2"
+    ],
+    "core_features": [
+      "OFT_distance"
+    ],
+    "correlation_blocks": [
+      {
+        "block_id": "B01",
+        "members": [
+          "OFT_distance",
+          "Average_speed_OFT",
+          "Total_time_mobile_OFT",
+          "Absolute_turn_angle_OFT"
+        ],
+        "p_all_selected": 0.0,
+        "p_exactly_one_selected": 0.9,
+        "p_multiple_selected": 0.0,
+        "pi_block_any_selected": 0.9
+      },
+      {
+        "block_id": "B02",
+        "members": [
+          "Total_distance_travelled_NOR1",
+          "Average_speed_NOR1"
+        ],
+        "p_all_selected": 0.1,
+        "p_exactly_one_selected": 0.5,
+        "p_multiple_selected": 0.1,
+        "pi_block_any_selected": 0.6
+      },
+      {
+        "block_id": "B03",
+        "members": [
+          "Time_investigating_Piramidka_NOR1",
+          "Time_investigating_Stakan_NOR1"
+        ],
+        "p_all_selected": 0.0,
+        "p_exactly_one_selected": 0.4,
+        "p_multiple_selected": 0.0,
+        "pi_block_any_selected": 0.4
+      },
+      {
+        "block_id": "B04",
+        "members": [
+          "Total_distance_travelled_NOR2",
+          "Average_speed_NOR2",
+          "Time_investigating_Piramidka_zone_NOR2"
+        ],
+        "p_all_selected": 0.0,
+        "p_exactly_one_selected": 0.0,
+        "p_multiple_selected": 0.0,
+        "pi_block_any_selected": 0.0
+      },
+      {
+        "block_id": "B05",
+        "members": [
+          "Learning_T1mean",
+          "Learning_T1max",
+          "Learning_T1sum"
+        ],
+        "p_all_selected": 0.0,
+        "p_exactly_one_selected": 0.4,
+        "p_multiple_selected": 0.1,
+        "pi_block_any_selected": 0.5
+      },
+      {
+        "block_id": "B06",
+        "members": [
+          "Learning_T2mean",
+          "Learning_T2max",
+          "Learning_T2sum"
+        ],
+        "p_all_selected": 0.0,
+        "p_exactly_one_selected": 0.1,
+        "p_multiple_selected": 0.0,
+        "pi_block_any_selected": 0.1
+      },
+      {
+        "block_id": "B07",
+        "members": [
+          "Learning_T3mean",
+          "Learning_T3max",
+          "Learning_T3sum"
+        ],
+        "p_all_selected": 0.0,
+        "p_exactly_one_selected": 0.2,
+        "p_multiple_selected": 0.0,
+        "pi_block_any_selected": 0.2
+      }
+    ],
+    "final_k_survivors": [
+      13
+    ],
+    "inner_rejected_splits": 11,
+    "inner_valid_splits": 3,
+    "lambda1_grid": [
+      0.0,
+      1e-05,
+      3e-05,
+      0.0001,
+      0.0003,
+      0.001,
+      0.003,
+      0.01,
+      0.03,
+      0.1,
+      0.3
+    ],
+    "lambda1_grid_extended": false,
+    "lambda1_star": 0.1,
+    "outer_index": 1,
+    "outer_metrics": {
+      "V_eq": 0.09770423719964275,
+      "V_margin": 0.15297492642534824,
+      "V_pos": 0.0,
+      "V_sign": 0.6,
+      "V_var": 0.010670774588405008,
+      "V_w": 0.13170658933546275
+    },
+    "outer_seed": 1004,
+    "outer_train_n": 43,
+    "outer_validation_min_enri": 0.7977249639464323,
+    "outer_validation_n": 11,
+    "required_acquisition_fields": [
+      "Average_speed_NOR1",
+      "EnduranceT",
+      "Latency_to_first_investigation_Piramidka_NOR1",
+      "Latency_to_first_investigation_Stakan_NOR1",
+      "Learning_T1max",
+      "Learning_T2mean",
+      "Learning_T3sum",
+      "OFT_distance",
+      "Time_investigating_Piramidka_NOR1",
+      "Time_investigating_Piramidka_zone_NOR2",
+      "Time_investigating_Stakan_NOR1",
+      "Time_investigating_Stakan_zone_NOR2",
+      "Total_time_investigating_NOR1",
+      "Total_time_investigating_NOR2",
+      "Weight",
+      "rear_nosupport"
+    ],
+    "retained_by_block": {
+      "B01": [
+        "OFT_distance"
+      ],
+      "B02": [
+        "Average_speed_NOR1"
+      ],
+      "B03": [
+        "Time_investigating_Piramidka_NOR1",
+        "Time_investigating_Stakan_NOR1"
+      ],
+      "B04": [
+        "Total_distance_travelled_NOR2"
+      ],
+      "B05": [
+        "Learning_T1max"
+      ],
+      "B06": [
+        "Learning_T2mean"
+      ],
+      "B07": [
+        "Learning_T3sum"
+      ]
+    },
+    "selected_blocks": [
+      {
+        "block_id": "B01",
+        "members": [
+          "OFT_distance",
+          "Average_speed_OFT",
+          "Total_time_mobile_OFT",
+          "Absolute_turn_angle_OFT"
+        ],
+        "pi_block_any_selected": 0.9,
+        "selected_members": [
+          "OFT_distance"
+        ],
+        "signature": "Absolute_turn_angle_OFT|Average_speed_OFT|OFT_distance|Total_time_mobile_OFT"
+      },
+      {
+        "block_id": "B02",
+        "members": [
+          "Total_distance_travelled_NOR1",
+          "Average_speed_NOR1"
+        ],
+        "pi_block_any_selected": 0.6,
+        "selected_members": [
+          "Average_speed_NOR1"
+        ],
+        "signature": "Average_speed_NOR1|Total_distance_travelled_NOR1"
+      },
+      {
+        "block_id": "B03",
+        "members": [
+          "Time_investigating_Piramidka_NOR1",
+          "Time_investigating_Stakan_NOR1"
+        ],
+        "pi_block_any_selected": 0.4,
+        "selected_members": [
+          "Time_investigating_Piramidka_NOR1",
+          "Time_investigating_Stakan_NOR1"
+        ],
+        "signature": "Time_investigating_Piramidka_NOR1|Time_investigating_Stakan_NOR1"
+      },
+      {
+        "block_id": "B05",
+        "members": [
+          "Learning_T1mean",
+          "Learning_T1max",
+          "Learning_T1sum"
+        ],
+        "pi_block_any_selected": 0.5,
+        "selected_members": [
+          "Learning_T1max"
+        ],
+        "signature": "Learning_T1max|Learning_T1mean|Learning_T1sum"
+      },
+      {
+        "block_id": "B06",
+        "members": [
+          "Learning_T2mean",
+          "Learning_T2max",
+          "Learning_T2sum"
+        ],
+        "pi_block_any_selected": 0.1,
+        "selected_members": [
+          "Learning_T2mean"
+        ],
+        "signature": "Learning_T2max|Learning_T2mean|Learning_T2sum"
+      },
+      {
+        "block_id": "B07",
+        "members": [
+          "Learning_T3mean",
+          "Learning_T3max",
+          "Learning_T3sum"
+        ],
+        "pi_block_any_selected": 0.2,
+        "selected_members": [
+          "Learning_T3sum"
+        ],
+        "signature": "Learning_T3max|Learning_T3mean|Learning_T3sum"
+      }
+    ],
+    "selected_features": [
+      "OFT_distance",
+      "Average_speed_NOR1",
+      "rear_nosupport",
+      "Learning_T1max",
+      "Weight",
+      "Latency_to_first_investigation_Piramidka_NOR1",
+      "Latency_to_first_investigation_Stakan_NOR1",
+      "Time_investigating_Piramidka_NOR1",
+      "Time_investigating_Stakan_NOR1",
+      "Learning_T3sum",
+      "EnduranceT",
+      "Learning_T2mean",
+      "Time_investigating_Stakan_zone_NOR2"
+    ],
+    "selected_k": 13,
+    "slack_max": 0.10078420177644225,
+    "slack_sum": 0.11655147955967642,
+    "solver_status": "optimal",
+    "solver_used": "OSQP",
+    "stability_rejected_resamples": 3,
+    "stability_valid_resamples": 10,
+    "train_group_means": {
+      "LPS^0": 0.9752345798071969,
+      "LPS^16": 0.8042625020317382,
+      "LPS^24": 0.619245590884008,
+      "MCC^0": 0.9980528231938858,
+      "MCC^16": 0.8076907627908309,
+      "MCC^24": 0.8350959724872864,
+      "PBS^0": 1.0,
+      "PBS^16": 0.8034783002550816,
+      "PBS^24": 0.7034783258823982,
+      "run^0": 0.9803607793047014,
+      "run^16": 0.7473836984421414,
+      "run^24": 0.7531104879259898
+    },
+    "validation_group_means": {
+      "LPS^0": 0.9617918097429241,
+      "LPS^16": 0.8983585336243184,
+      "LPS^24": 0.9876108189386024,
+      "MCC^0": 0.9850312338830114,
+      "MCC^16": 0.7172469947263537,
+      "MCC^24": 0.6035736111741741,
+      "PBS^0": 0.9865825305775456,
+      "PBS^16": 0.8107675682428371,
+      "PBS^24": 0.9373639917340555,
+      "run^0": 0.9421048218231118,
+      "run^16": 1.0094168398190935,
+      "run^24": 0.9994640057184543
+    },
+    "weights": {
+      "Average_speed_NOR1": 8.443568290368216e-06,
+      "EnduranceT": 0.018722481754991197,
+      "Latency_to_first_investigation_Piramidka_NOR1": -0.062011414280879786,
+      "Latency_to_first_investigation_Stakan_NOR1": 0.031201200858863777,
+      "Learning_T1max": -0.037685305233947516,
+      "Learning_T2mean": 0.03401204683838225,
+      "Learning_T3sum": -0.024437246307761906,
+      "OFT_distance": 0.001992283189363131,
+      "Time_investigating_Piramidka_NOR1": -0.04904875439133059,
+      "Time_investigating_Stakan_NOR1": 0.06468874729230202,
+      "Time_investigating_Stakan_zone_NOR2": 0.02322398651810444,
+      "Weight": -0.030608723809333944,
+      "rear_nosupport": -0.030534443291598327
+    }
+  },
+  "diagnostic_summary": {
+    "block_ablation_rows": 7,
+    "block_compression_rows": 8,
+    "feature_ablation_rows": 1,
+    "lambda_path_rows": 11,
+    "stability_rows": 30,
+    "subset_path_rows": 13
+  },
+  "manifest_hash": "fc75b06e42c4d30a7d580b0bcc3001ac735313e042a12c1ace8626704576f94a",
+  "outer_index": 1,
+  "outer_seed": 1004,
+  "schema_version": 1
+}

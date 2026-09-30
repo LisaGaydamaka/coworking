@@ -1,0 +1,332 @@
+{
+  "code_hashes": {
+    "mouse_neuroplasticity_enri/enri_mouse_neuroplasticity/solve.py": "d58fe5be11059eca0e05e4375e19eb41b997ae60a3b04984db90873cf27d251d",
+    "mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection/stage_a.py": "a6757653107aa9fc0dedbf2e62b657430d0f2672cf5bca453d52100cdef4f97d",
+    "mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection/stage_b.py": "5fa3386788a0d6d9e16b5a29e14e8affafc02e6ed704a53462476aca61ea1870",
+    "mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection/stage_c.py": "bb301e32d827c89dadd42b975cef2e72857c430857b1ebc473f50f78cd50594a",
+    "mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection/stage_e.py": "b6c4d856bc574da3cd683397830078ae825862b4541a4286520ab3d40595aabc",
+    "mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection/stage_f.py": "d3953dc858829d4f635010c272bfd04e68e7cef306bc3d95a119b8208767cf19",
+    "mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection/stage_h.py": "07a8b853041938ff7fd151b8b4a2722ef8ba7c934ab807aa05151d57085aaf3b"
+  },
+  "inner_min_train_O": 4,
+  "inner_min_validation_O": 2,
+  "inner_target": 3,
+  "manifest_hash": "fc75b06e42c4d30a7d580b0bcc3001ac735313e042a12c1ace8626704576f94a",
+  "mouse_count": 54,
+  "outer_min_train_O": 5,
+  "outer_min_validation_O": 2,
+  "outer_seed_start": 1000,
+  "outer_target": 2,
+  "outer_train_fraction": 0.8,
+  "rejected_outer_candidates_before_target": [
+    {
+      "candidate_index": 1,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1001,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 2,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1002,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 3,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1003,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    }
+  ],
+  "schema_version": 1,
+  "splits": [
+    {
+      "candidate_index": 0,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 0,
+      "seed": 1000,
+      "train_ids": [
+        "4.4",
+        "9.1",
+        "21.5",
+        "20.4",
+        "4.1",
+        "18.2",
+        "2.4",
+        "8.3",
+        "17.1",
+        "21.2",
+        "20.2",
+        "3.1",
+        "18.3",
+        "10.3",
+        "17.4",
+        "12.1",
+        "3.3",
+        "20.5",
+        "12.3",
+        "19.3",
+        "1.1",
+        "12.2",
+        "1.3",
+        "19.2",
+        "6.3",
+        "21.4",
+        "4.3",
+        "16.1",
+        "21.3",
+        "3.4",
+        "11.2",
+        "8.2",
+        "21.1",
+        "18.1",
+        "12.5",
+        "2.1",
+        "10.1",
+        "16.2",
+        "17.5",
+        "19.4",
+        "1.4",
+        "19.1",
+        "17.3"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "1.5",
+        "17.2",
+        "12.4",
+        "6.2",
+        "11.1",
+        "20.1",
+        "9.2",
+        "8.4",
+        "20.3",
+        "16.3",
+        "9.3"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 4,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 1,
+      "seed": 1004,
+      "train_ids": [
+        "12.5",
+        "16.2",
+        "17.1",
+        "6.2",
+        "17.3",
+        "9.1",
+        "12.1",
+        "20.5",
+        "16.3",
+        "1.1",
+        "12.4",
+        "21.3",
+        "1.5",
+        "11.1",
+        "4.1",
+        "9.2",
+        "20.2",
+        "9.3",
+        "12.3",
+        "18.2",
+        "21.1",
+        "8.3",
+        "6.3",
+        "20.4",
+        "4.3",
+        "20.3",
+        "2.1",
+        "21.2",
+        "19.3",
+        "21.5",
+        "18.3",
+        "3.4",
+        "3.1",
+        "19.2",
+        "10.3",
+        "1.3",
+        "18.1",
+        "17.2",
+        "17.5",
+        "10.1",
+        "11.2",
+        "19.4",
+        "19.1"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "2.4",
+        "17.4",
+        "16.1",
+        "20.1",
+        "1.4",
+        "21.4",
+        "4.4",
+        "3.3",
+        "8.2",
+        "8.4",
+        "12.2"
+      ],
+      "validation_n": 11
+    }
+  ],
+  "stability_target": 10
+}
