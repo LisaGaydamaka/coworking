@@ -654,13 +654,13 @@ def build_ranking(
         block_member_order[str(block_id)] = ordered
         block_primary[str(block_id)] = ordered[0]
 
-    stable_singletons = []
-    for feature in base.MODEL_FEATURES:
-        if (
-            feature_block[feature] is None
-            and records[feature]["category"] in {"core", "candidate"}
-        ):
-            stable_singletons.append(feature)
+    # Per frozen Stage F, all features outside correlation blocks remain
+    # eligible. Stability category changes ranking but is not a hard filter.
+    singleton_features = [
+        feature
+        for feature in base.MODEL_FEATURES
+        if feature_block[feature] is None
+    ]
 
     return {
         "records": records,
@@ -668,7 +668,7 @@ def build_ranking(
         "feature_block": feature_block,
         "block_member_order": block_member_order,
         "block_primary": block_primary,
-        "stable_singletons": stable_singletons,
+        "singleton_features": singleton_features,
         "canonical": canonical,
     }
 
@@ -732,7 +732,7 @@ def compress_blocks_and_build_pool(
 ):
     block_member_order = ranking["block_member_order"]
     block_primary = ranking["block_primary"]
-    stable_singletons = ranking["stable_singletons"]
+    singleton_features = ranking["singleton_features"]
     canonical = ranking["canonical"]
     rank_key = ranking["rank_key"]
 
@@ -746,7 +746,7 @@ def compress_blocks_and_build_pool(
         other_primaries = [
             block_primary[b] for b in block_ids if b != block_id
         ]
-        anchors = list(dict.fromkeys(stable_singletons + other_primaries))
+        anchors = list(dict.fromkeys(singleton_features + other_primaries))
         full_features = list(dict.fromkeys(anchors + ordered))
         _, full_summary = reduced_subset_fit_cached(
             base, sparse, stage_f, outer_train_raw, inner_splits,
@@ -789,7 +789,7 @@ def compress_blocks_and_build_pool(
                 break
         retained[block_id] = selected
 
-    pool = list(stable_singletons)
+    pool = list(singleton_features)
     for block_id in block_ids:
         pool.extend(retained[block_id])
     pool = list(dict.fromkeys(pool))
