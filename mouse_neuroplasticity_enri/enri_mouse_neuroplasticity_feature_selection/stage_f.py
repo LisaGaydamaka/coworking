@@ -233,7 +233,10 @@ def reduced_preprocess(base, long_raw, features, fit_mouse_ids):
     }
 
 
-def build_reduced_split(base, sparse, long_raw, split, features):
+def build_reduced_split(
+    base, sparse, long_raw, split, features,
+    min_train_o=None, min_val_o=None,
+):
     features = list(features)
     final_std, prep = reduced_preprocess(
         base,
@@ -265,10 +268,16 @@ def build_reduced_split(base, sparse, long_raw, split, features):
         min_val_o = min(val_o.values()) if val_o else 0
 
         errors = list(train_stats.get("errors", [])) + list(val_stats.get("errors", []))
-        if min_train_o < base.CV_MIN_TRAIN_O:
-            errors.append(f"Reduced train min O={min_train_o} < {base.CV_MIN_TRAIN_O}.")
-        if min_val_o < base.CV_MIN_VAL_O:
-            errors.append(f"Reduced val min O={min_val_o} < {base.CV_MIN_VAL_O}.")
+        required_train_o = (
+            base.CV_MIN_TRAIN_O if min_train_o is None else int(min_train_o)
+        )
+        required_val_o = (
+            base.CV_MIN_VAL_O if min_val_o is None else int(min_val_o)
+        )
+        if min_train_o < required_train_o:
+            errors.append(f"Reduced train min O={min_train_o} < {required_train_o}.")
+        if min_val_o < required_val_o:
+            errors.append(f"Reduced val min O={min_val_o} < {required_val_o}.")
         if xbar_train is None or xbar_val is None:
             errors.append("Missing reduced xbar_PBS0_train.")
         elif not np.allclose(
