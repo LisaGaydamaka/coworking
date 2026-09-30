@@ -12,7 +12,7 @@
     "accepted": 22,
     "rejected": 8
   },
-  "final_pool_count": 18,
+  "final_pool_count": 23,
   "final_ranking": [
     "OFT_distance",
     "Time_inCenter_OFT",
@@ -24,16 +24,21 @@
     "EnduranceT",
     "Average_speed_OFT",
     "Learning_T3sum",
+    "Time_investigating_Piramidka_NOR1",
     "Absolute_turn_angle_OFT",
     "Learning_T1max",
     "Time_investigating_Piramidka_zone_NOR2",
     "Latency_to_first_investigation_Stakan_NOR1",
+    "Weight",
     "rear_nosupport",
+    "Latency_to_first_investigation_Piramidka_zone_NOR2",
     "Learning_T2mean",
+    "Total_time_mobile_OFT",
+    "Time_investigating_Stakan_NOR1",
     "Average_speed_NOR2",
     "Total_distance_travelled_NOR1"
   ],
-  "initial_pool_count": 15,
+  "initial_pool_count": 19,
   "outputs": {
     "block_aware_ranking": "stage_f/block_aware_ranking.csv",
     "block_compression": "stage_f/block_compression.csv",
@@ -42,7 +47,7 @@
     "subset_cv_folds": "stage_f/subset_cv_folds.csv",
     "within_block_ranking": "stage_f/within_block_ranking.csv"
   },
-  "pool_rule": "Stage-C core/candidate singleton features plus one primary representative from every correlation block; extra block members only when required by within-block one-SE compression.",
+  "pool_rule": "All singleton features plus one primary representative from every correlation block; stability affects ranking rather than eligibility; extra block members only when required by within-block one-SE compression.",
   "purpose": "development_block_aware_ranking_compression_and_subset_path",
   "ranking_rule": "pi_selection -> sign_consistency -> paired ablation tuple (V_pos,V_sign,V_margin,V_eq,V_var; p_worse then median delta) -> median |gamma| -> canonical feature order",
   "reduced_model": {
@@ -59,7 +64,8 @@
     "B01": [
       "OFT_distance",
       "Average_speed_OFT",
-      "Absolute_turn_angle_OFT"
+      "Absolute_turn_angle_OFT",
+      "Total_time_mobile_OFT"
     ],
     "B02": [
       "Average_speed_NOR1",
@@ -78,8 +84,8 @@
       "Learning_T3sum"
     ]
   },
+  "singleton_feature_count": 13,
   "solver_or_preprocessing_failures": 0,
-  "stable_singleton_count": 9,
   "stage": "F",
   "status": "READY",
   "subset_range": {
