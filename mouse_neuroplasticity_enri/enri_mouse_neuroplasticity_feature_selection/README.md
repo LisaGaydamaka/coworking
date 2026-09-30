@@ -233,166 +233,181 @@ w_j=0
 - `stage_e/stage_e_summary.json`.
 
 
-## Этап F — block-aware ranking, compression и S_k
+## Этап F — block-aware ranking, compression и \(S_k\)
 
-Внутри каждого correlation block признаки ранжированы по заранее заданной последовательности:
+После проверки реализации Stage F приведён в точное соответствие с зафиксированным планом: **все признаки вне correlation blocks остаются допустимыми кандидатами**. Категории core/candidate/other влияют на ranking, но не используются как жёсткий pre-filter для singleton-признаков.
 
-[
+Внутри каждого correlation block признаки ранжируются по последовательности
+
+\[
 \pi_j
 \rightarrow
-sign\ consistency
+\text{sign consistency}
 \rightarrow
-paired\ ablation
+\text{paired ablation}
 \rightarrow
-median|\gamma_j|
+\operatorname{median}|\gamma_j|
 \rightarrow
-canonical\ order.
-]
+\text{canonical order}.
+\]
 
 Primary representatives:
 
-- B01: `OFT_distance`;
-- B02: `Average_speed_NOR1`;
-- B03: `Average_speed_NOR2`;
-- B04: `Learning_T1max`;
-- B05: `Learning_T2mean`;
-- B06: `Learning_T3sum`.
+- B01: OFT_distance;
+- B02: Average_speed_NOR1;
+- B03: Average_speed_NOR2;
+- B04: Learning_T1max;
+- B05: Learning_T2mean;
+- B06: Learning_T3sum.
 
-Within-block one-SE compression на тех же 22 development splits оставила:
+Within-block one-SE compression на 22 development splits оставила:
 
-- B01: `OFT_distance`, `Average_speed_OFT`, `Absolute_turn_angle_OFT`;
-- B02: `Average_speed_NOR1`, `Total_distance_travelled_NOR1`;
-- B03: только `Average_speed_NOR2`;
-- B04: только `Learning_T1max`;
-- B05: только `Learning_T2mean`;
-- B06: только `Learning_T3sum`.
+- B01: OFT_distance, Average_speed_OFT, Absolute_turn_angle_OFT, Total_time_mobile_OFT;
+- B02: Average_speed_NOR1, Total_distance_travelled_NOR1;
+- B03: только Average_speed_NOR2;
+- B04: только Learning_T1max;
+- B05: только Learning_T2mean;
+- B06: только Learning_T3sum.
 
-После compression development pool содержит 18 признаков. Первые 15, используемые для S3...S15:
+После compression development pool содержит 23 признака. Первые 15, используемые для \(S_3,\ldots,S_{15}\):
 
-1. `OFT_distance`
-2. `Time_inCenter_OFT`
-3. `Latency_to_first_investigation_Stakan_zone_NOR2`
-4. `Latency_to_first_investigation_Piramidka_NOR1`
-5. `Average_speed_NOR1`
-6. `rear_support`
-7. `Time_investigating_Stakan_zone_NOR2`
-8. `EnduranceT`
-9. `Average_speed_OFT`
-10. `Learning_T3sum`
-11. `Absolute_turn_angle_OFT`
-12. `Learning_T1max`
-13. `Time_investigating_Piramidka_zone_NOR2`
-14. `Latency_to_first_investigation_Stakan_NOR1`
-15. `rear_nosupport`
+1. OFT_distance
+2. Time_inCenter_OFT
+3. Latency_to_first_investigation_Stakan_zone_NOR2
+4. Latency_to_first_investigation_Piramidka_NOR1
+5. Average_speed_NOR1
+6. rear_support
+7. Time_investigating_Stakan_zone_NOR2
+8. EnduranceT
+9. Average_speed_OFT
+10. Learning_T3sum
+11. Time_investigating_Piramidka_NOR1
+12. Absolute_turn_angle_OFT
+13. Learning_T1max
+14. Time_investigating_Piramidka_zone_NOR2
+15. Latency_to_first_investigation_Stakan_NOR1
 
-Для каждого S3...S15 выполнен новый reduced fit с автономным preprocessing:
+Для каждого \(S_k\) выполнен новый reduced fit с автономным preprocessing:
 
-- statistical imputer использует только weighted features текущего S_k + `week_16` + `week_24`;
+- statistical imputer использует только weighted features текущего \(S_k\) + week_16 + week_24;
 - group не используется;
 - остальные MODEL_FEATURES не используются как statistical predictors;
-- после фиксации subset используется constrained QP с `lambda1=0`, `lambda2=0.1`, `beta=0.1`, `C=0.1`, `rho=0.1`;
-- старые full-model weights не переносятся.
+- после фиксации subset constrained QP переоценивает веса с \(\lambda_1=0\), \(\lambda_2=0.1\), \(\beta=0.1\), \(C=0.1\), \(\rho=0.1\);
+- веса full-модели не переносятся.
 
 Все 13 subset sizes × 22 splits рассчитаны без solver/preprocessing failures.
 
-Важный diagnostic: на split `seed=1, fold=3` после появления `Average_speed_NOR1` в S5 reduced модель становится крайне нестабильной out-of-sample. Для S5:
+На split seed=1, fold=3, начиная с \(S_5\), после включения Average_speed_NOR1 сохраняется выраженная out-of-sample нестабильность. Для \(S_5\):
 
-- `V_pos=0.06`;
-- minimum validation eNRI = `-1476.17`;
-- `V_eq=184.86`;
-- `V_var=33472.02`.
+- V_pos=0.06;
+- minimum validation eNRI = -1476.17;
+- V_eq=184.86;
+- V_var=33472.02.
 
-Для S3 и S4 на том же split такого эффекта нет. Аналогичная экстремальная нестабильность сохраняется для S6...S15. Это не solver failure: train positivity остаётся выполненной; проблема проявляется именно на validation. Поэтому mean/SE для `V_eq` и `V_var` у S5+ сильно искажены этим split. Stage G должен соблюдать заранее заданный lexicographic порядок, начиная с `V_pos`, а этот diagnostic должен сохраняться как важная robustness-информация.
+Для \(S_3\) и \(S_4\) на этом split такого эффекта нет. Это validation instability, а не solver failure.
 
 Результаты:
 
-- `stage_f/within_block_ranking.csv`;
-- `stage_f/block_compression.csv`;
-- `stage_f/block_aware_ranking.csv`;
-- `stage_f/candidate_sets.csv`;
-- `stage_f/subset_cv.csv`;
-- `stage_f/subset_cv_folds.csv`;
-- `stage_f/stage_f_summary.json`.
+- stage_f/within_block_ranking.csv;
+- stage_f/block_compression.csv;
+- stage_f/block_aware_ranking.csv;
+- stage_f/candidate_sets.csv;
+- stage_f/subset_cv.csv;
+- stage_f/subset_cv_folds.csv;
+- stage_f/stage_f_summary.json.
 
+## Этап G — выбор минимального достаточного \(k\)
 
-## Этап G — выбор минимального достаточного k
+К \(S_3,\ldots,S_{15}\) применено заранее зафиксированное последовательное one-SE правило:
 
-К S3...S15 применено заранее зафиксированное последовательное one-SE правило:
-
-[
+\[
 V_{pos}
-ightarrow
+\rightarrow
 V_{sign}
-ightarrow
+\rightarrow
 V_{margin}
-ightarrow
+\rightarrow
 V_{eq}
-ightarrow
+\rightarrow
 V_{var}
-ightarrow
+\rightarrow
 V_w.
-]
+\]
 
-На каждом шаге оставались модели с
+На каждом шаге сохраняются модели с
 
-[
-mean(V)
-le
-best mean(V)+SE(best),
-]
+\[
+\operatorname{mean}(V)
+\le
+\operatorname{best\ mean}(V)+SE(\operatorname{best}),
+\]
 
 где
 
-[
-SE=SD/sqrt{22}.
-]
+\[
+SE=\frac{SD}{\sqrt{22}}.
+\]
 
-Это эвристическая мера стабильности, а не классическая независимая inferential SE, поскольку development splits перекрываются.
+Это эвристическая мера стабильности, а не классическая independent-sample inferential SE, поскольку development splits перекрываются.
 
-Результат:
+После исправления Stage F результат Stage G не изменился:
 
-[
-oxed{k^*=4}
-]
+\[
+\boxed{k^*=4}.
+\]
 
 Development subset:
 
-1. `OFT_distance`
-2. `Time_inCenter_OFT`
-3. `Latency_to_first_investigation_Stakan_zone_NOR2`
-4. `Latency_to_first_investigation_Piramidka_NOR1`
+1. OFT_distance
+2. Time_inCenter_OFT
+3. Latency_to_first_investigation_Stakan_zone_NOR2
+4. Latency_to_first_investigation_Piramidka_NOR1
 
-Логика отбора:
+Логика:
 
-- по `V_pos` только S3 и S4 сохранили нулевую validation positivity violation на всех 22 splits;
-- S5...S15 были исключены уже на первом шаге из-за positivity failure на одном development split;
-- среди S3 и S4 значение `V_sign` для S4 ниже:
-  - S3: mean `V_sign=0.3773`, SE `0.03285`;
-  - S4: mean `V_sign=0.3182`, SE `0.02989`;
-  - one-SE threshold для S4 = `0.3481`, поэтому S3 не проходит следующий шаг;
-- после этого единственным survivor остаётся S4.
+- по \(V_{pos}\) только \(S_3\) и \(S_4\) имеют нулевую validation positivity violation на всех 22 splits;
+- \(S_5,\ldots,S_{15}\) исключаются на первом шаге;
+- затем \(S_4\) имеет mean \(V_{sign}=0.3182\) против \(0.3773\) у \(S_3\);
+- one-SE threshold для \(S_4\) по \(V_{sign}\) равен \(0.3481\), поэтому \(S_3\) не проходит;
+- единственным survivor остаётся \(S_4\).
 
-Для S4 development metrics:
+Development metrics для \(S_4\):
 
-- `V_pos = 0`;
-- mean `V_sign = 0.3182`;
-- mean `V_margin = 0.09175`;
-- mean `V_eq = 0.12660`;
-- mean `V_var = 0.00991`;
-- mean `V_w = 0.09978`.
+- \(V_{pos}=0\);
+- mean \(V_{sign}=0.3182\);
+- mean \(V_{margin}=0.09175\);
+- mean \(V_{eq}=0.12660\);
+- mean \(V_{var}=0.00991\);
+- mean \(V_w=0.09978\).
 
-Paired S4 − S3:
+Paired \(S_4-S_3\):
 
-- `V_sign` улучшается в 59.1% splits, median delta = `-0.10`;
-- `V_margin` улучшается в 81.8% splits, median delta = `-0.00896`;
-- при этом `V_eq`, `V_var` и `V_w` у S4 чаще хуже, но они имеют меньший приоритет по заранее заданному lexicographic rule.
+- \(V_{sign}\) улучшается в 59.1% splits, median delta = \(-0.10\);
+- \(V_{margin}\) улучшается в 81.8% splits, median delta = \(-0.00896\);
+- \(V_{eq}\), \(V_{var}\) и \(V_w\) у \(S_4\) чаще хуже, но имеют меньший приоритет в заранее заданном lexicographic rule.
 
-Это только development selection. S4 нельзя объявлять финальным reduced eNRI до Stage H: внутри каждого outer-train весь selection pipeline должен быть выполнен заново.
+Это только development selection. Финальный subset определяется после Stage H.
 
 Результаты:
 
-- `stage_g/k_selection_trace.csv`;
-- `stage_g/k_selection_status.csv`;
-- `stage_g/selected_subset.csv`;
-- `stage_g/selected_k_fold_metrics.csv`;
-- `stage_g/stage_g_summary.json`.
+- stage_g/k_selection_trace.csv;
+- stage_g/k_selection_status.csv;
+- stage_g/selected_subset.csv;
+- stage_g/selected_k_fold_metrics.csv;
+- stage_g/stage_g_summary.json.
+
+## Этап H — nested validation
+
+Smoke-test полного nested pipeline успешно пройден.
+
+Фиксированная production-конфигурация:
+
+- 30 valid outer mouse-level 80/20 splits;
+- outer: minimum \(O_A^{train}=5\), \(O_A^{val}=2\);
+- 20 valid inner mouse-level 80/20 splits в каждом outer-train;
+- inner: minimum \(O_A^{train}=4\), \(O_A^{val}=2\);
+- 100 valid stability resamples внутри каждого outer-train.
+
+Inner-порог \(4/2\) вместо \(5/2\) нужен из-за структуры nested выборки: после outer split для некоторых состояний в outer-train остаётся 6 живых наблюдений, поэтому одновременно выделить 5 в inner-train и 2 в inner-validation математически невозможно. Это правило зафиксировано до production nested результатов.
+
+Внутри каждого outer-train заново выполняется весь selection pipeline. Outer-validation используется только для финальной оценки и не участвует в correlations, выборе \(\lambda_1\), stability selection, ablation, ranking, выборе \(k\) или subset.
