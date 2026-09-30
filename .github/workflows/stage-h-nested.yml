@@ -153,6 +153,10 @@ jobs:
           git add "$DIR"
           if ! git diff --cached --quiet; then
             git commit -m "Run Stage H nested validation"
+            # Discard temporary/downloaded workflow files before rebasing.
+            # The production outputs are already safely contained in the commit.
+            git reset --hard HEAD
+            git clean -fd
             git pull --rebase origin main
             git push
           fi
