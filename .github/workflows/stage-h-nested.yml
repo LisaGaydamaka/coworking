@@ -1,0 +1,158 @@
+name: Stage H nested validation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection/.run_stage_h_matrix'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: stage-h-production
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: mouse_neuroplasticity_enri/enri_mouse_neuroplasticity/requirements.txt
+      - name: Install dependencies
+        working-directory: mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection
+        run: pip install -r ../enri_mouse_neuroplasticity/requirements.txt
+      - name: Prepare fixed outer manifest
+        working-directory: mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection
+        run: python stage_h_prepare.py --outer-target 30 --output stage_h_manifest/outer_manifest.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stage-h-manifest
+          path: mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection/stage_h_manifest/outer_manifest.json
+          if-no-files-found: error
+          retention-days: 14
+
+  outer:
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        outer_index:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          - 10
+          - 11
+          - 12
+          - 13
+          - 14
+          - 15
+          - 16
+          - 17
+          - 18
+          - 19
+          - 20
+          - 21
+          - 22
+          - 23
+          - 24
+          - 25
+          - 26
+          - 27
+          - 28
+          - 29
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: mouse_neuroplasticity_enri/enri_mouse_neuroplasticity/requirements.txt
+      - name: Install dependencies
+        working-directory: mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection
+        run: pip install -r ../enri_mouse_neuroplasticity/requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          name: stage-h-manifest
+          path: mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection/stage_h_manifest
+      - name: Run fixed outer worker
+        working-directory: mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection
+        run: |
+          python stage_h_worker.py \
+            --outer-index ${{ matrix.outer_index }} \
+            --manifest stage_h_manifest/outer_manifest.json \
+            --output-dir stage_h_worker_output
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stage-h-outer-${{ matrix.outer_index }}
+          path: mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection/stage_h_worker_output/outer_*.json
+          if-no-files-found: error
+          retention-days: 14
+
+  aggregate:
+    needs: outer
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: mouse_neuroplasticity_enri/enri_mouse_neuroplasticity/requirements.txt
+      - name: Install dependencies
+        working-directory: mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection
+        run: pip install -r ../enri_mouse_neuroplasticity/requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          name: stage-h-manifest
+          path: mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection/stage_h_manifest
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: stage-h-outer-*
+          path: mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection/stage_h_worker_results
+          merge-multiple: true
+      - name: Aggregate Stage H
+        working-directory: mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection
+        run: |
+          python stage_h_aggregate.py \
+            --manifest stage_h_manifest/outer_manifest.json \
+            --input-dir stage_h_worker_results \
+            --output-dir stage_h_production \
+            --expected-outer 30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stage-h-production-results
+          path: mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection/stage_h_production
+          if-no-files-found: error
+          retention-days: 30
+      - name: Commit production outputs
+        shell: bash
+        run: |
+          DIR="mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection/stage_h_production"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$DIR"
+          if ! git diff --cached --quiet; then
+            git commit -m "Run Stage H nested validation"
+            git pull --rebase origin main
+            git push
+          fi
