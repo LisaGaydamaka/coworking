@@ -235,7 +235,7 @@ def reduced_preprocess(base, long_raw, features, fit_mouse_ids):
 
 def build_reduced_split(
     base, sparse, long_raw, split, features,
-    min_train_o=None, min_val_o=None,
+    required_min_train_o=None, required_min_val_o=None,
 ):
     features = list(features)
     final_std, prep = reduced_preprocess(
@@ -269,10 +269,14 @@ def build_reduced_split(
 
         errors = list(train_stats.get("errors", [])) + list(val_stats.get("errors", []))
         required_train_o = (
-            base.CV_MIN_TRAIN_O if min_train_o is None else int(min_train_o)
+            base.CV_MIN_TRAIN_O
+            if required_min_train_o is None
+            else int(required_min_train_o)
         )
         required_val_o = (
-            base.CV_MIN_VAL_O if min_val_o is None else int(min_val_o)
+            base.CV_MIN_VAL_O
+            if required_min_val_o is None
+            else int(required_min_val_o)
         )
         if min_train_o < required_train_o:
             errors.append(f"Reduced train min O={min_train_o} < {required_train_o}.")
