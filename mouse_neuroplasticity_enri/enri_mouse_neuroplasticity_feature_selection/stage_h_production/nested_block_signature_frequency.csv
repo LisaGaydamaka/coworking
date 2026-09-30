@@ -1,0 +1,16 @@
+block_signature,outer_present_count,outer_present_frequency,outer_selected_count,outer_selected_frequency,selected_given_present
+Absolute_turn_angle_OFT|Average_speed_OFT|OFT_distance|Total_time_mobile_OFT,21,0.7,21,0.7,1.0
+Average_speed_NOR1|Total_distance_travelled_NOR1,23,0.7666666666666667,17,0.5666666666666667,0.7391304347826086
+Learning_T1max|Learning_T1mean|Learning_T1sum,29,0.9666666666666667,12,0.4,0.41379310344827586
+Learning_T3max|Learning_T3mean|Learning_T3sum,24,0.8,7,0.23333333333333334,0.2916666666666667
+Absolute_turn_angle_OFT|Average_speed_NOR1|Average_speed_OFT|OFT_distance|Total_distance_travelled_NOR1|Total_time_mobile_OFT,6,0.2,6,0.2,1.0
+Learning_T2max|Learning_T2mean|Learning_T2sum,23,0.7666666666666667,2,0.06666666666666667,0.08695652173913043
+Learning_T2max|Learning_T2mean|Learning_T2sum|Learning_T3max|Learning_T3mean|Learning_T3sum,6,0.2,2,0.06666666666666667,0.3333333333333333
+Latency_to_first_investigation_Piramidka_NOR1|Latency_to_first_investigation_Stakan_NOR1,3,0.1,2,0.06666666666666667,0.6666666666666666
+Absolute_turn_angle_OFT|Average_speed_OFT|OFT_distance,2,0.06666666666666667,2,0.06666666666666667,1.0
+Average_speed_NOR2|Total_distance_travelled_NOR2,29,0.9666666666666667,1,0.03333333333333333,0.034482758620689655
+Absolute_turn_angle_OFT|Average_speed_NOR1|Average_speed_OFT|OFT_distance|Time_investigating_Stakan_NOR1|Total_distance_travelled_NOR1|Total_time_mobile_OFT,1,0.03333333333333333,1,0.03333333333333333,1.0
+Learning_T1max|Learning_T1mean|Learning_T1sum|Learning_T2max|Learning_T2mean|Learning_T2sum,1,0.03333333333333333,1,0.03333333333333333,1.0
+Time_investigating_Piramidka_NOR1|Time_investigating_Stakan_NOR1,1,0.03333333333333333,1,0.03333333333333333,1.0
+Average_speed_NOR2|Time_investigating_Piramidka_zone_NOR2|Total_distance_travelled_NOR2,1,0.03333333333333333,0,0.0,0.0
+Time_investigating_Piramidka_zone_NOR2|Time_investigating_Stakan_zone_NOR2,1,0.03333333333333333,0,0.0,0.0
