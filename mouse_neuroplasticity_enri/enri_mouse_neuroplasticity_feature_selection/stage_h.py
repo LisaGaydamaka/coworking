@@ -58,13 +58,15 @@ STABILITY_TRAIN_FRACTION = 0.80
 
 OUTER_SEED_START = 1000
 MAX_OUTER_CANDIDATES = int(os.environ.get("NESTED_MAX_OUTER_CANDIDATES", "1000"))
-MAX_INNER_CANDIDATES = int(os.environ.get("NESTED_MAX_INNER_CANDIDATES", "100"))
+MAX_INNER_CANDIDATES = int(os.environ.get("NESTED_MAX_INNER_CANDIDATES", "500"))
 MAX_STABILITY_CANDIDATES = int(os.environ.get("NESTED_MAX_STABILITY_CANDIDATES", "1000"))
 STABILITY_SEED_BASE = 50000
 
 ACTIVE_TOL = 1e-6
-MIN_TRAIN_O = 5
-MIN_VAL_O = 2
+OUTER_MIN_TRAIN_O = 5
+OUTER_MIN_VAL_O = 2
+INNER_MIN_TRAIN_O = 4
+INNER_MIN_VAL_O = 2
 MIN_K = 3
 MAX_K = 15
 
@@ -99,7 +101,10 @@ def stratified_split(mouse_df: pd.DataFrame, train_fraction: float, seed: int):
     return train_ids, val_ids
 
 
-def prepare_full_feature_split(base, long_raw, train_ids, val_ids, seed, split_index):
+def prepare_full_feature_split(
+    base, long_raw, train_ids, val_ids, seed, split_index,
+    required_min_train_o, required_min_val_o,
+):
     final_std, prep = base.fit_transform_stage3(
         long_raw,
         fit_mouse_ids=train_ids,
@@ -125,10 +130,14 @@ def prepare_full_feature_split(base, long_raw, train_ids, val_ids, seed, split_i
     val_o = {k: int(v["O"]) for k, v in val_states.items()} if val_states else {}
     min_train_o = min(train_o.values()) if train_o else 0
     min_val_o = min(val_o.values()) if val_o else 0
-    if min_train_o < MIN_TRAIN_O:
-        errors.append(f"train min O={min_train_o} < {MIN_TRAIN_O}")
-    if min_val_o < MIN_VAL_O:
-        errors.append(f"validation min O={min_val_o} < {MIN_VAL_O}")
+    if min_train_o < int(required_min_train_o):
+        errors.append(
+            f"train min O={min_train_o} < {int(required_min_train_o)}"
+        )
+    if min_val_o < int(required_min_val_o):
+        errors.append(
+            f"validation min O={min_val_o} < {int(required_min_val_o)}"
+        )
 
     if xbar_train is None or xbar_val is None:
         errors.append("Missing train/validation xbar.")
@@ -181,6 +190,8 @@ def collect_outer_splits(base, long_raw, mouse_df):
             val_ids,
             seed=seed,
             split_index=len(accepted),
+            required_min_train_o=OUTER_MIN_TRAIN_O,
+            required_min_val_o=OUTER_MIN_VAL_O,
         )
         if split is None:
             rejected.append(reject)
@@ -212,6 +223,8 @@ def collect_inner_splits(base, outer_index, outer_train_raw, outer_train_mouse_d
             val_ids,
             seed=seed,
             split_index=len(accepted),
+            required_min_train_o=INNER_MIN_TRAIN_O,
+            required_min_val_o=INNER_MIN_VAL_O,
         )
         if split is None:
             rejected.append(reject)
@@ -922,10 +935,16 @@ def fit_selected_outer_model(
         )
         min_train_o = min(int(v["O"]) for v in train_states.values())
         min_val_o = min(int(v["O"]) for v in val_states.values())
-        if min_train_o < MIN_TRAIN_O:
-            errors.append(f"Reduced outer train min O={min_train_o}.")
-        if min_val_o < MIN_VAL_O:
-            errors.append(f"Reduced outer val min O={min_val_o}.")
+        if min_train_o < OUTER_MIN_TRAIN_O:
+            errors.append(
+                f"Reduced outer train min O={min_train_o} < "
+                f"{OUTER_MIN_TRAIN_O}."
+            )
+        if min_val_o < OUTER_MIN_VAL_O:
+            errors.append(
+                f"Reduced outer val min O={min_val_o} < "
+                f"{OUTER_MIN_VAL_O}."
+            )
         if errors:
             raise OuterSelectionFailure(
                 "Outer reduced states failed: " + " | ".join(errors)
@@ -1392,6 +1411,8 @@ def main():
                 val_ids,
                 seed=seed,
                 split_index=len(valid_details),
+                required_min_train_o=OUTER_MIN_TRAIN_O,
+                required_min_val_o=OUTER_MIN_VAL_O,
             )
             next_candidate_index += 1
             if split is None:
@@ -1537,8 +1558,10 @@ def main():
             "stability_seed_formula": (
                 f"{STABILITY_SEED_BASE} + 1000*outer_index + candidate_index"
             ),
-            "min_train_O": MIN_TRAIN_O,
-            "min_validation_O": MIN_VAL_O,
+            "outer_min_train_O": OUTER_MIN_TRAIN_O,
+            "outer_min_validation_O": OUTER_MIN_VAL_O,
+            "inner_min_train_O": INNER_MIN_TRAIN_O,
+            "inner_min_validation_O": INNER_MIN_VAL_O,
         },
         "leakage_control": {
             "outer_validation_used_for_selection": False,
