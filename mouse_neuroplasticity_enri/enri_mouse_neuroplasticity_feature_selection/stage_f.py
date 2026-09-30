@@ -152,12 +152,45 @@ def reduced_preprocess(base, long_raw, features, fit_mouse_ids):
             "deterministic": det_stats,
         }
 
+    # All weighted MODEL_FEATURES are physically nonnegative by Stage-1 QC.
+    # The imputer operates in baseline-standardized coordinates, therefore
+    # raw x >= 0 becomes z >= -mean_train / std_train. Bounds are fitted from
+    # train-only scaling parameters and are enforced inside IterativeImputer,
+    # not by post-hoc clipping.
+    unknown_bound_features = [
+        feature for feature in features if feature not in set(base.MODEL_FEATURES)
+    ]
+    if unknown_bound_features:
+        return None, {
+            "errors": [
+                "Reduced bounded imputation received features outside MODEL_FEATURES: "
+                + "|".join(unknown_bound_features)
+            ],
+            "deterministic": det_stats,
+        }
+
+    feature_lower_bounds = {
+        feature: float(-means[feature] / stds[feature])
+        for feature in features
+    }
+    min_value = np.asarray(
+        [feature_lower_bounds[feature] for feature in features] + [0.0, 0.0],
+        dtype=float,
+    )
+    max_value = np.asarray(
+        [np.inf for _ in features] + [1.0, 1.0],
+        dtype=float,
+    )
+    missing_before_imputation = design[features].isna().copy()
+
     imputer = base.IterativeImputer(
         estimator=base.BayesianRidge(),
         sample_posterior=False,
         max_iter=20,
         tol=1e-3,
         random_state=base.IMPUTATION_SEED,
+        min_value=min_value,
+        max_value=max_value,
     )
     imputer.fit(fit_design)
     transformed = imputer.transform(design)
@@ -172,11 +205,36 @@ def reduced_preprocess(base, long_raw, features, fit_mouse_ids):
         }
 
     result = processed.copy(deep=True)
+    bounded_hits = []
+    design_indices = design.index.to_numpy()
     for j, feature in enumerate(features):
         raw_vals = transformed[:, j] * stds[feature] + means[feature]
         result.loc[living_idx, feature] = raw_vals
 
-    # Primary reduced preprocessing must be physically valid.
+        # Record only cells that were actually missing before statistical
+        # imputation and whose final imputed value lands on the physical lower
+        # bound. Observed raw zeros are not counted as bounded imputations.
+        missing_mask = missing_before_imputation[feature].to_numpy(dtype=bool)
+        hit_mask = missing_mask & np.isclose(
+            transformed[:, j],
+            min_value[j],
+            rtol=0.0,
+            atol=1e-10,
+        )
+        for pos in np.flatnonzero(hit_mask):
+            idx = int(design_indices[pos])
+            bounded_hits.append({
+                "mouse_id": str(result.at[idx, "mouse_id"]),
+                "week": int(result.at[idx, "week"]),
+                "feature": feature,
+                "standardized_lower_bound": float(min_value[j]),
+                "imputed_standardized_value": float(transformed[pos, j]),
+                "imputed_raw_value": float(raw_vals[pos]),
+            })
+
+    # Primary reduced preprocessing must remain physically valid after bounded
+    # imputation. Values below -FLOAT_TOL are blockers; tiny floating-point
+    # noise around zero is retained for audit rather than post-hoc clipping.
     negative = []
     for feature in features:
         vals = pd.to_numeric(result.loc[living, feature], errors="coerce")
@@ -229,6 +287,9 @@ def reduced_preprocess(base, long_raw, features, fit_mouse_ids):
             processed.loc[living, features].isna().to_numpy().sum()
         ),
         "max_selected_missing": int(selected_missing.loc[living].max()),
+        "bounded_imputation_hit_count": int(len(bounded_hits)),
+        "bounded_imputation_hits": bounded_hits,
+        "standardized_lower_bounds": feature_lower_bounds,
         "negative_values": negative,
     }
 
