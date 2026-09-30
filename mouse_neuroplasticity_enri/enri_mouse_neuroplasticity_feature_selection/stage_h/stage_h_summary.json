@@ -1,0 +1,187 @@
+{
+  "completed_outer_splits": 1,
+  "configuration": {
+    "inner_min_train_O": 4,
+    "inner_min_validation_O": 2,
+    "inner_seed_formula": "10000 + 100*outer_index + candidate_index; outer_index is 0-based among accepted nested outer splits",
+    "inner_target": 3,
+    "inner_train_fraction": 0.8,
+    "outer_min_train_O": 5,
+    "outer_min_validation_O": 2,
+    "outer_seed_start": 1000,
+    "outer_target": 1,
+    "outer_train_fraction": 0.8,
+    "stability_seed_formula": "50000 + 1000*outer_index + candidate_index",
+    "stability_target": 10,
+    "stability_train_fraction": 0.8
+  },
+  "k_distribution": [
+    {
+      "count": 1,
+      "frequency": 1.0,
+      "k": 10
+    }
+  ],
+  "lambda1_distribution": [
+    {
+      "count": 1,
+      "frequency": 1.0,
+      "lambda1_star": 0.03
+    }
+  ],
+  "leakage_control": {
+    "ablation_outer_train_inner_only": true,
+    "correlations_outer_train_only": true,
+    "lambda1_outer_train_inner_only": true,
+    "outer_validation_final_evaluation_only": true,
+    "outer_validation_used_for_selection": false,
+    "reduced_preprocessing_train_only": true,
+    "stability_outer_train_only": true,
+    "subset_selection_outer_train_inner_only": true
+  },
+  "outer_metric_summary": {
+    "V_eq": {
+      "mean": 0.3025020200500589,
+      "median": 0.3025020200500589,
+      "q10": 0.3025020200500589,
+      "q90": 0.3025020200500589,
+      "sd": 0.0
+    },
+    "V_margin": {
+      "mean": 0.07341309777635788,
+      "median": 0.07341309777635788,
+      "q10": 0.07341309777635788,
+      "q90": 0.07341309777635788,
+      "sd": 0.0
+    },
+    "V_pos": {
+      "mean": 0.0,
+      "median": 0.0,
+      "q10": 0.0,
+      "q90": 0.0,
+      "sd": 0.0
+    },
+    "V_sign": {
+      "mean": 0.2,
+      "median": 0.2,
+      "q10": 0.2,
+      "q90": 0.2,
+      "sd": 0.0
+    },
+    "V_var": {
+      "mean": 0.023427536107037114,
+      "median": 0.023427536107037114,
+      "q10": 0.023427536107037114,
+      "q90": 0.023427536107037114,
+      "sd": 0.0
+    },
+    "V_w": {
+      "mean": 0.2330911705347661,
+      "median": 0.2330911705347661,
+      "q10": 0.2330911705347661,
+      "q90": 0.2330911705347661,
+      "sd": 0.0
+    }
+  },
+  "outputs": {
+    "block_signature_frequency": "stage_h/nested_block_signature_frequency.csv",
+    "feature_frequency": "stage_h/nested_feature_frequency.csv",
+    "k_distribution": "stage_h/nested_k_distribution.csv",
+    "lambda1_distribution": "stage_h/nested_lambda1_distribution.csv",
+    "outer_details": "stage_h/nested_outer_details.json",
+    "outer_results": "stage_h/nested_outer_results.csv",
+    "reference_block_frequency": "stage_h/nested_reference_block_frequency.csv",
+    "rejected_outer": null,
+    "subset_frequency": "stage_h/nested_subset_frequency.csv"
+  },
+  "production_configuration": false,
+  "rejected_outer_candidates": 0,
+  "stage": "H",
+  "status": "SMOKE_READY",
+  "top_feature_frequency": [
+    {
+      "feature": "Absolute_turn_angle_OFT",
+      "selected_count": 1,
+      "selected_frequency": 1.0
+    },
+    {
+      "feature": "Average_speed_NOR1",
+      "selected_count": 1,
+      "selected_frequency": 1.0
+    },
+    {
+      "feature": "Average_speed_OFT",
+      "selected_count": 1,
+      "selected_frequency": 1.0
+    },
+    {
+      "feature": "EnduranceT",
+      "selected_count": 1,
+      "selected_frequency": 1.0
+    },
+    {
+      "feature": "Latency_to_first_investigation_Piramidka_NOR1",
+      "selected_count": 1,
+      "selected_frequency": 1.0
+    },
+    {
+      "feature": "OFT_distance",
+      "selected_count": 1,
+      "selected_frequency": 1.0
+    },
+    {
+      "feature": "Time_inCenter_OFT",
+      "selected_count": 1,
+      "selected_frequency": 1.0
+    },
+    {
+      "feature": "Time_investigating_Stakan_NOR1",
+      "selected_count": 1,
+      "selected_frequency": 1.0
+    },
+    {
+      "feature": "rear_nosupport",
+      "selected_count": 1,
+      "selected_frequency": 1.0
+    },
+    {
+      "feature": "rear_support",
+      "selected_count": 1,
+      "selected_frequency": 1.0
+    },
+    {
+      "feature": "Average_speed_NOR2",
+      "selected_count": 0,
+      "selected_frequency": 0.0
+    },
+    {
+      "feature": "Latency_to_first_investigation_Piramidka_zone_NOR2",
+      "selected_count": 0,
+      "selected_frequency": 0.0
+    },
+    {
+      "feature": "Latency_to_first_investigation_Stakan_NOR1",
+      "selected_count": 0,
+      "selected_frequency": 0.0
+    },
+    {
+      "feature": "Latency_to_first_investigation_Stakan_zone_NOR2",
+      "selected_count": 0,
+      "selected_frequency": 0.0
+    },
+    {
+      "feature": "Learning_T1max",
+      "selected_count": 0,
+      "selected_frequency": 0.0
+    }
+  ],
+  "top_subset_frequency": [
+    {
+      "count": 1,
+      "frequency": 1.0,
+      "k": 10,
+      "subset": "Latency_to_first_investigation_Piramidka_NOR1|EnduranceT|Average_speed_OFT|rear_support|Time_inCenter_OFT|Average_speed_NOR1|OFT_distance|Time_investigating_Stakan_NOR1|Absolute_turn_angle_OFT|rear_nosupport"
+    }
+  ],
+  "validation_errors": []
+}

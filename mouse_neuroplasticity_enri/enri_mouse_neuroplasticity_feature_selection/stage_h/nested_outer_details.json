@@ -1,0 +1,313 @@
+[
+  {
+    "block_primary": {
+      "B01": "Average_speed_OFT",
+      "B02": "Average_speed_NOR1",
+      "B03": "Latency_to_first_investigation_Piramidka_NOR1",
+      "B04": "Average_speed_NOR2",
+      "B05": "Learning_T1sum",
+      "B06": "Learning_T2mean",
+      "B07": "Learning_T3sum"
+    },
+    "candidate_features": [
+      "Learning_T1mean",
+      "Learning_T1sum",
+      "Time_investigating_Stakan_zone_NOR2"
+    ],
+    "candidate_pool": [
+      "Latency_to_first_investigation_Piramidka_NOR1",
+      "EnduranceT",
+      "Average_speed_OFT",
+      "rear_support",
+      "Time_inCenter_OFT",
+      "Average_speed_NOR1",
+      "OFT_distance",
+      "Time_investigating_Stakan_NOR1",
+      "Absolute_turn_angle_OFT",
+      "rear_nosupport",
+      "Latency_to_first_investigation_Stakan_zone_NOR2",
+      "Total_time_mobile_OFT",
+      "Learning_T1sum",
+      "Time_investigating_Stakan_zone_NOR2",
+      "Total_distance_travelled_NOR1",
+      "Learning_T3sum",
+      "Learning_T2mean",
+      "Average_speed_NOR2"
+    ],
+    "core_features": [
+      "Average_speed_OFT",
+      "rear_support",
+      "EnduranceT",
+      "Time_inCenter_OFT",
+      "Latency_to_first_investigation_Piramidka_NOR1",
+      "Average_speed_NOR1",
+      "Time_investigating_Stakan_NOR1",
+      "rear_nosupport",
+      "Latency_to_first_investigation_Stakan_zone_NOR2",
+      "Absolute_turn_angle_OFT",
+      "Total_time_mobile_OFT"
+    ],
+    "correlation_blocks": [
+      {
+        "block_id": "B01",
+        "members": [
+          "OFT_distance",
+          "Average_speed_OFT",
+          "Total_time_mobile_OFT",
+          "Absolute_turn_angle_OFT"
+        ],
+        "p_all_selected": 0.8,
+        "p_exactly_one_selected": 0.0,
+        "p_multiple_selected": 1.0,
+        "pi_block_any_selected": 1.0
+      },
+      {
+        "block_id": "B02",
+        "members": [
+          "Total_distance_travelled_NOR1",
+          "Average_speed_NOR1"
+        ],
+        "p_all_selected": 0.5,
+        "p_exactly_one_selected": 0.5,
+        "p_multiple_selected": 0.5,
+        "pi_block_any_selected": 1.0
+      },
+      {
+        "block_id": "B03",
+        "members": [
+          "Latency_to_first_investigation_Piramidka_NOR1",
+          "Latency_to_first_investigation_Stakan_NOR1"
+        ],
+        "p_all_selected": 0.0,
+        "p_exactly_one_selected": 1.0,
+        "p_multiple_selected": 0.0,
+        "pi_block_any_selected": 1.0
+      },
+      {
+        "block_id": "B04",
+        "members": [
+          "Total_distance_travelled_NOR2",
+          "Average_speed_NOR2"
+        ],
+        "p_all_selected": 0.0,
+        "p_exactly_one_selected": 0.3,
+        "p_multiple_selected": 0.0,
+        "pi_block_any_selected": 0.3
+      },
+      {
+        "block_id": "B05",
+        "members": [
+          "Learning_T1mean",
+          "Learning_T1max",
+          "Learning_T1sum"
+        ],
+        "p_all_selected": 0.2,
+        "p_exactly_one_selected": 0.1,
+        "p_multiple_selected": 0.7,
+        "pi_block_any_selected": 0.8
+      },
+      {
+        "block_id": "B06",
+        "members": [
+          "Learning_T2mean",
+          "Learning_T2max",
+          "Learning_T2sum"
+        ],
+        "p_all_selected": 0.2,
+        "p_exactly_one_selected": 0.1,
+        "p_multiple_selected": 0.4,
+        "pi_block_any_selected": 0.5
+      },
+      {
+        "block_id": "B07",
+        "members": [
+          "Learning_T3mean",
+          "Learning_T3max",
+          "Learning_T3sum"
+        ],
+        "p_all_selected": 0.1,
+        "p_exactly_one_selected": 0.5,
+        "p_multiple_selected": 0.1,
+        "pi_block_any_selected": 0.6
+      }
+    ],
+    "final_k_survivors": [
+      10,
+      11,
+      12,
+      13
+    ],
+    "inner_rejected_splits": 47,
+    "inner_valid_splits": 3,
+    "lambda1_grid": [
+      0.0,
+      1e-05,
+      3e-05,
+      0.0001,
+      0.0003,
+      0.001,
+      0.003,
+      0.01,
+      0.03,
+      0.1,
+      0.3
+    ],
+    "lambda1_grid_extended": false,
+    "lambda1_star": 0.03,
+    "outer_index": 0,
+    "outer_metrics": {
+      "V_eq": 0.3025020200500589,
+      "V_margin": 0.07341309777635788,
+      "V_pos": 0.0,
+      "V_sign": 0.2,
+      "V_var": 0.023427536107037114,
+      "V_w": 0.2330911705347661
+    },
+    "outer_seed": 1000,
+    "outer_train_n": 43,
+    "outer_validation_min_enri": 0.6360577676713729,
+    "outer_validation_n": 11,
+    "required_acquisition_fields": [
+      "Absolute_turn_angle_OFT",
+      "Average_speed_NOR1",
+      "Average_speed_OFT",
+      "EnduranceT",
+      "Latency_to_first_investigation_Piramidka_NOR1",
+      "OFT_distance",
+      "Time_inCenter_OFT",
+      "Time_investigating_Piramidka_NOR1",
+      "Time_investigating_Stakan_NOR1",
+      "Total_time_investigating_NOR1",
+      "rear_nosupport",
+      "rear_support"
+    ],
+    "retained_by_block": {
+      "B01": [
+        "Average_speed_OFT",
+        "OFT_distance",
+        "Absolute_turn_angle_OFT",
+        "Total_time_mobile_OFT"
+      ],
+      "B02": [
+        "Average_speed_NOR1",
+        "Total_distance_travelled_NOR1"
+      ],
+      "B03": [
+        "Latency_to_first_investigation_Piramidka_NOR1"
+      ],
+      "B04": [
+        "Average_speed_NOR2"
+      ],
+      "B05": [
+        "Learning_T1sum"
+      ],
+      "B06": [
+        "Learning_T2mean"
+      ],
+      "B07": [
+        "Learning_T3sum"
+      ]
+    },
+    "selected_blocks": [
+      {
+        "block_id": "B01",
+        "members": [
+          "OFT_distance",
+          "Average_speed_OFT",
+          "Total_time_mobile_OFT",
+          "Absolute_turn_angle_OFT"
+        ],
+        "pi_block_any_selected": 1.0,
+        "selected_members": [
+          "Absolute_turn_angle_OFT",
+          "Average_speed_OFT",
+          "OFT_distance"
+        ],
+        "signature": "Absolute_turn_angle_OFT|Average_speed_OFT|OFT_distance|Total_time_mobile_OFT"
+      },
+      {
+        "block_id": "B02",
+        "members": [
+          "Total_distance_travelled_NOR1",
+          "Average_speed_NOR1"
+        ],
+        "pi_block_any_selected": 1.0,
+        "selected_members": [
+          "Average_speed_NOR1"
+        ],
+        "signature": "Average_speed_NOR1|Total_distance_travelled_NOR1"
+      },
+      {
+        "block_id": "B03",
+        "members": [
+          "Latency_to_first_investigation_Piramidka_NOR1",
+          "Latency_to_first_investigation_Stakan_NOR1"
+        ],
+        "pi_block_any_selected": 1.0,
+        "selected_members": [
+          "Latency_to_first_investigation_Piramidka_NOR1"
+        ],
+        "signature": "Latency_to_first_investigation_Piramidka_NOR1|Latency_to_first_investigation_Stakan_NOR1"
+      }
+    ],
+    "selected_features": [
+      "Latency_to_first_investigation_Piramidka_NOR1",
+      "EnduranceT",
+      "Average_speed_OFT",
+      "rear_support",
+      "Time_inCenter_OFT",
+      "Average_speed_NOR1",
+      "OFT_distance",
+      "Time_investigating_Stakan_NOR1",
+      "Absolute_turn_angle_OFT",
+      "rear_nosupport"
+    ],
+    "selected_k": 10,
+    "slack_max": 0.10725554221808654,
+    "slack_sum": 0.15559082156193654,
+    "solver_status": "optimal",
+    "solver_used": "OSQP",
+    "stability_rejected_resamples": 8,
+    "stability_valid_resamples": 10,
+    "train_group_means": {
+      "LPS^0": 0.9509701227806343,
+      "LPS^16": 0.6729653568442575,
+      "LPS^24": 0.5140450810956998,
+      "MCC^0": 1.0133992343494667,
+      "MCC^16": 0.6234554854349954,
+      "MCC^24": 0.6140450553420422,
+      "PBS^0": 1.0,
+      "PBS^16": 0.6657098146260922,
+      "PBS^24": 0.570638503221347,
+      "run^0": 0.9786081995661976,
+      "run^16": 0.7246128975813374,
+      "run^24": 0.614045111808057
+    },
+    "validation_group_means": {
+      "LPS^0": 0.9769109864768248,
+      "LPS^16": 0.5550802785357026,
+      "LPS^24": 0.5094977318443917,
+      "MCC^0": 0.8479895740150077,
+      "MCC^16": 1.1542047764829073,
+      "MCC^24": 0.9014679364441428,
+      "PBS^0": 1.1179211391904418,
+      "PBS^16": 0.7273757652118621,
+      "PBS^24": 0.8782869597831143,
+      "run^0": 1.0532299814747152,
+      "run^16": 0.5957661200332421,
+      "run^24": 0.586910604428654
+    },
+    "weights": {
+      "Absolute_turn_angle_OFT": 0.13185308665804396,
+      "Average_speed_NOR1": 3.583989093930835e-05,
+      "Average_speed_OFT": -0.12685703094366177,
+      "EnduranceT": 0.04393850366191707,
+      "Latency_to_first_investigation_Piramidka_NOR1": -0.05965324559508317,
+      "OFT_distance": 0.00011375983976504608,
+      "Time_inCenter_OFT": -0.07957707437502758,
+      "Time_investigating_Stakan_NOR1": -0.051398713498491254,
+      "rear_nosupport": -0.04392648822005729,
+      "rear_support": 0.06678742469628976
+    }
+  }
+]
