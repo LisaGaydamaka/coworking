@@ -1,0 +1,67 @@
+{
+  "active_count": {
+    "max": 6,
+    "mean": 2.335,
+    "median": 2.0,
+    "min": 0,
+    "q10": 1.0,
+    "q90": 4.0
+  },
+  "active_threshold": 1e-06,
+  "candidate_features": [
+    {
+      "feature": "Average_speed_NOR1",
+      "gamma_median_selected": 0.0007924952300140896,
+      "modal_sign": 1,
+      "pi_selection": 0.69,
+      "sign_consistency": 0.8985507246376812
+    }
+  ],
+  "core_features": [
+    {
+      "feature": "OFT_distance",
+      "gamma_median_selected": 0.00019214280320028148,
+      "modal_sign": 1,
+      "pi_selection": 0.99,
+      "sign_consistency": 0.9797979797979798
+    }
+  ],
+  "counts": {
+    "candidate_features": 1,
+    "core_features": 1,
+    "other_features": 28
+  },
+  "lambda1_star": 0.3,
+  "outputs": {
+    "coefficients": "stage_c/stability_coefficients.csv",
+    "feature_summary": "stage_c/stability_selection.csv",
+    "rejected": null,
+    "resamples": "stage_c/stability_resamples.csv"
+  },
+  "purpose": "development_mouse_level_stability_selection",
+  "resampling": {
+    "first_valid_seed": 20000,
+    "last_valid_seed": 20199,
+    "method": "StratifiedShuffleSplit mouse-level 80/20",
+    "min_train_O": 5,
+    "rejected_resamples": 0,
+    "seed_start": 20000,
+    "target_valid_resamples": 200,
+    "train_fraction": 0.8,
+    "valid_resamples": 200
+  },
+  "slack_sum": {
+    "mean": 0.49904320721684087,
+    "median": 0.46441990523065124,
+    "q10": 0.156348817070755,
+    "q90": 0.8568178409170161
+  },
+  "stage": "C",
+  "status": "READY",
+  "thresholds": {
+    "candidate": "0.6<=pi<0.8 and sign_consistency>=0.8",
+    "core": "pi>=0.8 and sign_consistency>=0.9"
+  },
+  "validation_errors": [],
+  "warning": "Development stability results are not the final nested-CV feature frequencies. The same procedure must be rerun inside each outer-train."
+}

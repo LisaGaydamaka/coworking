@@ -1,0 +1,7224 @@
+{
+  "code_hashes": {
+    "mouse_neuroplasticity_enri/enri_mouse_neuroplasticity/solve_all0mean.py": "c932330887b50b4e4ee424789e42e3b9173f68eba079e7ba434fcb6e1af01046",
+    "mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection_all0mean/stage_a.py": "d718722803bce8d177bac0d85d9314a43db27679ddfed11a6ad0e460101e41b0",
+    "mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection_all0mean/stage_b.py": "2523866c3589eeeb61233fd6163226492919565d19c4e4409dfec752902ad1be",
+    "mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection_all0mean/stage_c.py": "8a00494fc2b8d4ecae0a9c691cfb41512a976bd1807ce92290febeafae72ec33",
+    "mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection_all0mean/stage_e.py": "9282a6f6d03143e11c80c6bdaf1e078d5f879e5a9ae36b1551bf8f6d18890c2b",
+    "mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection_all0mean/stage_f.py": "a59fbaa4b4a5eaf601c4c052f6a2a0083774b34e293b57c0f52f962cec132991",
+    "mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection_all0mean/stage_h.py": "cc8d0bc8fee056bf70c79405dc50f30a4e393cdcf89ef6e60857061255a9b15c"
+  },
+  "inner_min_train_O": 4,
+  "inner_min_validation_O": 2,
+  "inner_target": 20,
+  "manifest_hash": "59625b5aab9e2e2196048855d4e8d7c3e45c7b94f3e4467f3252646f4f973438",
+  "mouse_count": 54,
+  "outer_min_train_O": 5,
+  "outer_min_validation_O": 2,
+  "outer_seed_start": 1000,
+  "outer_target": 30,
+  "outer_train_fraction": 0.8,
+  "rejected_outer_candidates_before_target": [
+    {
+      "candidate_index": 1,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1001,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 2,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1002,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 3,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1003,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 5,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1005,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 6,
+      "min_train_O": 6,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1006,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 11,
+          "validation_O": 1
+        },
+        "LPS^24": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 6,
+          "validation_O": 2
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 7,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1007,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 11,
+      "min_train_O": 8,
+      "min_validation_O": 0,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1011,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 8,
+          "validation_O": 0
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 12,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1012,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 14,
+      "min_train_O": 6,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1014,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "MCC^24": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 6,
+          "validation_O": 2
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 15,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1015,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 16,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1016,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 17,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1017,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 18,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1018,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "MCC^24": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 19,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1019,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 20,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1020,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 21,
+      "min_train_O": 6,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1021,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 11,
+          "validation_O": 1
+        },
+        "LPS^24": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 6,
+          "validation_O": 2
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 23,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1023,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 24,
+      "min_train_O": 6,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1024,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 11,
+          "validation_O": 1
+        },
+        "LPS^24": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 6,
+          "validation_O": 2
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 26,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1026,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "MCC^24": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 27,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1027,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 31,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1031,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 32,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1032,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 35,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1035,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 36,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1036,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 38,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1038,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 11,
+          "validation_O": 1
+        },
+        "run^24": {
+          "train_O": 11,
+          "validation_O": 1
+        }
+      }
+    },
+    {
+      "candidate_index": 39,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1039,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 40,
+      "min_train_O": 6,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1040,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 11,
+          "validation_O": 1
+        },
+        "LPS^24": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 6,
+          "validation_O": 2
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 41,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1041,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 42,
+      "min_train_O": 6,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1042,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 6,
+          "validation_O": 2
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 43,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1043,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 44,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1044,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 45,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1045,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 46,
+      "min_train_O": 6,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1046,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "MCC^24": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 6,
+          "validation_O": 2
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 47,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1047,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 48,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1048,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 49,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1049,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 50,
+      "min_train_O": 8,
+      "min_validation_O": 0,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1050,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 8,
+          "validation_O": 0
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 51,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1051,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 54,
+      "min_train_O": 6,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1054,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "MCC^24": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 6,
+          "validation_O": 2
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 57,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1057,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 58,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1058,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 59,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1059,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 61,
+      "min_train_O": 6,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1061,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "MCC^24": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 6,
+          "validation_O": 2
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 62,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1062,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 63,
+      "min_train_O": 6,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1063,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "MCC^24": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 6,
+          "validation_O": 2
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 64,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1064,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 65,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1065,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 66,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1066,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 68,
+      "min_train_O": 6,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1068,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 6,
+          "validation_O": 2
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 11,
+          "validation_O": 1
+        },
+        "run^24": {
+          "train_O": 11,
+          "validation_O": 1
+        }
+      }
+    },
+    {
+      "candidate_index": 69,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1069,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 70,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1070,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 71,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1071,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 72,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1072,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 74,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1074,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 75,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1075,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 76,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1076,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 77,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1077,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 11,
+          "validation_O": 1
+        },
+        "run^24": {
+          "train_O": 11,
+          "validation_O": 1
+        }
+      }
+    },
+    {
+      "candidate_index": 79,
+      "min_train_O": 6,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1079,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "MCC^24": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 6,
+          "validation_O": 2
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 80,
+      "min_train_O": 6,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1080,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 6,
+          "validation_O": 2
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 81,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1081,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "MCC^24": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 82,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1082,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 11,
+          "validation_O": 1
+        },
+        "LPS^24": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 83,
+      "min_train_O": 6,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1083,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 6,
+          "validation_O": 2
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 11,
+          "validation_O": 1
+        },
+        "run^24": {
+          "train_O": 11,
+          "validation_O": 1
+        }
+      }
+    },
+    {
+      "candidate_index": 84,
+      "min_train_O": 8,
+      "min_validation_O": 0,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1084,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 9,
+          "validation_O": 0
+        },
+        "PBS^24": {
+          "train_O": 8,
+          "validation_O": 0
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 85,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1085,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 86,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1086,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 87,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1087,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 88,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1088,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 90,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1090,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 92,
+      "min_train_O": 6,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1092,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 6,
+          "validation_O": 2
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 11,
+          "validation_O": 1
+        },
+        "run^24": {
+          "train_O": 11,
+          "validation_O": 1
+        }
+      }
+    },
+    {
+      "candidate_index": 93,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1093,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 94,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1094,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 95,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1095,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 97,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1097,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 11,
+          "validation_O": 1
+        },
+        "run^24": {
+          "train_O": 11,
+          "validation_O": 1
+        }
+      }
+    },
+    {
+      "candidate_index": 98,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1098,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 99,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1099,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 100,
+      "min_train_O": 6,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1100,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "MCC^24": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 6,
+          "validation_O": 2
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 101,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1101,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 102,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1102,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 103,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1103,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 104,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1104,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 11,
+          "validation_O": 1
+        },
+        "LPS^24": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 11,
+          "validation_O": 1
+        },
+        "run^24": {
+          "train_O": 11,
+          "validation_O": 1
+        }
+      }
+    },
+    {
+      "candidate_index": 105,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1105,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 107,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1107,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 108,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1108,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 109,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1109,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "MCC^24": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 110,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1110,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 111,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1111,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 112,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1112,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 115,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1115,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    },
+    {
+      "candidate_index": 117,
+      "min_train_O": 6,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1117,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "LPS^24": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 6,
+          "validation_O": 2
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "run^24": {
+          "train_O": 9,
+          "validation_O": 3
+        }
+      }
+    },
+    {
+      "candidate_index": 118,
+      "min_train_O": 6,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1118,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 9,
+          "validation_O": 3
+        },
+        "LPS^24": {
+          "train_O": 8,
+          "validation_O": 3
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 7,
+          "validation_O": 2
+        },
+        "PBS^24": {
+          "train_O": 6,
+          "validation_O": 2
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 11,
+          "validation_O": 1
+        },
+        "run^24": {
+          "train_O": 11,
+          "validation_O": 1
+        }
+      }
+    },
+    {
+      "candidate_index": 119,
+      "min_train_O": 7,
+      "min_validation_O": 1,
+      "phase": "cheap_state_count_precheck",
+      "seed": 1119,
+      "state_counts": {
+        "LPS^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "LPS^16": {
+          "train_O": 11,
+          "validation_O": 1
+        },
+        "LPS^24": {
+          "train_O": 10,
+          "validation_O": 1
+        },
+        "MCC^0": {
+          "train_O": 11,
+          "validation_O": 3
+        },
+        "MCC^16": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "MCC^24": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^0": {
+          "train_O": 9,
+          "validation_O": 2
+        },
+        "PBS^16": {
+          "train_O": 8,
+          "validation_O": 1
+        },
+        "PBS^24": {
+          "train_O": 7,
+          "validation_O": 1
+        },
+        "run^0": {
+          "train_O": 12,
+          "validation_O": 3
+        },
+        "run^16": {
+          "train_O": 10,
+          "validation_O": 2
+        },
+        "run^24": {
+          "train_O": 10,
+          "validation_O": 2
+        }
+      }
+    }
+  ],
+  "schema_version": 1,
+  "splits": [
+    {
+      "candidate_index": 0,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 0,
+      "seed": 1000,
+      "train_ids": [
+        "4.4",
+        "9.1",
+        "21.5",
+        "20.4",
+        "4.1",
+        "18.2",
+        "2.4",
+        "8.3",
+        "17.1",
+        "21.2",
+        "20.2",
+        "3.1",
+        "18.3",
+        "10.3",
+        "17.4",
+        "12.1",
+        "3.3",
+        "20.5",
+        "12.3",
+        "19.3",
+        "1.1",
+        "12.2",
+        "1.3",
+        "19.2",
+        "6.3",
+        "21.4",
+        "4.3",
+        "16.1",
+        "21.3",
+        "3.4",
+        "11.2",
+        "8.2",
+        "21.1",
+        "18.1",
+        "12.5",
+        "2.1",
+        "10.1",
+        "16.2",
+        "17.5",
+        "19.4",
+        "1.4",
+        "19.1",
+        "17.3"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "1.5",
+        "17.2",
+        "12.4",
+        "6.2",
+        "11.1",
+        "20.1",
+        "9.2",
+        "8.4",
+        "20.3",
+        "16.3",
+        "9.3"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 4,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 1,
+      "seed": 1004,
+      "train_ids": [
+        "12.5",
+        "16.2",
+        "17.1",
+        "6.2",
+        "17.3",
+        "9.1",
+        "12.1",
+        "20.5",
+        "16.3",
+        "1.1",
+        "12.4",
+        "21.3",
+        "1.5",
+        "11.1",
+        "4.1",
+        "9.2",
+        "20.2",
+        "9.3",
+        "12.3",
+        "18.2",
+        "21.1",
+        "8.3",
+        "6.3",
+        "20.4",
+        "4.3",
+        "20.3",
+        "2.1",
+        "21.2",
+        "19.3",
+        "21.5",
+        "18.3",
+        "3.4",
+        "3.1",
+        "19.2",
+        "10.3",
+        "1.3",
+        "18.1",
+        "17.2",
+        "17.5",
+        "10.1",
+        "11.2",
+        "19.4",
+        "19.1"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "2.4",
+        "17.4",
+        "16.1",
+        "20.1",
+        "1.4",
+        "21.4",
+        "4.4",
+        "3.3",
+        "8.2",
+        "8.4",
+        "12.2"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 8,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 2,
+      "seed": 1008,
+      "train_ids": [
+        "19.1",
+        "20.4",
+        "12.3",
+        "20.5",
+        "4.3",
+        "1.4",
+        "9.2",
+        "1.5",
+        "9.3",
+        "18.3",
+        "18.2",
+        "16.1",
+        "9.1",
+        "8.4",
+        "11.1",
+        "20.3",
+        "2.1",
+        "17.3",
+        "3.1",
+        "6.3",
+        "21.5",
+        "21.3",
+        "12.4",
+        "17.2",
+        "1.1",
+        "18.1",
+        "17.5",
+        "11.2",
+        "21.1",
+        "19.2",
+        "21.2",
+        "4.4",
+        "12.1",
+        "16.3",
+        "19.4",
+        "12.2",
+        "2.4",
+        "6.2",
+        "20.2",
+        "10.1",
+        "3.3",
+        "8.3",
+        "16.2"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "10.3",
+        "21.4",
+        "8.2",
+        "12.5",
+        "17.4",
+        "3.4",
+        "17.1",
+        "4.1",
+        "19.3",
+        "20.1",
+        "1.3"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 9,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 3,
+      "seed": 1009,
+      "train_ids": [
+        "21.2",
+        "17.2",
+        "2.1",
+        "1.1",
+        "21.4",
+        "21.5",
+        "1.4",
+        "17.4",
+        "8.3",
+        "20.3",
+        "1.3",
+        "12.1",
+        "9.3",
+        "11.2",
+        "9.2",
+        "4.3",
+        "2.4",
+        "10.1",
+        "6.3",
+        "20.5",
+        "8.2",
+        "16.1",
+        "19.2",
+        "12.3",
+        "1.5",
+        "20.4",
+        "4.1",
+        "6.2",
+        "17.3",
+        "8.4",
+        "3.3",
+        "11.1",
+        "17.5",
+        "18.3",
+        "21.1",
+        "18.1",
+        "21.3",
+        "16.2",
+        "3.1",
+        "9.1",
+        "19.4",
+        "4.4",
+        "17.1"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "12.5",
+        "3.4",
+        "20.2",
+        "20.1",
+        "19.1",
+        "19.3",
+        "12.2",
+        "10.3",
+        "18.2",
+        "12.4",
+        "16.3"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 10,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 4,
+      "seed": 1010,
+      "train_ids": [
+        "21.2",
+        "21.1",
+        "1.4",
+        "18.3",
+        "20.5",
+        "1.3",
+        "6.3",
+        "16.1",
+        "17.2",
+        "9.1",
+        "19.1",
+        "8.3",
+        "11.1",
+        "9.3",
+        "17.5",
+        "16.2",
+        "20.3",
+        "19.2",
+        "3.4",
+        "12.3",
+        "9.2",
+        "20.2",
+        "1.1",
+        "10.1",
+        "21.3",
+        "17.3",
+        "6.2",
+        "3.3",
+        "3.1",
+        "12.4",
+        "4.1",
+        "17.4",
+        "19.3",
+        "12.2",
+        "21.5",
+        "10.3",
+        "2.4",
+        "4.4",
+        "18.2",
+        "1.5",
+        "11.2",
+        "16.3",
+        "19.4"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "8.2",
+        "12.5",
+        "17.1",
+        "8.4",
+        "21.4",
+        "4.3",
+        "20.1",
+        "12.1",
+        "18.1",
+        "20.4",
+        "2.1"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 13,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 5,
+      "seed": 1013,
+      "train_ids": [
+        "2.1",
+        "16.1",
+        "11.2",
+        "4.3",
+        "6.3",
+        "2.4",
+        "8.3",
+        "8.2",
+        "20.5",
+        "18.2",
+        "6.2",
+        "17.1",
+        "17.4",
+        "1.1",
+        "3.4",
+        "8.4",
+        "20.1",
+        "1.3",
+        "16.3",
+        "20.4",
+        "4.1",
+        "9.3",
+        "10.3",
+        "21.2",
+        "21.5",
+        "3.3",
+        "9.2",
+        "17.3",
+        "4.4",
+        "21.4",
+        "12.4",
+        "18.3",
+        "12.2",
+        "9.1",
+        "10.1",
+        "19.1",
+        "17.5",
+        "18.1",
+        "3.1",
+        "21.3",
+        "20.3",
+        "1.5",
+        "1.4"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "20.2",
+        "16.2",
+        "21.1",
+        "12.5",
+        "12.3",
+        "19.2",
+        "19.3",
+        "11.1",
+        "17.2",
+        "19.4",
+        "12.1"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 22,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 6,
+      "seed": 1022,
+      "train_ids": [
+        "9.3",
+        "20.5",
+        "19.1",
+        "12.2",
+        "16.1",
+        "11.1",
+        "12.5",
+        "18.3",
+        "21.1",
+        "8.4",
+        "19.3",
+        "21.5",
+        "12.1",
+        "20.3",
+        "6.3",
+        "19.4",
+        "17.4",
+        "12.4",
+        "17.1",
+        "21.3",
+        "3.3",
+        "18.2",
+        "2.4",
+        "19.2",
+        "17.2",
+        "10.3",
+        "1.3",
+        "4.1",
+        "12.3",
+        "20.2",
+        "16.2",
+        "21.4",
+        "11.2",
+        "1.4",
+        "2.1",
+        "9.2",
+        "17.3",
+        "17.5",
+        "20.4",
+        "1.1",
+        "4.3",
+        "20.1",
+        "9.1"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "16.3",
+        "18.1",
+        "3.4",
+        "6.2",
+        "10.1",
+        "4.4",
+        "8.2",
+        "1.5",
+        "8.3",
+        "3.1",
+        "21.2"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 25,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 7,
+      "seed": 1025,
+      "train_ids": [
+        "8.3",
+        "8.4",
+        "4.4",
+        "16.2",
+        "19.4",
+        "19.3",
+        "19.1",
+        "4.3",
+        "16.1",
+        "1.1",
+        "18.3",
+        "1.3",
+        "3.3",
+        "21.4",
+        "17.3",
+        "16.3",
+        "18.2",
+        "20.3",
+        "21.1",
+        "10.3",
+        "4.1",
+        "20.2",
+        "11.1",
+        "19.2",
+        "20.5",
+        "17.4",
+        "10.1",
+        "21.3",
+        "1.5",
+        "20.4",
+        "12.1",
+        "3.1",
+        "12.4",
+        "8.2",
+        "17.5",
+        "12.3",
+        "6.3",
+        "17.2",
+        "11.2",
+        "9.1",
+        "2.4",
+        "6.2",
+        "21.5"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "17.1",
+        "9.2",
+        "21.2",
+        "20.1",
+        "1.4",
+        "18.1",
+        "2.1",
+        "3.4",
+        "12.2",
+        "9.3",
+        "12.5"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 28,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 8,
+      "seed": 1028,
+      "train_ids": [
+        "17.3",
+        "12.1",
+        "18.3",
+        "1.1",
+        "19.4",
+        "18.2",
+        "8.3",
+        "8.4",
+        "6.2",
+        "20.2",
+        "3.1",
+        "20.5",
+        "2.4",
+        "19.2",
+        "12.2",
+        "19.1",
+        "12.3",
+        "21.4",
+        "16.3",
+        "11.1",
+        "21.5",
+        "2.1",
+        "3.4",
+        "16.2",
+        "4.4",
+        "6.3",
+        "8.2",
+        "4.3",
+        "17.5",
+        "17.4",
+        "9.1",
+        "4.1",
+        "10.1",
+        "18.1",
+        "21.3",
+        "1.4",
+        "11.2",
+        "21.1",
+        "9.2",
+        "3.3",
+        "20.3",
+        "12.5",
+        "16.1"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "20.1",
+        "17.2",
+        "1.5",
+        "1.3",
+        "10.3",
+        "12.4",
+        "19.3",
+        "21.2",
+        "17.1",
+        "20.4",
+        "9.3"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 29,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 9,
+      "seed": 1029,
+      "train_ids": [
+        "17.5",
+        "21.4",
+        "20.3",
+        "1.3",
+        "19.1",
+        "19.3",
+        "21.1",
+        "3.3",
+        "12.4",
+        "17.4",
+        "16.3",
+        "4.1",
+        "6.3",
+        "18.2",
+        "12.1",
+        "18.3",
+        "11.1",
+        "12.5",
+        "17.3",
+        "20.1",
+        "21.2",
+        "8.4",
+        "6.2",
+        "3.1",
+        "9.3",
+        "20.4",
+        "20.2",
+        "9.1",
+        "17.1",
+        "12.3",
+        "4.4",
+        "12.2",
+        "19.2",
+        "21.3",
+        "1.4",
+        "21.5",
+        "10.3",
+        "18.1",
+        "19.4",
+        "2.1",
+        "2.4",
+        "8.2",
+        "17.2"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "8.3",
+        "10.1",
+        "1.1",
+        "9.2",
+        "16.2",
+        "3.4",
+        "16.1",
+        "4.3",
+        "11.2",
+        "1.5",
+        "20.5"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 30,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 10,
+      "seed": 1030,
+      "train_ids": [
+        "12.2",
+        "11.1",
+        "3.1",
+        "1.1",
+        "19.2",
+        "20.1",
+        "2.1",
+        "8.2",
+        "11.2",
+        "20.5",
+        "4.3",
+        "8.3",
+        "12.5",
+        "19.1",
+        "16.1",
+        "1.4",
+        "21.2",
+        "18.3",
+        "18.2",
+        "9.2",
+        "17.5",
+        "20.2",
+        "3.3",
+        "6.2",
+        "12.1",
+        "8.4",
+        "2.4",
+        "17.2",
+        "3.4",
+        "21.3",
+        "17.1",
+        "10.3",
+        "12.3",
+        "16.2",
+        "4.4",
+        "21.5",
+        "17.3",
+        "19.4",
+        "1.5",
+        "18.1",
+        "9.1",
+        "6.3",
+        "20.3"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "16.3",
+        "20.4",
+        "1.3",
+        "17.4",
+        "10.1",
+        "19.3",
+        "9.3",
+        "4.1",
+        "12.4",
+        "21.1",
+        "21.4"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 33,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 11,
+      "seed": 1033,
+      "train_ids": [
+        "4.4",
+        "20.2",
+        "16.3",
+        "1.3",
+        "20.5",
+        "12.3",
+        "9.2",
+        "6.2",
+        "1.1",
+        "20.4",
+        "12.5",
+        "10.3",
+        "8.3",
+        "10.1",
+        "17.5",
+        "19.1",
+        "4.1",
+        "12.2",
+        "20.1",
+        "17.4",
+        "17.2",
+        "20.3",
+        "3.1",
+        "19.4",
+        "1.5",
+        "3.4",
+        "11.1",
+        "17.3",
+        "19.2",
+        "18.1",
+        "3.3",
+        "18.3",
+        "8.4",
+        "16.1",
+        "9.1",
+        "12.1",
+        "21.4",
+        "17.1",
+        "11.2",
+        "21.5",
+        "9.3",
+        "6.3",
+        "2.1"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "12.4",
+        "16.2",
+        "8.2",
+        "2.4",
+        "21.3",
+        "19.3",
+        "21.1",
+        "1.4",
+        "21.2",
+        "4.3",
+        "18.2"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 34,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 12,
+      "seed": 1034,
+      "train_ids": [
+        "1.4",
+        "17.3",
+        "1.1",
+        "11.2",
+        "20.2",
+        "21.5",
+        "4.1",
+        "18.1",
+        "9.1",
+        "4.3",
+        "2.4",
+        "8.2",
+        "19.2",
+        "8.3",
+        "18.3",
+        "9.2",
+        "2.1",
+        "19.1",
+        "1.3",
+        "4.4",
+        "8.4",
+        "6.2",
+        "16.1",
+        "20.4",
+        "3.4",
+        "12.5",
+        "12.1",
+        "17.1",
+        "17.4",
+        "11.1",
+        "3.3",
+        "1.5",
+        "20.3",
+        "21.4",
+        "10.1",
+        "16.3",
+        "21.1",
+        "17.5",
+        "20.1",
+        "9.3",
+        "6.3",
+        "21.3",
+        "17.2"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "20.5",
+        "12.4",
+        "21.2",
+        "19.4",
+        "10.3",
+        "12.2",
+        "18.2",
+        "19.3",
+        "12.3",
+        "3.1",
+        "16.2"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 37,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 13,
+      "seed": 1037,
+      "train_ids": [
+        "12.3",
+        "21.1",
+        "8.3",
+        "17.5",
+        "20.3",
+        "1.5",
+        "1.4",
+        "20.1",
+        "21.3",
+        "9.1",
+        "19.4",
+        "17.2",
+        "12.5",
+        "12.2",
+        "8.4",
+        "17.1",
+        "10.3",
+        "6.3",
+        "2.4",
+        "11.1",
+        "1.3",
+        "4.1",
+        "16.2",
+        "9.2",
+        "20.4",
+        "16.3",
+        "10.1",
+        "21.5",
+        "18.1",
+        "6.2",
+        "1.1",
+        "11.2",
+        "17.4",
+        "18.3",
+        "20.2",
+        "3.4",
+        "21.4",
+        "19.3",
+        "9.3",
+        "3.1",
+        "19.2",
+        "4.4",
+        "17.3"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "12.4",
+        "3.3",
+        "20.5",
+        "16.1",
+        "4.3",
+        "19.1",
+        "12.1",
+        "18.2",
+        "21.2",
+        "2.1",
+        "8.2"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 52,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 14,
+      "seed": 1052,
+      "train_ids": [
+        "21.1",
+        "18.1",
+        "20.4",
+        "11.2",
+        "16.1",
+        "2.1",
+        "19.2",
+        "10.1",
+        "8.4",
+        "1.1",
+        "20.3",
+        "2.4",
+        "20.1",
+        "17.5",
+        "12.1",
+        "6.2",
+        "17.3",
+        "19.3",
+        "4.1",
+        "3.1",
+        "16.2",
+        "1.3",
+        "18.3",
+        "8.3",
+        "12.4",
+        "1.4",
+        "21.5",
+        "17.2",
+        "17.1",
+        "8.2",
+        "10.3",
+        "9.1",
+        "3.4",
+        "9.3",
+        "12.3",
+        "12.2",
+        "4.4",
+        "1.5",
+        "11.1",
+        "18.2",
+        "20.2",
+        "21.4",
+        "20.5"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "19.1",
+        "19.4",
+        "21.3",
+        "16.3",
+        "17.4",
+        "21.2",
+        "9.2",
+        "6.3",
+        "4.3",
+        "12.5",
+        "3.3"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 53,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 15,
+      "seed": 1053,
+      "train_ids": [
+        "1.1",
+        "21.5",
+        "9.1",
+        "20.4",
+        "20.1",
+        "16.1",
+        "11.2",
+        "4.3",
+        "18.2",
+        "3.1",
+        "8.4",
+        "1.4",
+        "19.4",
+        "1.5",
+        "4.1",
+        "16.2",
+        "19.1",
+        "12.2",
+        "2.1",
+        "1.3",
+        "4.4",
+        "20.3",
+        "11.1",
+        "17.1",
+        "21.2",
+        "21.4",
+        "8.2",
+        "18.3",
+        "21.3",
+        "17.3",
+        "19.2",
+        "18.1",
+        "6.3",
+        "20.5",
+        "8.3",
+        "17.5",
+        "3.3",
+        "16.3",
+        "2.4",
+        "9.2",
+        "10.3",
+        "12.1",
+        "12.5"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "19.3",
+        "9.3",
+        "12.3",
+        "10.1",
+        "3.4",
+        "6.2",
+        "17.2",
+        "20.2",
+        "21.1",
+        "12.4",
+        "17.4"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 55,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 16,
+      "seed": 1055,
+      "train_ids": [
+        "10.1",
+        "4.4",
+        "16.1",
+        "20.5",
+        "19.4",
+        "8.2",
+        "1.3",
+        "8.4",
+        "17.2",
+        "9.2",
+        "16.2",
+        "12.1",
+        "2.1",
+        "21.2",
+        "4.1",
+        "18.2",
+        "9.1",
+        "9.3",
+        "21.5",
+        "21.4",
+        "17.4",
+        "20.2",
+        "1.1",
+        "3.1",
+        "20.3",
+        "12.2",
+        "20.1",
+        "17.5",
+        "21.1",
+        "20.4",
+        "12.3",
+        "11.1",
+        "18.1",
+        "12.4",
+        "19.2",
+        "8.3",
+        "12.5",
+        "1.5",
+        "17.3",
+        "6.2",
+        "11.2",
+        "18.3",
+        "2.4"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "17.1",
+        "21.3",
+        "3.3",
+        "1.4",
+        "16.3",
+        "19.3",
+        "10.3",
+        "4.3",
+        "3.4",
+        "6.3",
+        "19.1"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 56,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 17,
+      "seed": 1056,
+      "train_ids": [
+        "17.4",
+        "21.1",
+        "21.3",
+        "19.1",
+        "18.3",
+        "12.3",
+        "6.3",
+        "18.1",
+        "2.4",
+        "17.2",
+        "4.3",
+        "10.3",
+        "9.1",
+        "19.3",
+        "11.2",
+        "2.1",
+        "12.2",
+        "9.3",
+        "20.5",
+        "8.2",
+        "8.3",
+        "19.4",
+        "20.1",
+        "12.5",
+        "1.3",
+        "16.2",
+        "20.4",
+        "17.3",
+        "11.1",
+        "20.2",
+        "21.5",
+        "4.1",
+        "3.4",
+        "6.2",
+        "17.5",
+        "10.1",
+        "16.3",
+        "16.1",
+        "1.5",
+        "12.1",
+        "1.4",
+        "3.3",
+        "21.2"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "4.4",
+        "9.2",
+        "12.4",
+        "3.1",
+        "18.2",
+        "19.2",
+        "8.4",
+        "1.1",
+        "17.1",
+        "21.4",
+        "20.3"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 60,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 18,
+      "seed": 1060,
+      "train_ids": [
+        "4.1",
+        "20.2",
+        "17.5",
+        "2.1",
+        "9.2",
+        "1.3",
+        "16.3",
+        "10.1",
+        "9.1",
+        "11.1",
+        "18.1",
+        "20.5",
+        "20.3",
+        "12.4",
+        "21.4",
+        "20.4",
+        "19.1",
+        "21.1",
+        "3.4",
+        "17.1",
+        "6.2",
+        "6.3",
+        "21.5",
+        "1.5",
+        "2.4",
+        "9.3",
+        "1.4",
+        "8.2",
+        "11.2",
+        "19.4",
+        "17.4",
+        "17.3",
+        "19.2",
+        "16.1",
+        "4.4",
+        "12.2",
+        "3.1",
+        "12.5",
+        "4.3",
+        "18.2",
+        "3.3",
+        "8.4",
+        "18.3"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "12.3",
+        "1.1",
+        "21.2",
+        "21.3",
+        "17.2",
+        "12.1",
+        "10.3",
+        "19.3",
+        "16.2",
+        "20.1",
+        "8.3"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 67,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 19,
+      "seed": 1067,
+      "train_ids": [
+        "16.1",
+        "12.2",
+        "1.5",
+        "18.2",
+        "21.5",
+        "4.4",
+        "6.2",
+        "3.1",
+        "20.1",
+        "18.3",
+        "12.1",
+        "8.4",
+        "9.3",
+        "17.1",
+        "19.1",
+        "17.5",
+        "8.2",
+        "16.2",
+        "11.1",
+        "17.2",
+        "12.3",
+        "2.1",
+        "1.1",
+        "6.3",
+        "20.4",
+        "1.4",
+        "11.2",
+        "17.4",
+        "10.1",
+        "19.3",
+        "19.2",
+        "2.4",
+        "1.3",
+        "21.3",
+        "3.4",
+        "17.3",
+        "19.4",
+        "3.3",
+        "4.3",
+        "9.1",
+        "20.3",
+        "21.2",
+        "20.5"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "21.1",
+        "10.3",
+        "20.2",
+        "16.3",
+        "9.2",
+        "8.3",
+        "21.4",
+        "12.5",
+        "4.1",
+        "12.4",
+        "18.1"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 73,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 20,
+      "seed": 1073,
+      "train_ids": [
+        "16.3",
+        "6.2",
+        "1.5",
+        "21.1",
+        "20.5",
+        "1.3",
+        "18.3",
+        "12.3",
+        "6.3",
+        "8.2",
+        "20.2",
+        "16.2",
+        "4.1",
+        "9.2",
+        "12.5",
+        "1.1",
+        "18.2",
+        "11.1",
+        "11.2",
+        "12.2",
+        "20.4",
+        "12.4",
+        "19.3",
+        "16.1",
+        "2.1",
+        "8.3",
+        "19.2",
+        "17.3",
+        "19.1",
+        "21.3",
+        "3.3",
+        "10.1",
+        "9.1",
+        "3.1",
+        "17.5",
+        "10.3",
+        "20.3",
+        "8.4",
+        "17.1",
+        "20.1",
+        "17.2",
+        "4.4",
+        "21.2"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "2.4",
+        "1.4",
+        "19.4",
+        "3.4",
+        "21.4",
+        "18.1",
+        "12.1",
+        "4.3",
+        "9.3",
+        "17.4",
+        "21.5"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 78,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 21,
+      "seed": 1078,
+      "train_ids": [
+        "4.4",
+        "21.2",
+        "2.4",
+        "19.4",
+        "17.5",
+        "4.1",
+        "8.3",
+        "4.3",
+        "19.1",
+        "8.2",
+        "20.3",
+        "21.3",
+        "2.1",
+        "17.3",
+        "21.1",
+        "17.4",
+        "20.5",
+        "19.2",
+        "12.2",
+        "16.3",
+        "16.2",
+        "20.4",
+        "12.1",
+        "10.3",
+        "12.3",
+        "16.1",
+        "21.5",
+        "11.2",
+        "6.3",
+        "12.5",
+        "3.4",
+        "1.1",
+        "6.2",
+        "1.5",
+        "18.3",
+        "17.1",
+        "11.1",
+        "9.1",
+        "3.3",
+        "3.1",
+        "9.3",
+        "18.1",
+        "19.3"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "20.1",
+        "12.4",
+        "21.4",
+        "1.4",
+        "1.3",
+        "10.1",
+        "20.2",
+        "9.2",
+        "18.2",
+        "8.4",
+        "17.2"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 89,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 22,
+      "seed": 1089,
+      "train_ids": [
+        "11.2",
+        "21.4",
+        "4.1",
+        "6.3",
+        "6.2",
+        "16.3",
+        "10.3",
+        "4.4",
+        "2.4",
+        "18.3",
+        "20.3",
+        "1.4",
+        "17.5",
+        "20.4",
+        "20.1",
+        "18.1",
+        "19.4",
+        "10.1",
+        "17.2",
+        "12.1",
+        "12.4",
+        "19.3",
+        "4.3",
+        "9.1",
+        "9.3",
+        "16.2",
+        "20.5",
+        "21.5",
+        "3.4",
+        "8.3",
+        "9.2",
+        "20.2",
+        "8.4",
+        "3.3",
+        "11.1",
+        "1.3",
+        "17.3",
+        "17.1",
+        "21.3",
+        "19.1",
+        "17.4",
+        "1.1",
+        "12.5"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "3.1",
+        "21.2",
+        "16.1",
+        "21.1",
+        "8.2",
+        "12.2",
+        "12.3",
+        "2.1",
+        "18.2",
+        "1.5",
+        "19.2"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 91,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 23,
+      "seed": 1091,
+      "train_ids": [
+        "3.3",
+        "12.4",
+        "18.3",
+        "19.2",
+        "2.4",
+        "3.4",
+        "3.1",
+        "8.3",
+        "1.4",
+        "21.2",
+        "18.1",
+        "10.1",
+        "12.1",
+        "17.2",
+        "1.5",
+        "16.3",
+        "20.5",
+        "4.1",
+        "21.5",
+        "1.3",
+        "21.3",
+        "19.1",
+        "1.1",
+        "17.4",
+        "17.1",
+        "21.1",
+        "17.3",
+        "4.4",
+        "9.3",
+        "12.5",
+        "12.3",
+        "19.3",
+        "11.2",
+        "9.1",
+        "2.1",
+        "19.4",
+        "20.1",
+        "17.5",
+        "10.3",
+        "4.3",
+        "20.2",
+        "16.1",
+        "20.3"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "16.2",
+        "12.2",
+        "11.1",
+        "20.4",
+        "18.2",
+        "21.4",
+        "6.2",
+        "6.3",
+        "9.2",
+        "8.2",
+        "8.4"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 96,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 24,
+      "seed": 1096,
+      "train_ids": [
+        "12.5",
+        "10.3",
+        "10.1",
+        "8.2",
+        "3.1",
+        "8.3",
+        "16.1",
+        "20.1",
+        "12.1",
+        "20.5",
+        "1.3",
+        "18.2",
+        "17.4",
+        "19.2",
+        "2.1",
+        "12.4",
+        "3.3",
+        "11.1",
+        "20.3",
+        "17.3",
+        "20.2",
+        "21.5",
+        "2.4",
+        "4.4",
+        "9.2",
+        "12.2",
+        "4.1",
+        "17.5",
+        "4.3",
+        "6.3",
+        "18.3",
+        "19.3",
+        "21.3",
+        "18.1",
+        "17.1",
+        "20.4",
+        "16.2",
+        "9.3",
+        "21.4",
+        "1.4",
+        "11.2",
+        "1.5",
+        "19.1"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "19.4",
+        "21.1",
+        "1.1",
+        "6.2",
+        "3.4",
+        "8.4",
+        "12.3",
+        "16.3",
+        "21.2",
+        "17.2",
+        "9.1"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 106,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 25,
+      "seed": 1106,
+      "train_ids": [
+        "8.4",
+        "1.1",
+        "1.5",
+        "8.3",
+        "17.2",
+        "18.3",
+        "4.3",
+        "10.1",
+        "18.1",
+        "9.1",
+        "17.5",
+        "12.5",
+        "21.5",
+        "21.3",
+        "20.5",
+        "11.2",
+        "19.2",
+        "10.3",
+        "21.2",
+        "4.4",
+        "2.1",
+        "8.2",
+        "12.1",
+        "6.2",
+        "16.1",
+        "16.2",
+        "21.4",
+        "3.1",
+        "17.1",
+        "1.3",
+        "4.1",
+        "17.3",
+        "20.2",
+        "1.4",
+        "3.3",
+        "9.2",
+        "20.1",
+        "17.4",
+        "9.3",
+        "12.2",
+        "21.1",
+        "11.1",
+        "19.3"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "18.2",
+        "19.1",
+        "19.4",
+        "20.3",
+        "16.3",
+        "12.4",
+        "12.3",
+        "3.4",
+        "20.4",
+        "6.3",
+        "2.4"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 113,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 26,
+      "seed": 1113,
+      "train_ids": [
+        "9.1",
+        "21.5",
+        "12.5",
+        "20.3",
+        "8.2",
+        "18.3",
+        "10.1",
+        "2.4",
+        "20.4",
+        "21.3",
+        "17.1",
+        "12.4",
+        "9.2",
+        "17.4",
+        "17.5",
+        "18.2",
+        "19.4",
+        "11.2",
+        "2.1",
+        "19.2",
+        "19.3",
+        "18.1",
+        "17.2",
+        "21.4",
+        "3.3",
+        "1.3",
+        "4.3",
+        "8.3",
+        "3.1",
+        "4.4",
+        "20.5",
+        "4.1",
+        "16.2",
+        "12.3",
+        "1.1",
+        "12.1",
+        "3.4",
+        "17.3",
+        "1.4",
+        "20.2",
+        "1.5",
+        "10.3",
+        "21.1"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "8.4",
+        "16.3",
+        "16.1",
+        "21.2",
+        "20.1",
+        "6.3",
+        "19.1",
+        "12.2",
+        "6.2",
+        "9.3",
+        "11.1"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 114,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 27,
+      "seed": 1114,
+      "train_ids": [
+        "21.3",
+        "8.3",
+        "10.3",
+        "6.3",
+        "9.2",
+        "19.1",
+        "8.2",
+        "11.1",
+        "11.2",
+        "1.3",
+        "12.3",
+        "20.1",
+        "1.1",
+        "18.2",
+        "12.1",
+        "17.2",
+        "2.1",
+        "17.3",
+        "19.2",
+        "2.4",
+        "9.3",
+        "17.5",
+        "3.1",
+        "18.1",
+        "17.4",
+        "3.3",
+        "10.1",
+        "20.5",
+        "1.4",
+        "21.2",
+        "4.4",
+        "1.5",
+        "12.5",
+        "4.3",
+        "18.3",
+        "20.2",
+        "16.2",
+        "12.2",
+        "8.4",
+        "20.4",
+        "21.5",
+        "16.1",
+        "21.1"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "4.1",
+        "3.4",
+        "12.4",
+        "9.1",
+        "6.2",
+        "17.1",
+        "21.4",
+        "16.3",
+        "20.3",
+        "19.4",
+        "19.3"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 116,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 28,
+      "seed": 1116,
+      "train_ids": [
+        "8.3",
+        "10.3",
+        "9.3",
+        "19.1",
+        "12.2",
+        "8.4",
+        "4.3",
+        "21.1",
+        "9.2",
+        "17.5",
+        "18.2",
+        "16.3",
+        "17.3",
+        "20.3",
+        "12.3",
+        "21.4",
+        "3.4",
+        "9.1",
+        "3.1",
+        "1.4",
+        "18.3",
+        "1.3",
+        "18.1",
+        "1.5",
+        "6.2",
+        "16.2",
+        "3.3",
+        "4.4",
+        "21.2",
+        "21.5",
+        "2.4",
+        "4.1",
+        "2.1",
+        "20.2",
+        "19.2",
+        "11.1",
+        "20.1",
+        "21.3",
+        "17.1",
+        "16.1",
+        "12.5",
+        "8.2",
+        "6.3"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "20.4",
+        "12.1",
+        "1.1",
+        "19.4",
+        "19.3",
+        "12.4",
+        "17.4",
+        "17.2",
+        "11.2",
+        "20.5",
+        "10.1"
+      ],
+      "validation_n": 11
+    },
+    {
+      "candidate_index": 120,
+      "min_train_O": 6,
+      "min_validation_O": 2,
+      "outer_index": 29,
+      "seed": 1120,
+      "train_ids": [
+        "4.3",
+        "3.4",
+        "19.4",
+        "8.2",
+        "2.4",
+        "20.4",
+        "8.3",
+        "10.1",
+        "21.2",
+        "17.2",
+        "18.1",
+        "1.1",
+        "20.5",
+        "20.3",
+        "8.4",
+        "11.2",
+        "20.1",
+        "6.2",
+        "1.3",
+        "19.3",
+        "21.5",
+        "6.3",
+        "12.4",
+        "18.2",
+        "16.2",
+        "4.4",
+        "9.2",
+        "1.4",
+        "19.2",
+        "3.1",
+        "12.2",
+        "16.1",
+        "21.3",
+        "12.3",
+        "17.5",
+        "4.1",
+        "17.3",
+        "2.1",
+        "21.1",
+        "18.3",
+        "9.1",
+        "17.1",
+        "21.4"
+      ],
+      "train_n": 43,
+      "validation_ids": [
+        "9.3",
+        "10.3",
+        "1.5",
+        "20.2",
+        "11.1",
+        "12.1",
+        "3.3",
+        "17.4",
+        "16.3",
+        "12.5",
+        "19.1"
+      ],
+      "validation_n": 11
+    }
+  ],
+  "stability_target": 100
+}

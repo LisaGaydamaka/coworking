@@ -1,0 +1,7 @@
+block_id,block_size,members,valid_resamples,pi_block_any_selected,p_none_selected,p_exactly_one_selected,p_multiple_selected,p_all_selected,selected_members_mean,selected_members_median,selected_members_min,selected_members_max,primary_member_by_pi,primary_member_pi,max_member_pi,min_member_pi,block_gain_over_best_member,block_stability_rank
+B01,4,OFT_distance|Average_speed_OFT|Total_time_mobile_OFT|Absolute_turn_angle_OFT,200,0.99,0.01,0.95,0.04,0.0,1.03,1.0,0,2,OFT_distance,0.99,0.99,0.0,0.0,1
+B02,2,Total_distance_travelled_NOR1|Average_speed_NOR1,200,0.69,0.31,0.69,0.0,0.0,0.69,1.0,0,1,Average_speed_NOR1,0.69,0.69,0.0,0.0,2
+B04,3,Learning_T1mean|Learning_T1max|Learning_T1sum,200,0.21,0.79,0.195,0.015,0.01,0.235,0.0,0,3,Learning_T1max,0.205,0.205,0.015,0.0050000000000000044,3
+B05,3,Learning_T2mean|Learning_T2max|Learning_T2sum,200,0.01,0.99,0.005,0.005,0.0,0.015,0.0,0,2,Learning_T2sum,0.01,0.01,0.0,0.0,4
+B06,3,Learning_T3mean|Learning_T3max|Learning_T3sum,200,0.01,0.99,0.005,0.005,0.0,0.015,0.0,0,2,Learning_T3sum,0.01,0.01,0.0,0.0,5
+B03,2,Total_distance_travelled_NOR2|Average_speed_NOR2,200,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0,0,Total_distance_travelled_NOR2,0.0,0.0,0.0,0.0,6

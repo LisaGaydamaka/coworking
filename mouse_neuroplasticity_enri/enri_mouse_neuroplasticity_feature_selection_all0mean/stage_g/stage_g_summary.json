@@ -1,0 +1,279 @@
+{
+  "outputs": {
+    "selected_k_fold_metrics": "stage_g/selected_k_fold_metrics.csv",
+    "selected_subset": "stage_g/selected_subset.csv",
+    "selection_status": "stage_g/k_selection_status.csv",
+    "selection_trace": "stage_g/k_selection_trace.csv"
+  },
+  "paired_k3_vs_selected": {
+    "V_eq": {
+      "mean_delta_b_minus_a": 7.402801218268942,
+      "median_delta_b_minus_a": 0.012273196005683652,
+      "p_b_better": 0.36363636363636365,
+      "p_b_worse": 0.6363636363636364,
+      "p_equal": 0.0,
+      "q10": -0.016714022382348516,
+      "q90": 0.08722903287081205
+    },
+    "V_margin": {
+      "mean_delta_b_minus_a": -0.011841407906315594,
+      "median_delta_b_minus_a": -0.010775098140805309,
+      "p_b_better": 0.8636363636363636,
+      "p_b_worse": 0.13636363636363635,
+      "p_equal": 0.0,
+      "q10": -0.030609920365118042,
+      "q90": 0.0012571353988924015
+    },
+    "V_pos": {
+      "mean_delta_b_minus_a": 0.0,
+      "median_delta_b_minus_a": 0.0,
+      "p_b_better": 0.0,
+      "p_b_worse": 0.0,
+      "p_equal": 1.0,
+      "q10": 0.0,
+      "q90": 0.0
+    },
+    "V_sign": {
+      "mean_delta_b_minus_a": -0.05454545454545456,
+      "median_delta_b_minus_a": -0.09999999999999998,
+      "p_b_better": 0.5454545454545454,
+      "p_b_worse": 0.13636363636363635,
+      "p_equal": 0.3181818181818182,
+      "q10": -0.19999999999999996,
+      "q90": 0.09000000000000019
+    },
+    "V_var": {
+      "mean_delta_b_minus_a": 2375.5129463933863,
+      "median_delta_b_minus_a": 0.0029493560127933837,
+      "p_b_better": 0.18181818181818182,
+      "p_b_worse": 0.8181818181818182,
+      "p_equal": 0.0,
+      "q10": -0.004845480913333321,
+      "q90": 0.017090921865568195
+    },
+    "V_w": {
+      "mean_delta_b_minus_a": 0.05015970910119119,
+      "median_delta_b_minus_a": 0.05059339535548531,
+      "p_b_better": 0.045454545454545456,
+      "p_b_worse": 0.9545454545454546,
+      "p_equal": 0.0,
+      "q10": 0.011367048563771463,
+      "q90": 0.07871496645595517
+    }
+  },
+  "purpose": "development_minimal_sufficient_k_selection",
+  "rule": {
+    "exact_best_tie_reference": "smallest k among exact best-mean ties",
+    "filter": "mean <= best_mean + SE(best) at each sequential metric",
+    "final_choice": "smallest k among final survivors",
+    "priority": [
+      "V_pos",
+      "V_sign",
+      "V_margin",
+      "V_eq",
+      "V_var",
+      "V_w"
+    ],
+    "se_definition": "SD(valid repeated splits) / sqrt(N_valid_splits)",
+    "se_interpretation": "heuristic stability/error measure because repeated splits overlap; not a classical independent-sample inferential SE"
+  },
+  "selection": {
+    "eliminated_at_metric": {
+      "10": "V_var",
+      "11": "V_sign",
+      "12": "V_sign",
+      "13": "V_sign",
+      "14": "V_sign",
+      "15": "V_w",
+      "3": "V_sign",
+      "4": "V_sign",
+      "5": "V_sign",
+      "7": "V_var",
+      "8": "V_var",
+      "9": "V_var"
+    },
+    "final_survivor_k": [
+      6
+    ],
+    "selected_features": [
+      "OFT_distance",
+      "Average_speed_NOR1",
+      "Learning_T1max",
+      "Latency_to_first_investigation_Piramidka_NOR1",
+      "Time_investigating_Piramidka_NOR1",
+      "Absolute_turn_angle_OFT"
+    ],
+    "selected_k": 6,
+    "selected_metrics": {
+      "V_eq": {
+        "mean": 11.272252894863671,
+        "median": 0.10169491728736654,
+        "se": 11.155451354817878
+      },
+      "V_margin": {
+        "mean": 0.08423305160819655,
+        "median": 0.08618028085486759,
+        "se": 0.01194001854601274
+      },
+      "V_pos": {
+        "mean": 0.002727272727272727,
+        "median": 0.0,
+        "se": 0.0027272727272727275
+      },
+      "V_sign": {
+        "mean": 0.2818181818181818,
+        "median": 0.3,
+        "se": 0.037007290516298724
+      },
+      "V_var": {
+        "mean": 2683.018508102841,
+        "median": 0.00916505755240205,
+        "se": 2683.0074333442594
+      },
+      "V_w": {
+        "mean": 0.08327510691141336,
+        "median": 0.06927626773515624,
+        "se": 0.008697825358607912
+      }
+    }
+  },
+  "stage": "G",
+  "status": "READY",
+  "validation": {
+    "k_values": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "max_recalc_diff_vs_stage_f": {
+      "V_eq_mean": 3.552713678800501e-15,
+      "V_eq_median": 5.551115123125783e-17,
+      "V_eq_sd": 7.105427357601002e-15,
+      "V_eq_se": 1.7763568394002505e-15,
+      "V_margin_mean": 5.551115123125783e-17,
+      "V_margin_median": 5.551115123125783e-17,
+      "V_margin_sd": 9.020562075079397e-17,
+      "V_margin_se": 7.979727989493313e-17,
+      "V_pos_mean": 2.688821387764051e-17,
+      "V_pos_median": 0.0,
+      "V_pos_sd": 2.6020852139652106e-17,
+      "V_pos_se": 2.7321894746634712e-17,
+      "V_sign_mean": 5.551115123125783e-17,
+      "V_sign_median": 0.0,
+      "V_sign_sd": 8.326672684688674e-17,
+      "V_sign_se": 9.367506770274758e-17,
+      "V_var_mean": 2.2737367544323206e-13,
+      "V_var_median": 5.0306980803327406e-17,
+      "V_var_sd": 1.8189894035458565e-12,
+      "V_var_se": 2.2737367544323206e-13,
+      "V_w_mean": 5.551115123125783e-17,
+      "V_w_median": 5.551115123125783e-17,
+      "V_w_sd": 9.020562075079397e-17,
+      "V_w_se": 8.760353553682876e-17
+    },
+    "same_split_keys_for_all_k": true,
+    "split_keys": [
+      {
+        "fold": 1,
+        "seed": 0
+      },
+      {
+        "fold": 2,
+        "seed": 0
+      },
+      {
+        "fold": 1,
+        "seed": 1
+      },
+      {
+        "fold": 2,
+        "seed": 1
+      },
+      {
+        "fold": 3,
+        "seed": 1
+      },
+      {
+        "fold": 3,
+        "seed": 2
+      },
+      {
+        "fold": 1,
+        "seed": 3
+      },
+      {
+        "fold": 2,
+        "seed": 3
+      },
+      {
+        "fold": 3,
+        "seed": 3
+      },
+      {
+        "fold": 1,
+        "seed": 5
+      },
+      {
+        "fold": 2,
+        "seed": 5
+      },
+      {
+        "fold": 3,
+        "seed": 5
+      },
+      {
+        "fold": 1,
+        "seed": 6
+      },
+      {
+        "fold": 2,
+        "seed": 6
+      },
+      {
+        "fold": 3,
+        "seed": 6
+      },
+      {
+        "fold": 1,
+        "seed": 7
+      },
+      {
+        "fold": 2,
+        "seed": 7
+      },
+      {
+        "fold": 1,
+        "seed": 8
+      },
+      {
+        "fold": 2,
+        "seed": 8
+      },
+      {
+        "fold": 3,
+        "seed": 8
+      },
+      {
+        "fold": 1,
+        "seed": 9
+      },
+      {
+        "fold": 3,
+        "seed": 9
+      }
+    ],
+    "splits_per_k": 22
+  },
+  "validation_errors": [],
+  "warning": "Selected k is a development result from the fixed 22 Stage-F splits. It is not the final feature subset. In Stage H, the complete selection procedure must be repeated independently inside each outer-train."
+}

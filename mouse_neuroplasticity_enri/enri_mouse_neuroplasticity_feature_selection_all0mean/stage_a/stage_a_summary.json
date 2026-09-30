@@ -1,0 +1,78 @@
+{
+  "base_model": {
+    "C": 0.1,
+    "beta": 0.1,
+    "lambda2": 0.1,
+    "model_features": 30,
+    "rho": 0.1
+  },
+  "correlation_rule": {
+    "block_definition": "connected component of accepted strong-edge graph",
+    "group_centered": "subtract group x week median before Spearman",
+    "group_driven_rejection": "reject a pooled-stable pair if centered sign reverses in at least 2 pooled-strong weeks",
+    "method": "Spearman",
+    "pooled_requirement": "abs(rho)>=0.8 in at least 2/3 weeks with consistent sign",
+    "strong_abs_rho": 0.8,
+    "weeks": [
+      0,
+      16,
+      24
+    ]
+  },
+  "outputs": {
+    "correlation_blocks": "stage_a/correlation_blocks.csv",
+    "correlation_pairs": "stage_a/correlation_pairs.csv"
+  },
+  "preprocessing": {
+    "imputation_method": "IterativeImputer(BayesianRidge)",
+    "imputed_base_cells": 15,
+    "living_states": 140,
+    "sample_posterior": false,
+    "seed": 20260928,
+    "week_counts": {
+      "0": 54,
+      "16": 44,
+      "24": 42
+    },
+    "week_group_counts": {
+      "0": {
+        "LPS": 14,
+        "MCC": 14,
+        "PBS": 11,
+        "run": 15
+      },
+      "16": {
+        "LPS": 12,
+        "MCC": 11,
+        "PBS": 9,
+        "run": 12
+      },
+      "24": {
+        "LPS": 11,
+        "MCC": 11,
+        "PBS": 8,
+        "run": 12
+      }
+    }
+  },
+  "purpose": "full_data_correlation_diagnostic_only",
+  "results": {
+    "accepted_strong_edges": 16,
+    "block_sizes": [
+      4,
+      2,
+      2,
+      3,
+      3,
+      3
+    ],
+    "correlation_blocks_ge2": 6,
+    "feature_pairs": 435,
+    "potentially_group_driven_pairs": 0,
+    "singleton_features": 13
+  },
+  "stage": "A",
+  "status": "READY",
+  "validation_errors": [],
+  "warning": "These full-data correlation blocks are exploratory. Nested feature selection must recompute the same logic on train only."
+}

@@ -1,0 +1,67 @@
+{
+  "active_at_lambda1_0_3": 2,
+  "active_threshold": 1e-06,
+  "cv": {
+    "accepted_splits": 22,
+    "expected_fit_count": 242,
+    "rejected_splits": 8,
+    "scheme": "original repeated stratified 3-fold mouse-level CV",
+    "solver_failures": 0
+  },
+  "development_selection": {
+    "lambda1_star": 0.3,
+    "rule": "sequential one-SE filtering over V_pos,V_sign,V_margin,V_eq,V_var,V_w; choose largest lambda1 among final survivors",
+    "selected_cv_active_count_mean": 2.090909090909091,
+    "selected_cv_active_count_median": 2.0,
+    "selected_cv_metrics": {
+      "V_eq": 0.10618041926362652,
+      "V_margin": 0.0982491356608041,
+      "V_pos": 0.0,
+      "V_sign": 0.35,
+      "V_var": 0.0018906543419296414,
+      "V_w": 0.01333328684747047
+    },
+    "selected_full_active_count": 2,
+    "selected_full_active_features": [
+      "OFT_distance",
+      "Average_speed_NOR1"
+    ],
+    "selected_full_slack_sum": 0.48940448848468693
+  },
+  "extension_rule": "append lambda1=1,3 if full-data lambda1=0.3 leaves more than 15 active features",
+  "fixed_hyperparameters": {
+    "C": 0.1,
+    "beta": 0.1,
+    "lambda2": 0.1,
+    "rho": 0.1
+  },
+  "grid_extended": false,
+  "lambda1_grid": [
+    0.0,
+    1e-05,
+    3e-05,
+    0.0001,
+    0.0003,
+    0.001,
+    0.003,
+    0.01,
+    0.03,
+    0.1,
+    0.3
+  ],
+  "lambda1_zero_reproduction": {
+    "max_abs_weight_diff_vs_stage0_all0mean": 9.367506770274758e-17,
+    "pass": true
+  },
+  "outputs": {
+    "fold_metrics": "stage_b/elastic_net_fold_metrics.csv",
+    "path": "stage_b/elastic_net_path.csv",
+    "selection_trace": "stage_b/lambda1_selection.csv",
+    "weights": "stage_b/elastic_net_weights.csv"
+  },
+  "purpose": "development_constrained_elastic_net_path",
+  "stage": "B",
+  "status": "READY",
+  "validation_errors": [],
+  "warning": "Development lambda1* is not a final estimate. In nested validation lambda1 must be selected again inside each outer-train."
+}
