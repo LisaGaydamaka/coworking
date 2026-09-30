@@ -425,3 +425,121 @@ Inner-порог \(4/2\) вместо \(5/2\) нужен из-за структ�
 6. Перед дорогим inner preprocessing добавлен дешёвый precheck living state counts, чтобы невозможные inner splits отбрасывались до \`IterativeImputer\`.
 
 Архитектура проверена smoke-test конфигурацией \(2\ outer \times 3\ inner \times 10\ stability\); оба fixed outer workers и aggregate завершились успешно.
+
+
+### Production Stage H — результат
+
+После введения bounded reduced imputation полный nested validation завершён:
+
+\[
+30\ outer \times 20\ inner \times 100\ stability.
+\]
+
+Все 30 fixed outer workers рассчитаны успешно. Outer validation не участвовал в выборе признаков.
+
+Основные частоты выбора weighted features:
+
+- OFT_distance — 29/30 = 96.7%;
+- Latency_to_first_investigation_Piramidka_NOR1 — 24/30 = 80.0%;
+- EnduranceT — 21/30 = 70.0%;
+- Average_speed_NOR1 — 20/30 = 66.7%;
+- Time_inCenter_OFT — 17/30 = 56.7%;
+- rear_support — 17/30 = 56.7%;
+- Time_investigating_Piramidka_NOR1 — 14/30 = 46.7%;
+- Latency_to_first_investigation_Stakan_zone_NOR2 — 13/30 = 43.3%.
+
+Reference block frequencies:
+
+- B01 OFT — selected in 30/30 outer splits;
+- B02 NOR1 distance/speed — 20/30;
+- B04 T1 — 13/30;
+- B06 T3 — 9/30;
+- B05 T2 — 2/30;
+- B03 NOR2 distance/speed — 1/30.
+
+Распределение выбранного k широко:
+
+- k=3: 3/30;
+- k=4: 3/30;
+- k=5: 1/30;
+- k=6: 5/30;
+- k=7: 5/30;
+- k=8: 5/30;
+- k=9: 1/30;
+- k=11: 2/30;
+- k=12: 1/30;
+- k=13: 1/30;
+- k=15: 3/30.
+
+Median k=7, mean k=7.73. Development subset k=4 не воспроизвёлся ни в одном outer split.
+
+Outer metrics:
+
+- mean V_pos = 0;
+- mean V_sign = 0.3767;
+- mean V_margin = 0.09215;
+- mean V_eq = 0.15789;
+- mean V_var = 0.01585;
+- mean V_w = 0.13516.
+
+Результаты сохранены в stage_h_production/.
+
+## Этап K — финальный subset по nested validation
+
+Применено заранее заданное критическое правило остановки: если устойчивого малого фиксированного subset нет, его нельзя выбирать принудительно.
+
+В 30 outer iterations получено 30 различных exact weighted subsets:
+
+\[
+\max \text{ recurrence}=1/30.
+\]
+
+То есть ни один exact subset не повторился даже дважды.
+
+Development subset
+
+\[
+\{
+OFT\_distance,
+Time\_inCenter\_OFT,
+Latency\_to\_first\_investigation\_Stakan\_zone\_NOR2,
+Latency\_to\_first\_investigation\_Piramidka\_NOR1
+\}
+\]
+
+имел exact recurrence:
+
+\[
+0/30.
+\]
+
+Кроме того, нет единственного modal k: k=6,7,8 встречаются по 5/30 каждый.
+
+Поэтому Stage K имеет статус:
+
+\[
+\boxed{\text{NO\_STABLE\_FIXED\_SUBSET}}
+\]
+
+Финальный weighted subset не фиксируется. Stage L full-data reduced refit блокируется, потому что его выполнение потребовало бы нового post-hoc правила выбора признаков после просмотра outer-validation результатов.
+
+При этом nested analysis даёт полезный descriptive consensus ranking. Самые воспроизводимые отдельные признаки:
+
+1. OFT_distance — 96.7%;
+2. Latency_to_first_investigation_Piramidka_NOR1 — 80.0%;
+3. EnduranceT — 70.0%;
+4. Average_speed_NOR1 — 66.7%;
+5. Time_inCenter_OFT — 56.7%;
+6. rear_support — 56.7%.
+
+На уровне информационных блоков наиболее устойчив B01 OFT — 100% outer splits; затем B02 NOR1 distance/speed — 66.7%.
+
+Эти частоты можно интерпретировать как устойчивость источников информации для eNRI, но не как основание постфактум собрать новый фиксированный reduced eNRI без нового заранее заданного анализа.
+
+Результаты:
+
+- stage_k/stage_k_summary.json;
+- stage_k/feature_consensus_ranking.csv;
+- stage_k/block_consensus_ranking.csv;
+- stage_k/consensus_candidates.csv;
+- stage_k/selected_features.csv — пустой по существу, так как финальный subset не зафиксирован.
