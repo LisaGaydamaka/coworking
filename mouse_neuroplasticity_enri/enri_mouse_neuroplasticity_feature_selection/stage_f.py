@@ -450,14 +450,17 @@ def main():
         block_member_order[str(block_id)] = ordered
         block_primary[str(block_id)] = ordered[0]
 
-    # Individually stable singleton features enter directly. Every correlation
-    # block gets one primary representative, irrespective of block frequency.
-    singleton_stable = []
-    for feature in original_feature_order:
-        if feature_block[feature] is None and stab[feature]["category"] in {"core", "candidate"}:
-            singleton_stable.append(feature)
+    # Per the frozen Stage-F plan, every feature outside a correlation block
+    # remains eligible for the global ranking. Stability categories affect its
+    # rank but are not a hard pre-filter. Every correlation block first enters
+    # through one primary representative.
+    singleton_features = [
+        feature
+        for feature in original_feature_order
+        if feature_block[feature] is None
+    ]
 
-    initial_pool = list(singleton_stable) + [
+    initial_pool = list(singleton_features) + [
         block_primary[bid] for bid in sorted(block_primary)
     ]
     initial_pool = list(dict.fromkeys(initial_pool))
@@ -528,7 +531,7 @@ def main():
         return result
 
     # F3: block compression in a common context:
-    # stable singleton anchors + one primary representative of every other block.
+    # all singleton anchors + one primary representative of every other block.
     compression_rows = []
     retained_by_block = {}
 
@@ -538,7 +541,7 @@ def main():
         other_primaries = [
             block_primary[b] for b in all_block_ids if b != block_id
         ]
-        anchors = list(dict.fromkeys(singleton_stable + other_primaries))
+        anchors = list(dict.fromkeys(singleton_features + other_primaries))
 
         full_features = list(dict.fromkeys(anchors + ordered_members))
         full_folds, full_summary = evaluate_subset(
@@ -602,9 +605,9 @@ def main():
     compression_df = pd.DataFrame(compression_rows)
     compression_df.to_csv(OUT_DIR / "block_compression.csv", index=False)
 
-    # Candidate pool after compression: stable singleton features plus only the
+    # Candidate pool after compression: all singleton features plus only the
     # number of block representatives justified above.
-    final_pool = list(singleton_stable)
+    final_pool = list(singleton_features)
     for block_id in all_block_ids:
         final_pool.extend(retained_by_block[block_id])
     final_pool = list(dict.fromkeys(final_pool))
@@ -714,8 +717,9 @@ def main():
             "median |gamma| -> canonical feature order"
         ),
         "pool_rule": (
-            "Stage-C core/candidate singleton features plus one primary "
-            "representative from every correlation block; extra block members "
+            "All singleton features plus one primary representative from every "
+            "correlation block; stability affects ranking rather than eligibility; "
+            "extra block members "
             "only when required by within-block one-SE compression."
         ),
         "reduced_model": {
@@ -733,7 +737,7 @@ def main():
             "rejected": int(len(rejected_splits)),
         },
         "initial_pool_count": int(len(initial_pool)),
-        "stable_singleton_count": int(len(singleton_stable)),
+        "singleton_feature_count": int(len(singleton_features)),
         "block_primary": block_primary,
         "within_block_order": block_member_order,
         "retained_by_block": retained_by_block,
