@@ -2,4 +2,4 @@
 set -euo pipefail
 
 pip install -r ../enri_mouse_neuroplasticity/requirements.txt
-python stage_g.py
+NESTED_OUTER_TARGET=1 NESTED_INNER_TARGET=3 NESTED_STABILITY_TARGET=10 python stage_h.py
