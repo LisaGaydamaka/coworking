@@ -24,7 +24,8 @@ print(",".join(f"{0.005*i:.3f}" for i in range(1,61)))
 PY
 )"
 
-cat >> "$SCRATCH/focused.ini" <<EOF
+{
+cat <<'EOF'
 
 # Isolated focused MONETEC sweep. Canonical simulator files remain untouched.
 [Config MonetecFocusedSmallR]
@@ -33,11 +34,14 @@ repeat = 3
 seed-set = ${repetition}
 *.queue.D = 10
 *.queue.r = ${r=1,4,7,10,13,16}
-*.queue.rho = ${rho=$RHO_LIST}
+EOF
+printf '*.queue.rho = ${rho=%s}\n' "$RHO_LIST"
+cat <<'EOF'
 *.queue.warmupCompletedPackets = 5000
 *.queue.targetCompletedPackets = 30000
 *.queue.recordVectors = false
 EOF
+} >> "$SCRATCH/focused.ini"
 
 docker pull "$IMAGE"
 
