@@ -6,3 +6,4 @@ python stage_a.py
 python stage_b.py
 python stage_c.py
 python stage_d.py
+python stage_e.py
