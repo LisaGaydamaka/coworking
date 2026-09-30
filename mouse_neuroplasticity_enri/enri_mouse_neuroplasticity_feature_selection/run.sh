@@ -2,4 +2,4 @@
 set -euo pipefail
 
 pip install -r ../enri_mouse_neuroplasticity/requirements.txt
-python stage_g.py
+python stage_k.py
