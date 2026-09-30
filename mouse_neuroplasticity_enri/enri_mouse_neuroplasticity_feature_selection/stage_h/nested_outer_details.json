@@ -28,10 +28,14 @@
       "Latency_to_first_investigation_Stakan_zone_NOR2",
       "Total_time_mobile_OFT",
       "Learning_T1sum",
+      "Weight",
       "Time_investigating_Stakan_zone_NOR2",
+      "Time_investigating_Piramidka_NOR1",
       "Total_distance_travelled_NOR1",
       "Learning_T3sum",
+      "Time_investigating_Piramidka_zone_NOR2",
       "Learning_T2mean",
+      "Latency_to_first_investigation_Piramidka_zone_NOR2",
       "Average_speed_NOR2"
     ],
     "core_features": [
