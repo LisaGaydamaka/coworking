@@ -906,6 +906,60 @@ Required preprocessing fields могут использоваться тольк
 
 Дополнительно разрешён sensitivity-анализ с all-30-assisted imputation, но он не является основной reduced-моделью.
 
+## I4. Физические границы при reduced imputation
+
+Все 30 исходных `MODEL_FEATURES`, которые могут входить в reduced eNRI, по Stage-1 QC являются физически неотрицательными. Исключённый производный `DI_NOR2` может иметь диапазон ([-1,1]), но он не является weighted `MODEL_FEATURE`.
+
+Поэтому основной reduced `IterativeImputer(BayesianRidge)` должен учитывать физическую нижнюю границу непосредственно во время импутации, а не исправлять отрицательные предсказания постфактум.
+
+Поскольку imputer работает в baseline-standardized координатах
+
+\[
+z_j=\frac{x_j-\mu_j^{train}}{\sigma_j^{train}},
+\]
+
+для каждого selected weighted feature используется train-derived lower bound
+
+\[
+z_{j,min}
+=
+\frac{0-\mu_j^{train}}{\sigma_j^{train}}
+=
+-\frac{\mu_j^{train}}{\sigma_j^{train}}.
+\]
+
+Таким образом импутированное значение удовлетворяет
+
+\[
+x_j^{imputed}\ge0.
+\]
+
+Для week-индикаторов используются границы
+
+\[
+0\le week_{16},week_{24}\le1.
+\]
+
+Границы вычисляются только из train-derived scaling parameters и не используют validation information.
+
+Post-hoc правило вида
+
+\[
+x\leftarrow\max(0,x)
+\]
+
+не используется как основной метод, поскольку ноль имеет реальный биологический смысл и отрицательное unconstrained prediction само по себе не означает истинное значение, равное нулю.
+
+Для каждого reduced fit сохранять diagnostics:
+
+- число missing selected-feature cells;
+- число imputed cells, достигших lower bound;
+- feature, mouse_id и week для каждого такого случая;
+- соответствующий train-derived standardized lower bound;
+- отсутствие значений ниже физического raw-scale нуля с учётом numerical tolerance.
+
+Изменение bounded reduced imputation фиксируется до повторного production Stage H. После его введения этапы F и G пересчитываются полностью, а Stage H повторяется на тех же детерминированных outer seeds/train-validation partitions. Ранее успешно рассчитанные outer workers не смешиваются с результатами новой preprocessing-версии.
+
 # Этап J. Longitudinal sensitivity
 
 Longitudinal analysis используется только как sensitivity и интерпретация, а не как selector.
