@@ -239,7 +239,7 @@ def main():
 
     selected_k, survivors, trace_df, eliminated = sequential_one_se(recalc)
     selected_row = recalc[recalc["k"].eq(selected_k)].iloc[0]
-    selected_features = str(selected_row["features"]).split("|")
+    fold_features = str(selected_row["features"]).split("|")
 
     candidate_selected = candidate_sets[
         candidate_sets["k"].astype(int).eq(selected_k)
@@ -247,10 +247,13 @@ def main():
     if len(candidate_selected) != 1:
         raise RuntimeError("Selected k missing/duplicated in candidate_sets.csv.")
     candidate_features = str(candidate_selected.iloc[0]["features"]).split("|")
-    if selected_features != candidate_features:
+    if set(fold_features) != set(candidate_features):
         raise RuntimeError(
-            "Selected feature list differs between fold summaries and candidate_sets.csv."
+            "Selected feature membership differs between fold summaries and candidate_sets.csv."
         )
+    # candidate_sets.csv preserves Stage-F ranking order; fold summaries use
+    # canonical feature order internally for cache determinism.
+    selected_features = candidate_features
 
     rank_map = ranking.set_index("feature").to_dict(orient="index")
     selected_feature_rows = []
@@ -290,7 +293,11 @@ def main():
         k = int(row["k"])
         rec = {
             "k": k,
-            "features": str(row["features"]),
+            "features": str(
+                candidate_sets.loc[
+                    candidate_sets["k"].astype(int).eq(k), "features"
+                ].iloc[0]
+            ),
             "selected": k == selected_k,
             "final_survivor": k in final_survivors,
             "eliminated_at_metric": eliminated.get(k, ""),
