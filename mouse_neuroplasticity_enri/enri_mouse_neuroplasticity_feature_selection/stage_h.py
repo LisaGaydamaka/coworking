@@ -704,6 +704,8 @@ def reduced_subset_fit_cached(
             outer_train_raw,
             split,
             features_canonical,
+            required_min_train_o=INNER_MIN_TRAIN_O,
+            required_min_val_o=INNER_MIN_VAL_O,
         )
         if err:
             raise OuterSelectionFailure(
