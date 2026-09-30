@@ -117,6 +117,8 @@ def solve_sparse_qp(base, final_std, states, xbar, lambda1):
     )
 
     problem = cp.Problem(cp.Minimize(objective), constraints)
+    solver_used = "OSQP"
+    osqp_error = None
     try:
         objective_value = problem.solve(
             solver=cp.OSQP,
@@ -126,12 +128,32 @@ def solve_sparse_qp(base, final_std, states, xbar, lambda1):
             verbose=False,
         )
     except Exception as exc:
-        return None, {
-            "status": "SOLVER_EXCEPTION",
-            "errors": [f"{type(exc).__name__}: {exc}"],
-        }
+        osqp_error = f"{type(exc).__name__}: {exc}"
+        objective_value = None
 
     status = str(problem.status)
+
+    # L1 epigraph variables can make a few highly regularized fits numerically
+    # awkward for OSQP. If OSQP does not return a clean OPTIMAL solution,
+    # deterministically retry the same convex problem with CLARABEL rather than
+    # silently dropping a split/lambda1 combination.
+    if objective_value is None or status != cp.OPTIMAL:
+        solver_used = "CLARABEL"
+        try:
+            objective_value = problem.solve(
+                solver=cp.CLARABEL,
+                verbose=False,
+            )
+        except Exception as exc:
+            detail = f"CLARABEL {type(exc).__name__}: {exc}"
+            if osqp_error:
+                detail = f"OSQP {osqp_error}; " + detail
+            return None, {
+                "status": "SOLVER_EXCEPTION",
+                "errors": [detail],
+            }
+        status = str(problem.status)
+
     if status not in {cp.OPTIMAL, cp.OPTIMAL_INACCURATE}:
         errors.append(f"Unexpected solver status: {status}")
     if w.value is None or eta.value is None:
@@ -198,6 +220,7 @@ def solve_sparse_qp(base, final_std, states, xbar, lambda1):
         "w": wv,
         "eta": etav,
         "solver_status": status,
+        "solver_used": solver_used,
         "objective": float(objective_value),
         "objective_recomputed": recomputed,
         "objective_gap": abs(float(objective_value) - recomputed),
