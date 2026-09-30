@@ -301,10 +301,9 @@ def main():
     sparse = load_module(STAGE_B_PY, "enri_stage_b_c")
     lambda1_star = load_lambda1_star()
 
-    if abs(lambda1_star - 0.03) > 1e-15:
-        raise RuntimeError(
-            f"Expected development lambda1*=0.03 from current Stage B, got {lambda1_star}"
-        )
+    # The normalization experiment is allowed to change the development
+    # lambda1 selected by Stage B. Stage C must use that newly selected value,
+    # not the historical 0.03 from the PBS^0-centered experiment.
 
     source = base.load_included_source()
     long_raw = base.build_long_table(source)
