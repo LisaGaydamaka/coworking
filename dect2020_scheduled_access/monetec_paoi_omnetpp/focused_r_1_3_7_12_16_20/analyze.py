@@ -164,7 +164,7 @@ for r in [1,3,7,12,16,20]:
 
 lx,ly=left+24,top+24
 svg.append(f'<rect x="{lx-14}" y="{ly-18}" width="135" height="145" fill="white" stroke="black" stroke-width="1"/>')
-for i,r in enumerate([1,4,7,10,13,16]):
+for i,r in enumerate([1,3,7,12,16,20]):
     yy=ly+i*22
     dash,m=styles[r]
     dash_attr=f' stroke-dasharray="{dash}"' if dash else ""
@@ -179,7 +179,7 @@ svg.append('</svg>')
 with (outdir/"summary.txt").open("w",encoding="utf-8") as f:
     f.write("Focused MONETEC PAoI sweep using canonical OMNeT++ simulator\n")
     f.write(f"runs={len(per_run)} groups={len(aggregate)}\n")
-    f.write("r={1,4,7,10,13,16}\n")
+    f.write("r={1,3,7,12,16,20}\n")
     f.write("rho=0.005..0.300 step 0.005\n")
     f.write("PAoI = direct mean sojourn time + 1/successful departure throughput\n")
     for r in [1,3,7,12,16,20]:
