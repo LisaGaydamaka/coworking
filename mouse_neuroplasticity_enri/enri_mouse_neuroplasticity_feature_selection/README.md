@@ -174,3 +174,60 @@ Candidate:
 - `stage_d/block_member_stability.csv`;
 - `stage_d/block_pair_selection.csv`;
 - `stage_d/stage_d_summary.json`.
+
+
+## Этап E — paired feature/block ablation
+
+Development-ablation выполнен при:
+
+[
+\lambda_1^*=0.03.
+]
+
+Для каждого из 13 Stage-C core/candidate признаков и каждого из 6 Stage-A correlation blocks использованы те же 22 валидных mouse-level CV splits, что и в reference-модели.
+
+Ablation реализован как принудительное условие:
+
+[
+w_j=0
+]
+
+для удаляемого признака или всех признаков блока с полным повторным решением constrained Elastic-Net QP.
+
+Для каждой validation-метрики:
+
+[
+\Delta V=V_{ablated}-V_{reference}.
+]
+
+Положительное (Delta V) означает ухудшение. Сохраняются median, q10/q90 и доля paired splits с (Delta V>0). Отдельного PASS/FAIL по p-value нет.
+
+Основные feature-level наблюдения:
+
+- `rear_support`: удаление ухудшает (V_{margin}) в 77.3% splits; median (Delta V_{margin}=+0.00276); median (Delta V_{eq}=+0.00340).
+- `Absolute_turn_angle_OFT`: (V_{margin}) хуже в 81.8% splits; median (Delta V_{margin}=+0.00386).
+- `Latency_to_first_investigation_Piramidka_NOR1`: (V_{margin}) хуже в 68.2% splits; median (Delta V_{margin}=+0.00177).
+- `Time_inCenter_OFT`: (V_{margin}) хуже в 59.1% splits; median (Delta V_{margin}=+0.00178).
+- `Latency_to_first_investigation_Stakan_zone_NOR2`: (V_{margin}) хуже в 59.1% splits; median (Delta V_{margin}=+0.00064).
+- `EnduranceT`: (V_{margin}) хуже в 68.2% splits, но median effect небольшой: (+0.00027).
+
+Некоторые стабильные/candidate признаки почти не показывают уникального ablation effect после переобучения, что указывает на заменяемость другими признаками.
+
+Основные block-level наблюдения:
+
+- B01 OFT — наиболее заметный block ablation: (V_{margin}) хуже в 72.7% splits, median (Delta V_{margin}=+0.00377), median (Delta V_{eq}=+0.00340), median slack increase (+0.0302).
+- B02 NOR1 distance/speed часто выбирается как блок, но его полное удаление не ухудшает median validation metrics; это показывает, что высокая selection frequency сама по себе не доказывает уникальный вклад.
+- B03, B04, B05 и B06 дают гораздо слабее выраженный paired ablation effect на текущем development-этапе.
+
+В одном split (`seed=1, fold=3`) ablation `Average_speed_OFT` и `EnduranceT` дал очень большие (V_{var})/(V_{eq}). Поэтому mean этих метрик для таких ablations сильно искажён одним split; согласно заранее заданному плану основная интерпретация использует paired median, q10/q90 и (P(\Delta V>0)).
+
+Текущий ablation проверяет вклад weighted features при сохранении all-30 train-only preprocessing/imputation. Автономный reduced preprocessing будет проверяться позднее.
+
+Результаты:
+
+- `stage_e/reference_fold_metrics.csv`;
+- `stage_e/feature_ablation.csv`;
+- `stage_e/feature_ablation_folds.csv`;
+- `stage_e/block_ablation.csv`;
+- `stage_e/block_ablation_folds.csv`;
+- `stage_e/stage_e_summary.json`.
