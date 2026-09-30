@@ -222,10 +222,11 @@ def main():
         .astype(str)
         .tolist()
     )
-    if len(feature_targets) != 13:
-        raise RuntimeError(
-            f"Expected 13 core/candidate feature targets from Stage C, got {len(feature_targets)}."
-        )
+    # The number of Stage-C core/candidate features is an experimental
+    # result and may change when the normalization changes. Do not force the
+    # historical PBS^0-centered count of 13.
+    if not feature_targets:
+        raise RuntimeError("Stage C produced no core/candidate feature targets.")
 
     blocks = pd.read_csv(STAGE_D_BLOCKS)
     is_block = blocks["is_correlation_block"]
