@@ -11,7 +11,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: all0mean-feature-selection
+  group: all0mean-feature-selection-${{ github.sha }}
   cancel-in-progress: false
 
 jobs:
