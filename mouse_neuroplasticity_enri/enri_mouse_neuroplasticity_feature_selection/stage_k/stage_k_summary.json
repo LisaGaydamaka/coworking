@@ -1,0 +1,150 @@
+{
+  "development_subset": {
+    "features": [
+      "OFT_distance",
+      "Time_inCenter_OFT",
+      "Latency_to_first_investigation_Stakan_zone_NOR2",
+      "Latency_to_first_investigation_Piramidka_NOR1"
+    ],
+    "k": 4,
+    "reproduced_exactly_in_nested_outer": false
+  },
+  "final_subset_fixed": false,
+  "interpretation": {
+    "block_frequency": "Useful evidence about stable information sources; B01/B02 can remain biologically/statistically relevant even when exact members substitute across outer iterations.",
+    "feature_frequency": "Useful for consensus ranking, but not sufficient by itself to define a final weighted subset after observing outer results.",
+    "next_model_stage": "Stage L final reduced refit is blocked because no final fixed weighted subset has been justified under the frozen rules."
+  },
+  "nested_evidence": {
+    "development_subset_exact_recurrence_count": 0,
+    "development_subset_exact_recurrence_frequency": 0.0,
+    "k_max": 15,
+    "k_mean": 7.733333333333333,
+    "k_median": 7.0,
+    "k_min": 3,
+    "k_q25": 6.0,
+    "k_q75": 8.75,
+    "max_exact_subset_recurrence_count": 1,
+    "max_exact_subset_recurrence_frequency": 0.03333333333333333,
+    "modal_k": [
+      6,
+      7,
+      8
+    ],
+    "modal_k_count_each": 5,
+    "modal_k_frequency_each": 0.16666666666666666,
+    "outer_splits": 30,
+    "unique_selected_subsets": 30
+  },
+  "outputs": {
+    "block_consensus_ranking": "stage_k/block_consensus_ranking.csv",
+    "consensus_candidates": "stage_k/consensus_candidates.csv",
+    "feature_consensus_ranking": "stage_k/feature_consensus_ranking.csv",
+    "selected_features": "stage_k/selected_features.csv",
+    "summary": "stage_k/stage_k_summary.json"
+  },
+  "reason": "The pre-specified critical stopping rule is triggered: across the 30 production outer iterations, no exact selected weighted subset recurred. Therefore a small fixed reduced eNRI subset is not forced.",
+  "reference_block_frequencies": [
+    {
+      "block_id": "B01",
+      "members": "OFT_distance|Average_speed_OFT|Total_time_mobile_OFT|Absolute_turn_angle_OFT",
+      "selected_outer_count": 30,
+      "selected_outer_frequency": 1.0
+    },
+    {
+      "block_id": "B02",
+      "members": "Total_distance_travelled_NOR1|Average_speed_NOR1",
+      "selected_outer_count": 20,
+      "selected_outer_frequency": 0.6666666666666666
+    },
+    {
+      "block_id": "B04",
+      "members": "Learning_T1mean|Learning_T1max|Learning_T1sum",
+      "selected_outer_count": 13,
+      "selected_outer_frequency": 0.4333333333333333
+    },
+    {
+      "block_id": "B06",
+      "members": "Learning_T3mean|Learning_T3max|Learning_T3sum",
+      "selected_outer_count": 9,
+      "selected_outer_frequency": 0.3
+    },
+    {
+      "block_id": "B05",
+      "members": "Learning_T2mean|Learning_T2max|Learning_T2sum",
+      "selected_outer_count": 2,
+      "selected_outer_frequency": 0.0666666666666666
+    },
+    {
+      "block_id": "B03",
+      "members": "Total_distance_travelled_NOR2|Average_speed_NOR2",
+      "selected_outer_count": 1,
+      "selected_outer_frequency": 0.0333333333333333
+    }
+  ],
+  "stage": "K",
+  "status": "NO_STABLE_FIXED_SUBSET",
+  "top_individual_feature_frequencies": [
+    {
+      "feature": "OFT_distance",
+      "rank": 1,
+      "selected_count": 29,
+      "selected_frequency": 0.9666666666666668
+    },
+    {
+      "feature": "Latency_to_first_investigation_Piramidka_NOR1",
+      "rank": 2,
+      "selected_count": 24,
+      "selected_frequency": 0.8
+    },
+    {
+      "feature": "EnduranceT",
+      "rank": 3,
+      "selected_count": 21,
+      "selected_frequency": 0.7
+    },
+    {
+      "feature": "Average_speed_NOR1",
+      "rank": 4,
+      "selected_count": 20,
+      "selected_frequency": 0.6666666666666666
+    },
+    {
+      "feature": "Time_inCenter_OFT",
+      "rank": 5,
+      "selected_count": 17,
+      "selected_frequency": 0.5666666666666667
+    },
+    {
+      "feature": "rear_support",
+      "rank": 6,
+      "selected_count": 17,
+      "selected_frequency": 0.5666666666666667
+    },
+    {
+      "feature": "Time_investigating_Piramidka_NOR1",
+      "rank": 7,
+      "selected_count": 14,
+      "selected_frequency": 0.4666666666666667
+    },
+    {
+      "feature": "Latency_to_first_investigation_Stakan_zone_NOR2",
+      "rank": 8,
+      "selected_count": 13,
+      "selected_frequency": 0.4333333333333333
+    },
+    {
+      "feature": "Learning_T1max",
+      "rank": 9,
+      "selected_count": 12,
+      "selected_frequency": 0.4
+    },
+    {
+      "feature": "Weight",
+      "rank": 10,
+      "selected_count": 10,
+      "selected_frequency": 0.3333333333333333
+    }
+  ],
+  "validation_errors": []
+}
