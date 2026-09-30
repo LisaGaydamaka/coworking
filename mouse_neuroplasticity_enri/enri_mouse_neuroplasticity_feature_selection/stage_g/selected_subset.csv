@@ -1,0 +1,5 @@
+selected_position,feature,stage_f_rank,block_id,pi_selection,sign_consistency,stage_c_category,ablation_source,abs_gamma_median_selected
+1,OFT_distance,1,B01,0.975,0.882051282051282,high_frequency_unstable_sign,block,0.0001938449214638
+2,Time_inCenter_OFT,2,,0.94,1.0,core,feature,0.0008284206921933
+3,Latency_to_first_investigation_Stakan_zone_NOR2,3,,0.92,1.0,core,feature,0.0002217038627062
+4,Latency_to_first_investigation_Piramidka_NOR1,4,,0.915,1.0,core,feature,0.0002771332789025
