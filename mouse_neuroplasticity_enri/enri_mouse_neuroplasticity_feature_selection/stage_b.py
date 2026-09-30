@@ -65,7 +65,7 @@ def load_base_module():
     return module
 
 
-def solve_sparse_qp(base, final_std, states, xbar, lambda1):
+def solve_sparse_qp(base, final_std, states, xbar, lambda1, forced_zero_features=None):
     errors = []
 
     Q_var, q_stats = base.assemble_qvar(states)
@@ -110,6 +110,17 @@ def solve_sparse_qp(base, final_std, states, xbar, lambda1):
     for k, (A, B) in enumerate(base.ORDER_PAIRS):
         c_ab, d_ab = base.pair_affine_components(states, A, B)
         constraints.append(c_ab + d_ab @ w >= RHO - eta[k])
+
+    forced_zero_features = [] if forced_zero_features is None else list(forced_zero_features)
+    unknown_forced = sorted(set(forced_zero_features) - set(base.MODEL_FEATURES))
+    if unknown_forced:
+        return None, {
+            "status": "NOT_SOLVED",
+            "errors": ["Unknown forced-zero features: " + ", ".join(unknown_forced)],
+        }
+    feature_index = {feature: j for j, feature in enumerate(base.MODEL_FEATURES)}
+    for feature in forced_zero_features:
+        constraints.append(w[feature_index[feature]] == 0.0)
 
     centered_live = X_live - xbar
     constraints.append(
@@ -238,6 +249,7 @@ def solve_sparse_qp(base, final_std, states, xbar, lambda1):
             for feature, is_active in zip(base.MODEL_FEATURES, active)
             if bool(is_active)
         ],
+        "forced_zero_features": list(forced_zero_features),
         "weight_l1_norm": float(np.sum(np.abs(wv))),
         "weight_l2_norm": float(np.linalg.norm(wv)),
         "weight_max_abs": float(np.max(np.abs(wv))),
