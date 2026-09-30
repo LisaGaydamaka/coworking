@@ -1,0 +1,123 @@
+{
+  "block_primary": {
+    "B01": "OFT_distance",
+    "B02": "Average_speed_NOR1",
+    "B03": "Average_speed_NOR2",
+    "B04": "Learning_T1max",
+    "B05": "Learning_T2mean",
+    "B06": "Learning_T3sum"
+  },
+  "cached_unique_reduced_subsets": 22,
+  "development_splits": {
+    "accepted": 22,
+    "rejected": 8
+  },
+  "final_pool_count": 18,
+  "final_ranking": [
+    "OFT_distance",
+    "Time_inCenter_OFT",
+    "Latency_to_first_investigation_Stakan_zone_NOR2",
+    "Latency_to_first_investigation_Piramidka_NOR1",
+    "Average_speed_NOR1",
+    "rear_support",
+    "Time_investigating_Stakan_zone_NOR2",
+    "EnduranceT",
+    "Average_speed_OFT",
+    "Learning_T3sum",
+    "Absolute_turn_angle_OFT",
+    "Learning_T1max",
+    "Time_investigating_Piramidka_zone_NOR2",
+    "Latency_to_first_investigation_Stakan_NOR1",
+    "rear_nosupport",
+    "Learning_T2mean",
+    "Average_speed_NOR2",
+    "Total_distance_travelled_NOR1"
+  ],
+  "initial_pool_count": 15,
+  "outputs": {
+    "block_aware_ranking": "stage_f/block_aware_ranking.csv",
+    "block_compression": "stage_f/block_compression.csv",
+    "candidate_sets": "stage_f/candidate_sets.csv",
+    "subset_cv": "stage_f/subset_cv.csv",
+    "subset_cv_folds": "stage_f/subset_cv_folds.csv",
+    "within_block_ranking": "stage_f/within_block_ranking.csv"
+  },
+  "pool_rule": "Stage-C core/candidate singleton features plus one primary representative from every correlation block; extra block members only when required by within-block one-SE compression.",
+  "purpose": "development_block_aware_ranking_compression_and_subset_path",
+  "ranking_rule": "pi_selection -> sign_consistency -> paired ablation tuple (V_pos,V_sign,V_margin,V_eq,V_var; p_worse then median delta) -> median |gamma| -> canonical feature order",
+  "reduced_model": {
+    "C": 0.1,
+    "beta": 0.1,
+    "group_used_as_imputer_predictor": false,
+    "imputation_predictors": "selected weighted features + week_16 + week_24",
+    "lambda1": 0.0,
+    "lambda2": 0.1,
+    "rho": 0.1,
+    "unselected_model_features_used_as_statistical_predictors": false
+  },
+  "retained_by_block": {
+    "B01": [
+      "OFT_distance",
+      "Average_speed_OFT",
+      "Absolute_turn_angle_OFT"
+    ],
+    "B02": [
+      "Average_speed_NOR1",
+      "Total_distance_travelled_NOR1"
+    ],
+    "B03": [
+      "Average_speed_NOR2"
+    ],
+    "B04": [
+      "Learning_T1max"
+    ],
+    "B05": [
+      "Learning_T2mean"
+    ],
+    "B06": [
+      "Learning_T3sum"
+    ]
+  },
+  "solver_or_preprocessing_failures": 0,
+  "stable_singleton_count": 9,
+  "stage": "F",
+  "status": "READY",
+  "subset_range": {
+    "count": 13,
+    "max_k": 15,
+    "min_k": 3
+  },
+  "validation_errors": [],
+  "warning": "These development rankings/subsets are not final. Stage G chooses k, and the complete procedure must be rerun inside each outer-train in nested validation.",
+  "within_block_order": {
+    "B01": [
+      "OFT_distance",
+      "Average_speed_OFT",
+      "Absolute_turn_angle_OFT",
+      "Total_time_mobile_OFT"
+    ],
+    "B02": [
+      "Average_speed_NOR1",
+      "Total_distance_travelled_NOR1"
+    ],
+    "B03": [
+      "Average_speed_NOR2",
+      "Total_distance_travelled_NOR2"
+    ],
+    "B04": [
+      "Learning_T1max",
+      "Learning_T1mean",
+      "Learning_T1sum"
+    ],
+    "B05": [
+      "Learning_T2mean",
+      "Learning_T2sum",
+      "Learning_T2max"
+    ],
+    "B06": [
+      "Learning_T3sum",
+      "Learning_T3mean",
+      "Learning_T3max"
+    ]
+  }
+}
