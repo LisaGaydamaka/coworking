@@ -1,0 +1,11 @@
+Focused MONETEC PAoI sweep using canonical OMNeT++ simulator
+runs=1080 groups=360
+r={1,4,7,10,13,16}
+rho=0.005..0.300 step 0.005
+PAoI = direct mean sojourn time + 1/successful departure throughput
+r=1: minimum PAoI=14.509560 ms at rho=0.295
+r=4: minimum PAoI=15.195532 ms at rho=0.060
+r=7: minimum PAoI=15.991772 ms at rho=0.050
+r=10: minimum PAoI=16.017650 ms at rho=0.050
+r=13: minimum PAoI=16.044489 ms at rho=0.050
+r=16: minimum PAoI=16.044489 ms at rho=0.050
