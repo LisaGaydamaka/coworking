@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-Base-model wrapper for the ALL0MEAN normalization experiment.
+Base-model wrapper for the pooled week-0 mean normalization experiment.
 
-Only the normalization origin changes. At week 0, compute a mean feature
-vector separately for PBS^0, LPS^0, run^0 and MCC^0, then average the four
-state means with equal weight. Hence the arithmetic mean of the four week-0
-state eNRI means is 1. Validation reuses the train-derived reference exactly.
+Only the normalization origin changes. At week 0, pool all included living
+mice across PBS, LPS, run and MCC and compute one mouse-count-weighted mean
+feature vector. Hence the arithmetic mean eNRI across all included week-0
+mice is 1. Validation reuses the train-derived reference exactly.
 """
 
 from __future__ import annotations
@@ -27,7 +27,7 @@ for _name in dir(_base):
     if not _name.startswith("__"):
         globals()[_name] = getattr(_base, _name)
 
-NORMALIZATION_MODE = "equal_mean_of_four_week0_states"
+NORMALIZATION_MODE = "pooled_mouse_mean_week0"
 NORMALIZATION_STATE_LABELS = ("PBS^0", "LPS^0", "run^0", "MCC^0")
 
 
@@ -60,29 +60,22 @@ def build_experimental_states(final_std, state_mouse_ids=None, reference_xbar=No
         )
 
     if reference_xbar is None:
-        baseline_state_means = []
-        for group in _base.STATE_GROUPS:
-            rows0 = subset[
-                subset["group"].eq(group)
-                & subset["week"].eq(0)
-                & subset["status"].isin(["observed", "imputed"])
-            ]
-            if rows0.empty:
-                errors.append(
-                    f"No living complete {group}^0 rows available for normalization reference."
-                )
-                continue
-            baseline_state_means.append(
+        rows0 = subset[
+            subset["week"].eq(0)
+            & subset["status"].isin(["observed", "imputed"])
+        ]
+        if rows0.empty:
+            errors.append(
+                "No living complete week-0 rows available for normalization reference."
+            )
+            xbar = None
+        else:
+            xbar = (
                 rows0[_base.MODEL_FEATURES]
                 .astype(float)
                 .mean(axis=0)
                 .to_numpy(dtype=float)
             )
-        xbar = (
-            np.mean(np.stack(baseline_state_means, axis=0), axis=0)
-            if len(baseline_state_means) == len(_base.STATE_GROUPS)
-            else None
-        )
     else:
         xbar = np.asarray(reference_xbar, dtype=float)
 
@@ -257,16 +250,17 @@ def validate_full_stage4(states, xbar, stats):
     if xbar is None:
         errors.append("xbar_all0 is missing.")
     else:
-        baseline_b = np.stack(
-            [np.asarray(states[f"{g}^0"]["b"], dtype=float)
-             for g in _base.STATE_GROUPS],
-            axis=0,
-        )
-        max_abs_mean_b = float(np.max(np.abs(baseline_b.mean(axis=0))))
-        if max_abs_mean_b > 1e-10:
+        total_n0 = sum(int(states[f"{g}^0"]["N"]) for g in _base.STATE_GROUPS)
+        pooled_b = sum(
+            int(states[f"{g}^0"]["N"])
+            * np.asarray(states[f"{g}^0"]["b"], dtype=float)
+            for g in _base.STATE_GROUPS
+        ) / float(total_n0)
+        max_abs_pooled_b = float(np.max(np.abs(pooled_b)))
+        if max_abs_pooled_b > 1e-10:
             errors.append(
-                "Equal-state week-0 centering failed: "
-                f"max abs mean baseline b={max_abs_mean_b}."
+                "Pooled mouse-weighted week-0 centering failed: "
+                f"max abs pooled baseline b={max_abs_pooled_b}."
             )
 
     return errors
