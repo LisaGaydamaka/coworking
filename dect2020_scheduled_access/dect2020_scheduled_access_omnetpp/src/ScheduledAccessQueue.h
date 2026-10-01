@@ -31,6 +31,9 @@ class ScheduledAccessQueue : public omnetpp::cSimpleModule
     int rngIndex = 0;
     bool recordVectors = false;
     bool recordTailStatistics = false;
+    std::string type1ServiceDistribution = "exponential";
+    double type1ServiceSCV = 1.0;
+    int type1ServiceDistributionCode = 1;
 
     omnetpp::simtime_t frameDuration;
     omnetpp::simtime_t meanType1ServiceTime;
