@@ -282,14 +282,12 @@ simtime_t ScheduledAccessQueue::drawInterarrivalTime()
     return SimTime(exponential(1.0 / lambdaPerSecond, rngIndex));
 }
 
-double ScheduledAccessQueue::empiricalQuantile(std::vector<double> values, double p)
+double ScheduledAccessQueue::empiricalQuantileSorted(const std::vector<double>& values, double p)
 {
     if (values.empty())
         return std::numeric_limits<double>::quiet_NaN();
     if (!(p >= 0.0 && p <= 1.0))
         throw cRuntimeError("Quantile probability must be in [0,1]");
-
-    std::sort(values.begin(), values.end());
     if (values.size() == 1)
         return values.front();
 
@@ -345,10 +343,11 @@ void ScheduledAccessQueue::finish()
     recordScalar("mean_type1_number", meanNumber);
     recordScalar("mean_delay_direct_ms", meanDelayMs);
     if (recordTailStatistics) {
-        recordScalar("delay_p50_ms", empiricalQuantile(measuredDelaySamplesMs, 0.50));
-        recordScalar("delay_p95_ms", empiricalQuantile(measuredDelaySamplesMs, 0.95));
-        recordScalar("delay_p99_ms", empiricalQuantile(measuredDelaySamplesMs, 0.99));
-        recordScalar("delay_p999_ms", empiricalQuantile(measuredDelaySamplesMs, 0.999));
+        std::sort(measuredDelaySamplesMs.begin(), measuredDelaySamplesMs.end());
+        recordScalar("delay_p50_ms", empiricalQuantileSorted(measuredDelaySamplesMs, 0.50));
+        recordScalar("delay_p95_ms", empiricalQuantileSorted(measuredDelaySamplesMs, 0.95));
+        recordScalar("delay_p99_ms", empiricalQuantileSorted(measuredDelaySamplesMs, 0.99));
+        recordScalar("delay_p999_ms", empiricalQuantileSorted(measuredDelaySamplesMs, 0.999));
         recordScalar("tail_sample_count", static_cast<double>(measuredDelaySamplesMs.size()));
     }
     recordScalar("effective_throughput_departures_per_ms", throughputDeparturesPerMs);
