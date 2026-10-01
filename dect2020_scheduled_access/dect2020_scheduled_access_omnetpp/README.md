@@ -69,7 +69,7 @@ This uses `opp_scavetool` to create `simulations/exported/phase2_scalars.csv` fr
 
 ## Tail-latency data
 
-The `TailExample` configuration enables vector output for packet sojourn times. It is separate from the Phase-2 grid because vector recording substantially increases result-file size. It can later be used for P95/P99/P99.9 analysis.
+The final Phase-5 configuration `Phase5_Tail` computes empirical P50, P95, P99, and P99.9 directly inside the OMNeT++ C++ model from measured admitted-packet sojourn times. The publication grid uses 10 repetitions per load point, 200,000 warm-up type-1 completions, and 1,000,000 measured completions per repetition. Vector output is disabled for this grid because only the percentile scalars are required for the manuscript figure.
 
 ## Current verification status
 
@@ -109,4 +109,3 @@ The complete audit and reproducible files are in:
 - `ci_results/phase3_highload_scalars.csv`;
 - `run_phase3_highload.sh`.
 
-All new simulation work for the manuscript should use this OMNeT++ implementation; the older Python DES is retained only as a legacy/reference artifact.
