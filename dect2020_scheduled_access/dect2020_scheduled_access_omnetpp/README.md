@@ -109,3 +109,8 @@ The complete audit and reproducible files are in:
 - `ci_results/phase3_highload_scalars.csv`;
 - `run_phase3_highload.sh`.
 
+
+
+## Phase 5 tail-latency audit
+
+The final tail-latency experiment was completed in GitHub Actions run #77 and the publication figure/summary pipeline in run #78. The audit report is in `PHASE5_TAIL_LATENCY_AUDIT.md`, with source scalars in `ci_results/phase5_metrics.csv` and the publication figure generated from those OMNeT++ results.
