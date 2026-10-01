@@ -22,3 +22,7 @@ phase4_crosscheck_run.log 90962 bytes
 phase4_crosscheck_status.txt 23 bytes
 phase4_metrics.csv 149642 bytes
 phase4_scalars.csv 880629 bytes
+phase5_metrics.csv 180487 bytes
+phase5_scalars.csv 887679 bytes
+phase5_tail_run.log 82474 bytes
+phase5_tail_status.txt 17 bytes
