@@ -23,6 +23,21 @@ RESULTS.mkdir(parents=True, exist_ok=True)
 m.RESULTS_DIR = RESULTS
 m._base.RESULTS_DIR = RESULTS
 
+# The normalization wrapper returns the same mathematical state objects used by
+# the feature-selection branch. The original reporting stages also expect
+# explicit group/week metadata in each state, so add those labels without
+# changing any numerical field.
+_orig_build_experimental_states = m.build_experimental_states
+def _build_states_with_metadata(*args, **kwargs):
+    states, xbar, stats = _orig_build_experimental_states(*args, **kwargs)
+    for label, state in states.items():
+        group, week = label.split("^")
+        state.setdefault("group", group)
+        state.setdefault("week", int(week))
+    return states, xbar, stats
+m.build_experimental_states = _build_states_with_metadata
+m._base.build_experimental_states = _build_states_with_metadata
+
 
 def _patch_function(fn, replacements, name):
     src = inspect.getsource(fn)
