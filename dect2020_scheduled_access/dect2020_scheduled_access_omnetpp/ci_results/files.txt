@@ -26,3 +26,7 @@ phase5_metrics.csv 180487 bytes
 phase5_scalars.csv 887679 bytes
 phase5_tail_run.log 82474 bytes
 phase5_tail_status.txt 17 bytes
+phase6_metrics.csv 207794 bytes
+phase6_scalars.csv 953537 bytes
+phase6_variability_run.log 76576 bytes
+phase6_variability_status.txt 24 bytes
