@@ -1,0 +1,16 @@
+PHASE 6 OMNeT++ SERVICE-TIME VARIABILITY SUMMARY
+================================================
+D=10, L=2, r=30; E[B]=10/24 ms for all service-time families.
+Deterministic SCV=0, exponential SCV=1, balanced hyperexponential SCV=4.
+10 replications per point; 1,000,000 measured admitted completions per replication.
+95% intervals are Student-t intervals across replication-level estimates.
+
+Deterministic, factor=0.8: mean=13.7921±0.0466 ms, P95=36.6569±0.1775 ms, P99=55.0533±0.5573 ms, blocking=0.000000; P99/exponential=0.997
+Deterministic, factor=1.0: mean=74.4148±0.5112 ms, P95=139.6664±0.1033 ms, P99=146.0197±0.0296 ms, blocking=0.016764; P99/exponential=0.997
+Deterministic, factor=1.2: mean=133.7111±0.1002 ms, P95=146.9701±0.0034 ms, P99=147.7232±0.0011 ms, blocking=0.166444; P99/exponential=0.982
+Exponential, factor=0.8: mean=13.8337±0.0273 ms, P95=36.8390±0.1524 ms, P99=55.2376±0.3797 ms, blocking=0.000001; P99/exponential=1.000
+Exponential, factor=1.0: mean=74.0718±0.6993 ms, P95=139.6065±0.1767 ms, P99=146.4382±0.0788 ms, blocking=0.016668; P99/exponential=1.000
+Exponential, factor=1.2: mean=133.6747±0.0800 ms, P95=147.8882±0.0148 ms, P99=150.4907±0.0187 ms, blocking=0.166550; P99/exponential=1.000
+Hyperexponential (SCV=4), factor=0.8: mean=14.0693±0.0467 ms, P95=37.8071±0.1921 ms, P99=56.7380±0.4623 ms, blocking=0.000000; P99/exponential=1.027
+Hyperexponential (SCV=4), factor=1.0: mean=74.5926±0.4538 ms, P95=139.7928±0.1684 ms, P99=148.2026±0.1109 ms, blocking=0.017350; P99/exponential=1.012
+Hyperexponential (SCV=4), factor=1.2: mean=133.4665±0.0963 ms, P95=150.3351±0.0269 ms, P99=156.1447±0.0562 ms, blocking=0.166711; P99/exponential=1.038
