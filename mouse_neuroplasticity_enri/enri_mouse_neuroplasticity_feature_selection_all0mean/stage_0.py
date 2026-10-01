@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Rebuild the fixed 30-feature eNRI under ALL0MEAN normalization."""
+"""Rebuild the fixed 30-feature eNRI under pooled week-0 mouse-mean normalization."""
 
 from __future__ import annotations
 
@@ -57,11 +57,6 @@ def main():
         for label, st in states.items()
     }
     baseline_labels = ["PBS^0", "LPS^0", "run^0", "MCC^0"]
-    baseline_state_mean = float(np.mean([group_means[x] for x in baseline_labels]))
-    if abs(baseline_state_mean - 1.0) > 1e-8:
-        raise RuntimeError(
-            f"ALL0MEAN normalization failed: four-state mean={baseline_state_mean}"
-        )
 
     baseline_rows = final_std[
         final_std["week"].eq(0)
@@ -69,6 +64,13 @@ def main():
     ]
     X0 = baseline_rows[base.MODEL_FEATURES].to_numpy(dtype=float)
     baseline_mouse_enri = 1.0 + (X0 - np.asarray(xbar)) @ solution["w"]
+    baseline_mouse_mean = float(np.mean(baseline_mouse_enri))
+    if abs(baseline_mouse_mean - 1.0) > 1e-8:
+        raise RuntimeError(
+            f"ALL0MEAN normalization failed: pooled week-0 mouse mean={baseline_mouse_mean}"
+        )
+
+    baseline_state_mean = float(np.mean([group_means[x] for x in baseline_labels]))
 
     pd.DataFrame({
         "feature": list(base.MODEL_FEATURES),
@@ -95,19 +97,22 @@ def main():
     )
     enri.to_csv(OUT_DIR / "enri.csv", index=False)
 
+    group_sizes_week0 = {
+        g: int((baseline_rows["group"] == g).sum())
+        for g in base.STATE_GROUPS
+    }
     normalization = {
         "mode": base.NORMALIZATION_MODE,
         "definition": (
-            "equal arithmetic mean of the four week-0 experimental-state "
-            "feature means: PBS^0, LPS^0, run^0, MCC^0"
+            "pooled arithmetic mean across all included living mice at week 0; "
+            "each mouse has equal weight regardless of experimental group"
         ),
-        "state_weighting": "equal 1/4 per state; not mouse-count weighted",
+        "mouse_weighting": "equal weight per week-0 mouse",
+        "group_sizes_week0": group_sizes_week0,
         "reference_vector_standardized": [float(x) for x in np.asarray(xbar)],
         "baseline_state_labels": baseline_labels,
-        "baseline_state_mean_eNRI": baseline_state_mean,
-        "baseline_mouse_weighted_mean_eNRI_diagnostic": float(
-            np.mean(baseline_mouse_enri)
-        ),
+        "baseline_pooled_mouse_mean_eNRI": baseline_mouse_mean,
+        "baseline_equal_state_mean_eNRI_diagnostic": baseline_state_mean,
     }
     (OUT_DIR / "normalization.json").write_text(
         json.dumps(normalization, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
