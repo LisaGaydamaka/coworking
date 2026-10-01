@@ -39,6 +39,25 @@ docker run --rm \
     test -x src/dect2020_sa
     echo "build=PASS" > ci_results/build_status.txt
 
+    if [[ "$RUN_MODE" == phase5-tail* ]]; then
+      echo "=== PHASE 5 TAIL-LATENCY OMNET++ RUNS ==="
+      rm -f ci_results/phase5_*.csv ci_results/phase5_*.log ci_results/phase5_tail_status.txt
+      cd simulations
+      rm -rf results_phase5
+      mkdir -p results_phase5
+      ../src/dect2020_sa -u Cmdenv -n ../src -f omnetpp.ini -c Phase5_Tail 2>&1 | tee ../ci_results/phase5_tail_run.log
+      opp_scavetool x results_phase5/*.sca -F CSV-R -o ../ci_results/phase5_scalars.csv
+      {
+        head -n 1 ../ci_results/phase5_scalars.csv
+        grep -E ",scalar,DectScheduledAccessNetwork\\.queue,(D|r|L_effective|rho|rho_sat|load_factor_rho_over_rho_sat|lambda_per_ms|lambda_sat_per_ms|mean_delay_direct_ms|delay_p50_ms|delay_p95_ms|delay_p99_ms|delay_p999_ms|tail_sample_count|blocking_probability|mean_type1_number|effective_throughput_departures_per_ms),,," ../ci_results/phase5_scalars.csv
+      } > ../ci_results/phase5_metrics.csv
+      echo "phase5_tail=PASS" > ../ci_results/phase5_tail_status.txt
+      cd ..
+      find ci_results -maxdepth 1 -type f -printf "%f %s bytes\\n" | sort | tee ci_results/files.txt
+      echo "OMNeT++ Phase-5 tail-latency run completed."
+      exit 0
+    fi
+
     if [[ "$RUN_MODE" == phase4-crosscheck* ]]; then
       echo "=== PHASE 4 DIMENSIONING CROSS-CHECK ==="
       rm -f ci_results/phase4_*.csv ci_results/phase4_*.log ci_results/phase4_crosscheck_status.txt
