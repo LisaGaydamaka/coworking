@@ -6,6 +6,8 @@ simple ScheduledAccessQueue
         int D = default(10);                         // PT devices in the DECT leaf cluster
         double frameDuration @unit(s) = default(10ms);
         double meanType1ServiceTime @unit(s) = default(0.4166666667ms);
+        string type1ServiceDistribution = default("exponential");
+        double type1ServiceSCV = default(1.0);       // used by hyperexponential service
 
         bool deriveDectParametersFromD = default(true);
         int L = default(2);                          // used when deriveDectParametersFromD=false
