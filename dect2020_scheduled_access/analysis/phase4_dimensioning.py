@@ -296,7 +296,7 @@ def main():
         ys = [x["mean_delay_ms"] for x in rows]
         ax.plot(
             xs, ys, marker="o", markersize=2.6, linewidth=1.7,
-            color=colors[factor], label=fr"$\\rho/\\rho_{{\\mathrm{{sat}}}}={factor:.1f}$"
+            color=colors[factor], label=fr"$\rho/\rho_{{\mathrm{{sat}}}}={factor:.1f}$"
         )
 
     # Sparse publication labels. Configurations with blocking below 1e-4
@@ -328,8 +328,8 @@ def main():
                 textcoords="offset points", fontsize=7.5, color="black"
             )
 
-    ax.set_xlabel(r"Blocking probability $\\pi$")
-    ax.set_ylabel(r"Mean type-1 sojourn time $\\overline{v}$ [ms]")
+    ax.set_xlabel(r"Blocking probability $\pi$")
+    ax.set_ylabel(r"Mean type-1 sojourn time $\overline{v}$ [ms]")
     ax.set_xscale("log")
     ax.set_xlim(1e-4, 0.6)
     ax.set_ylim(0, 245)
