@@ -23,6 +23,7 @@ void ScheduledAccessQueue::initialize()
     r = par("r").intValue();
     rngIndex = par("rngIndex").intValue();
     recordVectors = par("recordVectors").boolValue();
+    recordTailStatistics = par("recordTailStatistics").boolValue();
 
     if (D <= 0)
         throw cRuntimeError("D must be positive");
@@ -151,10 +152,13 @@ void ScheduledAccessQueue::handleServiceCompletion()
 
     if (currentPacket.measured) {
         const simtime_t delay = simTime() - currentPacket.arrivalTime;
+        const double delayMs = delay.dbl() * 1000.0;
         measuredDelaySumSeconds += delay.dbl();
         measuredCompletedPackets++;
+        if (recordTailStatistics)
+            measuredDelaySamplesMs.push_back(delayMs);
         if (recordVectors)
-            sojournTimeVectorMs.record(delay.dbl() * 1000.0);
+            sojournTimeVectorMs.record(delayMs);
     }
 
     hasCurrentPacket = false;
@@ -216,6 +220,9 @@ void ScheduledAccessQueue::beginCollection()
     measuredAcceptedArrivals = 0;
     measuredCompletedPackets = 0;
     measuredDelaySumSeconds = 0.0;
+    measuredDelaySamplesMs.clear();
+    if (recordTailStatistics)
+        measuredDelaySamplesMs.reserve(static_cast<std::size_t>(targetCompletedPackets));
 }
 
 void ScheduledAccessQueue::updateSystemSizeArea()
@@ -275,6 +282,24 @@ simtime_t ScheduledAccessQueue::drawInterarrivalTime()
     return SimTime(exponential(1.0 / lambdaPerSecond, rngIndex));
 }
 
+double ScheduledAccessQueue::empiricalQuantile(std::vector<double> values, double p)
+{
+    if (values.empty())
+        return std::numeric_limits<double>::quiet_NaN();
+    if (!(p >= 0.0 && p <= 1.0))
+        throw cRuntimeError("Quantile probability must be in [0,1]");
+
+    std::sort(values.begin(), values.end());
+    if (values.size() == 1)
+        return values.front();
+
+    const double position = p * static_cast<double>(values.size() - 1);
+    const std::size_t lo = static_cast<std::size_t>(std::floor(position));
+    const std::size_t hi = static_cast<std::size_t>(std::ceil(position));
+    const double weight = position - static_cast<double>(lo);
+    return values[lo] * (1.0 - weight) + values[hi] * weight;
+}
+
 void ScheduledAccessQueue::finish()
 {
     updateSystemSizeArea();
@@ -319,6 +344,13 @@ void ScheduledAccessQueue::finish()
     recordScalar("blocking_probability", blockingProbability);
     recordScalar("mean_type1_number", meanNumber);
     recordScalar("mean_delay_direct_ms", meanDelayMs);
+    if (recordTailStatistics) {
+        recordScalar("delay_p50_ms", empiricalQuantile(measuredDelaySamplesMs, 0.50));
+        recordScalar("delay_p95_ms", empiricalQuantile(measuredDelaySamplesMs, 0.95));
+        recordScalar("delay_p99_ms", empiricalQuantile(measuredDelaySamplesMs, 0.99));
+        recordScalar("delay_p999_ms", empiricalQuantile(measuredDelaySamplesMs, 0.999));
+        recordScalar("tail_sample_count", static_cast<double>(measuredDelaySamplesMs.size()));
+    }
     recordScalar("effective_throughput_departures_per_ms", throughputDeparturesPerMs);
     recordScalar("effective_throughput_accepted_per_ms", throughputAcceptedPerMs);
     recordScalar("mean_delay_little_ms", littleDelayMs);
