@@ -1,0 +1,15 @@
+PHASE 5 OMNeT++ TAIL-LATENCY SUMMARY
+====================================
+D=10, L=2, r=30; 10 replications per load; 1,000,000 measured admitted completions per replication.
+95% intervals are Student-t intervals across the 10 replication-level estimates.
+
+factor=0.5: mean=6.6721±0.0061 ms, P95=14.9881±0.0233 ms, P99=21.2864±0.0613 ms, blocking=0.000000
+factor=0.7: mean=9.8067±0.0255 ms, P95=24.6259±0.1016 ms, P99=36.4741±0.2040 ms, blocking=0.000000
+factor=0.8: mean=13.8337±0.0273 ms, P95=36.8390±0.1524 ms, P99=55.2376±0.3797 ms, blocking=0.000001
+factor=0.9: mean=25.6977±0.1690 ms, P95=72.2382±0.7741 ms, P99=106.6167±1.3773 ms, blocking=0.000233
+factor=1.0: mean=74.0718±0.6993 ms, P95=139.6065±0.1767 ms, P99=146.4382±0.0788 ms, blocking=0.016668
+factor=1.1: mean=121.6356±0.2490 ms, P95=146.5711±0.0284 ms, P99=149.5909±0.0341 ms, blocking=0.090872
+factor=1.2: mean=133.6747±0.0800 ms, P95=147.8882±0.0148 ms, P99=150.4907±0.0187 ms, blocking=0.166550
+factor=1.5: mean=141.2957±0.0129 ms, P95=149.1581±0.0138 ms, P99=151.4573±0.0224 ms, blocking=0.333063
+factor=2.0: mean=144.0236±0.0058 ms, P95=149.9050±0.0149 ms, P99=152.0842±0.0271 ms, blocking=0.499863
+factor=5.0: mean=146.5930±0.0084 ms, P95=150.9800±0.0119 ms, P99=153.0070±0.0242 ms, blocking=0.799966
