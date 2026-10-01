@@ -12,7 +12,7 @@
   },
   "execution_architecture": {
     "fixed_outer_manifest": true,
-    "manifest_hash": "59625b5aab9e2e2196048855d4e8d7c3e45c7b94f3e4467f3252646f4f973438",
+    "manifest_hash": "5184df4fc54e064f1becd2182303b8072f3403e8efb5e7932f98599e3b5feab9",
     "one_worker_per_outer_split": true,
     "outer_seed_substitution_on_worker_failure": false,
     "worker_outputs_aggregated_only_after_all_success": true
@@ -24,8 +24,8 @@
       "k": 3
     },
     {
-      "count": 3,
-      "frequency": 0.1,
+      "count": 2,
+      "frequency": 0.06666666666666667,
       "k": 4
     },
     {
@@ -39,13 +39,13 @@
       "k": 6
     },
     {
-      "count": 6,
-      "frequency": 0.2,
+      "count": 7,
+      "frequency": 0.23333333333333334,
       "k": 7
     },
     {
-      "count": 2,
-      "frequency": 0.06666666666666667,
+      "count": 1,
+      "frequency": 0.03333333333333333,
       "k": 8
     },
     {
@@ -54,8 +54,8 @@
       "k": 9
     },
     {
-      "count": 2,
-      "frequency": 0.06666666666666667,
+      "count": 3,
+      "frequency": 0.1,
       "k": 10
     },
     {
@@ -81,13 +81,8 @@
   ],
   "lambda1_distribution": [
     {
-      "count": 1,
-      "frequency": 0.03333333333333333,
-      "lambda1_star": 0.003
-    },
-    {
-      "count": 6,
-      "frequency": 0.2,
+      "count": 7,
+      "frequency": 0.23333333333333334,
       "lambda1_star": 0.01
     },
     {
@@ -118,18 +113,18 @@
   },
   "outer_metric_summary": {
     "V_eq": {
-      "mean": 0.16760292908327637,
-      "median": 0.17440380066213493,
-      "q10": 0.08072223951994609,
-      "q90": 0.24897389354316468,
-      "sd": 0.07027696894630617
+      "mean": 0.16505663054186076,
+      "median": 0.16209814185827692,
+      "q10": 0.07630668833813876,
+      "q90": 0.24890597615778243,
+      "sd": 0.0720758445911257
     },
     "V_margin": {
-      "mean": 0.09462996343055247,
-      "median": 0.0904763211916223,
-      "q10": 0.04898526310678689,
-      "q90": 0.14290246236249884,
-      "sd": 0.03651970723966313
+      "mean": 0.09460869915715647,
+      "median": 0.099008815742126,
+      "q10": 0.04882632217180544,
+      "q90": 0.1398389513746905,
+      "sd": 0.03601420256485956
     },
     "V_pos": {
       "mean": 0.0,
@@ -139,25 +134,25 @@
       "sd": 0.0
     },
     "V_sign": {
-      "mean": 0.41000000000000003,
+      "mean": 0.4,
       "median": 0.4,
       "q10": 0.19000000000000006,
       "q90": 0.6,
-      "sd": 0.16887048699909155
+      "sd": 0.16609095970747995
     },
     "V_var": {
-      "mean": 0.01691711388027555,
-      "median": 0.012692944338409413,
-      "q10": 0.003470521988501929,
-      "q90": 0.037188429328954255,
-      "sd": 0.014402952620000475
+      "mean": 0.0165837044447163,
+      "median": 0.0125765380938196,
+      "q10": 0.0034701231308786377,
+      "q90": 0.037194165951428305,
+      "sd": 0.014467112834429127
     },
     "V_w": {
-      "mean": 0.13583015568961948,
-      "median": 0.13550610433022847,
-      "q10": 0.06410866104872377,
-      "q90": 0.20794887757737268,
-      "sd": 0.056325268432155455
+      "mean": 0.13410033806910587,
+      "median": 0.13545677458055252,
+      "q10": 0.06411197688723914,
+      "q90": 0.20536225062409771,
+      "sd": 0.05351048312540563
     }
   },
   "outputs": {
@@ -177,8 +172,8 @@
   "top_feature_frequency": [
     {
       "feature": "OFT_distance",
-      "selected_count": 28,
-      "selected_frequency": 0.9333333333333333
+      "selected_count": 29,
+      "selected_frequency": 0.9666666666666667
     },
     {
       "feature": "Latency_to_first_investigation_Piramidka_NOR1",
@@ -186,12 +181,12 @@
       "selected_frequency": 0.8
     },
     {
-      "feature": "Average_speed_NOR1",
-      "selected_count": 21,
-      "selected_frequency": 0.7
+      "feature": "EnduranceT",
+      "selected_count": 22,
+      "selected_frequency": 0.7333333333333333
     },
     {
-      "feature": "EnduranceT",
+      "feature": "Average_speed_NOR1",
       "selected_count": 21,
       "selected_frequency": 0.7
     },
@@ -207,8 +202,8 @@
     },
     {
       "feature": "Latency_to_first_investigation_Stakan_zone_NOR2",
-      "selected_count": 13,
-      "selected_frequency": 0.43333333333333335
+      "selected_count": 14,
+      "selected_frequency": 0.4666666666666667
     },
     {
       "feature": "Learning_T1max",
@@ -222,8 +217,8 @@
     },
     {
       "feature": "Average_speed_OFT",
-      "selected_count": 11,
-      "selected_frequency": 0.36666666666666664
+      "selected_count": 10,
+      "selected_frequency": 0.3333333333333333
     },
     {
       "feature": "Absolute_turn_angle_OFT",
@@ -236,14 +231,14 @@
       "selected_frequency": 0.26666666666666666
     },
     {
-      "feature": "Weight",
+      "feature": "Learning_T3sum",
       "selected_count": 7,
       "selected_frequency": 0.23333333333333334
     },
     {
-      "feature": "Learning_T3sum",
-      "selected_count": 6,
-      "selected_frequency": 0.2
+      "feature": "Weight",
+      "selected_count": 7,
+      "selected_frequency": 0.23333333333333334
     },
     {
       "feature": "Latency_to_first_investigation_Stakan_NOR1",
@@ -291,12 +286,6 @@
     {
       "count": 1,
       "frequency": 0.03333333333333333,
-      "k": 4,
-      "subset": "rear_support|Average_speed_OFT|Latency_to_first_investigation_Piramidka_zone_NOR2|Weight"
-    },
-    {
-      "count": 1,
-      "frequency": 0.03333333333333333,
       "k": 5,
       "subset": "Average_speed_NOR1|OFT_distance|EnduranceT|Latency_to_first_investigation_Piramidka_NOR1|rear_support"
     },
@@ -311,6 +300,12 @@
       "frequency": 0.03333333333333333,
       "k": 6,
       "subset": "OFT_distance|Average_speed_NOR1|Latency_to_first_investigation_Piramidka_NOR1|Learning_T1max|Time_investigating_Piramidka_NOR1|Latency_to_first_investigation_Stakan_NOR1"
+    },
+    {
+      "count": 1,
+      "frequency": 0.03333333333333333,
+      "k": 6,
+      "subset": "OFT_distance|Latency_to_first_investigation_Piramidka_NOR1|Average_speed_NOR1|Time_investigating_Stakan_zone_NOR2|Time_investigating_Piramidka_NOR1|Time_inCenter_OFT"
     }
   ],
   "validation_errors": []

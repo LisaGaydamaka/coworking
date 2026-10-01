@@ -1,7 +1,7 @@
 selected_position,feature,stage_f_rank,block_id,pi_selection,sign_consistency,stage_c_category,ablation_source,abs_gamma_median_selected
-1,OFT_distance,1,B01,0.99,0.9797979797979798,core,feature,0.0001968696668965
-2,Average_speed_NOR1,2,B02,0.69,0.8985507246376812,candidate,feature,0.0008241601552579
-3,Learning_T1max,3,B04,0.205,1.0,other,block,0.0012323770447954
-4,Latency_to_first_investigation_Piramidka_NOR1,4,,0.14,1.0,other,none,6.184574888771405e-05
-5,Time_investigating_Piramidka_NOR1,5,,0.085,0.6470588235294118,other,none,0.0004944480875217
-6,Absolute_turn_angle_OFT,6,B01,0.04,1.0,other,block,3.178104267302766e-07
+1,OFT_distance,1,B01,0.99,0.9797979797979798,core,feature,0.0001967878084177
+2,Average_speed_NOR1,2,B02,0.69,0.8985507246376812,candidate,feature,0.0008241438854806
+3,Learning_T1max,3,B04,0.205,1.0,other,block,0.001232565014627
+4,Latency_to_first_investigation_Piramidka_NOR1,4,,0.14,1.0,other,none,6.19932096537984e-05
+5,Time_investigating_Piramidka_NOR1,5,,0.085,0.6470588235294118,other,none,0.0004968223869527
+6,Absolute_turn_angle_OFT,6,B01,0.045,1.0,other,block,2.6698741339247374e-07

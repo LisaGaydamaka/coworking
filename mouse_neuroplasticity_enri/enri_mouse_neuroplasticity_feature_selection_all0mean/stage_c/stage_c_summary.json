@@ -1,7 +1,7 @@
 {
   "active_count": {
     "max": 6,
-    "mean": 2.335,
+    "mean": 2.34,
     "median": 2.0,
     "min": 0,
     "q10": 1.0,
@@ -11,7 +11,7 @@
   "candidate_features": [
     {
       "feature": "Average_speed_NOR1",
-      "gamma_median_selected": 0.0007924952300140896,
+      "gamma_median_selected": 0.0007924928922440067,
       "modal_sign": 1,
       "pi_selection": 0.69,
       "sign_consistency": 0.8985507246376812
@@ -20,7 +20,7 @@
   "core_features": [
     {
       "feature": "OFT_distance",
-      "gamma_median_selected": 0.00019214280320028148,
+      "gamma_median_selected": 0.00019204348191367317,
       "modal_sign": 1,
       "pi_selection": 0.99,
       "sign_consistency": 0.9797979797979798
@@ -51,10 +51,10 @@
     "valid_resamples": 200
   },
   "slack_sum": {
-    "mean": 0.49904320721684087,
-    "median": 0.46441990523065124,
-    "q10": 0.156348817070755,
-    "q90": 0.8568178409170161
+    "mean": 0.49906585135737186,
+    "median": 0.4644200155887917,
+    "q10": 0.15637203356307755,
+    "q90": 0.8568563281899588
   },
   "stage": "C",
   "status": "READY",

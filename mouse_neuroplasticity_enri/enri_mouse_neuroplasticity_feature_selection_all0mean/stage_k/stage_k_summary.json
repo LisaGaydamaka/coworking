@@ -21,18 +21,18 @@
     "development_subset_exact_recurrence_count": 0,
     "development_subset_exact_recurrence_frequency": 0.0,
     "k_max": 15,
-    "k_mean": 7.566666666666666,
+    "k_mean": 7.733333333333333,
     "k_median": 7.0,
     "k_min": 3,
-    "k_q25": 5.0,
-    "k_q75": 9.75,
+    "k_q25": 5.25,
+    "k_q75": 10.0,
     "max_exact_subset_recurrence_count": 1,
     "max_exact_subset_recurrence_frequency": 0.03333333333333333,
     "modal_k": [
       7
     ],
-    "modal_k_count_each": 6,
-    "modal_k_frequency_each": 0.2,
+    "modal_k_count_each": 7,
+    "modal_k_frequency_each": 0.23333333333333334,
     "outer_splits": 30,
     "unique_selected_subsets": 30
   },
@@ -66,20 +66,20 @@
     {
       "block_id": "B06",
       "members": "Learning_T3mean|Learning_T3max|Learning_T3sum",
-      "selected_outer_count": 7,
-      "selected_outer_frequency": 0.2333333333333333
+      "selected_outer_count": 8,
+      "selected_outer_frequency": 0.2666666666666666
     },
     {
       "block_id": "B05",
       "members": "Learning_T2mean|Learning_T2max|Learning_T2sum",
-      "selected_outer_count": 1,
-      "selected_outer_frequency": 0.0333333333333333
+      "selected_outer_count": 2,
+      "selected_outer_frequency": 0.0666666666666666
     },
     {
       "block_id": "B03",
       "members": "Total_distance_travelled_NOR2|Average_speed_NOR2",
-      "selected_outer_count": 0,
-      "selected_outer_frequency": 0.0
+      "selected_outer_count": 1,
+      "selected_outer_frequency": 0.0333333333333333
     }
   ],
   "stage": "K",
@@ -88,8 +88,8 @@
     {
       "feature": "OFT_distance",
       "rank": 1,
-      "selected_count": 28,
-      "selected_frequency": 0.9333333333333332
+      "selected_count": 29,
+      "selected_frequency": 0.9666666666666668
     },
     {
       "feature": "Latency_to_first_investigation_Piramidka_NOR1",
@@ -98,13 +98,13 @@
       "selected_frequency": 0.8
     },
     {
-      "feature": "Average_speed_NOR1",
+      "feature": "EnduranceT",
       "rank": 3,
-      "selected_count": 21,
-      "selected_frequency": 0.7
+      "selected_count": 22,
+      "selected_frequency": 0.7333333333333333
     },
     {
-      "feature": "EnduranceT",
+      "feature": "Average_speed_NOR1",
       "rank": 4,
       "selected_count": 21,
       "selected_frequency": 0.7
@@ -124,8 +124,8 @@
     {
       "feature": "Latency_to_first_investigation_Stakan_zone_NOR2",
       "rank": 7,
-      "selected_count": 13,
-      "selected_frequency": 0.4333333333333333
+      "selected_count": 14,
+      "selected_frequency": 0.4666666666666667
     },
     {
       "feature": "Time_investigating_Piramidka_NOR1",
@@ -142,8 +142,8 @@
     {
       "feature": "Average_speed_OFT",
       "rank": 10,
-      "selected_count": 11,
-      "selected_frequency": 0.3666666666666666
+      "selected_count": 10,
+      "selected_frequency": 0.3333333333333333
     }
   ],
   "validation_errors": []

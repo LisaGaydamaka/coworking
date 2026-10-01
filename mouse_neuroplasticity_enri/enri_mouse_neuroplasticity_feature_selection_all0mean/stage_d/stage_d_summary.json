@@ -25,8 +25,8 @@
           "Total_time_mobile_OFT",
           "Absolute_turn_angle_OFT"
         ],
-        "p_exactly_one_selected": 0.95,
-        "p_multiple_selected": 0.04,
+        "p_exactly_one_selected": 0.945,
+        "p_multiple_selected": 0.045,
         "pi_block_any_selected": 0.99,
         "primary_member_by_pi": "OFT_distance",
         "primary_member_pi": 0.99
@@ -123,8 +123,8 @@
         "feature_a": "OFT_distance",
         "feature_b": "Absolute_turn_angle_OFT",
         "p_any_selected": 0.99,
-        "p_both_selected": 0.04,
-        "p_exactly_one_selected": 0.95
+        "p_both_selected": 0.045,
+        "p_exactly_one_selected": 0.945
       },
       {
         "block_id": "B02",
@@ -154,17 +154,17 @@
         "block_id": "B01",
         "feature_a": "Average_speed_OFT",
         "feature_b": "Absolute_turn_angle_OFT",
-        "p_any_selected": 0.04,
+        "p_any_selected": 0.045,
         "p_both_selected": 0.0,
-        "p_exactly_one_selected": 0.04
+        "p_exactly_one_selected": 0.045
       },
       {
         "block_id": "B01",
         "feature_a": "Total_time_mobile_OFT",
         "feature_b": "Absolute_turn_angle_OFT",
-        "p_any_selected": 0.04,
+        "p_any_selected": 0.045,
         "p_both_selected": 0.0,
-        "p_exactly_one_selected": 0.04
+        "p_exactly_one_selected": 0.045
       },
       {
         "block_id": "B05",

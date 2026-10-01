@@ -1,6 +1,6 @@
 block_id,feature,feature_order,pi_selection,sign_consistency,stage_c_category,p_selected_and_any_other,p_selected_alone_within_block,p_not_selected_but_other_selected
-B01,OFT_distance,1,0.99,0.9797979797979798,core,0.04,0.95,0.0
-B01,Absolute_turn_angle_OFT,4,0.04,1.0,other,0.04,0.0,0.95
+B01,OFT_distance,1,0.99,0.9797979797979798,core,0.045,0.945,0.0
+B01,Absolute_turn_angle_OFT,4,0.045,1.0,other,0.045,0.0,0.945
 B01,Average_speed_OFT,2,0.0,,other,0.0,0.0,0.99
 B01,Total_time_mobile_OFT,3,0.0,,other,0.0,0.0,0.99
 B02,Average_speed_NOR1,7,0.69,0.8985507246376812,candidate,0.0,0.69,0.0
