@@ -10,7 +10,11 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 BASE_DIR = HERE.parent / "enri_mouse_neuroplasticity"
 WRAPPER = BASE_DIR / "solve_all0mean.py"
-RESULTS = HERE / "results"
+
+# The original solver writes paths relative to its own ROOT, so keep the
+# working results directory inside BASE_DIR. run.sh copies the completed
+# package into this standalone experiment directory before commit.
+RESULTS = BASE_DIR / "results_pooled"
 
 spec = importlib.util.spec_from_file_location("enri_pooled_base", WRAPPER)
 if spec is None or spec.loader is None:
