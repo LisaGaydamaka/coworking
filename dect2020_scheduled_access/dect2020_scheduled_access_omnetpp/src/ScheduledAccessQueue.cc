@@ -24,6 +24,25 @@ void ScheduledAccessQueue::initialize()
     rngIndex = par("rngIndex").intValue();
     recordVectors = par("recordVectors").boolValue();
     recordTailStatistics = par("recordTailStatistics").boolValue();
+    type1ServiceDistribution = par("type1ServiceDistribution").stdstringValue();
+    type1ServiceSCV = par("type1ServiceSCV").doubleValue();
+
+    if (type1ServiceDistribution == "deterministic") {
+        type1ServiceDistributionCode = 0;
+        type1ServiceSCV = 0.0;
+    }
+    else if (type1ServiceDistribution == "exponential") {
+        type1ServiceDistributionCode = 1;
+        type1ServiceSCV = 1.0;
+    }
+    else if (type1ServiceDistribution == "hyperexponential") {
+        type1ServiceDistributionCode = 2;
+        if (type1ServiceSCV <= 1.0)
+            throw cRuntimeError("Hyperexponential type-1 service requires SCV > 1");
+    }
+    else {
+        throw cRuntimeError("Unknown type1ServiceDistribution: %s", type1ServiceDistribution.c_str());
+    }
 
     if (D <= 0)
         throw cRuntimeError("D must be positive");
@@ -273,7 +292,24 @@ long ScheduledAccessQueue::currentType1SystemSize() const
 
 simtime_t ScheduledAccessQueue::drawType1ServiceTime()
 {
-    return SimTime(exponential(meanType1ServiceTime.dbl(), rngIndex));
+    const double meanSeconds = meanType1ServiceTime.dbl();
+
+    if (type1ServiceDistribution == "deterministic")
+        return meanType1ServiceTime;
+
+    if (type1ServiceDistribution == "exponential")
+        return SimTime(exponential(meanSeconds, rngIndex));
+
+    // Balanced two-phase hyperexponential distribution with the requested SCV.
+    // p and the two phase means are chosen so that E[B] is unchanged and
+    // Var(B)/E[B]^2 = type1ServiceSCV.
+    const double root = std::sqrt((type1ServiceSCV - 1.0) / (type1ServiceSCV + 1.0));
+    const double p = 0.5 * (1.0 + root);
+    const double u = uniform(0.0, 1.0, rngIndex);
+    const double phaseMean = u < p
+        ? meanSeconds / (2.0 * p)
+        : meanSeconds / (2.0 * (1.0 - p));
+    return SimTime(exponential(phaseMean, rngIndex));
 }
 
 simtime_t ScheduledAccessQueue::drawInterarrivalTime()
@@ -311,6 +347,8 @@ void ScheduledAccessQueue::finish()
     recordScalar("rho_sat", rhoSat);
     recordScalar("load_factor_rho_over_rho_sat", rhoSat > 0.0 ? rho / rhoSat : std::numeric_limits<double>::quiet_NaN());
     recordScalar("mean_type1_service_ms", meanType1ServiceTime.dbl() * 1000.0);
+    recordScalar("type1_service_distribution_code", type1ServiceDistributionCode);
+    recordScalar("type1_service_scv", type1ServiceSCV);
     recordScalar("type2_service_ms", type2ServiceTime.dbl() * 1000.0);
     recordScalar("warmup_type1_completions", static_cast<double>(warmupCompletedPackets));
     recordScalar("measured_arrivals", static_cast<double>(measuredArrivals));
