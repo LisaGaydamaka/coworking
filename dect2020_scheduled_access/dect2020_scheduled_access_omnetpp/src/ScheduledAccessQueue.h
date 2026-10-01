@@ -83,7 +83,7 @@ class ScheduledAccessQueue : public omnetpp::cSimpleModule
     long currentType1SystemSize() const;
     omnetpp::simtime_t drawType1ServiceTime();
     omnetpp::simtime_t drawInterarrivalTime();
-    static double empiricalQuantile(std::vector<double> values, double p);
+    static double empiricalQuantileSorted(const std::vector<double>& values, double p);
 
   public:
     ScheduledAccessQueue() = default;
