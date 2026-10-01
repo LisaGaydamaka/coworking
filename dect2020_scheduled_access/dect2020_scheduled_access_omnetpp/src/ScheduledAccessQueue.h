@@ -30,6 +30,7 @@ class ScheduledAccessQueue : public omnetpp::cSimpleModule
     int servedSinceType2 = 0;
     int rngIndex = 0;
     bool recordVectors = false;
+    bool recordTailStatistics = false;
 
     omnetpp::simtime_t frameDuration;
     omnetpp::simtime_t meanType1ServiceTime;
@@ -59,6 +60,7 @@ class ScheduledAccessQueue : public omnetpp::cSimpleModule
     std::int64_t measuredAcceptedArrivals = 0;
     std::int64_t measuredCompletedPackets = 0;
     double measuredDelaySumSeconds = 0.0;
+    std::vector<double> measuredDelaySamplesMs;
 
     omnetpp::cOutVector queueLengthVector;
     omnetpp::cOutVector systemSizeVector;
@@ -81,6 +83,7 @@ class ScheduledAccessQueue : public omnetpp::cSimpleModule
     long currentType1SystemSize() const;
     omnetpp::simtime_t drawType1ServiceTime();
     omnetpp::simtime_t drawInterarrivalTime();
+    static double empiricalQuantile(std::vector<double> values, double p);
 
   public:
     ScheduledAccessQueue() = default;
