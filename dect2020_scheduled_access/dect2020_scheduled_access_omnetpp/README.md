@@ -114,3 +114,16 @@ The complete audit and reproducible files are in:
 ## Phase 5 tail-latency audit
 
 The final tail-latency experiment was completed in GitHub Actions run #77 and the publication figure/summary pipeline in run #78. The audit report is in `PHASE5_TAIL_LATENCY_AUDIT.md`, with source scalars in `ci_results/phase5_metrics.csv` and the publication figure generated from those OMNeT++ results.
+
+
+## Phase 6 service-time variability
+
+The Phase-6 robustness grid uses the same mean type-1 service time, 10/24 ms, with three service-time families:
+
+- deterministic (SCV=0);
+- exponential (SCV=1);
+- balanced two-phase hyperexponential (SCV=4).
+
+The representative configuration is D=10, L=2, r=30 with normalized loads 0.8, 1.0, and 1.2. Each distribution/load point uses 10 repetitions, 200,000 warm-up type-1 completions, and 1,000,000 measured admitted completions. The C++ model records mean delay, blocking, P95, P99, and P99.9.
+
+GitHub Actions run #81 completed the 90-run OMNeT++ grid successfully. At normalized load 1.2, the P99 values were approximately 147.72 ms (deterministic), 150.49 ms (exponential), and 156.14 ms (hyperexponential SCV=4), while mean delay and blocking remained close across the three cases. Figure E is generated from these OMNeT++ scalars by the analysis component.
