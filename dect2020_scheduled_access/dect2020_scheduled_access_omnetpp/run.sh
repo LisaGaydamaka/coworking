@@ -39,6 +39,28 @@ docker run --rm \
     test -x src/dect2020_sa
     echo "build=PASS" > ci_results/build_status.txt
 
+    if [[ "$RUN_MODE" == phase6-variability* ]]; then
+      echo "=== PHASE 6 SERVICE-TIME VARIABILITY OMNET++ RUNS ==="
+      rm -f ci_results/phase6_*.csv ci_results/phase6_*.log ci_results/phase6_variability_status.txt
+      cd simulations
+      rm -rf results_phase6
+      mkdir -p results_phase6
+      for cfg in Phase6_Deterministic Phase6_Exponential Phase6_Hyperexponential; do
+        echo "=== $cfg ==="
+        ../src/dect2020_sa -u Cmdenv -n ../src -f omnetpp.ini -c "$cfg"
+      done 2>&1 | tee ../ci_results/phase6_variability_run.log
+      opp_scavetool x results_phase6/*.sca -F CSV-R -o ../ci_results/phase6_scalars.csv
+      {
+        head -n 1 ../ci_results/phase6_scalars.csv
+        grep -E ",scalar,DectScheduledAccessNetwork\\.queue,(D|r|L_effective|rho|rho_sat|load_factor_rho_over_rho_sat|lambda_per_ms|lambda_sat_per_ms|mean_type1_service_ms|type1_service_distribution_code|type1_service_scv|mean_delay_direct_ms|delay_p50_ms|delay_p95_ms|delay_p99_ms|delay_p999_ms|tail_sample_count|blocking_probability|mean_type1_number|effective_throughput_departures_per_ms),,," ../ci_results/phase6_scalars.csv
+      } > ../ci_results/phase6_metrics.csv
+      echo "phase6_variability=PASS" > ../ci_results/phase6_variability_status.txt
+      cd ..
+      find ci_results -maxdepth 1 -type f -printf "%f %s bytes\\n" | sort | tee ci_results/files.txt
+      echo "OMNeT++ Phase-6 service-time variability run completed."
+      exit 0
+    fi
+
     if [[ "$RUN_MODE" == phase5-tail* ]]; then
       echo "=== PHASE 5 TAIL-LATENCY OMNET++ RUNS ==="
       rm -f ci_results/phase5_*.csv ci_results/phase5_*.log ci_results/phase5_tail_status.txt
