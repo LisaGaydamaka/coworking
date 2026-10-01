@@ -19,3 +19,8 @@ bash run.sh
 ```
 
 Outputs are written to `phase4_output/`.
+
+
+## Phase 5 tail-latency figure
+
+After the OMNeT++ `Phase5_Tail` grid has produced `ci_results/phase5_metrics.csv`, the `phase5_tail_latency.py` post-processing script groups the 10 OMNeT++ repetitions per load, computes Student-t 95% intervals across replication-level mean/P95/P99 estimates, and generates Figure D. The source simulation values are exclusively the OMNeT++ scalars recorded by the C++ model.
