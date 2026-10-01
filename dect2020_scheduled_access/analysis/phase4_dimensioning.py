@@ -4,6 +4,7 @@ from pathlib import Path
 
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.ticker import NullFormatter
 
 TFRAME_MS = 10.0
 SLOTS_PER_FRAME = 24
@@ -288,41 +289,51 @@ def main():
     )
 
     fig, ax = plt.subplots(figsize=(7.6, 5.1))
-    colors = {0.8:"tab:green", 1.0:"tab:orange", 1.2:"tab:blue"}
+    colors = {0.8:"tab:blue", 1.0:"tab:orange", 1.2:"tab:green"}
     for factor in factors:
         rows = trade[factor]
         xs = [x["blocking_probability"] for x in rows]
         ys = [x["mean_delay_ms"] for x in rows]
         ax.plot(
             xs, ys, marker="o", markersize=2.6, linewidth=1.7,
-            color=colors[factor], label=fr"$\rho/\rho_{{\mathrm{{sat}}}}={factor:.1f}$"
+            color=colors[factor], label=fr"$\\rho/\\rho_{{\\mathrm{{sat}}}}={factor:.1f}$"
         )
 
-    green_selected = [5,10,20,30,50]
-    orange_selected = [1,5,10,20,30,40,50]
-    blue_selected = [1,5,50]
-    for factor, selected in [(0.8, green_selected), (1.0, orange_selected), (1.2, blue_selected)]:
+    # Sparse publication labels. Configurations with blocking below 1e-4
+    # remain in the source CSV but are intentionally outside the displayed view.
+    selected_by_factor = {
+        0.8: [1, 5, 10, 15, 18],
+        1.0: [1, 5, 10, 20, 30, 50],
+        1.2: [1, 2, 5, 10, 20, 30, 50],
+    }
+    offsets = {
+        (0.8, 18): (4, 6), (0.8, 15): (4, 6), (0.8, 10): (4, 6),
+        (0.8, 5): (4, 6), (0.8, 1): (4, 6),
+        (1.0, 50): (4, 6), (1.0, 30): (4, 6), (1.0, 20): (4, 6),
+        (1.0, 10): (4, 6), (1.0, 5): (4, 6), (1.0, 1): (4, 6),
+        (1.2, 50): (4, -12), (1.2, 30): (4, -8), (1.2, 20): (4, -8),
+        (1.2, 10): (4, -8), (1.2, 5): (4, -8), (1.2, 2): (4, -10),
+        (1.2, 1): (4, 6),
+    }
+    for factor, selected in selected_by_factor.items():
         rows_by_r = {x["r"]: x for x in trade[factor]}
         for r in selected:
             row = rows_by_r[r]
-            label = f"r={r}" if factor == 0.8 and r in (30,50) else str(r)
-            if factor == 0.8:
-                offset = (5, 6 if r in (5,10) else (-8 if r == 20 else (8 if r == 30 else 18)))
-            elif factor == 1.0:
-                offset = (-4, 14) if r == 1 else (4, 5)
-            else:
-                offset = (6, -12 if r == 50 else (8 if r == 1 else 6))
+            x = row["blocking_probability"]
+            if x < 1e-4 or x > 0.6:
+                continue
             ax.annotate(
-                label, (row["blocking_probability"], row["mean_delay_ms"]),
-                xytext=offset, textcoords="offset points", fontsize=7.5,
-                color=colors[factor]
+                str(r), (x, row["mean_delay_ms"]),
+                xytext=offsets.get((factor, r), (4, 6)),
+                textcoords="offset points", fontsize=7.5, color="black"
             )
 
-    ax.set_xlabel(r"Blocking probability $\pi$")
-    ax.set_ylabel(r"Mean type-1 sojourn time $\overline{v}$ [ms]")
+    ax.set_xlabel(r"Blocking probability $\\pi$")
+    ax.set_ylabel(r"Mean type-1 sojourn time $\\overline{v}$ [ms]")
     ax.set_xscale("log")
-    ax.set_xlim(1e-10, 0.65)
+    ax.set_xlim(1e-4, 0.6)
     ax.set_ylim(0, 245)
+    ax.xaxis.set_minor_formatter(NullFormatter())
     ax.legend(loc="upper left", frameon=True)
     ax.grid(True, linewidth=0.4, alpha=0.35)
     fig.tight_layout()
