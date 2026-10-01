@@ -4,24 +4,22 @@
 
 This rerun changes only the eNRI scale origin.
 
-At week 0 there are four experimental states:
-- PBS^0
-- LPS^0
-- run^0
-- MCC^0
+At week 0, pool all included living mice from the four experimental groups:
+PBS^0, LPS^0, run^0 and MCC^0.
 
-Within every training context, compute the mean feature vector separately for
-each state and then average the FOUR state means with equal weight:
+Within every training context, compute ONE mean feature vector directly over
+all week-0 mice:
 
-xbar_all0 = (xbar_PBS0 + xbar_LPS0 + xbar_run0 + xbar_MCC0) / 4.
+xbar_all0 = (1 / N0) * sum_i x_i^0.
 
 Then:
 
 eNRI_i = 1 + w^T (x_i - xbar_all0).
 
-Therefore the arithmetic mean of the four training week-0 STATE means is 1.
-This is deliberately an equal-state mean, not a pooled mouse-count-weighted
-week-0 mean. Validation reuses the train-derived xbar_all0 exactly.
+Therefore the arithmetic mean eNRI of all training week-0 mice is exactly 1.
+Each mouse has equal weight. Group means are not averaged first, so groups with
+different sizes contribute in proportion to their number of week-0 mice.
+Validation reuses the train-derived xbar_all0 exactly.
 
 ## Everything else remains frozen
 
