@@ -20,6 +20,7 @@ simple ScheduledAccessQueue
         int targetCompletedPackets = default(1000000);
         int rngIndex = default(0);
         bool recordVectors = default(false);
+        bool recordTailStatistics = default(false);       // retain measured delays and record P50/P95/P99/P99.9
 
         @class(ScheduledAccessQueue);
         @display("i=block/queue");
