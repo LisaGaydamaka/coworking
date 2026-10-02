@@ -322,8 +322,9 @@ def main():
             x = row["blocking_probability"]
             if x < 1e-4 or x > 0.6:
                 continue
+            label = f"r={r}" if factor == 1.0 and r in {30, 50} else str(r)
             ax.annotate(
-                str(r), (x, row["mean_delay_ms"]),
+                label, (x, row["mean_delay_ms"]),
                 xytext=offsets.get((factor, r), (4, 6)),
                 textcoords="offset points", fontsize=7.5, color="black"
             )
