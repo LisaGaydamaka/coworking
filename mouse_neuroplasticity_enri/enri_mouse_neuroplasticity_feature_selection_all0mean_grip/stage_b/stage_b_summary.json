@@ -1,0 +1,87 @@
+{
+  "active_at_lambda1_0_3": 2,
+  "active_threshold": 1e-06,
+  "cv": {
+    "accepted_splits": 22,
+    "expected_fit_count": 242,
+    "rejected_splits": 8,
+    "scheme": "original repeated stratified 3-fold mouse-level CV",
+    "solver_failures": 0
+  },
+  "development_selection": {
+    "lambda1_star": 0.03,
+    "rule": "sequential one-SE filtering over V_pos,V_sign,V_margin,V_eq,V_var,V_w; choose largest lambda1 among final survivors",
+    "selected_cv_active_count_mean": 17.363636363636363,
+    "selected_cv_active_count_median": 17.5,
+    "selected_cv_metrics": {
+      "V_eq": 0.12115899959208307,
+      "V_margin": 0.08753042102396075,
+      "V_pos": 0.0,
+      "V_sign": 0.31818181818181823,
+      "V_var": 0.013600300190597553,
+      "V_w": 0.12010632249192832
+    },
+    "selected_full_active_count": 22,
+    "selected_full_active_features": [
+      "OFT_distance",
+      "Average_speed_OFT",
+      "Total_time_mobile_OFT",
+      "Absolute_turn_angle_OFT",
+      "Time_inCenter_OFT",
+      "Average_speed_NOR1",
+      "Time_investigating_Piramidka_NOR1",
+      "Latency_to_first_investigation_Piramidka_NOR1",
+      "Latency_to_first_investigation_Stakan_NOR1",
+      "Time_investigating_Piramidka_zone_NOR2",
+      "Latency_to_first_investigation_Piramidka_zone_NOR2",
+      "Time_investigating_Stakan_zone_NOR2",
+      "Latency_to_first_investigation_Stakan_zone_NOR2",
+      "Learning_T1max",
+      "Learning_T2mean",
+      "Learning_T3mean",
+      "Learning_T3sum",
+      "EnduranceT",
+      "rear_support",
+      "rear_nosupport",
+      "Weight",
+      "Grip"
+    ],
+    "selected_full_slack_sum": 0.14647672770059234
+  },
+  "extension_rule": "append lambda1=1,3 if full-data lambda1=0.3 leaves more than 15 active features",
+  "fixed_hyperparameters": {
+    "C": 0.1,
+    "beta": 0.1,
+    "lambda2": 0.1,
+    "rho": 0.1
+  },
+  "grid_extended": false,
+  "lambda1_grid": [
+    0.0,
+    1e-05,
+    3e-05,
+    0.0001,
+    0.0003,
+    0.001,
+    0.003,
+    0.01,
+    0.03,
+    0.1,
+    0.3
+  ],
+  "lambda1_zero_reproduction": {
+    "max_abs_weight_diff_vs_stage0_all0mean": 9.71445146547012e-17,
+    "pass": true
+  },
+  "outputs": {
+    "fold_metrics": "stage_b/elastic_net_fold_metrics.csv",
+    "path": "stage_b/elastic_net_path.csv",
+    "selection_trace": "stage_b/lambda1_selection.csv",
+    "weights": "stage_b/elastic_net_weights.csv"
+  },
+  "purpose": "development_constrained_elastic_net_path",
+  "stage": "B",
+  "status": "READY",
+  "validation_errors": [],
+  "warning": "Development lambda1* is not a final estimate. In nested validation lambda1 must be selected again inside each outer-train."
+}

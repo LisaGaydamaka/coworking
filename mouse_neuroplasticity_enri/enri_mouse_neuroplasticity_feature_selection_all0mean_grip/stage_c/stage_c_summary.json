@@ -1,0 +1,165 @@
+{
+  "active_count": {
+    "max": 26,
+    "mean": 17.745,
+    "median": 18.0,
+    "min": 9,
+    "q10": 13.900000000000002,
+    "q90": 22.0
+  },
+  "active_threshold": 1e-06,
+  "candidate_features": [
+    {
+      "feature": "Time_investigating_Stakan_zone_NOR2",
+      "gamma_median_selected": 0.003243867287494852,
+      "modal_sign": 1,
+      "pi_selection": 0.77,
+      "sign_consistency": 1.0
+    },
+    {
+      "feature": "Average_speed_OFT",
+      "gamma_median_selected": -2.7252685484397343,
+      "modal_sign": -1,
+      "pi_selection": 0.765,
+      "sign_consistency": 1.0
+    },
+    {
+      "feature": "Learning_T1max",
+      "gamma_median_selected": -0.0027872716229383264,
+      "modal_sign": -1,
+      "pi_selection": 0.725,
+      "sign_consistency": 1.0
+    },
+    {
+      "feature": "Learning_T3sum",
+      "gamma_median_selected": -0.00025597283698945657,
+      "modal_sign": -1,
+      "pi_selection": 0.71,
+      "sign_consistency": 1.0
+    },
+    {
+      "feature": "Weight",
+      "gamma_median_selected": 0.005076514572074241,
+      "modal_sign": 1,
+      "pi_selection": 0.71,
+      "sign_consistency": 0.8309859154929577
+    },
+    {
+      "feature": "EnduranceT",
+      "gamma_median_selected": 0.00028495357078110197,
+      "modal_sign": 1,
+      "pi_selection": 0.66,
+      "sign_consistency": 0.9393939393939394
+    },
+    {
+      "feature": "rear_nosupport",
+      "gamma_median_selected": -0.0014553415539628601,
+      "modal_sign": -1,
+      "pi_selection": 0.65,
+      "sign_consistency": 0.9692307692307692
+    },
+    {
+      "feature": "Absolute_turn_angle_OFT",
+      "gamma_median_selected": 2.731946975688815e-06,
+      "modal_sign": 1,
+      "pi_selection": 0.625,
+      "sign_consistency": 0.976
+    },
+    {
+      "feature": "Learning_T3mean",
+      "gamma_median_selected": -0.0009291945885171556,
+      "modal_sign": -1,
+      "pi_selection": 0.61,
+      "sign_consistency": 1.0
+    },
+    {
+      "feature": "Total_time_mobile_OFT",
+      "gamma_median_selected": -0.00013438063674441633,
+      "modal_sign": -1,
+      "pi_selection": 0.61,
+      "sign_consistency": 0.9754098360655737
+    }
+  ],
+  "core_features": [
+    {
+      "feature": "Grip",
+      "gamma_median_selected": 0.06886140498810807,
+      "modal_sign": 1,
+      "pi_selection": 1.0,
+      "sign_consistency": 1.0
+    },
+    {
+      "feature": "OFT_distance",
+      "gamma_median_selected": 0.00018209849467191097,
+      "modal_sign": 1,
+      "pi_selection": 0.985,
+      "sign_consistency": 0.9035532994923858
+    },
+    {
+      "feature": "Time_inCenter_OFT",
+      "gamma_median_selected": -0.0006928264413657097,
+      "modal_sign": -1,
+      "pi_selection": 0.94,
+      "sign_consistency": 1.0
+    },
+    {
+      "feature": "Latency_to_first_investigation_Stakan_zone_NOR2",
+      "gamma_median_selected": 0.00021828424415093028,
+      "modal_sign": 1,
+      "pi_selection": 0.93,
+      "sign_consistency": 1.0
+    },
+    {
+      "feature": "rear_support",
+      "gamma_median_selected": 0.0034594920591243285,
+      "modal_sign": 1,
+      "pi_selection": 0.84,
+      "sign_consistency": 1.0
+    },
+    {
+      "feature": "Latency_to_first_investigation_Piramidka_NOR1",
+      "gamma_median_selected": -0.0002205665098559109,
+      "modal_sign": -1,
+      "pi_selection": 0.835,
+      "sign_consistency": 1.0
+    }
+  ],
+  "counts": {
+    "candidate_features": 10,
+    "core_features": 6,
+    "other_features": 15
+  },
+  "lambda1_star": 0.03,
+  "outputs": {
+    "coefficients": "stage_c/stability_coefficients.csv",
+    "feature_summary": "stage_c/stability_selection.csv",
+    "rejected": null,
+    "resamples": "stage_c/stability_resamples.csv"
+  },
+  "purpose": "development_mouse_level_stability_selection",
+  "resampling": {
+    "first_valid_seed": 20000,
+    "last_valid_seed": 20199,
+    "method": "StratifiedShuffleSplit mouse-level 80/20",
+    "min_train_O": 5,
+    "rejected_resamples": 0,
+    "seed_start": 20000,
+    "target_valid_resamples": 200,
+    "train_fraction": 0.8,
+    "valid_resamples": 200
+  },
+  "slack_sum": {
+    "mean": 0.09382516751678346,
+    "median": 0.08827383434693616,
+    "q10": 8.014232873708706e-18,
+    "q90": 0.20617162339035625
+  },
+  "stage": "C",
+  "status": "READY",
+  "thresholds": {
+    "candidate": "0.6<=pi<0.8 and sign_consistency>=0.8",
+    "core": "pi>=0.8 and sign_consistency>=0.9"
+  },
+  "validation_errors": [],
+  "warning": "Development stability results are not the final nested-CV feature frequencies. The same procedure must be rerun inside each outer-train."
+}

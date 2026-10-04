@@ -1,0 +1,4 @@
+selected_position,feature,stage_f_rank,block_id,pi_selection,sign_consistency,stage_c_category,ablation_source,abs_gamma_median_selected
+1,Grip,1,,1.0,1.0,core,feature,0.068861404988108
+2,OFT_distance,2,B01,0.985,0.9035532994923858,core,feature,0.0001912044436811
+3,Time_inCenter_OFT,3,,0.94,1.0,core,feature,0.0006928264413657
