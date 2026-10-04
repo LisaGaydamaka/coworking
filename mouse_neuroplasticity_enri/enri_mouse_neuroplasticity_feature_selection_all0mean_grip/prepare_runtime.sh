@@ -64,16 +64,20 @@ for filename, replacements in patches.items():
         s = s.replace(old, new)
     p.write_text(s, encoding='utf-8')
 
-# Fail early if another executable feature-dimension assertion is still tied
-# to p=30. Text in comments/docstrings is intentionally ignored by this audit.
+# Audit only feature-dimension guards. The pipeline intentionally contains
+# other constants equal to 30 (e.g. 30 outer nested-validation splits), which
+# must remain unchanged.
 suspicious = []
-pattern = re.compile(r'(len\([^\n]+\)\s*(?:==|!=)\s*30|Expected 30 (?:MODEL_FEATURES|features))')
 for p in sorted(Path('.').glob('stage_*.py')):
     for lineno, line in enumerate(p.read_text(encoding='utf-8').splitlines(), 1):
         stripped = line.strip()
         if stripped.startswith('#'):
             continue
-        if pattern.search(line):
+        low = line.lower()
+        feature_context = ('feature' in low or 'model_features' in low)
+        hardcoded_30 = bool(re.search(r'len\([^\n]+\)\s*(?:==|!=)\s*30', line))
+        expected_30 = ('Expected 30 features' in line or 'Expected 30 MODEL_FEATURES' in line)
+        if feature_context and (hardcoded_30 or expected_30):
             suspicious.append(f'{p}:{lineno}: {line.strip()}')
 if suspicious:
     raise RuntimeError('Unpatched p=30 feature-dimension assumptions:\n' + '\n'.join(suspicious))
