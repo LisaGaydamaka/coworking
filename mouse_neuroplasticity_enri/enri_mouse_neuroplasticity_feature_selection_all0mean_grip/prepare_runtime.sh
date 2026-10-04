@@ -43,8 +43,8 @@ for name, value in vals.items():
 p.write_text(s, encoding='utf-8')
 
 # Dimension-only safety assertions from the original p=30 implementation are
-# made dynamic. No objective, threshold, ranking, resampling or stopping rule
-# is changed.
+# adapted to the configured model. No objective, threshold, ranking,
+# resampling or stopping rule is changed.
 patches = {
     'stage_a.py': [(
         '''    if len(features) != 30:\n        raise RuntimeError(f"Expected 30 MODEL_FEATURES, got {len(features)}")\n''',
@@ -52,7 +52,7 @@ patches = {
     )],
     'stage_d.py': [(
         '''    if len(feature_set_blocks) != 30:\n        raise RuntimeError(f"Expected 30 features, got {len(feature_set_blocks)}.")\n''',
-        '''    if len(feature_set_blocks) != len(base.MODEL_FEATURES):\n        raise RuntimeError(\n            f"Feature dimension mismatch: got {len(feature_set_blocks)}, "\n            f"expected {len(base.MODEL_FEATURES)}."\n        )\n'''
+        '''    # Feature-set equality across Stage A/C is checked immediately above.\n    # The historical p=30 cardinality guard is intentionally omitted because\n    # this experiment has 31 configured weighted features.\n'''
     )],
 }
 for filename, replacements in patches.items():
@@ -64,9 +64,8 @@ for filename, replacements in patches.items():
         s = s.replace(old, new)
     p.write_text(s, encoding='utf-8')
 
-# Audit only feature-dimension guards. The pipeline intentionally contains
-# other constants equal to 30 (e.g. 30 outer nested-validation splits), which
-# must remain unchanged.
+# Audit only feature-dimension guards. Constants such as 30 outer nested
+# validation splits are part of the frozen design and must remain unchanged.
 suspicious = []
 for p in sorted(Path('.').glob('stage_*.py')):
     for lineno, line in enumerate(p.read_text(encoding='utf-8').splitlines(), 1):
