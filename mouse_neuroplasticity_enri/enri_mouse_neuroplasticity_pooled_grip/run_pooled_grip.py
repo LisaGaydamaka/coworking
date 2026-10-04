@@ -23,7 +23,6 @@ RESULTS.mkdir(parents=True, exist_ok=True)
 m.RESULTS_DIR = RESULTS
 m._base.RESULTS_DIR = RESULTS
 
-# Reporting stages expect explicit group/week metadata in state dictionaries.
 _orig_build_experimental_states = m.build_experimental_states
 def _build_states_with_metadata(*args, **kwargs):
     states, xbar, stats = _orig_build_experimental_states(*args, **kwargs)
@@ -48,7 +47,6 @@ def _patch_function(fn, replacements, name):
     return patched
 
 
-# Preserve the original QP and change only the baseline normalization check.
 _patch_function(
     m._base.solve_qp_smoke,
     [(
@@ -82,7 +80,6 @@ _patch_function(
     "run_stage7",
 )
 
-# Stage 9: keep all 25 checks, but update normalization and feature-count checks.
 _patch_function(
     m._base.run_stage9,
     [(
@@ -96,7 +93,19 @@ _patch_function(
 '''        5, "model_feature_weights",\n        feature_match,\n        f"weights.csv contains exactly the {len(MODEL_FEATURES)} MODEL_FEATURES in canonical order.",\n'''),
     (
 '''        len(weight_values) == 30 and np.isfinite(weight_values).all(),\n        "All 30 final weights are finite.",\n''',
-'''        len(weight_values) == len(MODEL_FEATURES) and np.isfinite(weight_values).all(),\n        f"All {len(MODEL_FEATURES)} final weights are finite.",\n''')
+'''        len(weight_values) == len(MODEL_FEATURES) and np.isfinite(weight_values).all(),\n        f"All {len(MODEL_FEATURES)} final weights are finite.",\n'''),
+    (
+'''    # 25. model.json can reproduce eNRI for a complete 30-feature vector.\n    model_arrays_ok = (\n        model.get("features") == list(MODEL_FEATURES)\n        and len(model.get("mean", [])) == 30\n        and len(model.get("std", [])) == 30\n        and len(model.get("xbar_pbs0", [])) == 30\n        and len(model.get("weights", [])) == 30\n''',
+'''    # 25. model.json can reproduce eNRI for a complete model-feature vector.\n    model_arrays_ok = (\n        model.get("features") == list(MODEL_FEATURES)\n        and len(model.get("mean", [])) == len(MODEL_FEATURES)\n        and len(model.get("std", [])) == len(MODEL_FEATURES)\n        and len(model.get("xbar_pbs0", [])) == len(MODEL_FEATURES)\n        and len(model.get("weights", [])) == len(MODEL_FEATURES)\n'''),
+    (
+'''        # Recover the corresponding complete raw 30-vector, then recompute eNRI\n''',
+'''        # Recover the corresponding complete raw model vector, then recompute eNRI\n'''),
+    (
+'''        f"model.json reproduces eNRI for complete 30-feature vectors; max absolute error={model_repro_err:.3g}.",\n''',
+'''        f"model.json reproduces eNRI for complete {len(MODEL_FEATURES)}-feature vectors; max absolute error={model_repro_err:.3g}.",\n'''),
+    (
+'''            "model_features": 30,\n''',
+'''            "model_features": len(MODEL_FEATURES),\n''')
     ],
     "run_stage9",
 )
