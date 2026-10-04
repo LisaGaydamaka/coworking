@@ -1,0 +1,373 @@
+{
+  "excluded_mouse_ids": [
+    "3.2",
+    "4.2"
+  ],
+  "group_map": {
+    "PBS": "PBS",
+    "LPS": "LPS",
+    "LPS+run": "run",
+    "LPS+MCC": "MCC"
+  },
+  "features": [
+    "OFT_distance",
+    "Average_speed_OFT",
+    "Total_time_mobile_OFT",
+    "Absolute_turn_angle_OFT",
+    "Time_inCenter_OFT",
+    "Total_distance_travelled_NOR1",
+    "Average_speed_NOR1",
+    "Time_investigating_Piramidka_NOR1",
+    "Latency_to_first_investigation_Piramidka_NOR1",
+    "Time_investigating_Stakan_NOR1",
+    "Latency_to_first_investigation_Stakan_NOR1",
+    "Total_distance_travelled_NOR2",
+    "Average_speed_NOR2",
+    "Time_investigating_Piramidka_zone_NOR2",
+    "Latency_to_first_investigation_Piramidka_zone_NOR2",
+    "Time_investigating_Stakan_zone_NOR2",
+    "Latency_to_first_investigation_Stakan_zone_NOR2",
+    "Learning_T1mean",
+    "Learning_T1max",
+    "Learning_T1sum",
+    "Learning_T2mean",
+    "Learning_T2max",
+    "Learning_T2sum",
+    "Learning_T3mean",
+    "Learning_T3max",
+    "Learning_T3sum",
+    "EnduranceT",
+    "rear_support",
+    "rear_nosupport",
+    "Weight",
+    "Grip"
+  ],
+  "feature_columns": {
+    "OFT_distance": {
+      "0": "OFT_distance_0",
+      "16": "OFT_distance_16",
+      "24": "OFT_distance_24"
+    },
+    "Average_speed_OFT": {
+      "0": "Average speed_OFT_0",
+      "16": "Averag_speed_OFT_16",
+      "24": "Averag_speed_OFT_24"
+    },
+    "Total_time_mobile_OFT": {
+      "0": "Total time mobile_OFT_0",
+      "16": "Total_time_mobile_OFT_16",
+      "24": "Total_time_mobile_OFT_24"
+    },
+    "Absolute_turn_angle_OFT": {
+      "0": "Absolute turn angle_OFT_0",
+      "16": "Absolute_turn_angle_OFT_16",
+      "24": "Absolute_turn_angle_OFT_24"
+    },
+    "Time_inCenter_OFT": {
+      "0": "Time in the Center zone _OFT_0",
+      "16": "Time_inCenter_OFT_16",
+      "24": "Time_inCenter_OFT_24"
+    },
+    "Total_distance_travelled_NOR1": {
+      "0": "Total distance travelled _NOR1_0",
+      "16": "Total distance travelled _NOR1_16",
+      "24": "Total distance travelled _NOR1_24"
+    },
+    "Average_speed_NOR1": {
+      "0": "Average speed _NOR1_0",
+      "16": "Average speed _NOR1_16",
+      "24": "Average speed _NOR1_24"
+    },
+    "Time_investigating_Piramidka_NOR1": {
+      "0": "Time investigating the Piramidka _NOR1_0",
+      "16": "Time investigating Piramidka _NOR1_16",
+      "24": "Time investigating Piramidka _NOR1_24"
+    },
+    "Latency_to_first_investigation_Piramidka_NOR1": {
+      "0": "Latency to first investigation of the Piramidka _NOR1_0",
+      "16": "Latency to first investigation of Piramidka _NOR1_16",
+      "24": "Latency to first investigation of Piramidka _NOR1_24"
+    },
+    "Time_investigating_Stakan_NOR1": {
+      "0": "Time investigating the Stakan_NOR1_0",
+      "16": "Time investigating the Stakan_NOR1_16",
+      "24": "Time investigating the Stakan_NOR1_24"
+    },
+    "Latency_to_first_investigation_Stakan_NOR1": {
+      "0": "Latency to first investigation of the Stakan _NOR1_0",
+      "16": "Latency to first investigation of Stakan _NOR1_16",
+      "24": "Latency to first investigation of Stakan _NOR1_24"
+    },
+    "Total_distance_travelled_NOR2": {
+      "0": "Total distance travelled _NOR2_0",
+      "16": "Total distance travelled _NOR2_16",
+      "24": "Total distance travelled _NOR2_24"
+    },
+    "Average_speed_NOR2": {
+      "0": "Average speed _NOR2_0",
+      "16": "Average speed _NOR2_16",
+      "24": "Average speed _NOR2_24"
+    },
+    "Time_investigating_Piramidka_zone_NOR2": {
+      "0": "Time investigating the Piramidka zone _NOR2_0",
+      "16": "Time investigating the Piramidka zone _NOR2_16",
+      "24": "Time investigating the Piramidka zone _NOR2_24"
+    },
+    "Latency_to_first_investigation_Piramidka_zone_NOR2": {
+      "0": "Latency to first investigation of the Piramidka zone _NOR2_0",
+      "16": "Latency to first investigation of the Piramidka zone _NOR2_16",
+      "24": "Latency to first investigation of the Piramidka zone _NOR2_24"
+    },
+    "Time_investigating_Stakan_zone_NOR2": {
+      "0": "Time investigating the Stakan zone _NOR2_0",
+      "16": "Time investigating the Stakan zone _NOR2_16",
+      "24": "Time investigating the Stakan zone _NOR2_24"
+    },
+    "Latency_to_first_investigation_Stakan_zone_NOR2": {
+      "0": "Latency to first investigation of the Stakan zone _NOR2_0",
+      "16": "Latency to first investigation of the Stakan zone _NOR2_16",
+      "24": "Latency to first investigation of the Stakan zone _NOR2_24"
+    },
+    "Learning_T1mean": {
+      "0": "Learning T1mean_0",
+      "16": "Learning T1mean_16",
+      "24": "Learning T1mean_24"
+    },
+    "Learning_T1max": {
+      "0": "Learning T1max_0",
+      "16": "Learning T1max_16",
+      "24": "Learning T1max_24"
+    },
+    "Learning_T1sum": {
+      "0": "Learning T1sum_0",
+      "16": "Learning T1sum_16",
+      "24": "Learning T1sum_24"
+    },
+    "Learning_T2mean": {
+      "0": "Learning T2mean_0",
+      "16": "Learning T2mean_16",
+      "24": "Learning T2mean_24"
+    },
+    "Learning_T2max": {
+      "0": "Learning T2max_0",
+      "16": "Learning T2max_16",
+      "24": "Learning T2max_24"
+    },
+    "Learning_T2sum": {
+      "0": "Learning T2sum_0",
+      "16": "Learning T2sum_16",
+      "24": "Learning T2sum_24"
+    },
+    "Learning_T3mean": {
+      "0": "Learning T3mean_0",
+      "16": "Learning T3mean_16",
+      "24": "Learning T3mean_24"
+    },
+    "Learning_T3max": {
+      "0": "Learning T3max_0",
+      "16": "Learning T3max_16",
+      "24": "Learning T3max_24"
+    },
+    "Learning_T3sum": {
+      "0": "Learning T3sum_0",
+      "16": "Learning T3sum_16",
+      "24": "Learning T3sum_24"
+    },
+    "EnduranceT": {
+      "0": "EnduranceT_0",
+      "16": "EnduranceT_16",
+      "24": "EnduranceT_24"
+    },
+    "rear_support": {
+      "0": "rear_support_0",
+      "16": "rear_support_16",
+      "24": "rear_support_24"
+    },
+    "rear_nosupport": {
+      "0": "rear_nosupport_0",
+      "16": "rear_nosupport_16",
+      "24": "rear_nosupport_24"
+    },
+    "Weight": {
+      "0": "Weight_0",
+      "16": "Weight_16",
+      "24": "Weight_24"
+    },
+    "Grip": {
+      "0": "Grip_0",
+      "16": "Grip_16",
+      "24": "Grip_22"
+    }
+  },
+  "derived_features": [
+    "Latency_to_first_investigation_NOR1",
+    "Total_time_investigating_NOR1",
+    "DI_NOR2",
+    "Latency_to_first_investigation_NOR2",
+    "Total_time_investigating_NOR2"
+  ],
+  "censored_latency_rule": "train_feature_max",
+  "censored_latency_final_maxima": {
+    "Latency_to_first_investigation_Piramidka_NOR1": 579.2,
+    "Latency_to_first_investigation_Stakan_NOR1": 552.0,
+    "Latency_to_first_investigation_Piramidka_zone_NOR2": 595.0,
+    "Latency_to_first_investigation_Stakan_zone_NOR2": 533.5
+  },
+  "max_missing_per_visit": 7,
+  "mean": [
+    15.216666666666665,
+    0.025740740740740745,
+    268.137037037037,
+    31891.75925925926,
+    43.36666666666668,
+    11.978796296296297,
+    0.019981481481481482,
+    6.081481481481483,
+    119.75555555555555,
+    6.877777777777778,
+    116.84444444444443,
+    11.71288888888889,
+    0.01959259259259259,
+    8.468518518518518,
+    137.95370370370372,
+    6.542592592592592,
+    148.89999999999998,
+    35.18055555555556,
+    41.96296296296296,
+    140.72222222222223,
+    39.7037037037037,
+    46.666666666666664,
+    158.8148148148148,
+    38.407407407407405,
+    44.851851851851855,
+    153.62962962962962,
+    172.76923076923077,
+    21.055555555555557,
+    11.333333333333334,
+    28.88462962962963,
+    4.356730130833334
+  ],
+  "std": [
+    6.121240471151283,
+    0.010569063408256328,
+    96.78357161446064,
+    11454.781769801664,
+    41.417642763386134,
+    5.628294283584284,
+    0.009377795413656949,
+    4.601766439920123,
+    125.73773793948405,
+    6.074309236810595,
+    119.34829427315645,
+    5.857157900096826,
+    0.009723572832212464,
+    8.1205266135136,
+    139.2969905984955,
+    5.258402148147497,
+    118.18777193078083,
+    5.829013449868008,
+    7.231907712935342,
+    23.316053799472034,
+    8.332007232013524,
+    9.693413441659413,
+    33.328028928054096,
+    12.129635497515398,
+    13.419793052150384,
+    48.51854199006159,
+    59.09136010122265,
+    9.78720124326156,
+    7.895544480370523,
+    2.436968974928876,
+    0.6337060543778408
+  ],
+  "xbar_pbs0": [
+    2.384923534379966e-16,
+    -3.0428334748985774e-16,
+    6.003428207232328e-16,
+    2.2615654205327262e-17,
+    -3.659624044134775e-16,
+    -7.195889974422311e-17,
+    -5.859510407743882e-17,
+    -3.5362659302875356e-16,
+    1.1513423959075697e-16,
+    -5.1913206244046674e-17,
+    1.1513423959075697e-16,
+    -6.373502548774047e-17,
+    4.471731626962436e-16,
+    2.133067385275185e-17,
+    -1.398058623602049e-16,
+    1.8503717077085943e-16,
+    1.886351157580706e-16,
+    -2.4054832200211723e-16,
+    1.8914910789910075e-16,
+    -2.4054832200211723e-16,
+    1.706453908220148e-16,
+    2.5082816482272053e-16,
+    1.706453908220148e-16,
+    1.9737298215558337e-16,
+    -2.2615654205327265e-16,
+    1.9737298215558337e-16,
+    -0.028948008790125185,
+    -1.8914910789910075e-16,
+    -8.22387425648264e-17,
+    3.618504672852362e-16,
+    -1.24591694985712e-15
+  ],
+  "weights": [
+    0.0012965950972559995,
+    -0.07350058640664549,
+    -0.030130854925768863,
+    0.051561985278676815,
+    -0.037836077058635224,
+    -0.009568431062343955,
+    1.3174904940743933e-06,
+    0.0034993650382522767,
+    -0.03327430343505883,
+    0.013570415150827997,
+    0.008363531744554545,
+    0.014239135870454363,
+    0.011439800960938617,
+    -0.025474590691120975,
+    -0.012229248370222491,
+    0.022657706252097978,
+    0.03856268839758633,
+    0.01278477080691023,
+    -0.03986583640400254,
+    0.012784770806910291,
+    0.03436544242840099,
+    -0.014396254472738623,
+    0.02164990729133826,
+    -0.026396044963876403,
+    0.006283091740312394,
+    -0.02370151524772954,
+    0.007151674771206512,
+    0.0665363373469823,
+    -0.023351776150729305,
+    0.022108277397031223,
+    0.056790852147108876
+  ],
+  "rho": 0.1,
+  "beta": 0.1,
+  "lambda": 0.1,
+  "C": 0.1,
+  "epsilon": 0.001,
+  "cv_tolerance": 1e-06,
+  "random_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "imputation_method": "IterativeImputer(BayesianRidge)",
+  "imputation_sample_posterior": false,
+  "imputation_seed": 20260928,
+  "solver_status": "optimal",
+  "solver_name": "OSQP",
+  "stage": 7
+}
