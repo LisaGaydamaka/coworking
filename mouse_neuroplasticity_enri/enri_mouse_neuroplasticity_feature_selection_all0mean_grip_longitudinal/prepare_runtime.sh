@@ -95,6 +95,19 @@ if old_guard not in s:
 s = s.replace(old_guard, new_guard)
 p.write_text(s, encoding='utf-8')
 
+# Stage A uses these values only as report metadata. Keep them synchronized
+# with the freshly selected base model rather than the historical constants.
+p = Path('stage_a.py')
+s = p.read_text(encoding='utf-8')
+s, n_beta = re.subn(r'"beta":\s*0\.1,', f'"beta": {vals["BETA"]!r},', s, count=1)
+s, n_l2 = re.subn(r'"lambda2":\s*0\.1,', f'"lambda2": {vals["LAMBDA2"]!r},', s, count=1)
+s, n_c = re.subn(r'"C":\s*0\.1,', f'"C": {vals["C_SLACK"]!r},', s, count=1)
+if (n_beta, n_l2, n_c) != (1, 1, 1):
+    raise RuntimeError(
+        f'stage_a.py metadata patch mismatch: beta={n_beta}, lambda2={n_l2}, C={n_c}'
+    )
+p.write_text(s, encoding='utf-8')
+
 # Same p=31 dimension compatibility patches as the historical GRIP31 rerun.
 patches = {
     'stage_a.py': [(
