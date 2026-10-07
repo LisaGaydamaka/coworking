@@ -1,2 +1,2 @@
 2026-10-07 EFA31 baseline domains parallel analysis bootstrap
-rerun-after-run-sh-newline-fix
+rerun-with-compatible-sklearn-1.5.2
