@@ -1,0 +1,195 @@
+{
+  "baseline": {
+    "components_needed_for_cumulative_variance": {
+      "50": 2,
+      "70": 5,
+      "80": 8,
+      "90": 12
+    },
+    "features": 31,
+    "fit_rows": 54,
+    "longitudinal_relations_total": 6,
+    "longitudinal_relations_true": 4,
+    "pc1_explained_variance_percent": 33.10820708867476,
+    "pc1_explained_variance_ratio": 0.33108207088674757,
+    "pc1_pc2_cumulative_percent": 52.35588811749108,
+    "pc1_pc3_cumulative_percent": 60.579282538303694,
+    "pc1_sign_multiplier": 1,
+    "projected_rows": 133,
+    "top_10_abs_pc1_loadings": [
+      {
+        "abs_loading": 0.2638459978780719,
+        "feature": "Average_speed_NOR1",
+        "loading": 0.2638459978780719
+      },
+      {
+        "abs_loading": 0.2637693435424026,
+        "feature": "Total_distance_travelled_NOR1",
+        "loading": 0.2637693435424026
+      },
+      {
+        "abs_loading": 0.25688821711385407,
+        "feature": "Average_speed_NOR2",
+        "loading": 0.25688821711385407
+      },
+      {
+        "abs_loading": 0.25591217265670924,
+        "feature": "Total_distance_travelled_NOR2",
+        "loading": 0.25591217265670924
+      },
+      {
+        "abs_loading": 0.2340339732940964,
+        "feature": "Time_investigating_Stakan_NOR1",
+        "loading": 0.2340339732940964
+      },
+      {
+        "abs_loading": 0.23131516884422673,
+        "feature": "OFT_distance",
+        "loading": 0.23131516884422673
+      },
+      {
+        "abs_loading": 0.22746472174717933,
+        "feature": "Total_time_mobile_OFT",
+        "loading": 0.22746472174717933
+      },
+      {
+        "abs_loading": 0.22537591562888368,
+        "feature": "Time_investigating_Stakan_zone_NOR2",
+        "loading": 0.22537591562888368
+      },
+      {
+        "abs_loading": 0.2248446031469171,
+        "feature": "Time_investigating_Piramidka_zone_NOR2",
+        "loading": 0.2248446031469171
+      },
+      {
+        "abs_loading": 0.21387111410438114,
+        "feature": "Average_speed_OFT",
+        "loading": 0.21387111410438114
+      }
+    ]
+  },
+  "comparison": {
+    "pearson_p": 1.540767853065815e-115,
+    "pearson_r": -0.990758682088856,
+    "spearman_p": 2.030854104415098e-109,
+    "spearman_rho": -0.9885279684965467
+  },
+  "data": {
+    "analytic_mice": 54,
+    "constraints_used_for_pca_fit": false,
+    "dead_rows_in_pca": false,
+    "excluded_states": [
+      {
+        "mouse_id": "16.1",
+        "week": 24
+      },
+      {
+        "mouse_id": "17.1",
+        "week": 24
+      },
+      {
+        "mouse_id": "21.4",
+        "week": 24
+      },
+      {
+        "mouse_id": "8.2",
+        "week": 16
+      },
+      {
+        "mouse_id": "8.3",
+        "week": 16
+      },
+      {
+        "mouse_id": "8.4",
+        "week": 16
+      },
+      {
+        "mouse_id": "9.2",
+        "week": 24
+      }
+    ],
+    "features": 31,
+    "group_used_for_pca_fit": false,
+    "living_rows": 133,
+    "pca_centering": true,
+    "repeated_standardization": false,
+    "week_counts": {
+      "0": 54,
+      "16": 41,
+      "24": 38
+    }
+  },
+  "experiment": "PCA31_PROCESSED_LONGITUDINAL_DROP_7_OUTLIER_STATES",
+  "pooled": {
+    "components_needed_for_cumulative_variance": {
+      "50": 2,
+      "70": 5,
+      "80": 8,
+      "90": 13
+    },
+    "features": 31,
+    "fit_rows": 133,
+    "longitudinal_relations_total": 6,
+    "longitudinal_relations_true": 2,
+    "pc1_explained_variance_percent": 33.165669566173264,
+    "pc1_explained_variance_ratio": 0.33165669566173267,
+    "pc1_pc2_cumulative_percent": 51.63524257262577,
+    "pc1_pc3_cumulative_percent": 59.94664913129836,
+    "pc1_sign_multiplier": -1,
+    "projected_rows": 133,
+    "top_10_abs_pc1_loadings": [
+      {
+        "abs_loading": 0.2960359587094657,
+        "feature": "Time_investigating_Piramidka_NOR1",
+        "loading": -0.2960359587094657
+      },
+      {
+        "abs_loading": 0.224005961042734,
+        "feature": "Average_speed_NOR1",
+        "loading": -0.224005961042734
+      },
+      {
+        "abs_loading": 0.22123201472478407,
+        "feature": "Latency_to_first_investigation_Stakan_zone_NOR2",
+        "loading": 0.22123201472478407
+      },
+      {
+        "abs_loading": 0.22059289512196373,
+        "feature": "Total_distance_travelled_NOR1",
+        "loading": -0.22059289512196373
+      },
+      {
+        "abs_loading": 0.21598593817807135,
+        "feature": "Total_distance_travelled_NOR2",
+        "loading": -0.21598593817807135
+      },
+      {
+        "abs_loading": 0.21451338354025803,
+        "feature": "Average_speed_NOR2",
+        "loading": -0.21451338354025803
+      },
+      {
+        "abs_loading": 0.2116004298069535,
+        "feature": "Time_investigating_Stakan_NOR1",
+        "loading": -0.2116004298069535
+      },
+      {
+        "abs_loading": 0.2038619107313045,
+        "feature": "Latency_to_first_investigation_Piramidka_NOR1",
+        "loading": 0.2038619107313045
+      },
+      {
+        "abs_loading": 0.20101429131783913,
+        "feature": "Learning_T1sum",
+        "loading": -0.20101429131783913
+      },
+      {
+        "abs_loading": 0.20101429131783907,
+        "feature": "Learning_T1mean",
+        "loading": -0.20101429131783907
+      }
+    ]
+  },
+  "preprocessing_errors": []
+}
