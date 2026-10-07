@@ -1,0 +1,1 @@
+# Plan\n\nUse the cleaned processed 31-feature matrix. Define domains only on 54 week-0 mice. Spearman correlation. 1000-run parallel analysis. MINRES EFA with oblimin. Membership threshold |loading|>=0.40. Bootstrap 500 baseline resamples with factor alignment. Freeze baseline solution and score retained week16/week24 rows.\n

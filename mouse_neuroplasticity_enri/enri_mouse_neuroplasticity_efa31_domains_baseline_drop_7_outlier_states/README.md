@@ -1,0 +1,1 @@
+# EFA31 domains\n\nIndependent experiment. Old eNRI/PCA files are not modified. Week-0 only domain definition using Spearman correlation, parallel analysis, MINRES EFA + oblimin, and 500 bootstrap resamples.\n

@@ -1,0 +1,1 @@
+#!/usr/bin/env bash\nset -euo pipefail\nexport OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1\npip install factor_analyzer==0.5.1 matplotlib==3.10.7\nrm -rf results && mkdir -p results\npython run_efa.py\n
