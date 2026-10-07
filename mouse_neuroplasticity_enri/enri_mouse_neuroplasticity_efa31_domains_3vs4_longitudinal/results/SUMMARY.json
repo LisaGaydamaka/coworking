@@ -1,0 +1,289 @@
+{
+  "experiment": "EFA31_3VS4_LONGITUDINAL",
+  "source_matrix": "cleaned 31-feature matrix after 7 state exclusions",
+  "baseline_rows": 54,
+  "all_living_rows": 133,
+  "features": 31,
+  "correlation": "Spearman",
+  "efa": "MINRES + oblimin",
+  "loading_threshold": 0.4,
+  "stable_core_thresholds": {
+    "abs_loading": 0.4,
+    "bootstrap_prob_loading_ge_threshold": 0.7,
+    "bootstrap_prob_reference_domain_dominant": 0.7
+  },
+  "parallel_analysis_simulations": 1000,
+  "bootstrap_resamples_per_model": 500,
+  "k3": {
+    "k": 3,
+    "fit_metrics": {
+      "offdiag_rmse": 0.12554798399507733,
+      "offdiag_mae": 0.10310679188573955,
+      "mean_communality": 0.5583258795414836,
+      "median_communality": 0.6281631913735352
+    },
+    "factor_stability": [
+      {
+        "domain": "D1",
+        "median_congruence": 0.9708989594803176,
+        "q10": 0.9101200498998413,
+        "q90": 0.9862606092770503
+      },
+      {
+        "domain": "D2",
+        "median_congruence": 0.9196801557581211,
+        "q10": 0.7948558411266962,
+        "q90": 0.9668137164646
+      },
+      {
+        "domain": "D3",
+        "median_congruence": 0.8696223598535446,
+        "q10": 0.4600586109024645,
+        "q90": 0.9616580211250628
+      }
+    ],
+    "reference_members": {
+      "D1": [
+        "Learning_T1mean",
+        "Learning_T1max",
+        "Learning_T1sum",
+        "Learning_T2mean",
+        "Learning_T2max",
+        "Learning_T2sum",
+        "Learning_T3mean",
+        "Learning_T3max",
+        "Learning_T3sum",
+        "EnduranceT"
+      ],
+      "D2": [
+        "OFT_distance",
+        "Average_speed_OFT",
+        "Total_time_mobile_OFT",
+        "Absolute_turn_angle_OFT",
+        "Average_speed_NOR1",
+        "rear_support",
+        "rear_nosupport"
+      ],
+      "D3": [
+        "Total_distance_travelled_NOR1",
+        "Time_investigating_Piramidka_NOR1",
+        "Time_investigating_Stakan_NOR1",
+        "Total_distance_travelled_NOR2",
+        "Average_speed_NOR2",
+        "Time_investigating_Piramidka_zone_NOR2",
+        "Time_investigating_Stakan_zone_NOR2",
+        "Latency_to_first_investigation_Stakan_zone_NOR2"
+      ]
+    },
+    "stable_core_members": {
+      "D1": [
+        "Learning_T1max",
+        "Learning_T2mean",
+        "Learning_T2max",
+        "Learning_T2sum",
+        "Learning_T3mean",
+        "Learning_T3max",
+        "Learning_T3sum",
+        "EnduranceT"
+      ],
+      "D2": [
+        "OFT_distance",
+        "Average_speed_OFT",
+        "Total_time_mobile_OFT",
+        "Absolute_turn_angle_OFT",
+        "rear_support",
+        "rear_nosupport"
+      ],
+      "D3": [
+        "Time_investigating_Piramidka_NOR1",
+        "Time_investigating_Stakan_NOR1",
+        "Time_investigating_Piramidka_zone_NOR2"
+      ]
+    },
+    "unassigned": [
+      "Time_inCenter_OFT",
+      "Latency_to_first_investigation_Piramidka_NOR1",
+      "Latency_to_first_investigation_Stakan_NOR1",
+      "Latency_to_first_investigation_Piramidka_zone_NOR2",
+      "Weight",
+      "Grip"
+    ],
+    "cross_loading_features": [
+      "Total_distance_travelled_NOR1",
+      "Average_speed_NOR1"
+    ],
+    "positive_0_to_16_group_domain_count": 3,
+    "positive_16_to_24_group_domain_count": 5,
+    "group_domain_comparisons_each_interval": 12
+  },
+  "k4": {
+    "k": 4,
+    "fit_metrics": {
+      "offdiag_rmse": 0.14852062134143784,
+      "offdiag_mae": 0.11723442155072479,
+      "mean_communality": 0.6101642945617454,
+      "median_communality": 0.6643812138297317
+    },
+    "factor_stability": [
+      {
+        "domain": "D1",
+        "median_congruence": 0.9651099748829279,
+        "q10": 0.9325883783370701,
+        "q90": 0.9810522182190147
+      },
+      {
+        "domain": "D2",
+        "median_congruence": 0.9586082805659767,
+        "q10": 0.9192080346631353,
+        "q90": 0.9770665440263601
+      },
+      {
+        "domain": "D3",
+        "median_congruence": 0.9234597995163432,
+        "q10": 0.8230519516724605,
+        "q90": 0.9665737790873851
+      },
+      {
+        "domain": "D4",
+        "median_congruence": 0.8888936283931206,
+        "q10": 0.7067699274212832,
+        "q90": 0.949712004368617
+      }
+    ],
+    "reference_members": {
+      "D1": [
+        "Learning_T2mean",
+        "Learning_T2max",
+        "Learning_T2sum",
+        "Learning_T3mean",
+        "Learning_T3max",
+        "Learning_T3sum",
+        "EnduranceT"
+      ],
+      "D2": [
+        "OFT_distance",
+        "Average_speed_OFT",
+        "Total_time_mobile_OFT",
+        "Absolute_turn_angle_OFT",
+        "rear_support",
+        "rear_nosupport"
+      ],
+      "D3": [
+        "Total_distance_travelled_NOR1",
+        "Average_speed_NOR1",
+        "Time_investigating_Piramidka_NOR1",
+        "Time_investigating_Stakan_NOR1",
+        "Time_investigating_Piramidka_zone_NOR2"
+      ],
+      "D4": [
+        "Total_distance_travelled_NOR2",
+        "Average_speed_NOR2",
+        "Time_investigating_Stakan_zone_NOR2",
+        "Learning_T1mean",
+        "Learning_T1max",
+        "Learning_T1sum"
+      ]
+    },
+    "stable_core_members": {
+      "D1": [
+        "Learning_T2mean",
+        "Learning_T2max",
+        "Learning_T2sum",
+        "Learning_T3mean",
+        "Learning_T3max",
+        "Learning_T3sum",
+        "EnduranceT"
+      ],
+      "D2": [
+        "OFT_distance",
+        "Average_speed_OFT",
+        "Total_time_mobile_OFT",
+        "Absolute_turn_angle_OFT",
+        "rear_support",
+        "rear_nosupport"
+      ],
+      "D3": [
+        "Time_investigating_Piramidka_NOR1",
+        "Time_investigating_Stakan_NOR1"
+      ],
+      "D4": [
+        "Learning_T1mean",
+        "Learning_T1sum"
+      ]
+    },
+    "unassigned": [
+      "Time_inCenter_OFT",
+      "Latency_to_first_investigation_Piramidka_NOR1",
+      "Latency_to_first_investigation_Stakan_NOR1",
+      "Latency_to_first_investigation_Piramidka_zone_NOR2",
+      "Latency_to_first_investigation_Stakan_zone_NOR2",
+      "Weight",
+      "Grip"
+    ],
+    "cross_loading_features": [
+      "Total_distance_travelled_NOR1",
+      "Average_speed_NOR1",
+      "Total_distance_travelled_NOR2",
+      "Average_speed_NOR2",
+      "Time_investigating_Piramidka_zone_NOR2",
+      "Time_investigating_Stakan_zone_NOR2"
+    ],
+    "positive_0_to_16_group_domain_count": 8,
+    "positive_16_to_24_group_domain_count": 11,
+    "group_domain_comparisons_each_interval": 16
+  },
+  "comparison": {
+    "parallel_analysis_k4_margin": 0.013254366314252142,
+    "parallel_analysis_k4_observed": 2.247699631870199,
+    "parallel_analysis_k4_random_q95": 2.234445265555947,
+    "fit_improvement_rmse_k4_vs_k3": -0.022972637346360514,
+    "domain_mapping": [
+      {
+        "k3_domain": "D1",
+        "best_k4_domain": "D1",
+        "signed_loading_congruence": 0.9390140718584389,
+        "absolute_loading_congruence": 0.9390140718584389
+      },
+      {
+        "k3_domain": "D2",
+        "best_k4_domain": "D2",
+        "signed_loading_congruence": 0.9749507603781311,
+        "absolute_loading_congruence": 0.9749507603781311
+      },
+      {
+        "k3_domain": "D3",
+        "best_k4_domain": "D3",
+        "signed_loading_congruence": 0.8888927067031105,
+        "absolute_loading_congruence": 0.8888927067031105
+      }
+    ],
+    "mapped_score_correlations": [
+      {
+        "k3_domain": "D1",
+        "k4_domain": "D1",
+        "pearson_all_weeks": 0.6803885888658857,
+        "pearson_baseline": 0.8152570007501723
+      },
+      {
+        "k3_domain": "D2",
+        "k4_domain": "D2",
+        "pearson_all_weeks": 0.918156485568278,
+        "pearson_baseline": 0.8766657798774639
+      },
+      {
+        "k3_domain": "D3",
+        "k4_domain": "D3",
+        "pearson_all_weeks": 0.864097531635459,
+        "pearson_baseline": 0.8413784628650739
+      }
+    ]
+  },
+  "recommendation": {
+    "preferred_descriptive_solution": "k=3",
+    "reason": {
+      "k4_parallel_margin_small": true,
+      "k4_domain4_q10_below_0_80": true,
+      "note": "Rule is predefined in this experiment for parsimony; both solutions are reported."
+    }
+  }
+}
