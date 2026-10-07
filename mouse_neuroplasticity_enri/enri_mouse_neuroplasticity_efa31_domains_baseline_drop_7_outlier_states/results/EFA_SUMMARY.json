@@ -1,0 +1,95 @@
+{
+  "experiment": "EFA31_BASELINE_DOMAINS_DROP_7_OUTLIER_STATES",
+  "baseline_rows": 54,
+  "all_retained_living_rows": 133,
+  "features": 31,
+  "correlation": "Spearman",
+  "parallel_analysis": {
+    "simulations": 1000,
+    "criterion": "observed eigenvalue > random 95th percentile"
+  },
+  "n_factors": 4,
+  "efa_method": "MINRES",
+  "rotation": "oblimin",
+  "loading_threshold": 0.4,
+  "bootstrap_target": 500,
+  "bootstrap_valid": 500,
+  "bootstrap_attempts": 500,
+  "factor_stability": [
+    {
+      "domain": 1,
+      "median_congruence": 0.9651099754199242,
+      "q10_congruence": 0.932588376995847,
+      "q90_congruence": 0.9810522184871476
+    },
+    {
+      "domain": 2,
+      "median_congruence": 0.9586082805887168,
+      "q10_congruence": 0.9192080329953484,
+      "q90_congruence": 0.9770665444317196
+    },
+    {
+      "domain": 3,
+      "median_congruence": 0.9234598007490991,
+      "q10_congruence": 0.823051953265719,
+      "q90_congruence": 0.9665737783793601
+    },
+    {
+      "domain": 4,
+      "median_congruence": 0.8888936277699839,
+      "q10_congruence": 0.706769921641374,
+      "q90_congruence": 0.9497120053563992
+    }
+  ],
+  "domain_members_reference": {
+    "D1": [
+      "Learning_T2mean",
+      "Learning_T2max",
+      "Learning_T2sum",
+      "Learning_T3mean",
+      "Learning_T3max",
+      "Learning_T3sum",
+      "EnduranceT"
+    ],
+    "D2": [
+      "OFT_distance",
+      "Average_speed_OFT",
+      "Total_time_mobile_OFT",
+      "Absolute_turn_angle_OFT",
+      "rear_support",
+      "rear_nosupport"
+    ],
+    "D3": [
+      "Total_distance_travelled_NOR1",
+      "Average_speed_NOR1",
+      "Time_investigating_Piramidka_NOR1",
+      "Time_investigating_Stakan_NOR1",
+      "Time_investigating_Piramidka_zone_NOR2"
+    ],
+    "D4": [
+      "Total_distance_travelled_NOR2",
+      "Average_speed_NOR2",
+      "Time_investigating_Stakan_zone_NOR2",
+      "Learning_T1mean",
+      "Learning_T1max",
+      "Learning_T1sum"
+    ]
+  },
+  "unassigned_reference": [
+    "Time_inCenter_OFT",
+    "Latency_to_first_investigation_Piramidka_NOR1",
+    "Latency_to_first_investigation_Stakan_NOR1",
+    "Latency_to_first_investigation_Piramidka_zone_NOR2",
+    "Latency_to_first_investigation_Stakan_zone_NOR2",
+    "Weight",
+    "Grip"
+  ],
+  "cross_loading_features_reference": [
+    "Total_distance_travelled_NOR1",
+    "Average_speed_NOR1",
+    "Total_distance_travelled_NOR2",
+    "Average_speed_NOR2",
+    "Time_investigating_Piramidka_zone_NOR2",
+    "Time_investigating_Stakan_zone_NOR2"
+  ]
+}
