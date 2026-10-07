@@ -19,6 +19,11 @@ m = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(m)
 
 RESULTS.mkdir(parents=True, exist_ok=True)
+# Keep all generated paths inside this independent experiment directory.
+# DATA_FILE was already resolved by the historical module at import time, so
+# changing ROOT here affects only generated-path bookkeeping/relative paths.
+m.ROOT = HERE
+m._base.ROOT = HERE
 m.RESULTS_DIR = RESULTS
 m._base.RESULTS_DIR = RESULTS
 
