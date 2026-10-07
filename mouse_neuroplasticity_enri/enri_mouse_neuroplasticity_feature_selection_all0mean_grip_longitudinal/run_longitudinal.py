@@ -49,29 +49,6 @@ def _patch_function(fn, replacements, name):
 # These are the same pooled-normalization and p=31 compatibility patches used
 # by the historical GRIP31 rerun; they do not change the scientific objective.
 _patch_function(
-    m._base.solve_qp_smoke,
-    [(
-'''    # PBS^0 normalization should be exactly one up to floating-point noise.
-    pbs0_normalization_error = abs(group_means["PBS^0"] - 1.0)
-''',
-'''    # Pooled week-0 normalization should be exactly one.
-    total_n0 = sum(int(states[f"{g}^0"]["N"]) for g in STATE_GROUPS)
-    pooled0_mean = sum(
-        int(states[f"{g}^0"]["N"]) * group_means[f"{g}^0"]
-        for g in STATE_GROUPS
-    ) / float(total_n0)
-    pbs0_normalization_error = abs(pooled0_mean - 1.0)
-'''),
-    (
-'''            f"PBS^0 normalization error {pbs0_normalization_error} > {QP_TOLERANCE}."
-''',
-'''            f"Pooled week-0 normalization error {pbs0_normalization_error} > {QP_TOLERANCE}."
-''')
-    ],
-    "solve_qp_smoke",
-)
-
-_patch_function(
     m._base.validate_stage7_outputs,
     [(
 '''    pbs0 = enri_df[
