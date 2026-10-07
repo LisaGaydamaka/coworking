@@ -1,0 +1,127 @@
+{
+  "experiment": "ALL0MEAN_GRIP31_LONGITUDINAL_ONLY",
+  "workflow_run": 37596130022,
+  "order_pairs": [
+    [
+      "PBS^0",
+      "PBS^16"
+    ],
+    [
+      "LPS^0",
+      "LPS^16"
+    ],
+    [
+      "run^0",
+      "run^16"
+    ],
+    [
+      "MCC^0",
+      "MCC^16"
+    ],
+    [
+      "PBS^16",
+      "PBS^24"
+    ],
+    [
+      "LPS^16",
+      "LPS^24"
+    ]
+  ],
+  "base_hyperparameters": {
+    "beta": 1,
+    "lambda2": 0.1,
+    "C": 0.1,
+    "rho": 0.1,
+    "epsilon": 0.001
+  },
+  "base_group_means": {
+    "PBS^0": 0.9988821182031338,
+    "PBS^16": 0.7956857884968855,
+    "PBS^24": 0.6956857892112858,
+    "LPS^0": 0.9957828682589371,
+    "LPS^16": 0.8223485066040908,
+    "LPS^24": 0.7223485051872124,
+    "run^0": 0.9995172505633744,
+    "run^16": 0.8092653702193197,
+    "run^24": 0.7793687722049615,
+    "MCC^0": 1.0056126989778424,
+    "MCC^16": 0.8095835333267901,
+    "MCC^24": 0.7710432062237029
+  },
+  "base_living_eNRI_range": [
+    0.835629765722335,
+    1.186980616778731
+  ],
+  "base_slack_sum": 3.7675126795012856e-10,
+  "development_lambda1": 0.03,
+  "development_full_sparse_active_count": 13,
+  "development_core": [
+    {
+      "feature": "Absolute_turn_angle_OFT",
+      "pi": 0.85,
+      "sign_consistency": 1
+    }
+  ],
+  "development_selected_k": 8,
+  "nested_completed_outer": 30,
+  "nested_k": {
+    "min": 3,
+    "q25": 5,
+    "median": 7,
+    "mean": 8,
+    "q75": 11,
+    "max": 15
+  },
+  "top_nested_features": [
+    [
+      "Absolute_turn_angle_OFT",
+      25,
+      0.8333333333333334
+    ],
+    [
+      "Average_speed_NOR1",
+      23,
+      0.7666666666666667
+    ],
+    [
+      "OFT_distance",
+      22,
+      0.7333333333333333
+    ],
+    [
+      "Time_investigating_Piramidka_NOR1",
+      21,
+      0.7
+    ],
+    [
+      "Latency_to_first_investigation_Stakan_zone_NOR2",
+      19,
+      0.6333333333333333
+    ],
+    [
+      "Weight",
+      15,
+      0.5
+    ],
+    [
+      "Grip",
+      7,
+      0.23333333333333334
+    ]
+  ],
+  "block_outer_frequency": {
+    "B01": 1,
+    "B02": 0.7666666666666667,
+    "B03": 0,
+    "B04": 0.3,
+    "B05": 0.16666666666666666,
+    "B06": 0.13333333333333333
+  },
+  "stopping_rule": {
+    "status": "NO_STABLE_FIXED_SUBSET",
+    "unique_exact_subsets": 30,
+    "max_exact_recurrence": 1,
+    "development_subset_recurrence": 0
+  },
+  "validation_errors": []
+}
