@@ -1,0 +1,184 @@
+{
+  "experiment": "ALL0MEAN_GRIP31_LONGITUDINAL_ONLY",
+  "production_workflow_run_id": 37596130022,
+  "production_workflow_conclusion": "success",
+  "final_artifact_name": "longitudinal-grip31-final-results",
+  "final_artifact_id": 11471792849,
+  "order_pairs": [
+    [
+      "PBS^0",
+      "PBS^16"
+    ],
+    [
+      "LPS^0",
+      "LPS^16"
+    ],
+    [
+      "run^0",
+      "run^16"
+    ],
+    [
+      "MCC^0",
+      "MCC^16"
+    ],
+    [
+      "PBS^16",
+      "PBS^24"
+    ],
+    [
+      "LPS^16",
+      "LPS^24"
+    ]
+  ],
+  "base_model": {
+    "features": 31,
+    "beta": 1,
+    "lambda2": 0.1,
+    "C": 0.1,
+    "rho": 0.1,
+    "epsilon": 0.001,
+    "solver_status": "optimal",
+    "living_eNRI_min": 0.835629765722335,
+    "living_eNRI_max": 1.186980616778731,
+    "slack_sum": 3.7675126795012856e-10,
+    "baseline_pooled_mouse_mean_eNRI": 1.0000000000000002
+  },
+  "group_means": {
+    "PBS^0": 0.9988821182031338,
+    "PBS^16": 0.7956857884968855,
+    "PBS^24": 0.6956857892112858,
+    "LPS^0": 0.9957828682589371,
+    "LPS^16": 0.8223485066040908,
+    "LPS^24": 0.7223485051872124,
+    "run^0": 0.9995172505633744,
+    "run^16": 0.8092653702193197,
+    "run^24": 0.7793687722049615,
+    "MCC^0": 1.0056126989778424,
+    "MCC^16": 0.8095835333267901,
+    "MCC^24": 0.7710432062237029
+  },
+  "development": {
+    "lambda1_star": 0.03,
+    "full_sparse_active_count": 13,
+    "stability_core": [
+      "Absolute_turn_angle_OFT"
+    ],
+    "stability_candidates": [
+      "Latency_to_first_investigation_Stakan_zone_NOR2",
+      "rear_support",
+      "Weight",
+      "Latency_to_first_investigation_Piramidka_NOR1"
+    ],
+    "grip_pi_selection": 0.165,
+    "grip_sign_consistency": 0.7878787878787878,
+    "selected_k": 8,
+    "selected_features": [
+      "Average_speed_NOR1",
+      "OFT_distance",
+      "Absolute_turn_angle_OFT",
+      "Time_investigating_Piramidka_NOR1",
+      "Latency_to_first_investigation_Stakan_zone_NOR2",
+      "rear_support",
+      "Weight",
+      "Latency_to_first_investigation_Piramidka_NOR1"
+    ]
+  },
+  "nested_validation": {
+    "outer_splits": 30,
+    "inner_splits": 20,
+    "stability_resamples": 100,
+    "k_min": 3,
+    "k_q25": 5,
+    "k_median": 7,
+    "k_mean": 8,
+    "k_q75": 11,
+    "k_max": 15,
+    "top_feature_frequency": [
+      [
+        "Absolute_turn_angle_OFT",
+        25,
+        0.8333333333333334
+      ],
+      [
+        "Average_speed_NOR1",
+        23,
+        0.7666666666666667
+      ],
+      [
+        "OFT_distance",
+        22,
+        0.7333333333333333
+      ],
+      [
+        "Time_investigating_Piramidka_NOR1",
+        21,
+        0.7
+      ],
+      [
+        "Latency_to_first_investigation_Stakan_zone_NOR2",
+        19,
+        0.6333333333333333
+      ],
+      [
+        "Weight",
+        15,
+        0.5
+      ],
+      [
+        "Grip",
+        7,
+        0.23333333333333334
+      ]
+    ],
+    "outer_metrics": {
+      "V_pos": {
+        "mean": 0,
+        "median": 0,
+        "q10": 0,
+        "q90": 0
+      },
+      "V_sign": {
+        "mean": 0.25,
+        "median": 0.16666666666666666,
+        "q10": 0,
+        "q90": 0.5
+      },
+      "V_margin": {
+        "mean": 0.1086572735444618,
+        "median": 0.06631206738469453,
+        "q10": 0.03579346248171709,
+        "q90": 0.14383861369226794
+      },
+      "V_eq": {
+        "mean": 0.2545852319864647,
+        "median": 0.15331834227110316,
+        "q10": 0.0386584461234687,
+        "q90": 0.38106836616707856
+      },
+      "V_var": {
+        "mean": 0.09934595814737159,
+        "median": 0.004226364757058926,
+        "q10": 0.0003564863306463617,
+        "q90": 0.06550963175632235
+      },
+      "V_w": {
+        "mean": 0.06521062496931915,
+        "median": 0.05820317549431437,
+        "q10": 0.023693268211468683,
+        "q90": 0.12278819887068203
+      }
+    }
+  },
+  "stopping_rule": {
+    "status": "NO_STABLE_FIXED_SUBSET",
+    "unique_exact_subsets": 30,
+    "max_exact_subset_recurrence_count": 1,
+    "development_subset_exact_recurrence_count": 0,
+    "final_subset_fixed": false
+  },
+  "audit": {
+    "stage9_checks_passed": "25/25",
+    "validation_errors": 0,
+    "note": "Historical Stage-A beta metadata was cosmetic only; new experiment source now synchronizes it with the selected base beta=1.0."
+  }
+}
