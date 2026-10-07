@@ -1,0 +1,209 @@
+name: Longitudinal-only GRIP31 eNRI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection_all0mean_grip_longitudinal/longitudinal31.trigger'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: longitudinal-grip31-${{ github.sha }}
+  cancel-in-progress: false
+
+env:
+  ROOT: mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_feature_selection_all0mean_grip_longitudinal
+
+jobs:
+  development:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: mouse_neuroplasticity_enri/enri_mouse_neuroplasticity/requirements.txt
+      - name: Run independent base model and Stages 0-G
+        working-directory: ${{ env.ROOT }}
+        run: |
+          pip install -r ../enri_mouse_neuroplasticity/requirements.txt
+          rm -rf base_results
+          python run_longitudinal.py --stage 6
+          python run_longitudinal.py --stage 7
+          python run_longitudinal.py --stage 8
+          python run_longitudinal.py --stage 9
+          bash prepare_runtime.sh
+          python stage_0.py
+          python stage_a.py
+          python stage_b.py
+          python stage_c.py
+          python stage_d.py
+          python stage_e.py
+          python stage_f.py
+          python stage_g.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: longitudinal-grip31-development
+          path: |
+            ${{ env.ROOT }}/base_results
+            ${{ env.ROOT }}/stage_0
+            ${{ env.ROOT }}/stage_a
+            ${{ env.ROOT }}/stage_b
+            ${{ env.ROOT }}/stage_c
+            ${{ env.ROOT }}/stage_d
+            ${{ env.ROOT }}/stage_e
+            ${{ env.ROOT }}/stage_f
+            ${{ env.ROOT }}/stage_g
+          if-no-files-found: error
+          retention-days: 30
+
+  prepare:
+    needs: development
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: mouse_neuroplasticity_enri/enri_mouse_neuroplasticity/requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          name: longitudinal-grip31-development
+          path: ${{ env.ROOT }}
+      - name: Prepare runtime and restore development outputs
+        working-directory: ${{ env.ROOT }}
+        run: |
+          pip install -r ../enri_mouse_neuroplasticity/requirements.txt
+          bash prepare_runtime.sh
+      - uses: actions/download-artifact@v4
+        with:
+          name: longitudinal-grip31-development
+          path: ${{ env.ROOT }}
+      - name: Prepare fixed outer manifest
+        working-directory: ${{ env.ROOT }}
+        run: |
+          python stage_h_prepare.py \
+            --outer-target 30 \
+            --output stage_h_manifest/outer_manifest.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: longitudinal-grip31-stage-h-manifest
+          path: ${{ env.ROOT }}/stage_h_manifest/outer_manifest.json
+          if-no-files-found: error
+          retention-days: 30
+
+  outer:
+    needs: [development, prepare]
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        outer_index: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: mouse_neuroplasticity_enri/enri_mouse_neuroplasticity/requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          name: longitudinal-grip31-development
+          path: ${{ env.ROOT }}
+      - name: Install and prepare exact source
+        working-directory: ${{ env.ROOT }}
+        run: |
+          pip install -r ../enri_mouse_neuroplasticity/requirements.txt
+          bash prepare_runtime.sh
+      - uses: actions/download-artifact@v4
+        with:
+          name: longitudinal-grip31-development
+          path: ${{ env.ROOT }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: longitudinal-grip31-stage-h-manifest
+          path: ${{ env.ROOT }}/stage_h_manifest
+      - name: Run fixed outer worker
+        working-directory: ${{ env.ROOT }}
+        run: |
+          python stage_h_worker.py \
+            --outer-index ${{ matrix.outer_index }} \
+            --manifest stage_h_manifest/outer_manifest.json \
+            --output-dir stage_h_worker_output
+      - uses: actions/upload-artifact@v4
+        with:
+          name: longitudinal-grip31-stage-h-outer-${{ matrix.outer_index }}
+          path: ${{ env.ROOT }}/stage_h_worker_output/outer_*.json
+          if-no-files-found: error
+          retention-days: 30
+
+  aggregate:
+    needs: [development, outer]
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: mouse_neuroplasticity_enri/enri_mouse_neuroplasticity/requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          name: longitudinal-grip31-development
+          path: ${{ env.ROOT }}
+      - name: Install and prepare exact source
+        working-directory: ${{ env.ROOT }}
+        run: |
+          pip install -r ../enri_mouse_neuroplasticity/requirements.txt
+          bash prepare_runtime.sh
+      - uses: actions/download-artifact@v4
+        with:
+          name: longitudinal-grip31-development
+          path: ${{ env.ROOT }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: longitudinal-grip31-stage-h-manifest
+          path: ${{ env.ROOT }}/stage_h_manifest
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: longitudinal-grip31-stage-h-outer-*
+          path: ${{ env.ROOT }}/stage_h_worker_results
+          merge-multiple: true
+      - name: Aggregate production Stage H
+        working-directory: ${{ env.ROOT }}
+        run: |
+          python stage_h_aggregate.py \
+            --manifest stage_h_manifest/outer_manifest.json \
+            --input-dir stage_h_worker_results \
+            --output-dir stage_h_production \
+            --expected-outer 30
+          python stage_k.py
+          python summarize_results.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: longitudinal-grip31-final-results
+          path: |
+            ${{ env.ROOT }}/base_results
+            ${{ env.ROOT }}/stage_0
+            ${{ env.ROOT }}/stage_a
+            ${{ env.ROOT }}/stage_b
+            ${{ env.ROOT }}/stage_c
+            ${{ env.ROOT }}/stage_d
+            ${{ env.ROOT }}/stage_e
+            ${{ env.ROOT }}/stage_f
+            ${{ env.ROOT }}/stage_g
+            ${{ env.ROOT }}/stage_h_production
+            ${{ env.ROOT }}/stage_k
+            ${{ env.ROOT }}/EXPERIMENT_SUMMARY.json
+          if-no-files-found: error
+          retention-days: 30
