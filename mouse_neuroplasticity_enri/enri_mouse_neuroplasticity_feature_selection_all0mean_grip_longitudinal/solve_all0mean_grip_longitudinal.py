@@ -65,6 +65,25 @@ _new = '''    expected_O = {
 if _old not in _src:
     raise RuntimeError("Historical solve_qp_smoke order-pair guard not found")
 _src = _src.replace(_old, _new)
+
+_old_norm = '''    # PBS^0 normalization should be exactly one up to floating-point noise.
+    pbs0_normalization_error = abs(group_means["PBS^0"] - 1.0)
+'''
+_new_norm = '''    # Pooled week-0 normalization should be exactly one.
+    total_n0 = sum(int(states[f"{g}^0"]["N"]) for g in STATE_GROUPS)
+    pooled0_mean = sum(
+        int(states[f"{g}^0"]["N"]) * group_means[f"{g}^0"]
+        for g in STATE_GROUPS
+    ) / float(total_n0)
+    pbs0_normalization_error = abs(pooled0_mean - 1.0)
+'''
+if _old_norm not in _src:
+    raise RuntimeError("Historical solve_qp_smoke normalization patch target not found")
+_src = _src.replace(_old_norm, _new_norm)
+_src = _src.replace(
+    'f"PBS^0 normalization error {pbs0_normalization_error} > {QP_TOLERANCE}."',
+    'f"Pooled week-0 normalization error {pbs0_normalization_error} > {QP_TOLERANCE}."',
+)
 exec(_src, _base.__dict__)
 _parent.solve_qp_smoke = _base.solve_qp_smoke
 
