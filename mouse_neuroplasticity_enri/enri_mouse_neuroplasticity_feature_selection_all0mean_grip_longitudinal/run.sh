@@ -26,9 +26,25 @@ python stage_f.py
 python stage_g.py
 
 echo "=== Production nested validation: 30 outer x 20 inner x 100 stability ==="
-python stage_h.py
-rm -rf stage_h_production
-cp -a stage_h stage_h_production
+rm -rf stage_h_manifest stage_h_worker_output stage_h_production
+python stage_h_prepare.py \
+  --outer-target 30 \
+  --output stage_h_manifest/outer_manifest.json
+
+seq 0 29 | xargs -P 6 -I{} bash -c '
+  set -euo pipefail
+  echo "STAGE_H_WORKER outer={}"
+  python stage_h_worker.py \
+    --outer-index {} \
+    --manifest stage_h_manifest/outer_manifest.json \
+    --output-dir stage_h_worker_output
+'
+
+python stage_h_aggregate.py \
+  --manifest stage_h_manifest/outer_manifest.json \
+  --input-dir stage_h_worker_output \
+  --output-dir stage_h_production \
+  --expected-outer 30
 
 echo "=== Pre-specified Stage K stopping rule ==="
 python stage_k.py
