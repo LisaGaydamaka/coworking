@@ -1,0 +1,129 @@
+{
+  "end_survivors": 42,
+  "survivor_ids": [
+    "1.1",
+    "1.4",
+    "1.5",
+    "2.1",
+    "3.1",
+    "3.3",
+    "3.4",
+    "4.1",
+    "4.4",
+    "6.3",
+    "8.2",
+    "8.3",
+    "8.4",
+    "9.2",
+    "9.3",
+    "10.3",
+    "11.1",
+    "12.1",
+    "12.2",
+    "12.3",
+    "12.4",
+    "12.5",
+    "16.1",
+    "16.2",
+    "16.3",
+    "17.1",
+    "17.2",
+    "17.4",
+    "18.1",
+    "18.2",
+    "19.1",
+    "19.2",
+    "19.3",
+    "19.4",
+    "20.1",
+    "20.4",
+    "20.5",
+    "21.1",
+    "21.2",
+    "21.3",
+    "21.4",
+    "21.5"
+  ],
+  "survivors_by_group": {
+    "PBS": 8,
+    "LPS": 11,
+    "run": 12,
+    "MCC": 11
+  },
+  "features": 31,
+  "results": [
+    {
+      "group": "PBS",
+      "week": 0,
+      "n": 8,
+      "pc1_percent": 43.04781247464115
+    },
+    {
+      "group": "PBS",
+      "week": 16,
+      "n": 8,
+      "pc1_percent": 43.87516084791312
+    },
+    {
+      "group": "PBS",
+      "week": 24,
+      "n": 6,
+      "pc1_percent": 62.47822692810105
+    },
+    {
+      "group": "LPS",
+      "week": 0,
+      "n": 11,
+      "pc1_percent": 40.99042857183217
+    },
+    {
+      "group": "LPS",
+      "week": 16,
+      "n": 11,
+      "pc1_percent": 45.638386578070005
+    },
+    {
+      "group": "LPS",
+      "week": 24,
+      "n": 11,
+      "pc1_percent": 55.45808210235778
+    },
+    {
+      "group": "run",
+      "week": 0,
+      "n": 12,
+      "pc1_percent": 36.053510569013305
+    },
+    {
+      "group": "run",
+      "week": 16,
+      "n": 12,
+      "pc1_percent": 40.29731542650626
+    },
+    {
+      "group": "run",
+      "week": 24,
+      "n": 11,
+      "pc1_percent": 48.62552583468038
+    },
+    {
+      "group": "MCC",
+      "week": 0,
+      "n": 11,
+      "pc1_percent": 50.74422980673893
+    },
+    {
+      "group": "MCC",
+      "week": 16,
+      "n": 8,
+      "pc1_percent": 61.90767478709114
+    },
+    {
+      "group": "MCC",
+      "week": 24,
+      "n": 10,
+      "pc1_percent": 47.964137831523374
+    }
+  ],
+  "note": "Survivor IDs were defined from living week-24 rows in the pre-exclusion matrix; the seven previously excluded states were not restored."
+}
