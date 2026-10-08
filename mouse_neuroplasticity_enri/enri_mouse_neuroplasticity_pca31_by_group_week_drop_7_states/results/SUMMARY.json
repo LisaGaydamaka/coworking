@@ -1,0 +1,104 @@
+{
+  "experiment": "PCA31_BY_GROUP_WEEK_DROP_7_STATES",
+  "source_matrix": "cleaned 31-feature matrix after 7 state exclusions",
+  "features": 31,
+  "preprocessing": "no additional scaling; sklearn PCA centers within each group-week subset",
+  "results": [
+    {
+      "group": "PBS",
+      "week": 0,
+      "n": 11,
+      "pc1_explained_variance_ratio": 0.3967419579906756,
+      "pc1_percent": 39.674195799067554,
+      "rank_max": 10
+    },
+    {
+      "group": "PBS",
+      "week": 16,
+      "n": 9,
+      "pc1_explained_variance_ratio": 0.4561552561362328,
+      "pc1_percent": 45.615525613623284,
+      "rank_max": 8
+    },
+    {
+      "group": "PBS",
+      "week": 24,
+      "n": 6,
+      "pc1_explained_variance_ratio": 0.6247822692810105,
+      "pc1_percent": 62.47822692810105,
+      "rank_max": 5
+    },
+    {
+      "group": "LPS",
+      "week": 0,
+      "n": 14,
+      "pc1_explained_variance_ratio": 0.38367008940553116,
+      "pc1_percent": 38.36700894055311,
+      "rank_max": 13
+    },
+    {
+      "group": "LPS",
+      "week": 16,
+      "n": 12,
+      "pc1_explained_variance_ratio": 0.44578146919208445,
+      "pc1_percent": 44.57814691920844,
+      "rank_max": 11
+    },
+    {
+      "group": "LPS",
+      "week": 24,
+      "n": 11,
+      "pc1_explained_variance_ratio": 0.5545808210235778,
+      "pc1_percent": 55.45808210235778,
+      "rank_max": 10
+    },
+    {
+      "group": "run",
+      "week": 0,
+      "n": 15,
+      "pc1_explained_variance_ratio": 0.3437088179642982,
+      "pc1_percent": 34.37088179642982,
+      "rank_max": 14
+    },
+    {
+      "group": "run",
+      "week": 16,
+      "n": 12,
+      "pc1_explained_variance_ratio": 0.4029731542650626,
+      "pc1_percent": 40.29731542650626,
+      "rank_max": 11
+    },
+    {
+      "group": "run",
+      "week": 24,
+      "n": 11,
+      "pc1_explained_variance_ratio": 0.48625525834680383,
+      "pc1_percent": 48.62552583468038,
+      "rank_max": 10
+    },
+    {
+      "group": "MCC",
+      "week": 0,
+      "n": 14,
+      "pc1_explained_variance_ratio": 0.5495305823468982,
+      "pc1_percent": 54.95305823468982,
+      "rank_max": 13
+    },
+    {
+      "group": "MCC",
+      "week": 16,
+      "n": 8,
+      "pc1_explained_variance_ratio": 0.6190767478709114,
+      "pc1_percent": 61.90767478709114,
+      "rank_max": 7
+    },
+    {
+      "group": "MCC",
+      "week": 24,
+      "n": 10,
+      "pc1_explained_variance_ratio": 0.47964137831523374,
+      "pc1_percent": 47.964137831523374,
+      "rank_max": 9
+    }
+  ]
+}
