@@ -198,7 +198,7 @@ def compare_31_to_28(models,features):
         pd.DataFrame(S,index=[f"old_D{i+1}" for i in range(k)],
                      columns=[f"new_D{i+1}" for i in range(k)]).to_csv(OUT/f"k{k}_old31_to_new28_cosines.csv")
         rr,cc=linear_sum_assignment(-np.abs(S))
-        old_scores=pd.read_csv(OLD/f"k{k}_factor_scores_all_weeks.csv")
+        old_scores=pd.read_csv(OLD/f"k{k}_factor_scores_all_weeks.csv",dtype={"mouse_id":str})
         joined=old_scores.merge(models[k]["score"],on=META,suffixes=("_old31","_new28"),validate="one_to_one")
         for i,j in zip(rr,cc):
             maps.append({"model_k":k,"old_domain":f"D{i+1}","new_domain":f"D{j+1}",
