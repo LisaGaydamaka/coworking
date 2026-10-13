@@ -54,6 +54,17 @@ def reduced_eigens(R):
 def ordinary_eigens(R):
     return np.linalg.eigvalsh(R)[::-1]
 
+def leading_positive_count(observed,threshold):
+    # Common-factor reduced matrices have negative eigenvalues in the tail;
+    # counting isolated negative-eigenvalue threshold exceedances is invalid.
+    keep=0
+    for eig,q in zip(observed,threshold):
+        if eig>0 and eig>q:
+            keep+=1
+        else:
+            break
+    return keep
+
 def parallel_analysis(frame,nrep,rng,tag):
     n,p=frame.shape
     ro=spearman_R(frame)
@@ -77,14 +88,17 @@ def parallel_analysis(frame,nrep,rng,tag):
     for key,v in sims.items():
         threshold=np.quantile(v,.95,axis=0)
         tab[key+"_q95"]=threshold
-        if "common" in key:
-            ok=obs_common>threshold
-        else:
-            ok=obs_standard>threshold
+        e=obs_common if "common" in key else obs_standard
+        raw_ok=e>threshold
+        count=leading_positive_count(e,threshold)
+        ok=np.arange(p)<count
         tab[key+"_pass"]=ok
-        tab[key+"_margin"]=(obs_common if "common" in key else obs_standard)-threshold
-        details[key]={"count_total_pass":int(ok.sum()),
-                      "first_nonpassing_position":int(np.where(~ok)[0][0]+1) if not np.all(ok) else None}
+        tab[key+"_raw_pass_before_positive_sequence_filter"]=raw_ok
+        tab[key+"_margin"]=e-threshold
+        details[key]={"retained_leading_positive_factors":int(count),
+                      "raw_all_positions_threshold_crossings":int(raw_ok.sum()),
+                      "first_nonpassing_position":count+1 if count<p else None,
+                      "note":"Only consecutive positive eigenvalues starting at component 1 count; negative tail passes ignored."}
     tab.to_csv(OUT/(tag+"_parallel_analysis.csv"),index=False)
     return ro,tab,details
 
@@ -230,8 +244,11 @@ def paired_bootstrap_stability(base,thresholds,rng):
     accepted=[]
     for _ in range(NBOOT_SELECTION):
         idx=rng.integers(0,n,size=n)
-        E=ordinary_eigens(spearman_R(base.iloc[idx].reset_index(drop=True)))
-        accepted.append([int(np.sum(E>q)) for q in thresholds])
+        rb=spearman_R(base.iloc[idx].reset_index(drop=True))
+        e_ordinary=ordinary_eigens(rb)
+        e_common=reduced_eigens(rb)
+        accepted.append([leading_positive_count(e_ordinary,thresholds[0]),
+                         leading_positive_count(e_common,thresholds[1])])
     return accepted
 
 def main():
@@ -402,7 +419,7 @@ def main():
                 "repeats":NBOOT_SELECTION,
                 "standard_factor_count_frequencies":selection_df.standard_n_pass.value_counts().sort_index().to_dict(),
                 "common_factor_count_frequencies":selection_df.common_n_pass.value_counts().sort_index().to_dict(),
-                "warning":"fixed original q95 thresholds reused for bootstrap samples; descriptive only"}},
+                "warning":"fixed original q95 thresholds reused for bootstrap samples; descriptive only. Only contiguous leading positive eigenvalue exceedances are counted."}},
         "efa":{"model":"MINRES oblimin",
                "models":{tag:{f"k{k}":{key:value for key,value in model.items() if key not in ("L","P","ld")}
                                 for k,model in results.items()}
