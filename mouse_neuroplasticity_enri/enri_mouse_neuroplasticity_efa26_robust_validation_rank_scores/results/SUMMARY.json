@@ -1,0 +1,491 @@
+{
+  "experiment": "EFA26_SPEARMAN_RANK_SCORE_ROBUSTNESS",
+  "data": {
+    "clean_living_rows": 133,
+    "full_living_rows": 140,
+    "baseline_n": 54,
+    "observed_only_baseline_n": 52,
+    "week_counts_clean": {
+      "0": 54,
+      "16": 41,
+      "24": 38
+    },
+    "week_counts_full": {
+      "0": 54,
+      "16": 44,
+      "24": 42
+    },
+    "seven_excluded_states_all_postbaseline": true
+  },
+  "features": {
+    "initial": 31,
+    "previous": 28,
+    "current": 26,
+    "removed_from_31": [
+      "Learning_T1sum",
+      "Learning_T2sum",
+      "Learning_T3sum",
+      "Average_speed_NOR1",
+      "Average_speed_NOR2"
+    ],
+    "redundancy_audit": [
+      {
+        "a": "Total_distance_travelled_NOR1",
+        "b": "Average_speed_NOR1",
+        "spearman_baseline": 0.9982450102838129,
+        "removed_in_26": true
+      },
+      {
+        "a": "Total_distance_travelled_NOR2",
+        "b": "Average_speed_NOR2",
+        "spearman_baseline": 0.9977867702562141,
+        "removed_in_26": true
+      },
+      {
+        "a": "OFT_distance",
+        "b": "Average_speed_OFT",
+        "spearman_baseline": 0.9385722629669259,
+        "removed_in_26": false
+      },
+      {
+        "a": "Learning_T2mean",
+        "b": "Learning_T2max",
+        "spearman_baseline": 0.9384342268525393,
+        "removed_in_26": false
+      },
+      {
+        "a": "Learning_T3mean",
+        "b": "Learning_T3max",
+        "spearman_baseline": 0.9568945274855222,
+        "removed_in_26": false
+      }
+    ]
+  },
+  "parallel_analysis": {
+    "method": "Spearman; 1000 baseline column-permutation nulls preserving ties, plus 1000 Gaussian nulls; SMC diagonal reduction for common-factor PA",
+    "main_26": {
+      "perm_standard": {
+        "count_total_pass": 3,
+        "first_nonpassing_position": 4
+      },
+      "perm_common": {
+        "count_total_pass": 11,
+        "first_nonpassing_position": 5
+      },
+      "normal_standard": {
+        "count_total_pass": 3,
+        "first_nonpassing_position": 4
+      },
+      "normal_common": {
+        "count_total_pass": 11,
+        "first_nonpassing_position": 5
+      }
+    },
+    "observed_only_52": {
+      "perm_standard": {
+        "count_total_pass": 3,
+        "first_nonpassing_position": 4
+      },
+      "perm_common": {
+        "count_total_pass": 11,
+        "first_nonpassing_position": 5
+      },
+      "normal_standard": {
+        "count_total_pass": 3,
+        "first_nonpassing_position": 4
+      },
+      "normal_common": {
+        "count_total_pass": 11,
+        "first_nonpassing_position": 5
+      }
+    },
+    "first_eight": [
+      {
+        "component": 1,
+        "old28_eigen": 9.291264393635434,
+        "old28_normal_q95": 2.93116904659474,
+        "new26_eigen": 7.966719994312006,
+        "new26_normal_q95": 2.8218901623383985,
+        "new26_permutation_q95": 2.8458099992007124,
+        "new26_common_reduced_eigen": 7.798031259619595,
+        "new26_common_permutation_q95": 2.377138815288994,
+        "observed52_eigen": 7.715601544415858,
+        "observed52_permutation_q95": 2.907090348021494
+      },
+      {
+        "component": 2,
+        "old28_eigen": 4.64519636917702,
+        "old28_normal_q95": 2.5436733330369528,
+        "new26_eigen": 4.611843850536012,
+        "new26_normal_q95": 2.459641407905878,
+        "new26_permutation_q95": 2.477576542467821,
+        "new26_common_reduced_eigen": 4.480860611467035,
+        "new26_common_permutation_q95": 1.9895270953191542,
+        "observed52_eigen": 4.77976186433605,
+        "observed52_permutation_q95": 2.4899456572041676
+      },
+      {
+        "component": 3,
+        "old28_eigen": 2.5501685716497056,
+        "old28_normal_q95": 2.3008172801514,
+        "new26_eigen": 2.4795800946221176,
+        "new26_normal_q95": 2.221289073707204,
+        "new26_permutation_q95": 2.2260404169130648,
+        "new26_common_reduced_eigen": 2.286865077795325,
+        "new26_common_permutation_q95": 1.7373160081244146,
+        "observed52_eigen": 2.491042328141672,
+        "observed52_permutation_q95": 2.263633285600652
+      },
+      {
+        "component": 4,
+        "old28_eigen": 2.023895604139088,
+        "old28_normal_q95": 2.1143020557419643,
+        "new26_eigen": 1.900355659518744,
+        "new26_normal_q95": 2.0348879327624676,
+        "new26_permutation_q95": 2.0255967667992185,
+        "new26_common_reduced_eigen": 1.6417091250719738,
+        "new26_common_permutation_q95": 1.5337343806073307,
+        "observed52_eigen": 1.9536211197343398,
+        "observed52_permutation_q95": 2.0409704608389854
+      },
+      {
+        "component": 5,
+        "old28_eigen": 1.440710809330935,
+        "old28_normal_q95": 1.9311111413638935,
+        "new26_eigen": 1.420457051590743,
+        "new26_normal_q95": 1.8604219777103264,
+        "new26_permutation_q95": 1.8578441470498255,
+        "new26_common_reduced_eigen": 1.0662590242827845,
+        "new26_common_permutation_q95": 1.3655342333160623,
+        "observed52_eigen": 1.3577991946933432,
+        "observed52_permutation_q95": 1.882011297551335
+      },
+      {
+        "component": 6,
+        "old28_eigen": 1.1277634160704748,
+        "old28_normal_q95": 1.79434350104511,
+        "new26_eigen": 1.1225253298227698,
+        "new26_normal_q95": 1.7188789232532617,
+        "new26_permutation_q95": 1.7095504836986017,
+        "new26_common_reduced_eigen": 0.8229509473399561,
+        "new26_common_permutation_q95": 1.2169680443994368,
+        "observed52_eigen": 1.121999814010465,
+        "observed52_permutation_q95": 1.726712017384645
+      },
+      {
+        "component": 7,
+        "old28_eigen": 0.9763616774636914,
+        "old28_normal_q95": 1.658167482790606,
+        "new26_eigen": 0.9646045645759999,
+        "new26_normal_q95": 1.5853349557403607,
+        "new26_permutation_q95": 1.5877396613563584,
+        "new26_common_reduced_eigen": 0.634991452667083,
+        "new26_common_permutation_q95": 1.0760251846813909,
+        "observed52_eigen": 0.9862857813414112,
+        "observed52_permutation_q95": 1.6015516145594377
+      },
+      {
+        "component": 8,
+        "old28_eigen": 0.8954322157397225,
+        "old28_normal_q95": 1.53017716679281,
+        "new26_eigen": 0.805028373055643,
+        "new26_normal_q95": 1.4610765219532962,
+        "new26_permutation_q95": 1.4651418148780286,
+        "new26_common_reduced_eigen": 0.5627478234883776,
+        "new26_common_permutation_q95": 0.9614294848680305,
+        "observed52_eigen": 0.7860478657653491,
+        "observed52_permutation_q95": 1.46799555132373
+      }
+    ],
+    "bootstrap_threshold_stability_descriptive": {
+      "repeats": 200,
+      "standard_factor_count_frequencies": {
+        "2": 9,
+        "3": 104,
+        "4": 83,
+        "5": 4
+      },
+      "common_factor_count_frequencies": {
+        "13": 10,
+        "14": 19,
+        "15": 55,
+        "16": 48,
+        "17": 45,
+        "18": 16,
+        "19": 5,
+        "20": 2
+      },
+      "warning": "fixed original q95 thresholds reused for bootstrap samples; descriptive only"
+    }
+  },
+  "efa": {
+    "model": "MINRES oblimin",
+    "models": {
+      "main26": {
+        "k3": {
+          "metrics": {
+            "rmse": 0.07634280815468084,
+            "mean_absolute_error": 0.05489700634549088,
+            "n_pairs_abs_error_gt_0_2": 6,
+            "max_absolute_offdiagonal_error": 0.3039979086107175,
+            "smc_factor_communalities_min": 0.04531464333125622,
+            "smc_factor_communalities_max": 0.9361722615193944
+          },
+          "bootstrap_valid": 500,
+          "bootstrap_failed": 0,
+          "factors": [
+            {
+              "factor": "D1",
+              "median_bootstrap_congruence": 0.9587601580075185,
+              "q10_bootstrap_congruence": 0.903823912624762,
+              "q90_bootstrap_congruence": 0.9789130011130378,
+              "assigned_features": [
+                "OFT_distance",
+                "Average_speed_OFT",
+                "Total_time_mobile_OFT",
+                "Absolute_turn_angle_OFT",
+                "rear_support",
+                "rear_nosupport"
+              ]
+            },
+            {
+              "factor": "D2",
+              "median_bootstrap_congruence": 0.9690835012932215,
+              "q10_bootstrap_congruence": 0.934975634704597,
+              "q90_bootstrap_congruence": 0.9830157040484915,
+              "assigned_features": [
+                "Learning_T1mean",
+                "Learning_T1max",
+                "Learning_T2mean",
+                "Learning_T2max",
+                "Learning_T3mean",
+                "Learning_T3max",
+                "EnduranceT"
+              ]
+            },
+            {
+              "factor": "D3",
+              "median_bootstrap_congruence": 0.9217936596959977,
+              "q10_bootstrap_congruence": 0.7389692067600702,
+              "q90_bootstrap_congruence": 0.9658763107387061,
+              "assigned_features": [
+                "Total_distance_travelled_NOR1",
+                "Time_investigating_Piramidka_NOR1",
+                "Time_investigating_Stakan_NOR1",
+                "Total_distance_travelled_NOR2",
+                "Time_investigating_Piramidka_zone_NOR2",
+                "Time_investigating_Stakan_zone_NOR2"
+              ]
+            }
+          ]
+        },
+        "k4": {
+          "metrics": {
+            "rmse": 0.054979971005918477,
+            "mean_absolute_error": 0.039968397988145506,
+            "n_pairs_abs_error_gt_0_2": 2,
+            "max_absolute_offdiagonal_error": 0.29595497706759727,
+            "smc_factor_communalities_min": 0.1538748818001618,
+            "smc_factor_communalities_max": 0.9330127757461952
+          },
+          "bootstrap_valid": 500,
+          "bootstrap_failed": 0,
+          "factors": [
+            {
+              "factor": "D1",
+              "median_bootstrap_congruence": 0.9683926833649247,
+              "q10_bootstrap_congruence": 0.94091700610243,
+              "q90_bootstrap_congruence": 0.9823257188517261,
+              "assigned_features": [
+                "OFT_distance",
+                "Average_speed_OFT",
+                "Total_time_mobile_OFT",
+                "Absolute_turn_angle_OFT",
+                "rear_support",
+                "rear_nosupport"
+              ]
+            },
+            {
+              "factor": "D2",
+              "median_bootstrap_congruence": 0.9634388582351883,
+              "q10_bootstrap_congruence": 0.9253460070894409,
+              "q90_bootstrap_congruence": 0.9812401616796526,
+              "assigned_features": [
+                "Learning_T1max",
+                "Learning_T2mean",
+                "Learning_T2max",
+                "Learning_T3mean",
+                "Learning_T3max",
+                "EnduranceT"
+              ]
+            },
+            {
+              "factor": "D3",
+              "median_bootstrap_congruence": 0.9246059511789759,
+              "q10_bootstrap_congruence": 0.798315545415197,
+              "q90_bootstrap_congruence": 0.9645192254088437,
+              "assigned_features": [
+                "Total_distance_travelled_NOR1",
+                "Time_investigating_Piramidka_NOR1",
+                "Time_investigating_Stakan_NOR1"
+              ]
+            },
+            {
+              "factor": "D4",
+              "median_bootstrap_congruence": 0.8383474158713186,
+              "q10_bootstrap_congruence": 0.5396545273491208,
+              "q90_bootstrap_congruence": 0.9337710534446239,
+              "assigned_features": [
+                "Total_distance_travelled_NOR2",
+                "Time_investigating_Piramidka_zone_NOR2",
+                "Time_investigating_Stakan_zone_NOR2",
+                "Latency_to_first_investigation_Stakan_zone_NOR2",
+                "Learning_T1mean"
+              ]
+            }
+          ]
+        }
+      },
+      "observed52": {
+        "k3": {
+          "metrics": {
+            "rmse": 0.0773422188227598,
+            "mean_absolute_error": 0.05571029438904956,
+            "n_pairs_abs_error_gt_0_2": 6,
+            "max_absolute_offdiagonal_error": 0.27403187529696105,
+            "smc_factor_communalities_min": 0.03833016956740531,
+            "smc_factor_communalities_max": 0.9347991694460837
+          },
+          "bootstrap_valid": 250,
+          "bootstrap_failed": 0,
+          "factors": [
+            {
+              "factor": "D1",
+              "median_bootstrap_congruence": 0.9540593431868045,
+              "q10_bootstrap_congruence": 0.8820925359562589,
+              "q90_bootstrap_congruence": 0.9776743786276395,
+              "assigned_features": [
+                "OFT_distance",
+                "Average_speed_OFT",
+                "Total_time_mobile_OFT",
+                "Absolute_turn_angle_OFT",
+                "rear_support",
+                "rear_nosupport"
+              ]
+            },
+            {
+              "factor": "D2",
+              "median_bootstrap_congruence": 0.9667180199242552,
+              "q10_bootstrap_congruence": 0.9332814730086986,
+              "q90_bootstrap_congruence": 0.983415635864064,
+              "assigned_features": [
+                "Learning_T1mean",
+                "Learning_T1max",
+                "Learning_T2mean",
+                "Learning_T2max",
+                "Learning_T3mean",
+                "Learning_T3max",
+                "EnduranceT"
+              ]
+            },
+            {
+              "factor": "D3",
+              "median_bootstrap_congruence": 0.9285624800261334,
+              "q10_bootstrap_congruence": 0.6755263836406351,
+              "q90_bootstrap_congruence": 0.9670442314153451,
+              "assigned_features": [
+                "Total_distance_travelled_NOR1",
+                "Time_investigating_Piramidka_NOR1",
+                "Time_investigating_Stakan_NOR1",
+                "Total_distance_travelled_NOR2",
+                "Time_investigating_Piramidka_zone_NOR2",
+                "Time_investigating_Stakan_zone_NOR2"
+              ]
+            }
+          ]
+        },
+        "k4": {
+          "metrics": {
+            "rmse": 0.05426230798935534,
+            "mean_absolute_error": 0.03987982871714193,
+            "n_pairs_abs_error_gt_0_2": 2,
+            "max_absolute_offdiagonal_error": 0.24532999551574491,
+            "smc_factor_communalities_min": 0.14170689133087938,
+            "smc_factor_communalities_max": 0.9313779055396316
+          },
+          "bootstrap_valid": 250,
+          "bootstrap_failed": 0,
+          "factors": [
+            {
+              "factor": "D1",
+              "median_bootstrap_congruence": 0.9683947184152861,
+              "q10_bootstrap_congruence": 0.9426486428408571,
+              "q90_bootstrap_congruence": 0.9818654010152137,
+              "assigned_features": [
+                "OFT_distance",
+                "Average_speed_OFT",
+                "Total_time_mobile_OFT",
+                "Absolute_turn_angle_OFT",
+                "rear_support",
+                "rear_nosupport"
+              ]
+            },
+            {
+              "factor": "D2",
+              "median_bootstrap_congruence": 0.9652048882287745,
+              "q10_bootstrap_congruence": 0.9325889256733217,
+              "q90_bootstrap_congruence": 0.9820376355412418,
+              "assigned_features": [
+                "Learning_T1mean",
+                "Learning_T1max",
+                "Learning_T2mean",
+                "Learning_T2max",
+                "Learning_T3mean",
+                "Learning_T3max",
+                "EnduranceT"
+              ]
+            },
+            {
+              "factor": "D3",
+              "median_bootstrap_congruence": 0.9175344065993718,
+              "q10_bootstrap_congruence": 0.8054040321781208,
+              "q90_bootstrap_congruence": 0.9636091370212172,
+              "assigned_features": [
+                "Total_distance_travelled_NOR1",
+                "Time_investigating_Piramidka_NOR1",
+                "Time_investigating_Stakan_NOR1",
+                "Latency_to_first_investigation_Stakan_NOR1"
+              ]
+            },
+            {
+              "factor": "D4",
+              "median_bootstrap_congruence": 0.8386903258575844,
+              "q10_bootstrap_congruence": 0.586207074419028,
+              "q90_bootstrap_congruence": 0.9302742537901829,
+              "assigned_features": [
+                "Total_distance_travelled_NOR2",
+                "Time_investigating_Piramidka_zone_NOR2",
+                "Time_investigating_Stakan_zone_NOR2",
+                "Latency_to_first_investigation_Stakan_zone_NOR2"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "score_projection": {
+    "method": "Frozen baseline midrank / baseline midrank SD of 26 variables; regression W=pinv(Spearman R)@pattern loadings@factor correlations; baseline-standardized factor scores",
+    "clean_states": 133,
+    "full_states": 140,
+    "outlier_reintroduction": "sensitivity only, not corrections to raw values",
+    "caveat": "Rank method limits leverage from extreme later values but still includes their rank"
+  },
+  "limitations": [
+    "No original raw Excel instrument readings were corrected or independently validated.",
+    "Preprocessing fitted baseline scaling and imputation using all surviving weeks; strict prospective isolation requires rerunning preprocessing train-only.",
+    "All models and effects are descriptive; no mixed-effects inferential tests performed.",
+    "The baseline 54 (or observed-only 52) is small compared with 26 features.",
+    "Four-factor fitting flexibility does not by itself establish four real latent constructs."
+  ]
+}

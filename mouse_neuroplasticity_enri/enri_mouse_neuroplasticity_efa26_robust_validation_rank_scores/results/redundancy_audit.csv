@@ -1,0 +1,6 @@
+a,b,spearman_baseline,removed_in_26
+Total_distance_travelled_NOR1,Average_speed_NOR1,0.9982450102838129,True
+Total_distance_travelled_NOR2,Average_speed_NOR2,0.9977867702562141,True
+OFT_distance,Average_speed_OFT,0.9385722629669259,False
+Learning_T2mean,Learning_T2max,0.9384342268525393,False
+Learning_T3mean,Learning_T3max,0.9568945274855222,False
