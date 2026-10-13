@@ -1,0 +1,8 @@
+mouse_id,group,week,feature,original_excel_column,excel_cell,raw_excel_value,same_week_alive_n_nonmissing,same_week_alive_median,same_week_alive_mad,distance_from_median_in_MAD,above_10_MAD,source_already_flagged_reviewed_accepted
+8.2,MCC,16,Average_speed_NOR1,Average speed _NOR1_16,BF19,48.0,44,0.019,0.006500000000000001,7381.692307692308,True,True
+8.3,MCC,16,Average_speed_NOR1,Average speed _NOR1_16,BF20,6.0,44,0.019,0.006500000000000001,920.1538461538461,True,True
+8.4,MCC,16,Average_speed_NOR1,Average speed _NOR1_16,BF21,135.0,44,0.019,0.006500000000000001,20766.30769230769,True,True
+9.2,MCC,24,OFT_distance,OFT_distance_24,AG23,937.0,42,9.8615,4.586,202.167139119058,True,True
+16.1,PBS,24,OFT_distance,OFT_distance_24,AG34,291.0,42,9.8615,4.586,61.30364151766245,True,True
+17.1,PBS,24,OFT_distance,OFT_distance_24,AG37,875.0,42,9.8615,4.586,188.6477322285216,True,True
+21.4,run,24,OFT_distance,OFT_distance_24,AG57,455.0,42,9.8615,4.586,97.06465329262974,True,True

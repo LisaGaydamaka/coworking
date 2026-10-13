@@ -65,38 +65,54 @@
     "method": "Spearman; 1000 baseline column-permutation nulls preserving ties, plus 1000 Gaussian nulls; SMC diagonal reduction for common-factor PA",
     "main_26": {
       "perm_standard": {
-        "count_total_pass": 3,
-        "first_nonpassing_position": 4
+        "retained_leading_positive_factors": 3,
+        "raw_all_positions_threshold_crossings": 3,
+        "first_nonpassing_position": 4,
+        "note": "Only consecutive positive eigenvalues starting at component 1 count; negative tail passes ignored."
       },
       "perm_common": {
-        "count_total_pass": 11,
-        "first_nonpassing_position": 5
+        "retained_leading_positive_factors": 4,
+        "raw_all_positions_threshold_crossings": 11,
+        "first_nonpassing_position": 5,
+        "note": "Only consecutive positive eigenvalues starting at component 1 count; negative tail passes ignored."
       },
       "normal_standard": {
-        "count_total_pass": 3,
-        "first_nonpassing_position": 4
+        "retained_leading_positive_factors": 3,
+        "raw_all_positions_threshold_crossings": 3,
+        "first_nonpassing_position": 4,
+        "note": "Only consecutive positive eigenvalues starting at component 1 count; negative tail passes ignored."
       },
       "normal_common": {
-        "count_total_pass": 11,
-        "first_nonpassing_position": 5
+        "retained_leading_positive_factors": 4,
+        "raw_all_positions_threshold_crossings": 11,
+        "first_nonpassing_position": 5,
+        "note": "Only consecutive positive eigenvalues starting at component 1 count; negative tail passes ignored."
       }
     },
     "observed_only_52": {
       "perm_standard": {
-        "count_total_pass": 3,
-        "first_nonpassing_position": 4
+        "retained_leading_positive_factors": 3,
+        "raw_all_positions_threshold_crossings": 3,
+        "first_nonpassing_position": 4,
+        "note": "Only consecutive positive eigenvalues starting at component 1 count; negative tail passes ignored."
       },
       "perm_common": {
-        "count_total_pass": 11,
-        "first_nonpassing_position": 5
+        "retained_leading_positive_factors": 4,
+        "raw_all_positions_threshold_crossings": 11,
+        "first_nonpassing_position": 5,
+        "note": "Only consecutive positive eigenvalues starting at component 1 count; negative tail passes ignored."
       },
       "normal_standard": {
-        "count_total_pass": 3,
-        "first_nonpassing_position": 4
+        "retained_leading_positive_factors": 3,
+        "raw_all_positions_threshold_crossings": 3,
+        "first_nonpassing_position": 4,
+        "note": "Only consecutive positive eigenvalues starting at component 1 count; negative tail passes ignored."
       },
       "normal_common": {
-        "count_total_pass": 11,
-        "first_nonpassing_position": 5
+        "retained_leading_positive_factors": 4,
+        "raw_all_positions_threshold_crossings": 11,
+        "first_nonpassing_position": 5,
+        "note": "Only consecutive positive eigenvalues starting at component 1 count; negative tail passes ignored."
       }
     },
     "first_eight": [
@@ -201,21 +217,19 @@
       "repeats": 200,
       "standard_factor_count_frequencies": {
         "2": 9,
-        "3": 104,
-        "4": 83,
+        "3": 105,
+        "4": 82,
         "5": 4
       },
       "common_factor_count_frequencies": {
-        "13": 10,
-        "14": 19,
-        "15": 55,
-        "16": 48,
-        "17": 45,
-        "18": 16,
-        "19": 5,
-        "20": 2
+        "3": 13,
+        "4": 85,
+        "5": 84,
+        "6": 15,
+        "7": 2,
+        "8": 1
       },
-      "warning": "fixed original q95 thresholds reused for bootstrap samples; descriptive only"
+      "warning": "fixed original q95 thresholds reused for bootstrap samples; descriptive only. Only contiguous leading positive eigenvalue exceedances are counted."
     }
   },
   "efa": {
