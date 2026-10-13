@@ -1,0 +1,4 @@
+pair,baseline_exact_duplicate,all_week_different_rows,max_absolute_difference_all_weeks
+Learning_T1mean / Learning_T1sum,True,0,0.0
+Learning_T2mean / Learning_T2sum,True,1,1.9803151318211936
+Learning_T3mean / Learning_T3sum,True,2,1.0717552067135807
