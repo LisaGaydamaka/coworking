@@ -55,7 +55,7 @@
       "baseline_n": 54,
       "living_n": 133,
       "death_n": 22,
-      "score_consistency_max_abs_error": 4.440892098500626e-16
+      "score_consistency_max_abs_error": 1.673266014634578e-08
     },
     {
       "scheme": "clean133",
@@ -64,7 +64,7 @@
       "baseline_n": 54,
       "living_n": 133,
       "death_n": 22,
-      "score_consistency_max_abs_error": 4.440892098500626e-16
+      "score_consistency_max_abs_error": 3.1355833485235962e-09
     },
     {
       "scheme": "full140",
@@ -73,7 +73,7 @@
       "baseline_n": 54,
       "living_n": 140,
       "death_n": 22,
-      "score_consistency_max_abs_error": 4.440892098500626e-16
+      "score_consistency_max_abs_error": 7.835478266216e-09
     },
     {
       "scheme": "full140",
@@ -82,7 +82,7 @@
       "baseline_n": 54,
       "living_n": 140,
       "death_n": 22,
-      "score_consistency_max_abs_error": 6.661338147750939e-16
+      "score_consistency_max_abs_error": 7.161992776616444e-09
     }
   ],
   "fullfit_living_deviation_from_one": [
