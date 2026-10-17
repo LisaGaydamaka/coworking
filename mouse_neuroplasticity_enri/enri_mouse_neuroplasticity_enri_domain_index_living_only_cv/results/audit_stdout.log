@@ -1,0 +1,116 @@
+{
+  "null_control": [
+    {
+      "scheme": "clean133",
+      "V_pos": 0.0,
+      "V_sign": 0.0,
+      "V_margin": 0.09999999999999999,
+      "V_eq": 0.0,
+      "V_var_group_means": 0.0
+    },
+    {
+      "scheme": "full140",
+      "V_pos": 0.0,
+      "V_sign": 0.0,
+      "V_margin": 0.09999999999999999,
+      "V_eq": 0.0,
+      "V_var_group_means": 0.0
+    }
+  ],
+  "fullfit_quality": [
+    {
+      "scheme": "clean133",
+      "model": "raw31",
+      "living_n": 133,
+      "death_n_with_null_score": 22,
+      "living_mean": 0.9159763914367288,
+      "living_sd": 0.087955347228249,
+      "living_min": 0.7486119854715092,
+      "living_max": 1.1199378293517377,
+      "mean_abs_deviation_from_one": 0.10215447838390286
+    },
+    {
+      "scheme": "clean133",
+      "model": "domain3",
+      "living_n": 133,
+      "death_n_with_null_score": 22,
+      "living_mean": 0.9546469701809079,
+      "living_sd": 0.10947043716038034,
+      "living_min": 0.6772874379964011,
+      "living_max": 1.3486322183409651,
+      "mean_abs_deviation_from_one": 0.09759034850267817
+    },
+    {
+      "scheme": "clean133",
+      "model": "domain4",
+      "living_n": 133,
+      "death_n_with_null_score": 22,
+      "living_mean": 0.9322585705554227,
+      "living_sd": 0.12530981629495547,
+      "living_min": 0.6917024954116386,
+      "living_max": 1.2460095706070011,
+      "mean_abs_deviation_from_one": 0.11926234447827203
+    },
+    {
+      "scheme": "full140",
+      "model": "raw31",
+      "living_n": 140,
+      "death_n_with_null_score": 22,
+      "living_mean": 0.911810425392636,
+      "living_sd": 0.08822587236094787,
+      "living_min": 0.7097060548138119,
+      "living_max": 1.1087759523929428,
+      "mean_abs_deviation_from_one": 0.10461274863695949
+    },
+    {
+      "scheme": "full140",
+      "model": "domain3",
+      "living_n": 140,
+      "death_n_with_null_score": 22,
+      "living_mean": 0.9645663982016472,
+      "living_sd": 0.10245508887639324,
+      "living_min": 0.7383598441589369,
+      "living_max": 1.2773251844817497,
+      "mean_abs_deviation_from_one": 0.09109684491721354
+    },
+    {
+      "scheme": "full140",
+      "model": "domain4",
+      "living_n": 140,
+      "death_n_with_null_score": 22,
+      "living_mean": 0.9369614915745643,
+      "living_sd": 0.11780993216663484,
+      "living_min": 0.7005492941765089,
+      "living_max": 1.2139817732575966,
+      "mean_abs_deviation_from_one": 0.112444765378182
+    }
+  ],
+  "oof_correlations": [
+    {
+      "scheme": "clean133",
+      "model": "domain3",
+      "living_only_correlation_to_raw31": 0.5057363529701254,
+      "living_only_mae_to_raw31": 0.10045066868644223
+    },
+    {
+      "scheme": "clean133",
+      "model": "domain4",
+      "living_only_correlation_to_raw31": 0.532418095592083,
+      "living_only_mae_to_raw31": 0.09129619928489746
+    },
+    {
+      "scheme": "full140",
+      "model": "domain3",
+      "living_only_correlation_to_raw31": 0.41890525455671823,
+      "living_only_mae_to_raw31": 0.10851599437674761
+    },
+    {
+      "scheme": "full140",
+      "model": "domain4",
+      "living_only_correlation_to_raw31": 0.458865311659124,
+      "living_only_mae_to_raw31": 0.10120744296627612
+    }
+  ],
+  "all_postmortem_scores_null": true,
+  "interpretation": "Only living mouse-week values enter optimization, evaluation and group means. Mortality is a separate outcome."
+}
