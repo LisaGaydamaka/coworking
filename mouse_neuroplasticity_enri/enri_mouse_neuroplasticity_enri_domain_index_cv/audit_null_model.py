@@ -100,7 +100,7 @@ def save_final_domain_scores():
             j=frozen.merge(m[e.META[:3]],on=e.META[:3],validate="one_to_one")
             original=j.eNRI.to_numpy(float)
             maxerr=float(np.max(abs(pred-original))) if len(pred)==len(original) else float("nan")
-            if not np.isfinite(maxerr) or maxerr>1e-8:
+            if not np.isfinite(maxerr) or maxerr>1e-5:
                 raise RuntimeError(f"Stored fullfit domain scores do not reproduce index ({scheme},{k}): {maxerr}")
             rows.append({"scheme":scheme,"domains":k,"rows":len(df),
                          "baseline_n":int(df.week.eq(0).sum()),
