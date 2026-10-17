@@ -9,3 +9,5 @@ if [ ! -f results/paired_grouped_cv_metrics.csv ] || [ ! -f results/fullfit_metr
   python run_index_cv.py 2>&1 | tee results/run_stdout.log
 fi
 python audit_null_model.py 2>&1 | tee results/null_model_stdout.log
+
+python assemble_results.py
