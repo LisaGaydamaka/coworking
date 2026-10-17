@@ -1,0 +1,164 @@
+/home/runner/.local/lib/python3.12/site-packages/sklearn/impute/_iterative.py:825: ConvergenceWarning: [IterativeImputer] Early stopping criterion not reached.
+  warnings.warn(
+{
+  "null_survival_only_cv": [
+    {
+      "scheme": "clean133",
+      "V_pos": 0.0,
+      "V_sign": 0.0,
+      "V_margin": 0.0425925925925926,
+      "V_eq": 0.012604938271604936,
+      "V_var_group_means": 0.03425317994762439
+    },
+    {
+      "scheme": "full140",
+      "V_pos": 0.0,
+      "V_sign": 0.0,
+      "V_margin": 0.0425925925925926,
+      "V_eq": 0.011333333333333332,
+      "V_var_group_means": 0.029921670407781518
+    }
+  ],
+  "oof_live_only_versus_all_state_correlations": [
+    {
+      "scheme": "clean133",
+      "model": "domain3",
+      "living_only_pearson_vs_raw31": 0.32472949097286996,
+      "living_only_mae": 0.04613000150517692,
+      "all_states_pearson_vs_raw31": 0.9857178119597327
+    },
+    {
+      "scheme": "clean133",
+      "model": "domain4",
+      "living_only_pearson_vs_raw31": 0.3496169145940028,
+      "living_only_mae": 0.04661964110698604,
+      "all_states_pearson_vs_raw31": 0.9858345600058264
+    },
+    {
+      "scheme": "full140",
+      "model": "domain3",
+      "living_only_pearson_vs_raw31": 0.24233835395128794,
+      "living_only_mae": 0.04696897156868111,
+      "all_states_pearson_vs_raw31": 0.9839336967394073
+    },
+    {
+      "scheme": "full140",
+      "model": "domain4",
+      "living_only_pearson_vs_raw31": 0.3598826510823863,
+      "living_only_mae": 0.04742249677100034,
+      "all_states_pearson_vs_raw31": 0.9837137952702162
+    }
+  ],
+  "saved_individual_domain_scores": [
+    {
+      "scheme": "clean133",
+      "domains": 3,
+      "rows": 155,
+      "baseline_n": 54,
+      "living_n": 133,
+      "death_n": 22,
+      "score_consistency_max_abs_error": 4.440892098500626e-16
+    },
+    {
+      "scheme": "clean133",
+      "domains": 4,
+      "rows": 155,
+      "baseline_n": 54,
+      "living_n": 133,
+      "death_n": 22,
+      "score_consistency_max_abs_error": 4.440892098500626e-16
+    },
+    {
+      "scheme": "full140",
+      "domains": 3,
+      "rows": 162,
+      "baseline_n": 54,
+      "living_n": 140,
+      "death_n": 22,
+      "score_consistency_max_abs_error": 4.440892098500626e-16
+    },
+    {
+      "scheme": "full140",
+      "domains": 4,
+      "rows": 162,
+      "baseline_n": 54,
+      "living_n": 140,
+      "death_n": 22,
+      "score_consistency_max_abs_error": 6.661338147750939e-16
+    }
+  ],
+  "fullfit_living_deviation_from_one": [
+    {
+      "scheme": "clean133",
+      "model": "raw31",
+      "living_n": 133,
+      "death_n": 22,
+      "living_mean": 0.9843731480010038,
+      "living_sd": 0.02953027986565171,
+      "mean_living_abs_deviation_from_1": 0.02568252123491528,
+      "living_range": 0.17640350823653173,
+      "all_deaths_score_zero": true
+    },
+    {
+      "scheme": "clean133",
+      "model": "domain3",
+      "living_n": 133,
+      "death_n": 22,
+      "living_mean": 0.9886832569922834,
+      "living_sd": 0.027612792669011062,
+      "mean_living_abs_deviation_from_1": 0.024867018898780922,
+      "living_range": 0.15694246702076586,
+      "all_deaths_score_zero": true
+    },
+    {
+      "scheme": "clean133",
+      "model": "domain4",
+      "living_n": 133,
+      "death_n": 22,
+      "living_mean": 0.9911305463933153,
+      "living_sd": 0.026330741652033605,
+      "mean_living_abs_deviation_from_1": 0.022065617700875183,
+      "living_range": 0.16527657215692326,
+      "all_deaths_score_zero": true
+    },
+    {
+      "scheme": "full140",
+      "model": "raw31",
+      "living_n": 140,
+      "death_n": 22,
+      "living_mean": 0.9920261365050611,
+      "living_sd": 0.0223177010560764,
+      "mean_living_abs_deviation_from_1": 0.018169234853770547,
+      "living_range": 0.16777347917261864,
+      "all_deaths_score_zero": true
+    },
+    {
+      "scheme": "full140",
+      "model": "domain3",
+      "living_n": 140,
+      "death_n": 22,
+      "living_mean": 0.9910686343190812,
+      "living_sd": 0.026331030936995,
+      "mean_living_abs_deviation_from_1": 0.024003642827314663,
+      "living_range": 0.12203500536188239,
+      "all_deaths_score_zero": true
+    },
+    {
+      "scheme": "full140",
+      "model": "domain4",
+      "living_n": 140,
+      "death_n": 22,
+      "living_mean": 0.994516416894727,
+      "living_sd": 0.025020507099145422,
+      "mean_living_abs_deviation_from_1": 0.020548140787856408,
+      "living_range": 0.1342618798851003,
+      "all_deaths_score_zero": true
+    }
+  ],
+  "interpretation": [
+    "The 1=alive/0=dead null needs no behavior predictors and can satisfy group monotonic trends because of death.",
+    "Correlations computed including death states can be close to one even when independent living behavior contributes weakly.",
+    "Comparing constrained train/out-of-fold sign metrics is not external neuroplasticity validation.",
+    "Domain scores for death remain undefined (NaN), whereas the eNRI assigns zero to death."
+  ]
+}
