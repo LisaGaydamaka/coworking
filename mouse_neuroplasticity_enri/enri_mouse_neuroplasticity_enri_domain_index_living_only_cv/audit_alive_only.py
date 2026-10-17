@@ -48,7 +48,12 @@ def main():
         n=155 if scheme=="clean133" else 162
         assert len(combined)==n and len(combined_domains)==n
         combined.to_csv(OUT/f"eNRI_all_models_{scheme}.csv",index=False)
+        living_only=combined[combined.status.isin(["observed","imputed"])].copy()
+        assert len(living_only)==(133 if scheme=="clean133" else 140)
+        living_only.to_csv(OUT/f"eNRI_living_only_{scheme}.csv",index=False)
         combined_domains.to_csv(OUT/f"domain_scores_all_models_{scheme}.csv",index=False)
+        domain_living=combined_domains[combined_domains.status.isin(["observed","imputed"])].copy()
+        domain_living.to_csv(OUT/f"domain_scores_living_only_{scheme}.csv",index=False)
         means=[]
         for (group,week),chunk in combined.groupby(["group","week"]):
             live=chunk[chunk.status.isin(["observed","imputed"])]
