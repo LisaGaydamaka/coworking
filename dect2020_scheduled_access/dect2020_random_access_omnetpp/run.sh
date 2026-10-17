@@ -5,9 +5,11 @@ IMAGE="${OMNETPP_IMAGE:-ghcr.io/omnetpp/omnetpp:u24.04-6.3.0}"
 mkdir -p results figures
 docker run --rm -e RUN_MODE="$(cat .run)" -v "$PWD:/work" -w /work "$IMAGE" bash -lc '
   set -euo pipefail
-  for f in /root/omnetpp/setenv /root/omnetpp-*/setenv /opt/omnetpp/setenv /opt/omnetpp-*/setenv; do
-    if [ -f "$f" ]; then source "$f"; break; fi
-  done
+  if ! command -v opp_makemake >/dev/null 2>&1; then
+    set +u
+    source /root/omnetpp/setenv
+    set -u
+  fi
   cd src
   opp_makemake -f -o ra
   make -j2
