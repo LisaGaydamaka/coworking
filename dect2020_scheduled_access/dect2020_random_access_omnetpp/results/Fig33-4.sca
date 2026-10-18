@@ -1,0 +1,52 @@
+version 3
+run Fig33-4-20261018-07:28:19-42
+attr configname Fig33
+attr datetime 20261018-07:28:19
+attr datetimef 20261018-072819
+attr experiment Fig33
+attr inifile omnetpp.ini
+attr iterationvars $interval=520
+attr iterationvarsd interval=520
+attr iterationvarsf interval=520-
+attr measurement $interval=520
+attr network RandomAccessNetwork
+attr processid 42
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 4
+attr seedset 4
+itervar interval 520
+config **.ra.clusters 2
+config **.ra.cwMin 5
+config **.ra.cwMax 9
+config **.ra.period 520
+config **.ra.duration 4000000
+config network RandomAccessNetwork
+config simtime-scale -6
+config sim-time-limit 10000000s
+config **.ra.clusters 1
+config **.ra.devices 2
+config **.ra.period 500
+config **.ra.cwMin 5
+config **.ra.cwMax 40
+config **.ra.duration 800000
+config **.vector-recording false
+config **.scalar-recording true
+config output-scalar-file results/Fig33-4.sca
+
+par RandomAccessNetwork.ra typename "\"RandomAccess\""
+par RandomAccessNetwork.ra clusters 2
+par RandomAccessNetwork.ra devices 2
+par RandomAccessNetwork.ra period 520
+par RandomAccessNetwork.ra cwMin 5
+par RandomAccessNetwork.ra cwMax 9
+par RandomAccessNetwork.ra duration 4000000
+scalar RandomAccessNetwork.ra delay_0 28.181723644872
+scalar RandomAccessNetwork.ra paoi_0 548.18200728029
+scalar RandomAccessNetwork.ra delivered_0 7693
+scalar RandomAccessNetwork.ra delay_1 134.98758531037
+scalar RandomAccessNetwork.ra paoi_1 654.9906390171
+scalar RandomAccessNetwork.ra delivered_1 15385
+par RandomAccessNetwork typename "\"RandomAccessNetwork\""
+
