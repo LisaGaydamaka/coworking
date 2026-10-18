@@ -1,0 +1,18 @@
+# Build products
+src/Makefile
+src/ra
+src/out/
+src/*.o
+src/*.d
+
+# Outputs from unfinished experiments
+results/
+figures/
+*.log
+*.csv
+
+# Local tooling
+__pycache__/
+.venv/
+.idea/
+.vscode/

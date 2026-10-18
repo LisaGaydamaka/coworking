@@ -1,23 +1,16 @@
 #!/usr/bin/env bash
 set -euo pipefail
 cd "$(dirname "$0")"
+
+# Starter entry point: compile the unfinished project, do not run experiments.
 IMAGE="${OMNETPP_IMAGE:-ghcr.io/omnetpp/omnetpp:u24.04-6.3.0}"
-mkdir -p results figures
-docker run --rm -e RUN_MODE="$(cat .run)" -v "$PWD:/work" -w /work "$IMAGE" bash -lc '
-  set -euo pipefail
+docker run --rm -v "$PWD:/work" -w /work "$IMAGE" bash -lc '
+  set -e
   if ! command -v opp_makemake >/dev/null 2>&1; then
-    set +u
     source /root/omnetpp/setenv
-    set -u
   fi
   cd src
   opp_makemake -f -o ra
   make -j2
-  cd ..
-  if [ "$RUN_MODE" = full ]; then CFGS="Fig31a Fig31b Fig32 Fig33"; else CFGS=Smoke; fi
-  for cfg in $CFGS; do src/ra -u Cmdenv -n src -f omnetpp.ini -c "$cfg"; done
-  if [ "$RUN_MODE" = full ]; then
-    python3 -c "import matplotlib" || (apt-get update -qq && apt-get install -y -qq python3-matplotlib)
-    python3 plot.py
-  fi
+  echo "Starter builds; TODO: add a smoke test, parameter sweeps and plots."
 '
