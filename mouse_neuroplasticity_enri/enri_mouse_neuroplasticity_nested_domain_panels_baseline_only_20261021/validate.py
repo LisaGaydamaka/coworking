@@ -71,7 +71,7 @@ def select(x,y,seed,maxn=5):
         chosen.append((ch[0],ridge(x[:,ch[0]],y[:,q]),len(winners)>0,ch[1],ch[2]))
         for nn,c in enumerate(curve,1):result.append((q,nn,c[1],c[2]))
     return chosen,result
-cv=RepeatedStratifiedKFold(5,n_repeats=2,random_state=S)
+cv=RepeatedStratifiedKFold(n_splits=5,n_repeats=2,random_state=S)
 res=[];scores=[];picked=[];curves=[]
 ids=meta.mouse_id.to_numpy();groups=meta.group.to_numpy()
 for fold,(tr,te) in enumerate(cv.split(ids,groups)):
