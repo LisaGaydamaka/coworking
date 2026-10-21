@@ -1,0 +1,86 @@
+{
+  "outer": [
+    {
+      "k": 3,
+      "domain": "D1",
+      "heldout_r": 0.8707188337855677,
+      "heldout_rmse": 0.5936675668376402,
+      "median_fold_r": 0.9381043488661633,
+      "median_n": 3.0,
+      "mean_n": 3.0,
+      "n_folds": 10,
+      "pass_fraction": 1.0
+    },
+    {
+      "k": 3,
+      "domain": "D2",
+      "heldout_r": 0.810074592210264,
+      "heldout_rmse": 0.6414031549481668,
+      "median_fold_r": 0.9159662848871284,
+      "median_n": 4.0,
+      "mean_n": 3.9,
+      "n_folds": 10,
+      "pass_fraction": 1.0
+    },
+    {
+      "k": 3,
+      "domain": "D3",
+      "heldout_r": 0.8673652601070413,
+      "heldout_rmse": 0.5583286838595616,
+      "median_fold_r": 0.93570166719919,
+      "median_n": 4.0,
+      "mean_n": 3.8,
+      "n_folds": 10,
+      "pass_fraction": 1.0
+    },
+    {
+      "k": 4,
+      "domain": "D1",
+      "heldout_r": 0.8933900228170012,
+      "heldout_rmse": 0.5307943331151063,
+      "median_fold_r": 0.9429236927571778,
+      "median_n": 3.0,
+      "mean_n": 3.3,
+      "n_folds": 10,
+      "pass_fraction": 1.0
+    },
+    {
+      "k": 4,
+      "domain": "D2",
+      "heldout_r": 0.9157935304868863,
+      "heldout_rmse": 0.45063757128938653,
+      "median_fold_r": 0.9544791216626202,
+      "median_n": 4.0,
+      "mean_n": 3.5,
+      "n_folds": 10,
+      "pass_fraction": 1.0
+    },
+    {
+      "k": 4,
+      "domain": "D3",
+      "heldout_r": 0.8524205101158859,
+      "heldout_rmse": 0.5942158694581805,
+      "median_fold_r": 0.8599167855964354,
+      "median_n": 4.0,
+      "mean_n": 3.9,
+      "n_folds": 10,
+      "pass_fraction": 1.0
+    },
+    {
+      "k": 4,
+      "domain": "D4",
+      "heldout_r": 0.43158589985393986,
+      "heldout_rmse": 1.1175040569148282,
+      "median_fold_r": 0.6395490680348684,
+      "median_n": 5.0,
+      "mean_n": 4.6,
+      "n_folds": 10,
+      "pass_fraction": 0.2
+    }
+  ],
+  "bootstrap_success": 149,
+  "bootstrap_failure": 1,
+  "n_mice": 54,
+  "n_features": 26,
+  "outer_fold_count": 10
+}
