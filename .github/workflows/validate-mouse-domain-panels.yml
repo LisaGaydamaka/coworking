@@ -1,0 +1,27 @@
+name: Validate mouse domain panels
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - name: Execute strict mouse-disjoint validation
+        working-directory: mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_nested_domain_panels_baseline_only_20261021
+        run: bash run.sh
+      - name: Save separate experiment outputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_nested_domain_panels_baseline_only_20261021/results"
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish nested baseline-only EFA panel validation"
+            git pull --rebase origin main
+            git push origin main
+          fi
