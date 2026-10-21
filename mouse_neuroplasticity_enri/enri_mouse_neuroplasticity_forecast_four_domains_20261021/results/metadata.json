@@ -1,0 +1,27 @@
+{
+  "data_path": "/home/runner/work/coworking/coworking/mouse_neuroplasticity_enri/enri_mouse_neuroplasticity_efa26_robust_validation_rank_scores/results/clean133_k4_rank_frozen_scores.csv",
+  "alpha": 1.0,
+  "transitions": [
+    {
+      "transition": "PBS_0_16",
+      "initial_states": 11,
+      "final_states": 9,
+      "paired_survivors": 9
+    },
+    {
+      "transition": "PBS_16_24",
+      "initial_states": 9,
+      "final_states": 6,
+      "paired_survivors": 6
+    },
+    {
+      "transition": "LPS_16_24",
+      "initial_states": 12,
+      "final_states": 11,
+      "paired_survivors": 11
+    }
+  ],
+  "models": 12,
+  "method": "Univariate per-domain Ridge, leave-one-mouse-out",
+  "caveat": "Domain scores extracted before CV, not full pipeline CV"
+}
