@@ -1,0 +1,3 @@
+# EFA Pearson / ordinary Z 2026-10-22
+
+Independent new blocks 1-4 with **same cleaned 133 mouse-states** and 26 nonredundant features. Baseline n=54; 2 visits with imputation. No forced domain count. Pearson ordinary and SMC-reduced permutation and Gaussian 1000-run parallel analysis; MINRES-oblimin solutions k2–k5, bootstrap k3/k4, factor-regression domain scores projected to week0/week16/week24 using frozen baseline mean and SD. Notes: upstream imputation uses later timepoints and 7 late outliers are excluded; no prospective validation implied. No longitudinal prediction or small-panel selection performed in this package.
