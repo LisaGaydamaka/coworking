@@ -1,0 +1,27 @@
+{
+  "n_total_states": 133,
+  "transitions": [
+    {
+      "transition": "PBS 0→16",
+      "n": 9
+    },
+    {
+      "transition": "PBS 16→24",
+      "n": 6
+    },
+    {
+      "transition": "LPS 16→24",
+      "n": 11
+    },
+    {
+      "transition": "PBS 0→24",
+      "n": 6
+    }
+  ],
+  "huber_beats_ridge": 3,
+  "huber_beats_bayesian": 3,
+  "huber_beats_both_simple_baselines": 2,
+  "huber_best_of_five": 1,
+  "reference_ridge_and_bayesian_all12_matched": true,
+  "n_tasks": 12
+}
