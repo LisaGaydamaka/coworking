@@ -300,7 +300,7 @@ def make_doc(df,m,p):
     para(doc,'Аугментация: к каждому обучающему исходному баллу добавляется N(0; 0,1²) на шкале SD тренировочных мышей. 20 отдельных обучений, их прогнозы усредняются. Исключённая мышь и её целевой балл не изменяются.',fontsize=8.4,color=GRAY,after=2)
     doc.add_page_break()
     heading(doc,'Точность прогноза · без шума против шума 10%')
-    para(doc,'12 задач, n=6–11. Leave-one-mouse-out. Ridge, Bayesian Ridge, Huber; MAE меньше = точнее. 10% SD шума, 40 повторов, без подбора уровня по отложенной мыши.',fontsize=8.8,color=GRAY,after=3)
+    para(doc,'12 задач, n=6–11. Leave-one-mouse-out. Ridge, Bayesian Ridge, Huber; MAE меньше = точнее. 10% SD шума, 20 повторов, без подбора уровня по отложенной мыши.',fontsize=8.8,color=GRAY,after=3)
     photo(doc,errors,9.55)
     para(doc,'Лучший способ · три регрессии с шумом/без него и два простых прогноза',True,10.3,INK,2)
     photo(doc,winners,9.80)
