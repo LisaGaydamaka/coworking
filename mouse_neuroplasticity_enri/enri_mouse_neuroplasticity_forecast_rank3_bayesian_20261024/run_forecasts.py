@@ -143,7 +143,7 @@ def spread(values,lower,upper,gap):
     return {it[0]:ys[i] for i,it in enumerate(items)}
 
 def trajectories(data,domain):
-    fig,axes=plt.subplots(1,2,figsize=(15.6,4.65),dpi=150,sharey=True)
+    fig,axes=plt.subplots(1,2,figsize=(15.6,3.90),dpi=150,sharey=True)
     allv=data[data.group.isin(["PBS","LPS"])][f"{domain}_score"]
     lo,hi=float(allv.min())-.5,float(allv.max())+.5
     for ax,grp in zip(axes,["PBS","LPS"]):
