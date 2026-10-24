@@ -1,0 +1,9 @@
+{
+  "num_tasks": 12,
+  "prediction_count": 96,
+  "plus_weight_better_ridge": 3,
+  "plus_weight_better_both_baselines": 3,
+  "plus_weight_best_of_four": 2,
+  "mean_mae_plain": 0.8174780944177078,
+  "mean_mae_plus_weight": 0.9778115070624214
+}
