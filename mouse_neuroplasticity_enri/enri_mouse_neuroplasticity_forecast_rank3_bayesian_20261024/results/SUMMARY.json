@@ -1,0 +1,26 @@
+{
+  "n_total_states": 133,
+  "transitions": [
+    {
+      "transition": "PBS 0→16",
+      "n": 9
+    },
+    {
+      "transition": "PBS 16→24",
+      "n": 6
+    },
+    {
+      "transition": "LPS 16→24",
+      "n": 11
+    },
+    {
+      "transition": "PBS 0→24",
+      "n": 6
+    }
+  ],
+  "bayes_beats_ridge": 6,
+  "bayes_beats_both_baselines": 1,
+  "bayes_best_of_four": 0,
+  "reference_ridge_all12_matched": true,
+  "n_tasks": 12
+}
