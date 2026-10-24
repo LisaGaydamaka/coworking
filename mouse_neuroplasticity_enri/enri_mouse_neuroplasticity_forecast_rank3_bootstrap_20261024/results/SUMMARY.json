@@ -1,0 +1,38 @@
+{
+  "n_tasks": 12,
+  "repetitions": 100,
+  "repeats_sensitivity": [
+    25,
+    50,
+    100
+  ],
+  "rng_seed": 20261024,
+  "bootstrap_beats_plain": {
+    "Ridge": 6,
+    "Bayesian Ridge": 5,
+    "Huber": 7
+  },
+  "bootstrap_best_of_eight": 2,
+  "mean_mae_by_algorithm": {
+    "Ridge": {
+      "plain": 0.8174780944177078,
+      "bootstrap100": 0.8119269616874399
+    },
+    "Bayesian Ridge": {
+      "plain": 0.829014212185805,
+      "bootstrap100": 0.850160706684007
+    },
+    "Huber": {
+      "plain": 0.868082451020275,
+      "bootstrap100": 0.8402187068807071
+    }
+  },
+  "mean_unique_per_bootstrap_draw": 4.63361531986532,
+  "transition_n": {
+    "PBS 0→16": 9,
+    "PBS 16→24": 6,
+    "LPS 16→24": 11,
+    "PBS 0→24": 6
+  },
+  "historical_ridge_verified": true
+}
