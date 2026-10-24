@@ -1,0 +1,24 @@
+{
+  "n_tasks": 12,
+  "noise_levels": [
+    0.05,
+    0.1,
+    0.2
+  ],
+  "primary_noise": 0.1,
+  "ensemble_repeats": 20,
+  "seed": 20261024,
+  "wins_vs_plain": {
+    "Ridge": 8,
+    "Bayesian Ridge": 6,
+    "Huber": 5
+  },
+  "best_of_eight_with_noise": 1,
+  "paired_sizes": {
+    "PBS 0→16": 9,
+    "PBS 16→24": 6,
+    "LPS 16→24": 11,
+    "PBS 0→24": 6
+  },
+  "historic_ridge_maes_reproduced": true
+}
