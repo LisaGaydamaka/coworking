@@ -65,7 +65,7 @@ def main():
                             "difference_mae_weight_minus_plain":mae["ridge_plus_weight"]-mae["ridge_domain"],
                             "better_than_plain":mae["ridge_plus_weight"]<mae["ridge_domain"],
                             "better_than_both_benchmarks":mae["ridge_plus_weight"]<min(mae["persistence"],mae["training_mean"]),
-                            "best_of_four":min(mae,key=mae.get).replace("ridge_plus_weight","ridge_domain_weight_pred").replace("ridge_domain","ridge_domain_pred").replace("persistence","persistence_pred").replace("training_mean","training_mean_pred")})
+                            "best_of_four":{"ridge_domain":"ridge_domain_pred","ridge_plus_weight":"ridge_domain_weight_pred","persistence":"persistence_pred","training_mean":"training_mean_pred"}[min(mae,key=mae.get)]})
             for i in range(len(y)):
                 predictions.append({"transition":transition,"group":group,"week_from":first,"week_to":last,
                                     "domain":domain,"mouse_id":paired.mouse_id.iloc[i],
