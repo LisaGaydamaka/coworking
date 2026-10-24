@@ -1,0 +1,24 @@
+{
+  "n_tasks": 12,
+  "per_interval_pairs": {
+    "PBS 0→16": 9,
+    "PBS 16→24": 6,
+    "LPS 16→24": 11,
+    "PBS 0→24": 6
+  },
+  "outcomes": {
+    "Bayesian Δ beats direct": 6,
+    "Huber Δ beats direct": 6,
+    "Bayesian Δ beats both simple": 2,
+    "Huber Δ beats both simple": 2,
+    "Bayesian Δ best of 8": 0,
+    "Huber Δ best of 8": 0,
+    "Either new method best of 8": 0,
+    "prior models verified": true
+  },
+  "caveats": [
+    "very small survivor-only samples",
+    "EFA fitted pre-CV, source imputation could use future visits",
+    "no external validation"
+  ]
+}
