@@ -1,0 +1,27 @@
+{
+  "model": "Ridge(alpha=1) direct vs same Ridge for delta target",
+  "n_tasks": 12,
+  "transitions": [
+    {
+      "transition": "PBS 0→16",
+      "n": 9
+    },
+    {
+      "transition": "PBS 16→24",
+      "n": 6
+    },
+    {
+      "transition": "LPS 16→24",
+      "n": 11
+    },
+    {
+      "transition": "PBS 0→24",
+      "n": 6
+    }
+  ],
+  "delta_beats_ridge": 4,
+  "delta_beats_both_baselines": 2,
+  "delta_best_of_four": 0,
+  "historic_ridge_all12_matched": true,
+  "notes": "Scoring EFA previously fit globally; not fully end-to-end cross-validation."
+}
