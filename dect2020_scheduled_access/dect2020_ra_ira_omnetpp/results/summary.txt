@@ -1,0 +1,35 @@
+Ira DECT-2020 RA: one cluster, 2 PTs, 1 FT, 3000 symbols, seed=1
+
+Cluster.ft
+  receivedDataAttempts: 130
+  droppedByCollision: 39
+  droppedWhileFTBusy: 0
+  deliveredUniquePackets: 57
+  meanEndToEndDelay: 433.45614035088
+  minEndToEndDelay: 22
+  maxEndToEndDelay: 1020
+  packetDeliveryRate: 0.019
+
+Cluster.medium
+  dataTransmissionAttempts: 130
+  busyLbtResponses: 70
+  collisionEvents: 36
+  collidedDataAttempts: 39
+  dataCollisionProbability: 0.3
+
+Cluster.pt[0]
+  generatedPackets: 39
+  dataTransmissionAttempts: 70
+  busyLbtResponses: 32
+  acknowledgedPackets: 33
+  dataRetransmissions: 36
+  queueLengthAtEnd: 6
+
+Cluster.pt[1]
+  generatedPackets: 27
+  dataTransmissionAttempts: 60
+  busyLbtResponses: 38
+  acknowledgedPackets: 24
+  dataRetransmissions: 35
+  queueLengthAtEnd: 3
+
