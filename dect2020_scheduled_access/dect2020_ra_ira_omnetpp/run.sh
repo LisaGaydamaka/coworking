@@ -14,9 +14,18 @@ docker run --rm -v "$PWD:/work" -w /work "$IMAGE" bash -lc '
   make -j2
   cd ..
   mkdir -p results
+  set +e
   ./src/ira_ra -u Cmdenv -n src -f src/omnetpp.ini \
     --cmdenv-express-mode=false --output-scalar-file=results/ira.sca \
     > results/console_full.log 2>&1
+  run_status=$?
+  set -e
+  if [ "$run_status" -ne 0 ]; then
+    echo "OMNeT++ exit code: $run_status"
+    echo "--- Last console lines ---"
+    tail -n 100 results/console_full.log
+    exit "$run_status"
+  fi
   python3 summarize.py results/ira.sca results/console_full.log
   echo "--- Simulation results ---"
   cat results/summary.txt
