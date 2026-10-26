@@ -13,6 +13,8 @@ This is a **separate contribution**, placed alongside (not inside) the previous
   Neither fix intentionally changes the model's protocol decisions.
 - `run.sh` builds and runs the supplied one-cluster configuration in OMNeT++ 6.3.
 - `summarize.py` extracts a concise metrics table and console trace into `results/`.
+- `EVALUATION.md` reviews the [successful GitHub Actions run](https://github.com/LisaGaydamaka/coworking/actions/runs/40361757670),
+  the two observed source bugs, numerical counters, and remaining gaps.
 
 ## Run
 
