@@ -6,9 +6,11 @@ This is a **separate contribution**, placed alongside (not inside) the previous
 ## Preservation and layout
 
 - `original/` contains the 10 files exactly as received in `DECT2020-RA.rar`.
-- `src/` contains a runnable copy. Its **only source-code change** is the
-  declaration order of `destination` in `Medium.cc` when finishing an ACK.
-  The original referred to the variable before declaring it, a C++ compile error.
+- `src/` contains a runnable copy with **two minimal safety fixes**:
+  `Medium.cc` now declares `destination` before using it (C++ compile error);
+  `FT.cc` logs packet information before deleting the packet (use-after-free
+  caused a segmentation fault on the first successful reception).
+  Neither fix intentionally changes the model's protocol decisions.
 - `run.sh` builds and runs the supplied one-cluster configuration in OMNeT++ 6.3.
 - `summarize.py` extracts a concise metrics table and console trace into `results/`.
 

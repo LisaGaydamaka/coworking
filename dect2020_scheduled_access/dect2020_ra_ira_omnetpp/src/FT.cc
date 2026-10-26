@@ -138,8 +138,8 @@ void FT::completeProcessing(DectPacket *packet)
     ack->setGenTime(packet->getGenTime());
     ack->setCollided(false);
     send(ack, "out");
-    delete packet;
     EV_INFO << "Обработка пакета #" << packet->getPktId()<< " завершена. Отправка ACK в PT[" << packet->getSrcId() << "]\n";
+    delete packet;
 
     // FT остаётся занятым на время передачи ACK — как в модели на Python.
     busyReleaseTimer = new cMessage("busyReleaseTimer");
