@@ -8,3 +8,4 @@ src/ira_ra
 src/out/
 results/console_full.log
 comparison/results/omnet/
+comparison20/results/omnet/
