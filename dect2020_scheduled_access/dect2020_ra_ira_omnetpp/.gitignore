@@ -1,4 +1,4 @@
-# OMNeT++ products; small validated smoke-test outputs are retained separately.
+# Generated build products and large raw logs
 src/Makefile
 src/*.o
 src/*.d
@@ -7,3 +7,4 @@ src/*_m.h
 src/ira_ra
 src/out/
 results/console_full.log
+comparison/results/omnet/
