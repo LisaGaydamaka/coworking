@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-cd "$(dirname "$0")/.."
+cd "$(dirname "$0")/../.."
 mkdir -p comparison20/horizon_study/results
 cd src
 opp_makemake -f -o ira_ra
