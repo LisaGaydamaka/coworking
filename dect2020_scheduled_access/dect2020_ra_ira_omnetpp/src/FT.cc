@@ -95,7 +95,8 @@ void FT::handleMessage(cMessage *msg)
         }
 
         // FT не мог принять передачу с самого её начала.
-        if (isBusy || deniedWhileBusy.erase(key) > 0) {
+        const bool deniedAtStart = deniedWhileBusy.erase(key) > 0;
+        if (isBusy || deniedAtStart) {
             ++droppedWhileBusy;
             EV_WARN << "Пакет от PT[" << packet->getSrcId() << "] отброшен: FT был занят.\n";
             delete packet;
