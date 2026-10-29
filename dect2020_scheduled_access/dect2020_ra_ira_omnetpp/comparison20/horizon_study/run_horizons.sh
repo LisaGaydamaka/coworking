@@ -6,10 +6,10 @@ cd src
 opp_makemake -f -o ira_ra
 make -j2
 cd ..
-for horizon in 10000 30000; do
+for horizon in 100000; do
   mkdir -p "comparison20/horizon_study/results/h${horizon}/omnet"
-  python3 comparison20/horizon_study/run_python.py --horizon "$horizon" --repetitions 5
-  for seed in $(seq 1 5); do
+  python3 comparison20/horizon_study/run_python.py --horizon "$horizon" --repetitions 3
+  for seed in $(seq 1 3); do
     for i in $(seq 0 8); do
       ./src/ira_ra -u Cmdenv -n src -f src/omnetpp.ini -c Compare20PT -r "$i" \
         --sim-time-limit="${horizon}s" --seed-set="$seed" --cmdenv-express-mode=true \
