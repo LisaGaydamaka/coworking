@@ -1,8 +1,8 @@
 version 3
-run SharedRandomParity-0-20261102-20:54:40-197
+run SharedRandomParity-0-20261102-20:58:29-197
 attr configname SharedRandomParity
-attr datetime 20261102-20:54:40
-attr datetimef 20261102-205440
+attr datetime 20261102-20:58:29
+attr datetimef 20261102-205829
 attr experiment SharedRandomParity
 attr inifile omnet_new/src/omnetpp.ini
 attr iterationvars ""
