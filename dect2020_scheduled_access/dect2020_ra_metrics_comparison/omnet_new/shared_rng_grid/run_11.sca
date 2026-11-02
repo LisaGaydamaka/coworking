@@ -1,8 +1,8 @@
 version 3
-run SharedRandomGrid-11-20261102-20:16:29-216
+run SharedRandomGrid-11-20261102-20:34:16-215
 attr configname SharedRandomGrid
-attr datetime 20261102-20:16:29
-attr datetimef 20261102-201629
+attr datetime 20261102-20:34:16
+attr datetimef 20261102-203416
 attr experiment SharedRandomGrid
 attr inifile omnet_new/src/omnetpp.ini
 attr iterationvars "$arrProb=0.02, $paritySeed=2"
@@ -10,7 +10,7 @@ attr iterationvarsd arrProb=0.02/paritySeed=2
 attr iterationvarsf arrProb=0.02,paritySeed=2-
 attr measurement "$arrProb=0.02, $paritySeed=2"
 attr network Cluster
-attr processid 216
+attr processid 215
 attr repetition 0
 attr replication #0
 attr resultdir results

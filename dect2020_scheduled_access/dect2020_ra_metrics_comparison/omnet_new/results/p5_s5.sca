@@ -1,8 +1,8 @@
 version 3
-run CompareWithPython-5-20261102-20:16:27-126
+run CompareWithPython-5-20261102-20:34:13-125
 attr configname CompareWithPython
-attr datetime 20261102-20:16:27
-attr datetimef 20261102-201627
+attr datetime 20261102-20:34:13
+attr datetimef 20261102-203413
 attr experiment CompareWithPython
 attr inifile omnet_new/src/omnetpp.ini
 attr iterationvars $arrProb=0.06
@@ -10,7 +10,7 @@ attr iterationvarsd arrProb=0.06
 attr iterationvarsf arrProb=0.06-
 attr measurement $arrProb=0.06
 attr network Cluster
-attr processid 126
+attr processid 125
 attr repetition 0
 attr replication #0
 attr resultdir results
