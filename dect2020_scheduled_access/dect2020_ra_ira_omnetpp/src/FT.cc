@@ -1,5 +1,6 @@
 #include <omnetpp.h>
 #include <set>
+#include <map>
 
 #include "DectPacket_m.h"
 #include "DectTypes.h"
@@ -17,15 +18,23 @@ class FT : public cSimpleModule
     DectPacket *processingPacket = nullptr;
     cMessage *busyReleaseTimer = nullptr;
 
-    std::set<uint64_t> activeReceives;   // ключи передач, стартовавших и не закончившихся
-    std::set<uint64_t> deniedWhileBusy;  // ключи, для которых FT был занят на MSG_DATA_START
+    // Python RootDevice.receive_start() reserves the FT immediately at DATA_START.
+    // A failed DATA still occupies the receiver until its processing interval ends.
+    struct RxState {
+        bool acceptedAtStart = false;
+        bool alreadyCollidedAtStart = false;
+    };
+    std::map<uint64_t, RxState> activeReceives;
     std::set<uint64_t> deliveredPacketKeys;
+    cMessage *failedProcessingTimer = nullptr;
 
     cStdDev endToEndDelayStats;
 
     long receivedAttempts = 0;
     long droppedByCollision = 0;
     long droppedWhileBusy = 0;
+    long rejectedAtStartWhileBusy = 0;
+    long pythonEquivalentDataCollisions = 0;
     long deliveredPackets = 0;
 
   protected:
@@ -61,6 +70,12 @@ void FT::handleMessage(cMessage *msg)
             completeProcessing(check_and_cast<DectPacket *>(msg));
             return;
         }
+        if (msg == failedProcessingTimer) {
+            failedProcessingTimer = nullptr;
+            isBusy = false;
+            delete msg;
+            return;
+        }
         delete msg;
         return;
     }
@@ -70,40 +85,62 @@ void FT::handleMessage(cMessage *msg)
     const uint64_t key = dectPacketKey(packet->getSrcId(), packet->getPktId());
 
     if (packet->getType() == MSG_DATA_START) {
-        // Начало передачи. Запоминаем, что она идёт; если FT уже занят
-        // (обрабатывает предыдущий пакет или передаёт ACK), помечаем
-        // «отказано с самого начала» — пакет потом будет отброшен.
-        activeReceives.insert(key);
-        if (isBusy)
-            deniedWhileBusy.insert(key);
+        // Python reserves the receiver when DATA starts, not at the end of reception.
+        // Even a collided accepted DATA will keep the FT busy for DATA + PROC.
+        const bool accepted = !isBusy;
+        activeReceives[key] = {accepted, packet->getCollided()};
+        if (accepted)
+            isBusy = true;
+        else
+            ++rejectedAtStartWhileBusy;
         delete packet;
         return;
     }
 
     if (packet->getType() == MSG_DATA_END) {
-        // Конец передачи. Проверяем, можно ли было её принять.
         ++receivedAttempts;
-        activeReceives.erase(key);
+        const auto found = activeReceives.find(key);
+        if (found == activeReceives.end())
+            throw cRuntimeError("DATA_END without DATA_START for PT[%d] packet %d",
+                                packet->getSrcId(), packet->getPktId());
+        const RxState rx = found->second;
+        activeReceives.erase(found);
 
-        // Коллизия — сразу отбрасываем.
+        // Equivalent to Python Operation.check(): a DATA is counted only if
+        // overlap changed its state from successful to failed. In Python the
+        // receiver-busy refusal may have already made the DATA unsuccessful.
+        //
+        // Case 1: FT was free at DATA_START -> any overlap is a collision.
+        // Case 2: FT was busy, but DATA already overlapped another radio signal
+        //         at its START -> Operation.check() ran before FT rejection.
+        // Case 3: FT was busy, initially no overlap, and another radio signal
+        //         started later -> NOT counted by Python's transition counter.
+        if (packet->getCollided() &&
+            (rx.acceptedAtStart || rx.alreadyCollidedAtStart))
+            ++pythonEquivalentDataCollisions;
+
         if (packet->getCollided()) {
-            ++droppedByCollision;
-            deniedWhileBusy.erase(key);
-            EV_WARN << "Пакет от PT[" << packet->getSrcId() << "] отброшен из-за КОЛЛИЗИИ.\n";
+            ++droppedByCollision;  // Raw radio overlaps, preserved separately.
+            EV_WARN << "DATA PT[" << packet->getSrcId() << "] radio overlap.\n";
             delete packet;
+            if (rx.acceptedAtStart) {
+                // Python RootDevice.receive_end() always schedules PROC, even
+                // for a reception that was corrupted during transmission.
+                if (failedProcessingTimer != nullptr)
+                    throw cRuntimeError("Concurrent processing after collided DATA");
+                failedProcessingTimer = new cMessage("failedProcEnd");
+                scheduleAt(simTime() + procTime, failedProcessingTimer);
+            }
             return;
         }
 
-        // FT не мог принять передачу с самого её начала.
-        const bool deniedAtStart = deniedWhileBusy.erase(key) > 0;
-        if (isBusy || deniedAtStart) {
+        if (!rx.acceptedAtStart) {
             ++droppedWhileBusy;
-            EV_WARN << "Пакет от PT[" << packet->getSrcId() << "] отброшен: FT был занят.\n";
+            EV_WARN << "DATA PT[" << packet->getSrcId() << "] FT was busy.\n";
             delete packet;
             return;
         }
 
-        // Успех: начинаем обработку.
         startProcessing(packet);
         return;
     }
@@ -151,10 +188,17 @@ void FT::finish()
 {
     if (processingPacket != nullptr) cancelAndDelete(processingPacket);
     if (busyReleaseTimer != nullptr) cancelAndDelete(busyReleaseTimer);
+    if (failedProcessingTimer != nullptr) cancelAndDelete(failedProcessingTimer);
 
     recordScalar("receivedDataAttempts",     receivedAttempts);
     recordScalar("droppedByCollision",       droppedByCollision);
     recordScalar("droppedWhileFTBusy",       droppedWhileBusy);
+    recordScalar("rejectedAtStartWhileBusy", rejectedAtStartWhileBusy);
+    recordScalar("pythonEquivalentDataCollisions", pythonEquivalentDataCollisions);
+    recordScalar("pythonEquivalentCollisionProbabilityCompleted",
+        receivedAttempts > 0
+            ? static_cast<double>(pythonEquivalentDataCollisions) / receivedAttempts
+            : 0.0);
     recordScalar("deliveredUniquePackets",   deliveredPackets);
     if (endToEndDelayStats.getCount() > 0) {
         recordScalar("meanEndToEndDelay", endToEndDelayStats.getMean());
