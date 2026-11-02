@@ -1,0 +1,5 @@
+# Build artifacts copied from the sibling OMNeT++ prototype.
+omnet_new/src/
+__pycache__/
+*.pyc
+# Keep omnet_new/results/*.sca for reproducible simulation output.
