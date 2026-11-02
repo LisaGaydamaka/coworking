@@ -112,15 +112,15 @@ fig,axes=plt.subplots(2,2,figsize=(14.8,10))
 for ax,key in zip(axes.flat,KEYS):
     graph(ax,key)
 fig.suptitle("DECT-2020 RA: Python и OMNeT++ | независимые генераторы",
-             weight="semibold",fontsize=17,y=.992)
-fig.text(.5,.963,"2 PT · 3000 символов · 9 нагрузок · 10 прогонов на точку · среднее ±1 SD",
+             weight="semibold",fontsize=16,y=.995)
+fig.text(.5,.949,"2 PT · 3000 символов · 9 нагрузок · 10 прогонов на точку · среднее ±1 SD",
          ha="center",color="#546474",fontsize=10)
 handles=[Line2D([0],[0],color=NAVY,marker="o",lw=2.2,label="Python"),
          Line2D([0],[0],color=ORANGE,marker="s",lw=2.2,label="OMNeT++")]
-fig.legend(handles=handles,loc="upper center",bbox_to_anchor=(.5,.945),
+fig.legend(handles=handles,loc="upper center",bbox_to_anchor=(.5,.922),
            ncol=2,frameon=False)
-fig.subplots_adjust(top=.878,bottom=.075,left=.085,right=.976,wspace=.28,hspace=.40)
-fig.text(.5,.025,"Ошибки рассчитаны по 9 средним точкам каждого графика; за базу взят Python.",
+fig.subplots_adjust(top=.854,bottom=.125,left=.085,right=.976,wspace=.28,hspace=.45)
+fig.text(.5,.035,"Ошибки рассчитаны по 9 средним точкам каждого графика; за базу взят Python.",
          ha="center",fontsize=10,color="#56677A")
 fig.savefig(OUT/"comparison_all_4.png",dpi=180,bbox_inches="tight")
 plt.close(fig)
