@@ -1,5 +1,5 @@
 """Re-run the corrected original Python simulator and compare the supplied OMNeT++ .sca runs.
-Extract inputs/DECT-2020.rar (all .sca files) to results/ before executing.
+Reads newly generated OMNeT++ scalar files from omnet_new/results/.
 Requires Python 3.10+, numpy and matplotlib, as the original simulator imports both.
 """
 import csv, importlib.util, io, contextlib, math, random, statistics
@@ -11,7 +11,7 @@ root=Path(__file__).resolve().parent
 probs=[k/100 for k in range(1,10)]
 seeds=range(1,11)
 T=3000
-keys=['collision','lbt_busy','attempts_per_delivered','delivery_rate','failed_data_fraction']
+keys=['collision','lbt_busy','attempts_per_delivered','delivery_rate','failed_data_fraction','radio_collision_fraction']
 
 spec=importlib.util.spec_from_file_location('dect',root/'4_random_access_final.py')
 sim=importlib.util.module_from_spec(spec)
@@ -47,19 +47,21 @@ for p in probs:
           delivery_rate=delivered/T,
           data_attempts=attempts,collided_data_attempts=len(collisions),
           busy_lbt=c.LBTall-c.LBTsucc,lbt_checks=c.LBTall,delivered_unique=delivered,
-          failed_data_fraction=(c.all-c.succ)/attempts if attempts else float('nan')))
+          failed_data_fraction=(c.all-c.succ)/attempts if attempts else float('nan'),
+          radio_collision_fraction=float('nan')))
 
-for path in sorted((root/'results').glob('*.sca')):
+for path in sorted((root/'omnet_new/results').glob('*.sca')):
     vals={}
     for line in path.read_text().splitlines():
         parts=line.split()
         if len(parts)>=3 and parts[0]=='itervar': vals[parts[1]]=parts[2]
         if len(parts)>=4 and parts[0]=='scalar': vals[parts[1]+'.'+parts[2]]=float(parts[3])
-    if not {'arrProb','seed'}<=vals.keys(): raise ValueError(f'Unknown run in {path}')
-    p=float(vals['arrProb']); seed=int(vals['seed'])
+    if 'arrProb' not in vals: raise ValueError(f'Unknown run in {path}')
+    p=float(vals['arrProb']); seed=int(vals.get('seed',path.stem.split('_s')[-1]))
     get=lambda name:vals['Cluster.'+name]
     attempts=get('medium.dataTransmissionAttempts')
-    collided=get('medium.collidedDataAttempts')
+    collided=get('ft.pythonEquivalentDataCollisions')
+    physical_collisions=get('medium.collidedDataAttempts')
     busy=get('medium.busyLbtResponses')
     delivered=get('ft.deliveredUniquePackets')
     rows.append(dict(model='OMNeT++',arrprob=p,seed=seed,
@@ -69,7 +71,9 @@ for path in sorted((root/'results').glob('*.sca')):
        delivery_rate=delivered/T,
        data_attempts=attempts,collided_data_attempts=collided,
        busy_lbt=busy,lbt_checks=busy+attempts,delivered_unique=delivered,
-       failed_data_fraction=(collided+get('ft.droppedWhileFTBusy'))/attempts if attempts else float('nan')))
+       radio_collision_fraction=physical_collisions/attempts if attempts else float('nan'),
+       receiver_busy_at_start=get('ft.rejectedAtStartWhileBusy'),
+       failed_data_fraction=(attempts-get('ft.receivedDataAttempts')+physical_collisions+get('ft.droppedWhileFTBusy'))/attempts if attempts else float('nan')))
 
 expected={(round(p,2),seed) for p in probs for seed in seeds}
 for model in ['Python','OMNeT++']:
