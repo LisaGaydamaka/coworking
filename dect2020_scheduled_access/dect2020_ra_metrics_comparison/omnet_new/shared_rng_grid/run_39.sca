@@ -1,8 +1,8 @@
 version 3
-run SharedRandomGrid-39-20261102-20:34:16-243
+run SharedRandomGrid-39-20261102-20:54:40-243
 attr configname SharedRandomGrid
-attr datetime 20261102-20:34:16
-attr datetimef 20261102-203416
+attr datetime 20261102-20:54:40
+attr datetimef 20261102-205440
 attr experiment SharedRandomGrid
 attr inifile omnet_new/src/omnetpp.ini
 attr iterationvars "$arrProb=0.04, $paritySeed=10"

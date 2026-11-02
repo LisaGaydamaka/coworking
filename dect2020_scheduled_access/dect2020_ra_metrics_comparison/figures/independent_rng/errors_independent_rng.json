@@ -1,0 +1,60 @@
+{
+  "run_design": "Independent default Python and OMNeT++ PRNGs",
+  "pt_count": 2,
+  "symbol_horizon": 3000,
+  "loads": [
+    0.01,
+    0.02,
+    0.03,
+    0.04,
+    0.05,
+    0.06,
+    0.07,
+    0.08,
+    0.09
+  ],
+  "replicates_per_load": 10,
+  "error_definition": "MAPE across 9 per-load sample means, Python reference",
+  "metrics": [
+    {
+      "metric": "collision",
+      "label": "Вероятность физической коллизии DATA",
+      "mape_percent": 5.110434868875305,
+      "mean_absolute_error": 0.015614697802828124,
+      "error_unit": "percentage points",
+      "error_at_0_05_percent": 1.9500825688924335,
+      "python_at_0_05": 0.3204235920299255,
+      "omnet_at_0_05": 0.32667211664472007
+    },
+    {
+      "metric": "lbt_busy",
+      "label": "Вероятность LBT busy",
+      "mape_percent": 4.406161726833802,
+      "mean_absolute_error": 0.01565051545234151,
+      "error_unit": "percentage points",
+      "error_at_0_05_percent": 1.5358903625561124,
+      "python_at_0_05": 0.361795245179373,
+      "omnet_at_0_05": 0.35623846687647676
+    },
+    {
+      "metric": "attempts_per_delivered",
+      "label": "Попытки DATA на доставленный пакет",
+      "mape_percent": 6.881138391110474,
+      "mean_absolute_error": 0.15973989563848429,
+      "error_unit": "attempts",
+      "error_at_0_05_percent": 4.767071389114663,
+      "python_at_0_05": 2.400202287612411,
+      "omnet_at_0_05": 2.514621644146058
+    },
+    {
+      "metric": "delivery_rate",
+      "label": "Интенсивность доставки",
+      "mape_percent": 4.872761591926622,
+      "mean_absolute_error": 0.0009592592592592592,
+      "error_unit": "packets/symbol",
+      "error_at_0_05_percent": 4.215851602023618,
+      "python_at_0_05": 0.01976666666666667,
+      "omnet_at_0_05": 0.018933333333333333
+    }
+  ]
+}
