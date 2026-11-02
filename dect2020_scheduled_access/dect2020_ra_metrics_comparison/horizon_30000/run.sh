@@ -7,7 +7,7 @@ mkdir -p src results figures
 docker run --rm -v "$ROOT:/project" -w /project/dect2020_ra_metrics_comparison/horizon_30000 "$IMAGE" bash -lc '
   set -euo pipefail
   if ! command -v opp_makemake >/dev/null 2>&1; then source /root/omnetpp/setenv; fi
-  cp ../dect2020_ra_ira_omnetpp/src/* src/
+  cp ../../dect2020_ra_ira_omnetpp/src/* src/
   cd src
   opp_makemake -f -o ra_30000
   make -j2
