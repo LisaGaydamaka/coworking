@@ -32,6 +32,12 @@ seen_by_data_check=set()
 boundary_contacts=set()
 check=sim.Operation.check
 receive_start=sim.RootDevice.receive_start
+generate_packet=sim.DevicePT.generate_packet
+generated_by_pt={}
+def track_generation(pt,ttime):
+    generated_by_pt[pt.id]=generated_by_pt.get(pt.id,0)+1
+    return generate_packet(pt,ttime)
+sim.DevicePT.generate_packet=track_generation
 def overlap(a,b):
     # Strict radio interval overlap, not merely sharing a boundary instant.
     return a.start_time < b.end_time and b.start_time < a.end_time
@@ -69,6 +75,7 @@ sim.RootDevice.receive_start=track_receiver
 rows=[]
 for p in probs:
     for seed in seeds:
+        generated_by_pt.clear()
         for observed in (physical,first_transition,data_data,data_ack,ft_busy_at_start,
                          seen_at_ack_start,seen_by_data_check,boundary_contacts):
             observed.clear()
@@ -89,6 +96,7 @@ for p in probs:
           lbt_busy=(c.LBTall-c.LBTsucc)/c.LBTall if c.LBTall else float('nan'),
           attempts_per_delivered=attempts/delivered if delivered else float('nan'),
           delivery_rate=delivered/T,
+          generated_packets=sum(generated_by_pt.values()),
           data_attempts=attempts,collided_data_attempts=len(physical),
           busy_lbt=c.LBTall-c.LBTsucc,lbt_checks=c.LBTall,delivered_unique=delivered,
           failed_data_fraction=(c.all-c.succ)/attempts if attempts else float('nan'),
@@ -119,6 +127,7 @@ for path in sorted((root/'omnet_new/results').glob('*.sca')):
        lbt_busy=busy/(busy+attempts) if busy+attempts else float('nan'),
        attempts_per_delivered=attempts/delivered if delivered else float('nan'),
        delivery_rate=delivered/T,
+       generated_packets=sum(get('pt[%d].generatedPackets'%i) for i in range(2)),
        data_attempts=attempts,collided_data_attempts=collided,
        busy_lbt=busy,lbt_checks=busy+attempts,delivered_unique=delivered,
        first_failure_collision=first_failed/attempts if attempts else float('nan'),
