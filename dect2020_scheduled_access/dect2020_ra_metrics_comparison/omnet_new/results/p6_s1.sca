@@ -1,8 +1,8 @@
 version 3
-run CompareWithPython-6-20261102-19:47:55-86
+run CompareWithPython-6-20261102-19:55:35-87
 attr configname CompareWithPython
-attr datetime 20261102-19:47:55
-attr datetimef 20261102-194755
+attr datetime 20261102-19:55:35
+attr datetimef 20261102-195535
 attr experiment CompareWithPython
 attr inifile omnet_new/src/omnetpp.ini
 attr iterationvars $arrProb=0.07
@@ -10,7 +10,7 @@ attr iterationvarsd arrProb=0.07
 attr iterationvarsf arrProb=0.07-
 attr measurement $arrProb=0.07
 attr network Cluster
-attr processid 86
+attr processid 87
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -49,14 +49,14 @@ par Cluster.pt[0] cMin 1
 par Cluster.pt[0] cMax 16
 par Cluster.pt[0] lbtTime 2s
 attr unit s
-par Cluster.pt[0] ackTimeout 26s
+par Cluster.pt[0] ackTimeout 25s
 attr unit s
-scalar Cluster.pt[0] generatedPackets 214
-scalar Cluster.pt[0] dataTransmissionAttempts 81
-scalar Cluster.pt[0] busyLbtResponses 35
-scalar Cluster.pt[0] acknowledgedPackets 42
-scalar Cluster.pt[0] dataRetransmissions 34
-scalar Cluster.pt[0] queueLengthAtEnd 172
+scalar Cluster.pt[0] generatedPackets 216
+scalar Cluster.pt[0] dataTransmissionAttempts 93
+scalar Cluster.pt[0] busyLbtResponses 18
+scalar Cluster.pt[0] acknowledgedPackets 48
+scalar Cluster.pt[0] dataRetransmissions 40
+scalar Cluster.pt[0] queueLengthAtEnd 168
 par Cluster.pt[1] typename "\"PT\""
 par Cluster.pt[1] id 1
 par Cluster.pt[1] arrProb 0.07
@@ -64,14 +64,14 @@ par Cluster.pt[1] cMin 1
 par Cluster.pt[1] cMax 16
 par Cluster.pt[1] lbtTime 2s
 attr unit s
-par Cluster.pt[1] ackTimeout 26s
+par Cluster.pt[1] ackTimeout 25s
 attr unit s
-scalar Cluster.pt[1] generatedPackets 204
-scalar Cluster.pt[1] dataTransmissionAttempts 59
-scalar Cluster.pt[1] busyLbtResponses 62
-scalar Cluster.pt[1] acknowledgedPackets 19
-scalar Cluster.pt[1] dataRetransmissions 38
-scalar Cluster.pt[1] queueLengthAtEnd 185
+scalar Cluster.pt[1] generatedPackets 205
+scalar Cluster.pt[1] dataTransmissionAttempts 53
+scalar Cluster.pt[1] busyLbtResponses 69
+scalar Cluster.pt[1] acknowledgedPackets 8
+scalar Cluster.pt[1] dataRetransmissions 42
+scalar Cluster.pt[1] queueLengthAtEnd 197
 par Cluster.medium typename "\"Medium\""
 par Cluster.medium numPTs 2
 par Cluster.medium transTime 10s
@@ -80,29 +80,29 @@ par Cluster.medium lbtTime 2s
 attr unit s
 par Cluster.medium ackTime 5s
 attr unit s
-scalar Cluster.medium collisionEvents 39
-scalar Cluster.medium dataTransmissionAttempts 140
-scalar Cluster.medium collidedDataAttempts 42
-scalar Cluster.medium dataOverlappedWithData 6
-scalar Cluster.medium dataOverlappedWithAck 36
-scalar Cluster.medium dataCollisionProbability 0.3
-scalar Cluster.medium busyLbtResponses 97
+scalar Cluster.medium collisionEvents 45
+scalar Cluster.medium dataTransmissionAttempts 146
+scalar Cluster.medium collidedDataAttempts 49
+scalar Cluster.medium dataOverlappedWithData 8
+scalar Cluster.medium dataOverlappedWithAck 41
+scalar Cluster.medium dataCollisionProbability 0.33561643835616
+scalar Cluster.medium busyLbtResponses 87
 par Cluster.ft typename "\"FT\""
 par Cluster.ft procTime 10s
 attr unit s
 par Cluster.ft ackTime 5s
 attr unit s
-scalar Cluster.ft receivedDataAttempts 139
-scalar Cluster.ft droppedByCollision 42
+scalar Cluster.ft receivedDataAttempts 145
+scalar Cluster.ft droppedByCollision 48
 scalar Cluster.ft droppedWhileFTBusy 0
-scalar Cluster.ft rejectedAtStartWhileBusy 39
+scalar Cluster.ft rejectedAtStartWhileBusy 45
 scalar Cluster.ft pythonEquivalentDataCollisions 8
-scalar Cluster.ft pythonEquivalentCollisionProbabilityCompleted 0.057553956834532
-scalar Cluster.ft deliveredUniquePackets 62
-scalar Cluster.ft meanEndToEndDelay 1348.6451612903
+scalar Cluster.ft pythonEquivalentCollisionProbabilityCompleted 0.055172413793103
+scalar Cluster.ft deliveredUniquePackets 57
+scalar Cluster.ft meanEndToEndDelay 1205.0526315789
 scalar Cluster.ft minEndToEndDelay 24
-scalar Cluster.ft maxEndToEndDelay 2773
-scalar Cluster.ft packetDeliveryRate 0.020666666666667
+scalar Cluster.ft maxEndToEndDelay 2793
+scalar Cluster.ft packetDeliveryRate 0.019
 par Cluster typename "\"Cluster\""
 par Cluster numPTs 2
 par Cluster arrProb 0.07
@@ -116,6 +116,6 @@ par Cluster procTime 10s
 attr unit s
 par Cluster ackTime 5s
 attr unit s
-par Cluster ackTimeout 26s
+par Cluster ackTimeout 25s
 attr unit s
 
