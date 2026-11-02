@@ -37,6 +37,13 @@ docker run --rm -v "$PROJECT_PARENT:/project" \
       -f omnet_new/src/omnetpp.ini -c SharedRandomParity \
       --output-scalar-file="omnet_new/SharedRandomParity.sca" > /dev/null
     python3 shared_rng_replay.py
+    mkdir -p omnet_new/shared_rng_grid
+    for i in $(seq 0 89); do
+      ./omnet_new/src/ra_collision_compare -u Cmdenv -n omnet_new/src \
+        -f omnet_new/src/omnetpp.ini -c SharedRandomGrid -r "$i" \
+        --output-scalar-file="omnet_new/shared_rng_grid/run_${i}.sca" > /dev/null
+    done
+    python3 shared_rng_grid.py
     python3 compare_metrics.py
     python3 plot_metrics.py
   '
