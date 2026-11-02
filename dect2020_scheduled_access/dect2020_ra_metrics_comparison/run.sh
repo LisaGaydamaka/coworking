@@ -27,9 +27,11 @@ docker run --rm -v "$PROJECT_PARENT:/project" \
     done
     python3 -c "import numpy, matplotlib" || (apt-get update -qq && apt-get install -y -qq python3-numpy python3-matplotlib)
     python3 regression_ack_lbt.py
-    ./omnet_new/src/ra_collision_compare -u Cmdenv -n omnet_new/src \
-      -f omnet_new/src/omnetpp.ini -c DeterministicParity \
-      --output-scalar-file="omnet_new/deterministic_100.sca" > /dev/null
+    for scenario in DeterministicParity DeterministicOnePT DeterministicPhase; do
+      ./omnet_new/src/ra_collision_compare -u Cmdenv -n omnet_new/src \
+        -f omnet_new/src/omnetpp.ini -c "$scenario" \
+        --output-scalar-file="omnet_new/${scenario}.sca" > /dev/null
+    done
     python3 deterministic_parity.py
     python3 compare_metrics.py
     python3 plot_metrics.py
