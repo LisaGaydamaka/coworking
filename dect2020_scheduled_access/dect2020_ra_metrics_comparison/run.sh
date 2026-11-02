@@ -44,6 +44,7 @@ docker run --rm -v "$PROJECT_PARENT:/project" \
         --output-scalar-file="omnet_new/shared_rng_grid/run_${i}.sca" > /dev/null
     done
     python3 shared_rng_grid.py
+    python3 plot_shared_rng.py
     python3 compare_metrics.py
     python3 plot_metrics.py
   '
