@@ -2,6 +2,8 @@
 #include <algorithm>
 #include <map>
 #include <vector>
+#include <set>
+#include <utility>
 #include <cstring>
 
 #include "DectPacket_m.h"
@@ -33,6 +35,11 @@ class Medium : public cSimpleModule
     long collisionEvents = 0;
     long dataTransmissionAttempts = 0;
     long collidedDataAttempts = 0;
+    // Audit physical overlaps by other transmission type; a single attempt may
+    // appear in both categories, but each category counts that attempt once.
+    using AttemptKey = std::pair<uint64_t, int>;
+    std::set<AttemptKey> dataOverlappedWithData;
+    std::set<AttemptKey> dataOverlappedWithAck;
     long busyLbtResponses = 0;
 
   protected:
@@ -147,6 +154,24 @@ void Medium::startTransmission(DectPacket *packet, bool isAck)
 
     // Коллизия при любом перекрытии двух радиопередач.
     if (!active.empty()) {
+        // Count all actual overlapping DATA transmissions independently of
+        // FT acceptance and of any earlier failure flag (radio collision).
+        const auto currentKey = std::make_pair(
+            dectPacketKey(packet->getSrcId(), packet->getPktId()),
+            packet->getAttempt());
+        for (const auto &tx : active) {
+            const auto activeKey = std::make_pair(
+                dectPacketKey(tx.packet->getSrcId(), tx.packet->getPktId()),
+                tx.packet->getAttempt());
+            if (!isAck) {
+                if (tx.isAck) dataOverlappedWithAck.insert(currentKey);
+                else dataOverlappedWithData.insert(currentKey);
+            }
+            if (!tx.isAck) {
+                if (isAck) dataOverlappedWithAck.insert(activeKey);
+                else dataOverlappedWithData.insert(activeKey);
+            }
+        }
         EV_WARN << "!!! КОЛЛИЗИЯ !!! Передача от PT[" << packet->getSrcId() << "] наложилась на другую передачу.\n";
         if (!isAck && !packet->getCollided())
             ++collidedDataAttempts;
@@ -230,6 +255,8 @@ void Medium::finish()
     recordScalar("collisionEvents",           collisionEvents);
     recordScalar("dataTransmissionAttempts",  dataTransmissionAttempts);
     recordScalar("collidedDataAttempts",      collidedDataAttempts);
+    recordScalar("dataOverlappedWithData",    static_cast<long>(dataOverlappedWithData.size()));
+    recordScalar("dataOverlappedWithAck",     static_cast<long>(dataOverlappedWithAck.size()));
     recordScalar("dataCollisionProbability",
                  dataTransmissionAttempts > 0
                      ? static_cast<double>(collidedDataAttempts) / dataTransmissionAttempts
