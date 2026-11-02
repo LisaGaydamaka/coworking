@@ -33,6 +33,10 @@ docker run --rm -v "$PROJECT_PARENT:/project" \
         --output-scalar-file="omnet_new/${scenario}.sca" > /dev/null
     done
     python3 deterministic_parity.py
+    ./omnet_new/src/ra_collision_compare -u Cmdenv -n omnet_new/src \
+      -f omnet_new/src/omnetpp.ini -c SharedRandomParity \
+      --output-scalar-file="omnet_new/SharedRandomParity.sca" > /dev/null
+    python3 shared_rng_replay.py
     python3 compare_metrics.py
     python3 plot_metrics.py
   '
