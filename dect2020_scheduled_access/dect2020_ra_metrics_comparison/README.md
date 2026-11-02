@@ -37,6 +37,21 @@ OMNeT++ was materially different: it only made `FT.isBusy=true` when **processin
 Raw physical overlaps remain available in `medium.collidedDataAttempts`. The new metric is `ft.pythonEquivalentDataCollisions / medium.dataTransmissionAttempts` and is compared to the Python `Operation.check()` transition-based metric. The `FT` additionally records `rejectedAtStartWhileBusy`. The two curves should be close **because their semantics now match**, not because of a tuned multiplier. Different RNGs and event ordering can still cause differences. Verify using the new .sca results.
 
 
+
+### Verified results after the patch (GitHub Actions)
+
+[Successful full 90-run OMNeT++ + 90-run Python comparison](https://github.com/LisaGaydamaka/coworking/actions/runs/41502404581). All updated `.sca`, `.csv` and `.png` outputs were saved to this folder.
+
+At `arrprob=0.05` (10 runs, 3000 symbols each):
+
+| Quantity | Python | Corrected OMNeT++ | Old OMNeT++ |
+| --- | ---: | ---: | ---: |
+| Python-equivalent collision probability | 0.10344 | **0.07758** | not collected |
+| Raw OMNeT++ overlap probability | — | 0.32630 | 0.32630 |
+
+The old OMNeT++ *radio-overlap* metric differed from the Python transition-based metric by **0.22286** (absolute probability). The corrected OMNeT++ metric differs by **0.02586**. The reduction in absolute discrepancy is **88.4%**. **The numerical results are not identical**; common definitions do not guarantee identical random experiments or event ordering, and further protocol validation is needed.
+
+
 The attempts-per-delivered ratio includes transmissions initiated for undelivered packets still in the finite-horizon system. It is a **window-wide efficiency ratio**, not the exact sample mean of attempts associated only with eventually delivered packets. To compute the latter, instrument per-packet attempts in both implementations. The LBT denominator assumes every non-busy completed LBT leads to a DATA transmission, consistent with the provided aggregated OMNeT++ counters.
 
 ## Run plots
