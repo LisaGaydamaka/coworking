@@ -1,5 +1,30 @@
 # DECT-2020 random access — Python / OMNeT++ metrics comparison
 
+## Final protocol parity finding — 2026-11-02
+
+**Exactly identical paired statistics have been demonstrated in the shared-randomness regression:** 9 `arrprob` values × 10 common `paritySeed` values = **90 pairs of simulations** (180 executions). We compared **9 exact integer counters per pair** — 810 comparisons — and obtained **0 mismatches in 0 runs**. The [full CI run succeeded](https://github.com/LisaGaydamaka/coworking/actions/runs/41517590704). See:
+
+- `omnet_new/shared_rng_grid_report.json`: authoritative machine-checkable summary (`runs=90`, `total_metric_checks=810`, `mismatched_checks=0`).
+- `omnet_new/shared_rng_grid_comparison.csv`: all 810 pairs and their exact integer differences.
+- `omnet_new/shared_rng_grid/run_*.sca`: all 90 OMNeT++ raw scalar outputs.
+- `shared_rng_grid.py`: repeated-run Python comparison using the same counter-based pseudo-random schedule.
+- `omnet_new/shared_rng_replay.json`: one detailed run with exact first 20 DATA start times for each PT (both languages identical).
+- `4_random_access_shared_rng.py`: source with opt-in shared PRNG matching opt-in `PT.cc` C++ `parityHash` implementation.
+- `regression_ack_lbt.py`: deterministic demonstration of the original Python ACK/LBT bug.
+- `4_random_access_protocol_corrected.py`: Python protocol-fixed version, retaining the separate `4_random_access_final.py` for reference.
+
+**Root causes of prior apparent disagreement:**
+
+1. The default PRNGs **do not deliver the same arrival events/backoff draws**, even when their numeric seeds match. Example at `arrprob=.05`, seed 1, 3000 symbols: the independent-stream runs generated 285 Python packets versus 307 OMNeT++ packets. A per-run value-to-value comparison of those traces is therefore not an algorithm parity test.
+2. OMNeT++ originally had `ackTimeout = 10 + 10 + 5 + 1 = 26` symbol times, versus Python's 25. It now uses 25, and the PT timeout self-message has lower precedence than a simultaneous ACK arrival.
+3. Original Python `RootDevice.proc_end()` creates an ACK, but its `main()` rechecks the *dummy root cluster* instead of active PT LBT windows. Therefore LBT [10,12) was incorrectly successful when ACK [11,16) started at 11. The separate protocol-corrected Python version explicitly invalidates overlapping LBT windows on ACK creation (also for intermediate `DeviceFT`). Ordinary OMNeT++ `Medium.markListenWindowsBusy()` already handles this correctly.
+
+**Evidence under fully shared randomness:** At `arrprob=.05`, shared seed 1: both produced 296 packets (PT counts 161/135), 138 DATA attempts, 88 busy LBT out of 226, 65 uniquely delivered packets, 64 acknowledged packets, and 40 radio-collided DATA attempts. All seven agree exactly. The 90-case grid additionally checks separately generated packets on each PT, DATA attempts, LBT total and busy, unique delivery, ACKed packets and radio collisions for a total of nine counts per case.
+
+**Interpretation:** Both models agree exactly for the tested configurations **once they are given identical random events and the two protocol differences are corrected**. The roughly 3–5% MAPE from plots produced using *independent* random streams is Monte Carlo sample mismatch, not evidence of a protocol discrepancy in these tested configurations. The parity proof does not establish identical behavior for arbitrary topologies, other numerologies, multihop paths or arbitrary parameter choices; test those separately.
+
+---
+
 Independent comparison component. **Do not modify** the separate `dect2020_random_access_omnetpp/` student starter or the scheduled-access simulator.
 
 ## Contents
