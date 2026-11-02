@@ -1,8 +1,8 @@
 version 3
-run DeterministicParity-0-20261102-20:13:46-190
+run DeterministicParity-0-20261102-20:16:28-191
 attr configname DeterministicParity
-attr datetime 20261102-20:13:46
-attr datetimef 20261102-201346
+attr datetime 20261102-20:16:28
+attr datetimef 20261102-201628
 attr experiment DeterministicParity
 attr inifile omnet_new/src/omnetpp.ini
 attr iterationvars ""
@@ -10,7 +10,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network Cluster
-attr processid 190
+attr processid 191
 attr repetition 0
 attr replication #0
 attr resultdir results

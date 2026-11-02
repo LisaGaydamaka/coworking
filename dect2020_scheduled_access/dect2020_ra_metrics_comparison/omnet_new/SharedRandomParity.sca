@@ -1,8 +1,8 @@
 version 3
-run SharedRandomParity-0-20261102-20:13:47-197
+run SharedRandomParity-0-20261102-20:16:29-198
 attr configname SharedRandomParity
-attr datetime 20261102-20:13:47
-attr datetimef 20261102-201347
+attr datetime 20261102-20:16:29
+attr datetimef 20261102-201629
 attr experiment SharedRandomParity
 attr inifile omnet_new/src/omnetpp.ini
 attr iterationvars ""
@@ -10,7 +10,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network Cluster
-attr processid 197
+attr processid 198
 attr repetition 0
 attr replication #0
 attr resultdir results
