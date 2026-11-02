@@ -1,0 +1,26 @@
+{
+  "scenario": "2 PT, arrprob=1, zero backoff, 100 symbol horizon",
+  "python": {
+    "generated": 202,
+    "data_attempts": 8,
+    "lbt_busy": 0,
+    "lbt_total": 8,
+    "delivered": 0,
+    "data_success": 0
+  },
+  "omnet": {
+    "generated": 202,
+    "data_attempts": 8,
+    "lbt_busy": 0,
+    "lbt_total": 8,
+    "delivered": 0,
+    "data_success": null
+  },
+  "differences": {
+    "generated": 0,
+    "data_attempts": 0,
+    "lbt_busy": 0,
+    "lbt_total": 0,
+    "delivered": 0
+  }
+}

@@ -1,8 +1,8 @@
 version 3
-run CompareWithPython-5-20261102-20:02:31-95
+run CompareWithPython-5-20261102-20:06:53-95
 attr configname CompareWithPython
-attr datetime 20261102-20:02:31
-attr datetimef 20261102-200231
+attr datetime 20261102-20:06:53
+attr datetimef 20261102-200653
 attr experiment CompareWithPython
 attr inifile omnet_new/src/omnetpp.ini
 attr iterationvars $arrProb=0.06
@@ -47,6 +47,7 @@ par Cluster.pt[0] id 0
 par Cluster.pt[0] arrProb 0.06
 par Cluster.pt[0] cMin 1
 par Cluster.pt[0] cMax 16
+par Cluster.pt[0] forceZeroBackoff false
 par Cluster.pt[0] lbtTime 2s
 attr unit s
 par Cluster.pt[0] ackTimeout 25s
@@ -62,6 +63,7 @@ par Cluster.pt[1] id 1
 par Cluster.pt[1] arrProb 0.06
 par Cluster.pt[1] cMin 1
 par Cluster.pt[1] cMax 16
+par Cluster.pt[1] forceZeroBackoff false
 par Cluster.pt[1] lbtTime 2s
 attr unit s
 par Cluster.pt[1] ackTimeout 25s
@@ -108,6 +110,7 @@ par Cluster numPTs 2
 par Cluster arrProb 0.06
 par Cluster cMin 1
 par Cluster cMax 16
+par Cluster forceZeroBackoff false
 par Cluster transTime 10s
 attr unit s
 par Cluster lbtTime 2s
