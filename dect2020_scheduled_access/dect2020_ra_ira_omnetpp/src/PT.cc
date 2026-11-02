@@ -15,7 +15,8 @@ class PT : public cSimpleModule
     int cMin = 1;
     int cMax = 16;
     int currentCW = 1;
-    bool forceZeroBackoff = false;         // текущее значение C_i
+    bool forceZeroBackoff = false;
+    simtime_t firstArrivalOffset = SIMTIME_ZERO;         // текущее значение C_i
     double arrProb = 0.01;
     simtime_t lbtTime = SIMTIME_ZERO;
     simtime_t ackTimeout = SIMTIME_ZERO;
@@ -57,6 +58,7 @@ void PT::initialize()
     cMin = par("cMin").intValue();
     cMax = par("cMax").intValue();
     forceZeroBackoff = par("forceZeroBackoff").boolValue();
+    firstArrivalOffset = par("firstArrivalOffset").doubleValueInUnit("s");
     lbtTime = par("lbtTime").doubleValueInUnit("s");
     ackTimeout = par("ackTimeout").doubleValueInUnit("s");
 
@@ -69,7 +71,7 @@ void PT::initialize()
 
     //первая проверка - в момент t=0
     arrivalTimer = new cMessage("arrivalTimer");
-    scheduleAt(SIMTIME_ZERO, arrivalTimer);
+    scheduleAt(firstArrivalOffset, arrivalTimer);
 }
 
 void PT::handleMessage(cMessage *msg)
