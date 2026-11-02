@@ -8,8 +8,9 @@ Independent comparison component. **Do not modify** the separate `dect2020_rando
 - `inputs/DECT-2020.rar` — original uploaded archive; includes 90 archived pre-fix OMNeT++ `.sca` outputs, original comparison code and data.
 - `raw_metrics.csv` — 180 individual observations (90 newly re-run Python + 90 NEW OMNeT++ after receiver-state fix); includes underlying counters.
 - `summary_metrics.csv` — per-parameter means and standard deviations over 10 runs.
-- `plot_metrics.py` — plots four requested metrics, plus a diagnostic Python failed-DATA series on the collision plot.
-- `run.sh` / `.run` — repository-compliant entrypoint; compiles corrected OMNeT++, runs all 90 cases, re-runs Python and regenerates plots.\n- `omnet_new/results/` — 90 new OMNeT++ `.sca` files generated from the current sibling `dect2020_ra_ira_omnetpp/src` sources.
+- `plot_metrics.py` — four requested metrics plus a separate `collision_diagnostics.png` comparing physical radio overlap with first-failure-only statistics.
+- `run.sh` / `.run` — repository-compliant entrypoint; compiles corrected OMNeT++, runs all 90 cases, re-runs Python and regenerates plots.
+- `omnet_new/results/` — 90 new OMNeT++ `.sca` files generated from the current sibling `dect2020_ra_ira_omnetpp/src` sources.
 
 ## Scenario
 
@@ -24,15 +25,27 @@ Independent comparison component. **Do not modify** the separate `dect2020_rando
 | Attempts per delivered packet | `Cluster.all / delivered_num(cluster)` | `medium.dataTransmissionAttempts / ft.deliveredUniquePackets` |
 | Delivery intensity | `delivered_num(cluster) / 3000` | `ft.deliveredUniquePackets / 3000` (matches recorded `packetDeliveryRate`) |
 
-**Collision probability audit (2026-11-02)**
+## Verified Python DATA/ACK collision accounting defect (2026-11-02)
 
-The original Python `error_rate(cluster)` computes `(all-succ)/all`: this is the rate of failed DATA attempts (including FT-busy refusal), **not** exclusively physical collision probability.
+**Diagnosis.** The original Python script had no separate physical-collision counter. The first comparison instrumented only `Operation.check()` for DATA operations and registered radio overlaps whenever an active `Trans` encountered another transmission. That observer **under-counts physical DATA/ACK overlaps** because ACK creation is done by `RootDevice.proc_end()`. During the root's `AAA_proc_end` event, `main()` adds `event.subject.cluster` to `clusters_to_check`, but `RootDevice` was constructed with **the dummy `Cluster(-1)`** while PT operations belong to `clusters[0]`. Thus the active DATA operations are **not rechecked automatically** when ACK starts. The new ACK's own `Operation.check()` *is* called immediately by `DevicePT.wait_end()`, and it sees the active DATA operations; therefore the observer can count every DATA/ACK overlap at the moment of ACK creation even if the DATA itself never gets rechecked.
 
-An earlier comparison incorrectly labeled `Operation.check()` **first transition to failure** as a radio collision: that excludes DATA attempts which were already marked unsuccessful at the busy receiver before a subsequent radio overlap. The true physical collision numerator must count all DATA attempts **whose radio interval overlaps another DATA or ACK**, regardless of prior `is_successful`. It can be measured in Python by observing `cluster.transmissions` on every `Operation.check()` and counting every overlapping DATA operation once, even when `is_successful == False`; in OMNeT++ the appropriate native counter is `medium.collidedDataAttempts`, with one increment per DATA attempt. The physical collision metric is now the **primary** `collision` series in `summary_metrics.csv` and `collision.png`.
+**Correction.** `compare_metrics.py` now adds an **observation-only** hook for an ACK's `Operation.check()`: when ACK starts, count every still-transmitting DATA operation whose time interval overlaps the ACK. Physical interval overlap uses strict bounds `a.start_time < b.end_time and b.start_time < a.end_time`. `Operation.check()` and the simulator's outcomes are unchanged. A DATA attempt is counted only once per category. The original check-only measurement remains traceable via `unobserved_by_original_data_check`; `first_failure_collision` is a separate diagnostic and `error_rate()=(all-succ)/all` is the *DATA failure* rate, not the physical collision probability.
 
-The earlier `ft.pythonEquivalentDataCollisions` is retained for diagnosis and renamed `first_failure_collision` in CSV. It is *not* the complete physical collision probability. Likewise `failed_data_fraction` remains distinct. To explain discrepancies, `medium.dataOverlappedWithData` and `medium.dataOverlappedWithAck` separately count distinct DATA attempts overlapping each transmission type; these categories may overlap, so their sum need not equal `collidedDataAttempts`. `collision_diagnostics.png` compares all definitions. `busy_ft_at_start` records what proportion of DATA attempts encountered a busy receiver at transmission start.
+**New verified results** ([GitHub Actions run: 90 Python + 90 OMNeT++ simulations](https://github.com/LisaGaydamaka/coworking/actions/runs/41513102790)):
 
-The previous Python first-failure series at `arrprob=0.05` was **0.10344**, while its properly measured physical collision probability is **0.23526**. A saved prior OMNeT++ physical collision rate was **0.32630**. This gap represents different simulated behaviors, not a normalization adjustment. Any further protocol changes must be separately validated; do **not** set or multiply counters to force numerical agreement.
+| `arrprob=0.05`, 2 PT, 3000 symbols | Python | OMNeT++ |
+| --- | ---: | ---: |
+| Physical DATA collision (DATA/DATA or DATA/ACK) | **0.33109** | **0.32630** |
+| DATA/DATA overlap probability | 0.05568 | 0.05784 |
+| DATA/ACK overlap probability | 0.27542 | 0.26846 |
+| DATA first transitions to unsuccessful | 0.10344 | 0.07758 |
+| Fraction invisible to the former Python DATA-only observer | **0.09584** | n/a |
+
+The former Python 'physical collision' result `0.23526` was missing `0.09584` of DATA attempts (approximately 9.58 percentage points), exactly explaining the corrected value `0.33109`.
+
+**Overall physical-collision error (9 parameter values, mean over 10 runs each):** **MAPE 4.29%**; mean absolute probability error **0.01453** (1.45 percentage points), compared with the former apparent MAPE 36.44% based on the incomplete Python observer. For the DATA/ACK component alone, MAPE is 3.80%. The gap is not exactly zero because the models use different random streams and can differ in event ordering and dynamics; this investigation does **not** establish that timing order caused the former nine-point gap. The Python radio-overlap observer now has the same physical definition as `medium.collidedDataAttempts`.
+
+**Important:** The protocol behavior in `4_random_access_final.py` was **not changed** by this accounting repair. The existing OMNeT++ FT busy-timing patch and the separate raw radio-overlap counters remain in place. If a change is desired to the Python *protocol-state updates* on ACK start, validate it independently; it is not needed to fix the metric.
 
 
 The attempts-per-delivered ratio includes transmissions initiated for undelivered packets still in the finite-horizon system. It is a **window-wide efficiency ratio**, not the exact sample mean of attempts associated only with eventually delivered packets. To compute the latter, instrument per-packet attempts in both implementations. The LBT denominator assumes every non-busy completed LBT leads to a DATA transmission, consistent with the provided aggregated OMNeT++ counters.
