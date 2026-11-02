@@ -1,6 +1,7 @@
 #include <omnetpp.h>
 #include <algorithm>
 #include <deque>
+#include <cstdint>
 
 #include "DectPacket_m.h"
 #include "DectTypes.h"
@@ -16,6 +17,9 @@ class PT : public cSimpleModule
     int cMax = 16;
     int currentCW = 1;
     bool forceZeroBackoff = false;
+    bool useParityRandom = false;
+    int paritySeed = 1;
+    uint32_t backoffDrawCount = 0;
     simtime_t firstArrivalOffset = SIMTIME_ZERO;         // текущее значение C_i
     double arrProb = 0.01;
     simtime_t lbtTime = SIMTIME_ZERO;
@@ -49,6 +53,19 @@ class PT : public cSimpleModule
     void increaseCW();
 };
 
+// Counter-based 32-bit PRNG also implemented in 4_random_access_shared_rng.py.
+// Arrival draws are keyed by (PT, symbol), backoff draws by (PT, count).
+static uint32_t parityHash(int kind, int id, uint32_t index, int seed) {
+    uint32_t x = static_cast<uint32_t>(seed) * 0x9e3779b9u
+               + static_cast<uint32_t>(id+1) * 0x85ebca6bu
+               + (index+1u) * 0xc2b2ae35u
+               + static_cast<uint32_t>(kind) * 0x27d4eb2fu;
+    x ^= x >> 16; x *= 0x7feb352du;
+    x ^= x >> 15; x *= 0x846ca68bu;
+    x ^= x >> 16;
+    return x;
+}
+
 Define_Module(PT);
 
 void PT::initialize()
@@ -58,6 +75,8 @@ void PT::initialize()
     cMin = par("cMin").intValue();
     cMax = par("cMax").intValue();
     forceZeroBackoff = par("forceZeroBackoff").boolValue();
+    useParityRandom = par("useParityRandom").boolValue();
+    paritySeed = par("paritySeed").intValue();
     firstArrivalOffset = par("firstArrivalOffset").doubleValueInUnit("s");
     lbtTime = par("lbtTime").doubleValueInUnit("s");
     ackTimeout = par("ackTimeout").doubleValueInUnit("s");
@@ -79,7 +98,10 @@ void PT::handleMessage(cMessage *msg)
     //таймеры
     if (msg->isSelfMessage()) {
         if (msg == arrivalTimer) {
-            if (uniform(0, 1) < arrProb)
+            const double arrivalDraw = useParityRandom
+                ? static_cast<double>(parityHash(0,id,static_cast<uint32_t>(simTime().dbl()),paritySeed)) / 4294967296.0
+                : uniform(0, 1);
+            if (arrivalDraw < arrProb)
                 generatePacket();
             scheduleAt(simTime() + 1.0, arrivalTimer); // 1 символ
             return;
@@ -151,7 +173,9 @@ void PT::startBackoff()
         return;
 
     // C_i = currentCW. Отсрочка x = U[0, C_i] * lbtTime.
-    const int slots = forceZeroBackoff ? 0 : intuniform(0, currentCW);
+    const int slots = forceZeroBackoff ? 0 : (useParityRandom
+        ? static_cast<int>(parityHash(1,id,backoffDrawCount++,paritySeed) % static_cast<uint32_t>(currentCW+1))
+        : intuniform(0, currentCW));
     backoffTimer = new cMessage("backoffTimer");
     scheduleAt(simTime() + slots * lbtTime, backoffTimer);
     EV_INFO << "Разыгрывается отсрочка (Backoff): CW = " << currentCW

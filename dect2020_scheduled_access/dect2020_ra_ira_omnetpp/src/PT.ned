@@ -6,6 +6,8 @@ simple PT
         int    cMin;
         int    cMax;
         bool   forceZeroBackoff = default(false);
+        bool   useParityRandom = default(false);
+        int    paritySeed = default(1);
         double firstArrivalOffset @unit(s) = default(0s); // deterministic test only
         double lbtTime    @unit(s);   // длительность слота backoff
         double ackTimeout @unit(s);   // таймаут ожидания ACK
