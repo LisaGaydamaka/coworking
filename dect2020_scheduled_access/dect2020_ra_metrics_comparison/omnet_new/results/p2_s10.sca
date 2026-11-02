@@ -1,8 +1,8 @@
 version 3
-run CompareWithPython-2-20261102-18:58:24-172
+run CompareWithPython-2-20261102-19:45:09-172
 attr configname CompareWithPython
-attr datetime 20261102-18:58:24
-attr datetimef 20261102-185824
+attr datetime 20261102-19:45:09
+attr datetimef 20261102-194509
 attr experiment CompareWithPython
 attr inifile omnet_new/src/omnetpp.ini
 attr iterationvars $arrProb=0.03
