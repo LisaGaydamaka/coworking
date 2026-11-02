@@ -1,26 +1,92 @@
 {
-  "scenario": "2 PT, arrprob=1, zero backoff, 100 symbol horizon",
-  "python": {
-    "generated": 202,
-    "data_attempts": 8,
-    "lbt_busy": 0,
-    "lbt_total": 8,
-    "delivered": 0,
-    "data_success": 0
-  },
-  "omnet": {
-    "generated": 202,
-    "data_attempts": 8,
-    "lbt_busy": 0,
-    "lbt_total": 8,
-    "delivered": 0,
-    "data_success": null
-  },
-  "differences": {
-    "generated": 0,
-    "data_attempts": 0,
-    "lbt_busy": 0,
-    "lbt_total": 0,
-    "delivered": 0
-  }
+  "test": "same traffic arrivals and zero backoff, time horizon 100 symbols",
+  "scenarios": [
+    {
+      "name": "DeterministicParity",
+      "numPTs": 2,
+      "pt1Offset": 0,
+      "python": {
+        "generated": 202,
+        "data_attempts": 8,
+        "lbt_busy": 0,
+        "lbt_total": 8,
+        "delivered": 0,
+        "acknowledged": 0
+      },
+      "omnet": {
+        "generated": 202,
+        "data_attempts": 8,
+        "lbt_busy": 0,
+        "lbt_total": 8,
+        "delivered": 0,
+        "acknowledged": 0
+      },
+      "differences": {
+        "generated": 0,
+        "data_attempts": 0,
+        "lbt_busy": 0,
+        "lbt_total": 0,
+        "delivered": 0,
+        "acknowledged": 0
+      }
+    },
+    {
+      "name": "DeterministicOnePT",
+      "numPTs": 1,
+      "pt1Offset": 0,
+      "python": {
+        "generated": 101,
+        "data_attempts": 4,
+        "lbt_busy": 0,
+        "lbt_total": 4,
+        "delivered": 3,
+        "acknowledged": 3
+      },
+      "omnet": {
+        "generated": 101,
+        "data_attempts": 4,
+        "lbt_busy": 0,
+        "lbt_total": 4,
+        "delivered": 3,
+        "acknowledged": 3
+      },
+      "differences": {
+        "generated": 0,
+        "data_attempts": 0,
+        "lbt_busy": 0,
+        "lbt_total": 0,
+        "delivered": 0,
+        "acknowledged": 0
+      }
+    },
+    {
+      "name": "DeterministicPhase",
+      "numPTs": 2,
+      "pt1Offset": 15,
+      "python": {
+        "generated": 187,
+        "data_attempts": 8,
+        "lbt_busy": 0,
+        "lbt_total": 8,
+        "delivered": 1,
+        "acknowledged": 0
+      },
+      "omnet": {
+        "generated": 187,
+        "data_attempts": 8,
+        "lbt_busy": 0,
+        "lbt_total": 8,
+        "delivered": 1,
+        "acknowledged": 0
+      },
+      "differences": {
+        "generated": 0,
+        "data_attempts": 0,
+        "lbt_busy": 0,
+        "lbt_total": 0,
+        "delivered": 0,
+        "acknowledged": 0
+      }
+    }
+  ]
 }

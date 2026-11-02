@@ -1,0 +1,128 @@
+version 3
+run DeterministicPhase-0-20261102-20:09:34-192
+attr configname DeterministicPhase
+attr datetime 20261102-20:09:34
+attr datetimef 20261102-200934
+attr experiment DeterministicPhase
+attr inifile omnet_new/src/omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network Cluster
+attr processid 192
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 1
+config output-scalar-file omnet_new/DeterministicPhase.sca
+config Cluster.arrProb 1
+config Cluster.numPTs 2
+config Cluster.forceZeroBackoff true
+config Cluster.pt[1].firstArrivalOffset 15s
+config sim-time-limit 100s
+config network Cluster
+config sim-time-limit 3000s
+config seed-set 1
+config Cluster.numPTs 2
+config Cluster.arrProb 0.01
+config Cluster.transTime 10s
+config Cluster.procTime 10s
+config Cluster.ackTime 5s
+config Cluster.lbtTime 2s
+config Cluster.cMin 1
+config Cluster.cMax 16
+config **.scalar-recording true
+config **.vector-recording false
+
+par Cluster.pt[0].out.channel typename "\"ned.IdealChannel\""
+par Cluster.medium.ptOut[0].channel typename "\"ned.IdealChannel\""
+par Cluster.pt[1].out.channel typename "\"ned.IdealChannel\""
+par Cluster.medium.ptOut[1].channel typename "\"ned.IdealChannel\""
+par Cluster.medium.ftOut.channel typename "\"ned.IdealChannel\""
+par Cluster.ft.out.channel typename "\"ned.IdealChannel\""
+par Cluster.pt[0] typename "\"PT\""
+par Cluster.pt[0] id 0
+par Cluster.pt[0] arrProb 1
+par Cluster.pt[0] cMin 1
+par Cluster.pt[0] cMax 16
+par Cluster.pt[0] forceZeroBackoff true
+par Cluster.pt[0] firstArrivalOffset 0s
+attr unit s
+par Cluster.pt[0] lbtTime 2s
+attr unit s
+par Cluster.pt[0] ackTimeout 25s
+attr unit s
+scalar Cluster.pt[0] generatedPackets 101
+scalar Cluster.pt[0] dataTransmissionAttempts 4
+scalar Cluster.pt[0] busyLbtResponses 0
+scalar Cluster.pt[0] acknowledgedPackets 0
+scalar Cluster.pt[0] dataRetransmissions 0
+scalar Cluster.pt[0] queueLengthAtEnd 101
+par Cluster.pt[1] typename "\"PT\""
+par Cluster.pt[1] id 1
+par Cluster.pt[1] arrProb 1
+par Cluster.pt[1] cMin 1
+par Cluster.pt[1] cMax 16
+par Cluster.pt[1] forceZeroBackoff true
+par Cluster.pt[1] firstArrivalOffset 15s
+attr unit s
+par Cluster.pt[1] lbtTime 2s
+attr unit s
+par Cluster.pt[1] ackTimeout 25s
+attr unit s
+scalar Cluster.pt[1] generatedPackets 86
+scalar Cluster.pt[1] dataTransmissionAttempts 4
+scalar Cluster.pt[1] busyLbtResponses 0
+scalar Cluster.pt[1] acknowledgedPackets 0
+scalar Cluster.pt[1] dataRetransmissions 0
+scalar Cluster.pt[1] queueLengthAtEnd 86
+par Cluster.medium typename "\"Medium\""
+par Cluster.medium numPTs 2
+par Cluster.medium transTime 10s
+attr unit s
+par Cluster.medium lbtTime 2s
+attr unit s
+par Cluster.medium ackTime 5s
+attr unit s
+scalar Cluster.medium collisionEvents 3
+scalar Cluster.medium dataTransmissionAttempts 8
+scalar Cluster.medium collidedDataAttempts 3
+scalar Cluster.medium dataOverlappedWithData 0
+scalar Cluster.medium dataOverlappedWithAck 3
+scalar Cluster.medium dataCollisionProbability 0.375
+scalar Cluster.medium busyLbtResponses 0
+par Cluster.ft typename "\"FT\""
+par Cluster.ft procTime 10s
+attr unit s
+par Cluster.ft ackTime 5s
+attr unit s
+scalar Cluster.ft receivedDataAttempts 7
+scalar Cluster.ft droppedByCollision 3
+scalar Cluster.ft droppedWhileFTBusy 0
+scalar Cluster.ft rejectedAtStartWhileBusy 4
+scalar Cluster.ft pythonEquivalentDataCollisions 0
+scalar Cluster.ft pythonEquivalentCollisionProbabilityCompleted 0
+scalar Cluster.ft deliveredUniquePackets 1
+scalar Cluster.ft meanEndToEndDelay 22
+scalar Cluster.ft minEndToEndDelay 22
+scalar Cluster.ft maxEndToEndDelay 22
+scalar Cluster.ft packetDeliveryRate 0.01
+par Cluster typename "\"Cluster\""
+par Cluster numPTs 2
+par Cluster arrProb 1
+par Cluster cMin 1
+par Cluster cMax 16
+par Cluster forceZeroBackoff true
+par Cluster transTime 10s
+attr unit s
+par Cluster lbtTime 2s
+attr unit s
+par Cluster procTime 10s
+attr unit s
+par Cluster ackTime 5s
+attr unit s
+par Cluster ackTimeout 25s
+attr unit s
+
