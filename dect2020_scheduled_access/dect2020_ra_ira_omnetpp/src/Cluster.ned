@@ -9,9 +9,10 @@ network Cluster
         double lbtTime   @unit(s) = default(2s);
         double procTime  @unit(s) = default(10s);
         double ackTime   @unit(s) = default(5s);
-        // +1s — небольшой запас, чтобы таймер PT не сработал одновременно с
-        // прибытием ACK (порядок событий в одной точке времени недетерминирован).
-        double ackTimeout @unit(s) = default(transTime + procTime + ackTime + 1s);
+        // Exact Python wait_end()/ack_end() timing: Tdata + Tproc + Tack.
+        // The ACK timeout event has lower execution precedence in PT.cc,
+        // so a valid ACK arriving at this exact time cancels the timer.
+        double ackTimeout @unit(s) = default(transTime + procTime + ackTime);
 
     submodules:
         pt[numPTs]: PT {
