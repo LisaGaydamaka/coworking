@@ -9,7 +9,7 @@ rows = list(csv.DictReader((root / "summary_metrics.csv").open()))
 out = root / "figures"
 out.mkdir(exist_ok=True)
 labels = {
-    "collision": ("Collision probability", "Collided DATA attempts / DATA attempts"),
+    "collision": ("Physical radio collision probability", "DATA overlapped DATA/ACK / all DATA attempts"),
     "lbt_busy": ("LBT busy probability", "Busy LBT / all LBT"),
     "attempts_per_delivered": ("Data attempts per delivered packet", "All DATA attempts / unique delivered packets"),
     "delivery_rate": ("Delivery intensity", "Unique delivered packets / symbol"),
@@ -22,16 +22,6 @@ def draw(ax, metric, title, ylabel):
         sd = [float(r[metric+"_sd"]) for r in data]
         ax.plot(x, y, marker=marker, linewidth=2, color=color, label=model)
         ax.fill_between(x, [a-b for a,b in zip(y,sd)], [a+b for a,b in zip(y,sd)], color=color, alpha=0.13)
-    if metric == "collision":
-        py = sorted((r for r in rows if r["model"] == "Python"), key=lambda r:float(r["arrprob"]))
-        ax.plot([float(r["arrprob"]) for r in py], [float(r["failed_data_fraction"]) for r in py],
-                ":", linewidth=2, color="#548a5b", label="Python: all failed DATA incl. FT busy")
-        om = sorted((r for r in rows if r["model"] == "OMNeT++"),
-                    key=lambda r: float(r["arrprob"]))
-        ax.plot([float(r["arrprob"]) for r in om],
-                [float(r["radio_collision_fraction"]) for r in om],
-                "--", linewidth=1.8, color="#a05060",
-                label="OMNeT++: raw radio overlaps (old metric)")
     ax.set(title=title, xlabel="arrprob per PT per symbol", ylabel=ylabel)
     ax.grid(alpha=.3)
     ax.legend(fontsize=9)
@@ -49,4 +39,21 @@ for m,(title,ylabel) in labels.items():
     fig.tight_layout()
     fig.savefig(out / (m+".png"), dpi=170, bbox_inches="tight")
     plt.close(fig)
-print("Saved 5 figures in", out)
+fig, ax = plt.subplots(figsize=(9.5, 6))
+draw(ax, "collision", "Collision definitions: physical overlap vs first failure", "Fraction of DATA attempts")
+for model, col, marker in [("Python", "#215b9a", "o"), ("OMNeT++", "#d45e35", "s")]:
+    rr = sorted((r for r in rows if r["model"] == model), key=lambda r:float(r["arrprob"]))
+    ax.plot([float(r["arrprob"]) for r in rr],
+            [float(r["first_failure_collision"]) for r in rr],
+            linestyle="--", marker=marker, color=col,
+            label=model+" first-failure-only")
+rr = sorted((r for r in rows if r["model"] == "Python"), key=lambda r:float(r["arrprob"]))
+ax.plot([float(r["arrprob"]) for r in rr],
+        [float(r["failed_data_fraction"]) for r in rr],
+        ":", color="#548a5b", linewidth=2,
+        label="Python: failed DATA incl. FT busy")
+ax.legend(fontsize=8, loc="upper left")
+fig.tight_layout()
+fig.savefig(out / "collision_diagnostics.png", dpi=170, bbox_inches="tight")
+plt.close(fig)
+print("Saved 6 figures in", out)
