@@ -14,7 +14,8 @@ class PT : public cSimpleModule
     int id = -1;
     int cMin = 1;
     int cMax = 16;
-    int currentCW = 1;         // текущее значение C_i
+    int currentCW = 1;
+    bool forceZeroBackoff = false;         // текущее значение C_i
     double arrProb = 0.01;
     simtime_t lbtTime = SIMTIME_ZERO;
     simtime_t ackTimeout = SIMTIME_ZERO;
@@ -55,6 +56,7 @@ void PT::initialize()
     arrProb = par("arrProb").doubleValue();
     cMin = par("cMin").intValue();
     cMax = par("cMax").intValue();
+    forceZeroBackoff = par("forceZeroBackoff").boolValue();
     lbtTime = par("lbtTime").doubleValueInUnit("s");
     ackTimeout = par("ackTimeout").doubleValueInUnit("s");
 
@@ -147,7 +149,7 @@ void PT::startBackoff()
         return;
 
     // C_i = currentCW. Отсрочка x = U[0, C_i] * lbtTime.
-    const int slots = intuniform(0, currentCW);
+    const int slots = forceZeroBackoff ? 0 : intuniform(0, currentCW);
     backoffTimer = new cMessage("backoffTimer");
     scheduleAt(simTime() + slots * lbtTime, backoffTimer);
     EV_INFO << "Разыгрывается отсрочка (Backoff): CW = " << currentCW

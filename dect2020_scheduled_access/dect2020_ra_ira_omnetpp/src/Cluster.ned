@@ -5,6 +5,7 @@ network Cluster
         double arrProb  = default(0.01);
         int    cMin     = default(1);
         int    cMax     = default(16);
+        bool   forceZeroBackoff = default(false); // deterministic parity test only
         double transTime @unit(s) = default(10s);
         double lbtTime   @unit(s) = default(2s);
         double procTime  @unit(s) = default(10s);
@@ -21,6 +22,7 @@ network Cluster
                 arrProb    = parent.arrProb;
                 cMin       = parent.cMin;
                 cMax       = parent.cMax;
+                forceZeroBackoff = parent.forceZeroBackoff;
                 lbtTime    = parent.lbtTime;
                 ackTimeout = parent.ackTimeout;
             @display("p=100,80,row,120;i=device/pc");
