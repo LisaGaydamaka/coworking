@@ -1,8 +1,8 @@
 version 3
-run DeterministicOnePT-0-20261102-20:09:34-191
+run DeterministicOnePT-0-20261102-20:13:46-191
 attr configname DeterministicOnePT
-attr datetime 20261102-20:09:34
-attr datetimef 20261102-200934
+attr datetime 20261102-20:13:46
+attr datetimef 20261102-201346
 attr experiment DeterministicOnePT
 attr inifile omnet_new/src/omnetpp.ini
 attr iterationvars ""
@@ -45,6 +45,8 @@ par Cluster.pt[0] arrProb 1
 par Cluster.pt[0] cMin 1
 par Cluster.pt[0] cMax 16
 par Cluster.pt[0] forceZeroBackoff true
+par Cluster.pt[0] useParityRandom false
+par Cluster.pt[0] paritySeed 1
 par Cluster.pt[0] firstArrivalOffset 0s
 attr unit s
 par Cluster.pt[0] lbtTime 2s
@@ -52,6 +54,10 @@ attr unit s
 par Cluster.pt[0] ackTimeout 25s
 attr unit s
 scalar Cluster.pt[0] generatedPackets 101
+scalar Cluster.pt[0] txStart0 2
+scalar Cluster.pt[0] txStart1 29
+scalar Cluster.pt[0] txStart2 56
+scalar Cluster.pt[0] txStart3 83
 scalar Cluster.pt[0] dataTransmissionAttempts 4
 scalar Cluster.pt[0] busyLbtResponses 0
 scalar Cluster.pt[0] acknowledgedPackets 3
@@ -94,6 +100,8 @@ par Cluster arrProb 1
 par Cluster cMin 1
 par Cluster cMax 16
 par Cluster forceZeroBackoff true
+par Cluster useParityRandom false
+par Cluster paritySeed 1
 par Cluster transTime 10s
 attr unit s
 par Cluster lbtTime 2s

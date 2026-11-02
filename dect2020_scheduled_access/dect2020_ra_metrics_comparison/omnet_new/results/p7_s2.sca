@@ -1,8 +1,8 @@
 version 3
-run CompareWithPython-7-20261102-20:09:33-97
+run CompareWithPython-7-20261102-20:13:45-97
 attr configname CompareWithPython
-attr datetime 20261102-20:09:33
-attr datetimef 20261102-200933
+attr datetime 20261102-20:13:45
+attr datetimef 20261102-201345
 attr experiment CompareWithPython
 attr inifile omnet_new/src/omnetpp.ini
 attr iterationvars $arrProb=0.08
@@ -48,6 +48,8 @@ par Cluster.pt[0] arrProb 0.08
 par Cluster.pt[0] cMin 1
 par Cluster.pt[0] cMax 16
 par Cluster.pt[0] forceZeroBackoff false
+par Cluster.pt[0] useParityRandom false
+par Cluster.pt[0] paritySeed 1
 par Cluster.pt[0] firstArrivalOffset 0s
 attr unit s
 par Cluster.pt[0] lbtTime 2s
@@ -55,6 +57,26 @@ attr unit s
 par Cluster.pt[0] ackTimeout 25s
 attr unit s
 scalar Cluster.pt[0] generatedPackets 245
+scalar Cluster.pt[0] txStart0 3
+scalar Cluster.pt[0] txStart1 34
+scalar Cluster.pt[0] txStart2 65
+scalar Cluster.pt[0] txStart3 98
+scalar Cluster.pt[0] txStart4 127
+scalar Cluster.pt[0] txStart5 154
+scalar Cluster.pt[0] txStart6 181
+scalar Cluster.pt[0] txStart7 210
+scalar Cluster.pt[0] txStart8 241
+scalar Cluster.pt[0] txStart9 270
+scalar Cluster.pt[0] txStart10 297
+scalar Cluster.pt[0] txStart11 334
+scalar Cluster.pt[0] txStart12 361
+scalar Cluster.pt[0] txStart13 392
+scalar Cluster.pt[0] txStart14 419
+scalar Cluster.pt[0] txStart15 448
+scalar Cluster.pt[0] txStart16 479
+scalar Cluster.pt[0] txStart17 506
+scalar Cluster.pt[0] txStart18 535
+scalar Cluster.pt[0] txStart19 562
 scalar Cluster.pt[0] dataTransmissionAttempts 80
 scalar Cluster.pt[0] busyLbtResponses 39
 scalar Cluster.pt[0] acknowledgedPackets 38
@@ -66,6 +88,8 @@ par Cluster.pt[1] arrProb 0.08
 par Cluster.pt[1] cMin 1
 par Cluster.pt[1] cMax 16
 par Cluster.pt[1] forceZeroBackoff false
+par Cluster.pt[1] useParityRandom false
+par Cluster.pt[1] paritySeed 1
 par Cluster.pt[1] firstArrivalOffset 0s
 attr unit s
 par Cluster.pt[1] lbtTime 2s
@@ -73,6 +97,26 @@ attr unit s
 par Cluster.pt[1] ackTimeout 25s
 attr unit s
 scalar Cluster.pt[1] generatedPackets 254
+scalar Cluster.pt[1] txStart0 20
+scalar Cluster.pt[1] txStart1 49
+scalar Cluster.pt[1] txStart2 84
+scalar Cluster.pt[1] txStart3 167
+scalar Cluster.pt[1] txStart4 222
+scalar Cluster.pt[1] txStart5 313
+scalar Cluster.pt[1] txStart6 380
+scalar Cluster.pt[1] txStart7 463
+scalar Cluster.pt[1] txStart8 548
+scalar Cluster.pt[1] txStart9 577
+scalar Cluster.pt[1] txStart10 618
+scalar Cluster.pt[1] txStart11 665
+scalar Cluster.pt[1] txStart12 732
+scalar Cluster.pt[1] txStart13 991
+scalar Cluster.pt[1] txStart14 1076
+scalar Cluster.pt[1] txStart15 1133
+scalar Cluster.pt[1] txStart16 1160
+scalar Cluster.pt[1] txStart17 1191
+scalar Cluster.pt[1] txStart18 1218
+scalar Cluster.pt[1] txStart19 1245
 scalar Cluster.pt[1] dataTransmissionAttempts 63
 scalar Cluster.pt[1] busyLbtResponses 39
 scalar Cluster.pt[1] acknowledgedPackets 20
@@ -115,6 +159,8 @@ par Cluster arrProb 0.08
 par Cluster cMin 1
 par Cluster cMax 16
 par Cluster forceZeroBackoff false
+par Cluster useParityRandom false
+par Cluster paritySeed 1
 par Cluster transTime 10s
 attr unit s
 par Cluster lbtTime 2s

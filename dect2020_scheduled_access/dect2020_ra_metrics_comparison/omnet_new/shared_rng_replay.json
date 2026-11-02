@@ -1,0 +1,135 @@
+{
+  "scenario": "2 PT, shared-random seed 1, arrprob=.05, 3000 symbols",
+  "python": {
+    "generated": 296,
+    "generated_by_pt": [
+      161,
+      135
+    ],
+    "data_attempts": 138,
+    "lbt_busy": 88,
+    "lbt_total": 226,
+    "delivered": 65,
+    "acknowledged": 64,
+    "physical_collisions": 40
+  },
+  "omnet": {
+    "generated": 296,
+    "generated_by_pt": [
+      161,
+      135
+    ],
+    "data_attempts": 138,
+    "lbt_busy": 88,
+    "lbt_total": 226,
+    "delivered": 65,
+    "acknowledged": 64,
+    "physical_collisions": 40
+  },
+  "differences": {
+    "generated": 0,
+    "data_attempts": 0,
+    "lbt_busy": 0,
+    "lbt_total": 0,
+    "delivered": 0,
+    "acknowledged": 0,
+    "physical_collisions": 0
+  },
+  "identical_arrival_counts": true,
+  "first_python_data_starts": [
+    [
+      10,
+      37,
+      66,
+      93,
+      120,
+      149,
+      176,
+      205,
+      236,
+      265,
+      294,
+      339,
+      368,
+      401,
+      428,
+      457,
+      496,
+      579,
+      606,
+      659
+    ],
+    [
+      50,
+      135,
+      224,
+      265,
+      314,
+      387,
+      484,
+      525,
+      552,
+      579,
+      626,
+      785,
+      868,
+      927,
+      972,
+      1029,
+      1068,
+      1097,
+      1136,
+      1167
+    ]
+  ],
+  "first_omnet_data_starts": [
+    [
+      10,
+      37,
+      66,
+      93,
+      120,
+      149,
+      176,
+      205,
+      236,
+      265,
+      294,
+      339,
+      368,
+      401,
+      428,
+      457,
+      496,
+      579,
+      606,
+      659
+    ],
+    [
+      50,
+      135,
+      224,
+      265,
+      314,
+      387,
+      484,
+      525,
+      552,
+      579,
+      626,
+      785,
+      868,
+      927,
+      972,
+      1029,
+      1068,
+      1097,
+      1136,
+      1167
+    ]
+  ],
+  "first_start_divergence_by_pt": [
+    null,
+    null
+  ]
+}
