@@ -1,0 +1,119 @@
+version 3
+run CompareWithPython-2-20261102-18:38:38-82
+attr configname CompareWithPython
+attr datetime 20261102-18:38:38
+attr datetimef 20261102-183838
+attr experiment CompareWithPython
+attr inifile omnet_new/src/omnetpp.ini
+attr iterationvars $arrProb=0.03
+attr iterationvarsd arrProb=0.03
+attr iterationvarsf arrProb=0.03-
+attr measurement $arrProb=0.03
+attr network Cluster
+attr processid 82
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 2
+attr seedset 1
+itervar arrProb 0.03
+config cmdenv-express-mode true
+config output-scalar-file omnet_new/results/p2_s1.sca
+config seed-set 1
+config sim-time-limit 3000s
+config Cluster.arrProb 0.03
+config network Cluster
+config sim-time-limit 3000s
+config seed-set 1
+config Cluster.numPTs 2
+config Cluster.arrProb 0.01
+config Cluster.transTime 10s
+config Cluster.procTime 10s
+config Cluster.ackTime 5s
+config Cluster.lbtTime 2s
+config Cluster.cMin 1
+config Cluster.cMax 16
+config **.scalar-recording true
+config **.vector-recording false
+
+par Cluster.pt[0].out.channel typename "\"ned.IdealChannel\""
+par Cluster.medium.ptOut[0].channel typename "\"ned.IdealChannel\""
+par Cluster.pt[1].out.channel typename "\"ned.IdealChannel\""
+par Cluster.medium.ptOut[1].channel typename "\"ned.IdealChannel\""
+par Cluster.medium.ftOut.channel typename "\"ned.IdealChannel\""
+par Cluster.ft.out.channel typename "\"ned.IdealChannel\""
+par Cluster.pt[0] typename "\"PT\""
+par Cluster.pt[0] id 0
+par Cluster.pt[0] arrProb 0.03
+par Cluster.pt[0] cMin 1
+par Cluster.pt[0] cMax 16
+par Cluster.pt[0] lbtTime 2s
+attr unit s
+par Cluster.pt[0] ackTimeout 26s
+attr unit s
+scalar Cluster.pt[0] generatedPackets 95
+scalar Cluster.pt[0] dataTransmissionAttempts 83
+scalar Cluster.pt[0] busyLbtResponses 28
+scalar Cluster.pt[0] acknowledgedPackets 43
+scalar Cluster.pt[0] dataRetransmissions 39
+scalar Cluster.pt[0] queueLengthAtEnd 52
+par Cluster.pt[1] typename "\"PT\""
+par Cluster.pt[1] id 1
+par Cluster.pt[1] arrProb 0.03
+par Cluster.pt[1] cMin 1
+par Cluster.pt[1] cMax 16
+par Cluster.pt[1] lbtTime 2s
+attr unit s
+par Cluster.pt[1] ackTimeout 26s
+attr unit s
+scalar Cluster.pt[1] generatedPackets 98
+scalar Cluster.pt[1] dataTransmissionAttempts 57
+scalar Cluster.pt[1] busyLbtResponses 60
+scalar Cluster.pt[1] acknowledgedPackets 18
+scalar Cluster.pt[1] dataRetransmissions 12
+scalar Cluster.pt[1] queueLengthAtEnd 80
+par Cluster.medium typename "\"Medium\""
+par Cluster.medium numPTs 2
+par Cluster.medium transTime 10s
+attr unit s
+par Cluster.medium lbtTime 2s
+attr unit s
+par Cluster.medium ackTime 5s
+attr unit s
+scalar Cluster.medium collisionEvents 39
+scalar Cluster.medium dataTransmissionAttempts 140
+scalar Cluster.medium collidedDataAttempts 43
+scalar Cluster.medium dataCollisionProbability 0.30714285714286
+scalar Cluster.medium busyLbtResponses 88
+par Cluster.ft typename "\"FT\""
+par Cluster.ft procTime 10s
+attr unit s
+par Cluster.ft ackTime 5s
+attr unit s
+scalar Cluster.ft receivedDataAttempts 139
+scalar Cluster.ft droppedByCollision 43
+scalar Cluster.ft droppedWhileFTBusy 0
+scalar Cluster.ft rejectedAtStartWhileBusy 39
+scalar Cluster.ft pythonEquivalentDataCollisions 10
+scalar Cluster.ft pythonEquivalentCollisionProbabilityCompleted 0.071942446043165
+scalar Cluster.ft deliveredUniquePackets 61
+scalar Cluster.ft meanEndToEndDelay 914.72131147541
+scalar Cluster.ft minEndToEndDelay 24
+scalar Cluster.ft maxEndToEndDelay 1718
+scalar Cluster.ft packetDeliveryRate 0.020333333333333
+par Cluster typename "\"Cluster\""
+par Cluster numPTs 2
+par Cluster arrProb 0.03
+par Cluster cMin 1
+par Cluster cMax 16
+par Cluster transTime 10s
+attr unit s
+par Cluster lbtTime 2s
+attr unit s
+par Cluster procTime 10s
+attr unit s
+par Cluster ackTime 5s
+attr unit s
+par Cluster ackTimeout 26s
+attr unit s
+
