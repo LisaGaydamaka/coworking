@@ -15,7 +15,7 @@ keys=['collision','lbt_busy','attempts_per_delivered','delivery_rate','failed_da
       'first_failure_collision','busy_ft_at_start','collision_with_data','collision_with_ack',
       'seen_at_ack_start','unobserved_by_original_data_check','boundary_contacts']
 
-spec=importlib.util.spec_from_file_location('dect',root/'4_random_access_final.py')
+spec=importlib.util.spec_from_file_location('dect',root/'4_random_access_protocol_corrected.py')
 sim=importlib.util.module_from_spec(spec)
 spec.loader.exec_module(sim)
 # True physical collision: ANY overlap, even if a prior FT-busy refusal
