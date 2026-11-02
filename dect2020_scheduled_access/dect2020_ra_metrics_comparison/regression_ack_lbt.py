@@ -25,6 +25,7 @@ def verify(filename):
     receiver.is_free = False
     # PT1 listens [10,12), while an ACK for PT0 starts at 11.
     packet = model.Packet(10, p1)
+    p1.queue.append(packet)  # failed LBT schedules retry for this queued packet
     lbt = model.Operation('LBT',p1,None,packet,10,12,True)
     p1.operation = lbt
     cluster.LBTs.append(lbt)
