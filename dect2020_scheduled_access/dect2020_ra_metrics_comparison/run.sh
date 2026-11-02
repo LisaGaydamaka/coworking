@@ -47,4 +47,5 @@ docker run --rm -v "$PROJECT_PARENT:/project" \
     python3 plot_shared_rng.py
     python3 compare_metrics.py
     python3 plot_metrics.py
+    python3 plot_independent_rng.py
   '
