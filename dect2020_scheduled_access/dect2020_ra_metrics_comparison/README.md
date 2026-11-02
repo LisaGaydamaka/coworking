@@ -19,37 +19,20 @@ Independent comparison component. **Do not modify** the separate `dect2020_rando
 
 | Metric | Python numerator/denominator | OMNeT++ source |
 | --- | --- | --- |
-| Collision | Count unique DATA operations marked unsuccessful during `Operation.check()` (overlapping transmissions), divided by all started DATA attempts | `Cluster.ft.pythonEquivalentDataCollisions / Cluster.medium.dataTransmissionAttempts` (new) |
+| **Physical collision** | All DATA operations overlapping another DATA **or ACK**, even when previously rejected at FT, divided by started DATA attempts | `Cluster.medium.collidedDataAttempts / dataTransmissionAttempts` |
 | LBT busy | `(Cluster.LBTall - Cluster.LBTsucc) / Cluster.LBTall` | `medium.busyLbtResponses / (busyLbtResponses + dataTransmissionAttempts)` |
 | Attempts per delivered packet | `Cluster.all / delivered_num(cluster)` | `medium.dataTransmissionAttempts / ft.deliveredUniquePackets` |
 | Delivery intensity | `delivered_num(cluster) / 3000` | `ft.deliveredUniquePackets / 3000` (matches recorded `packetDeliveryRate`) |
 
-**Collision interpretation and exact patch:**
+**Collision probability audit (2026-11-02)**
 
-The Python metric counts *only a transition from successful to unsuccessful* in `Operation.check()` for DATA (`type == "Trans"`). A DATA may have been rejected earlier because the FT was busy. Later overlaps do not retroactively count as an additional Python collision.
+The original Python `error_rate(cluster)` computes `(all-succ)/all`: this is the rate of failed DATA attempts (including FT-busy refusal), **not** exclusively physical collision probability.
 
-OMNeT++ was materially different: it only made `FT.isBusy=true` when **processing begins** at DATA_END. Python `RootDevice.receive_start()` makes FT busy immediately at DATA_START, then processes for `procTime` even if the reception was corrupted. The patch in `../dect2020_ra_ira_omnetpp/src/FT.cc` corrects both timing behaviors and adds `ft.pythonEquivalentDataCollisions`:
+An earlier comparison incorrectly labeled `Operation.check()` **first transition to failure** as a radio collision: that excludes DATA attempts which were already marked unsuccessful at the busy receiver before a subsequent radio overlap. The true physical collision numerator must count all DATA attempts **whose radio interval overlaps another DATA or ACK**, regardless of prior `is_successful`. It can be measured in Python by observing `cluster.transmissions` on every `Operation.check()` and counting every overlapping DATA operation once, even when `is_successful == False`; in OMNeT++ the appropriate native counter is `medium.collidedDataAttempts`, with one increment per DATA attempt. The physical collision metric is now the **primary** `collision` series in `summary_metrics.csv` and `collision.png`.
 
-- For each DATA, remember whether FT was free at DATA_START and whether the DATA was already collided when its start notification arrived.
-- On DATA_END with radio overlap, count a Python-equivalent collision if the receiver was initially free **or** the transmission was already collided at start (Python runs `check()` before `receive_start()`).
-- Otherwise an attempt already marked failed due to FT busy is **not** counted again as a Python collision, although it remains a physical radio overlap.
+The earlier `ft.pythonEquivalentDataCollisions` is retained for diagnosis and renamed `first_failure_collision` in CSV. It is *not* the complete physical collision probability. Likewise `failed_data_fraction` remains distinct. To explain discrepancies, `medium.dataOverlappedWithData` and `medium.dataOverlappedWithAck` separately count distinct DATA attempts overlapping each transmission type; these categories may overlap, so their sum need not equal `collidedDataAttempts`. `collision_diagnostics.png` compares all definitions. `busy_ft_at_start` records what proportion of DATA attempts encountered a busy receiver at transmission start.
 
-Raw physical overlaps remain available in `medium.collidedDataAttempts`. The new metric is `ft.pythonEquivalentDataCollisions / medium.dataTransmissionAttempts` and is compared to the Python `Operation.check()` transition-based metric. The `FT` additionally records `rejectedAtStartWhileBusy`. The two curves should be close **because their semantics now match**, not because of a tuned multiplier. Different RNGs and event ordering can still cause differences. Verify using the new .sca results.
-
-
-
-### Verified results after the patch (GitHub Actions)
-
-[Successful full 90-run OMNeT++ + 90-run Python comparison](https://github.com/LisaGaydamaka/coworking/actions/runs/41502404581). All updated `.sca`, `.csv` and `.png` outputs were saved to this folder.
-
-At `arrprob=0.05` (10 runs, 3000 symbols each):
-
-| Quantity | Python | Corrected OMNeT++ | Old OMNeT++ |
-| --- | ---: | ---: | ---: |
-| Python-equivalent collision probability | 0.10344 | **0.07758** | not collected |
-| Raw OMNeT++ overlap probability | — | 0.32630 | 0.32630 |
-
-The old OMNeT++ *radio-overlap* metric differed from the Python transition-based metric by **0.22286** (absolute probability). The corrected OMNeT++ metric differs by **0.02586**. The reduction in absolute discrepancy is **88.4%**. **The numerical results are not identical**; common definitions do not guarantee identical random experiments or event ordering, and further protocol validation is needed.
+The previous Python first-failure series at `arrprob=0.05` was **0.10344**, while its properly measured physical collision probability is **0.23526**. A saved prior OMNeT++ physical collision rate was **0.32630**. This gap represents different simulated behaviors, not a normalization adjustment. Any further protocol changes must be separately validated; do **not** set or multiply counters to force numerical agreement.
 
 
 The attempts-per-delivered ratio includes transmissions initiated for undelivered packets still in the finite-horizon system. It is a **window-wide efficiency ratio**, not the exact sample mean of attempts associated only with eventually delivered packets. To compute the latter, instrument per-packet attempts in both implementations. The LBT denominator assumes every non-busy completed LBT leads to a DATA transmission, consistent with the provided aggregated OMNeT++ counters.
