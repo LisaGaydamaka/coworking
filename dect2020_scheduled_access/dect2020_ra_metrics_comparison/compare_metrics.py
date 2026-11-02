@@ -13,7 +13,7 @@ seeds=range(1,11)
 T=3000
 keys=['collision','lbt_busy','attempts_per_delivered','delivery_rate','failed_data_fraction',
       'first_failure_collision','busy_ft_at_start','collision_with_data','collision_with_ack',
-      'missed_at_ack_start','boundary_contacts']
+      'seen_at_ack_start','unobserved_by_original_data_check','boundary_contacts']
 
 spec=importlib.util.spec_from_file_location('dect',root/'4_random_access_final.py')
 sim=importlib.util.module_from_spec(spec)
@@ -27,7 +27,8 @@ data_ack=set()
 ft_busy_at_start=set()
 # Diagnostic: a DATA/Ack overlap that the original Python 'Trans.check'
 # observer misses because RootDevice belongs to dummy Cluster(-1).
-missed_at_ack_start=set()
+seen_at_ack_start=set()
+seen_by_data_check=set()
 boundary_contacts=set()
 check=sim.Operation.check
 receive_start=sim.RootDevice.receive_start
@@ -45,6 +46,7 @@ def track(op):
     if op.type=='Trans':
         for other in op.A.cluster.transmissions:
             if other is not op and other.type in ('Trans','Ack'):
+                if overlap(op,other): seen_by_data_check.add(op)
                 record_data_overlap(op,other)
     elif op.type=='Ack':
         # Python's original RootDevice.proc_end() does not run check() again
@@ -53,7 +55,7 @@ def track(op):
         # Record them here, WITHOUT modifying the simulated model.
         for data in op.B.cluster.transmissions:
             if data is not op and data.type=='Trans' and overlap(data,op):
-                if data not in data_ack: missed_at_ack_start.add(data)
+                if data not in data_ack: seen_at_ack_start.add(data)
                 record_data_overlap(data,op)
     before=op.is_successful
     check(op)
@@ -68,7 +70,7 @@ rows=[]
 for p in probs:
     for seed in seeds:
         for observed in (physical,first_transition,data_data,data_ack,ft_busy_at_start,
-                         missed_at_ack_start,boundary_contacts):
+                         seen_at_ack_start,seen_by_data_check,boundary_contacts):
             observed.clear()
         random.seed(seed); np.random.seed(seed)
         sim.arrprob=p; sim.arrival_type='arrprob'
@@ -94,7 +96,8 @@ for p in probs:
           busy_ft_at_start=len(ft_busy_at_start)/attempts if attempts else float('nan'),
           collision_with_data=len(data_data)/attempts if attempts else float('nan'),
           collision_with_ack=len(data_ack)/attempts if attempts else float('nan'),
-          missed_at_ack_start=len(missed_at_ack_start)/attempts if attempts else float('nan'),
+          seen_at_ack_start=len(seen_at_ack_start)/attempts if attempts else float('nan'),
+          unobserved_by_original_data_check=len(physical-seen_by_data_check)/attempts if attempts else float('nan'),
           boundary_contacts=len(boundary_contacts)/attempts if attempts else float('nan')))
 
 for path in sorted((root/'omnet_new/results').glob('*.sca')):
@@ -122,7 +125,9 @@ for path in sorted((root/'omnet_new/results').glob('*.sca')):
        busy_ft_at_start=get('ft.rejectedAtStartWhileBusy')/attempts if attempts else float('nan'),
        collision_with_data=get('medium.dataOverlappedWithData')/attempts if attempts else float('nan'),
        collision_with_ack=get('medium.dataOverlappedWithAck')/attempts if attempts else float('nan'),
-       missed_at_ack_start=float('nan'), boundary_contacts=float('nan'),
+       seen_at_ack_start=float('nan'),
+       unobserved_by_original_data_check=float('nan'),
+       boundary_contacts=float('nan'),
        failed_data_fraction=(attempts-get('ft.receivedDataAttempts')+collided+get('ft.droppedWhileFTBusy'))/attempts if attempts else float('nan')))
 
 expected={(round(p,2),seed) for p in probs for seed in seeds}
