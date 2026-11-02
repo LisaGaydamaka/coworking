@@ -1,8 +1,8 @@
 version 3
-run CompareWithPython-4-20261102-18:38:38-94
+run CompareWithPython-4-20261102-18:58:24-94
 attr configname CompareWithPython
-attr datetime 20261102-18:38:38
-attr datetimef 20261102-183838
+attr datetime 20261102-18:58:24
+attr datetimef 20261102-185824
 attr experiment CompareWithPython
 attr inifile omnet_new/src/omnetpp.ini
 attr iterationvars $arrProb=0.05
@@ -83,6 +83,8 @@ attr unit s
 scalar Cluster.medium collisionEvents 42
 scalar Cluster.medium dataTransmissionAttempts 141
 scalar Cluster.medium collidedDataAttempts 46
+scalar Cluster.medium dataOverlappedWithData 8
+scalar Cluster.medium dataOverlappedWithAck 38
 scalar Cluster.medium dataCollisionProbability 0.32624113475177
 scalar Cluster.medium busyLbtResponses 72
 par Cluster.ft typename "\"FT\""
