@@ -82,7 +82,7 @@ for model in ['Python','OMNeT++']:
 
 def write(filename,data):
     with (root/filename).open('w',newline='') as out:
-        w=csv.DictWriter(out,fieldnames=list(data[0]))
+        w=csv.DictWriter(out,fieldnames=list(dict.fromkeys(k for row in data for k in row)))
         w.writeheader();w.writerows(data)
 write('raw_metrics.csv',rows)
 grouped=defaultdict(list)
