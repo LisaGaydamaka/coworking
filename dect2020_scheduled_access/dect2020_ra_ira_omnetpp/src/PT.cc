@@ -2,6 +2,8 @@
 #include <algorithm>
 #include <deque>
 #include <cstdint>
+#include <vector>
+#include <string>
 
 #include "DectPacket_m.h"
 #include "DectTypes.h"
@@ -32,6 +34,7 @@ class PT : public cSimpleModule
     bool waitingForAck = false;
 
     // статистика
+    std::vector<int> firstDataStartTimes; // first 20 start times for parity replay
     long generatedPackets = 0;
     long dataAttempts = 0;
     long busyLbtResponses = 0;
@@ -207,6 +210,8 @@ void PT::transmitCurrentPacket()
     auto *copy = packet->dup();
     copy->setType(MSG_DATA);
     ++dataAttempts;
+    if (firstDataStartTimes.size() < 20)
+        firstDataStartTimes.push_back(static_cast<int>(simTime().dbl()));
     send(copy, "out");
 
     EV_INFO << "Начата передача пакета #" << packet->getPktId()<< " (попытка " << packet->getAttempt() << ")\n";
@@ -277,6 +282,8 @@ void PT::finish()
     if (ackTimer != nullptr)     cancelAndDelete(ackTimer);
 
     recordScalar("generatedPackets",        generatedPackets);
+    for (size_t i=0; i<firstDataStartTimes.size(); ++i)
+        recordScalar(("txStart"+std::to_string(i)).c_str(), firstDataStartTimes[i]);
     recordScalar("dataTransmissionAttempts", dataAttempts);
     recordScalar("busyLbtResponses",         busyLbtResponses);
     recordScalar("acknowledgedPackets",      acknowledgedPackets);
