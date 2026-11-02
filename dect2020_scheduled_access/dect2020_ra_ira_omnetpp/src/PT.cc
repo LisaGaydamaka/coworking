@@ -185,6 +185,10 @@ void PT::transmitCurrentPacket()
 
     waitingForAck = true;
     ackTimer = new cMessage("ackTimer");
+    // OMNeT++ lower scheduling priority value executes FIRST.  At the
+    // exact Python ACK boundary (25 symbols), let Medium's ACK_END and
+    // the resulting PT message run before this timeout (priority +1).
+    ackTimer->setSchedulingPriority(1);
     scheduleAt(simTime() + ackTimeout, ackTimer);
 }
 
