@@ -208,6 +208,18 @@ for d, symbols, seed in CASES:
     om = run_omnet(d, symbols, seed, om_trace)
     traces = {"python": load_trace(py_trace), "omnet": load_trace(om_trace)}
     events = {kind: comparison(traces["python"], traces["omnet"], kind) for kind in EVENTS}
+    # Python includes events at t==symbols, OMNeT++ stops before the tick at t==symbols.
+    # Preserve raw events and compare starts within the common observation window.
+    in_window = {
+        side: {"backoff": [ev for ev in traces[side]["backoff"] if ev[1] < symbols]}
+        for side in ("python", "omnet")
+    }
+    events["backoff_within_horizon"] = comparison(
+        in_window["python"], in_window["omnet"], "backoff")
+    events["terminal_backoff_counts"] = {
+        side: len(traces[side]["backoff"]) - len(in_window[side]["backoff"])
+        for side in ("python", "omnet")
+    }
     diff = om["mean_delay"] - py["mean_delay"]
     row = dict(d=d, symbols=symbols, seed=seed,
                python_mean_symbols=py["mean_delay"], omnet_mean_symbols=om["mean_delay"],
@@ -238,6 +250,16 @@ for d, symbols, seed in CASES:
 report["all_event_traces_match"] = all(all(
     v["matched"] for v in sc["event_comparisons"].values()
 ) for sc in report["scenarios"])
+report["all_event_traces_match_within_observation_window"] = all(
+    all(sc["event_comparisons"][kind]["matched"] for kind in (
+        "backoff_within_horizon", "lbt", "data", "delivery"))
+    for sc in report["scenarios"]
+)
+report["boundary_note"] = (
+    "Python processes events at time == horizon, whereas OMNeT++ does not "
+    "run a symbol tick at t==horizon. Extra terminal backoffs are filtered "
+    "only for the observation-window comparison. Raw counts are retained."
+)
 report["all_numeric_metrics_match"] = all(
     abs(r["mean_difference_symbols"]) < 1e-6
     and r["python_delivered"] == r["omnet_delivered"]
@@ -250,6 +272,9 @@ with (RESULTS / "summary.csv").open("w", newline="") as f:
     w.writeheader()
     w.writerows(rows)
 
+# The supplied Python source enables Matplotlib usetex at import.
+# This plot does not require LaTeX.
+plt.rcParams["text.usetex"] = False
 # For the 2-million-symbol scenarios, chart absolute delays side by side.
 full = [r for r in rows if r["symbols"] == 2000000]
 fig, ax = plt.subplots(figsize=(9.5, 5.5), dpi=180)
@@ -266,5 +291,6 @@ fig.tight_layout()
 fig.savefig(RESULTS / "shared_backoff_delay.png")
 plt.close(fig)
 print("RESULT all_event_traces_match", report["all_event_traces_match"])
+print("RESULT all_event_traces_match_within_observation_window", report["all_event_traces_match_within_observation_window"])
 print("RESULT all_numeric_metrics_match", report["all_numeric_metrics_match"])
 print("SAVED results/report.json results/summary.csv results/shared_backoff_delay.png", flush=True)
