@@ -247,9 +247,10 @@ for d, symbols, seed in CASES:
     py_trace.unlink()
     om_trace.unlink()
 
-report["all_event_traces_match"] = all(all(
-    v["matched"] for v in sc["event_comparisons"].values()
-) for sc in report["scenarios"])
+report["all_event_traces_match"] = all(
+    all(sc["event_comparisons"][kind]["matched"] for kind in EVENTS)
+    for sc in report["scenarios"]
+)
 report["all_event_traces_match_within_observation_window"] = all(
     all(sc["event_comparisons"][kind]["matched"] for kind in (
         "backoff_within_horizon", "lbt", "data", "delivery"))
