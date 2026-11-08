@@ -1,0 +1,27 @@
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.3.0, build: 251110-bb3d6a4731, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from /project/build:  1
+
+Preparing for running configuration General, run #0...
+Assigned runID=General-0-20261108-14:34:48-239
+Setting up network "DectRandomAccess"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 7e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 1   present: 1   in FES: 1
+** Event #2000001   t=83.333334   Elapsed: 0.112606s (0m 00s)
+     Speed:     ev/sec=1.7762e+07   simsec/sec=740.083   ev/simsec=24000
+     Messages:  created: 1   present: 1   in FES: 0
+
+<!> Simulation stopped with endSimulation() -- in module (RandomAccessModel) DectRandomAccess.model (id=2), at t=83.333334s, event #2000001
+
+Calling finish() at end of Run #0...
+
+End.
+
