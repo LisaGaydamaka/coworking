@@ -1,0 +1,77 @@
+version 3
+run General-0-20261108-13:00:45-97
+attr configname General
+attr datetime 20261108-13:00:45
+attr datetimef 20261108-130045
+attr experiment General
+attr inifile /project/results/omnet_d310.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network DectRandomAccess
+attr processid 97
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config cmdenv-express-mode true
+config output-scalar-file /project/results/omnet_d310.sca
+config network DectRandomAccess
+config simtime-resolution ps
+config seed-set 0
+config *.model.ptCount 2
+config *.model.generationIntervalSymbols 310
+config *.model.cMin 5
+config *.model.cMax 40
+config *.model.resetBackoffAfterNoAck false
+config *.model.lbtSymbols 2
+config *.model.dataSymbols 10
+config *.model.procSymbols 10
+config *.model.ackSymbols 5
+config *.model.symbolTime 41.666666667us
+config *.model.simulationSymbols 300000
+config *.model.warmupSymbols 0
+config **.vector-recording false
+
+par DectRandomAccess.model typename "\"RandomAccessModel\""
+par DectRandomAccess.model ptCount 2
+par DectRandomAccess.model generationIntervalSymbols 310
+par DectRandomAccess.model cMin 5
+par DectRandomAccess.model cMax 40
+par DectRandomAccess.model resetBackoffAfterNoAck false
+par DectRandomAccess.model lbtSymbols 2
+par DectRandomAccess.model dataSymbols 10
+par DectRandomAccess.model procSymbols 10
+par DectRandomAccess.model ackSymbols 5
+par DectRandomAccess.model symbolTime 4.16667e-05s
+attr unit s
+par DectRandomAccess.model simulationSymbols 300000
+par DectRandomAccess.model warmupSymbols 0
+scalar DectRandomAccess.model generatedPackets 1936
+scalar DectRandomAccess.model completedPackets 1936
+scalar DectRandomAccess.model measuredCompletedPackets 1936
+scalar DectRandomAccess.model uniqueDeliveredPackets 1936
+scalar DectRandomAccess.model measuredDeliveredPackets 1936
+scalar DectRandomAccess.model successfulDataDeliveries 2584
+scalar DectRandomAccess.model deliveredPacketsAwaitingAck 0
+scalar DectRandomAccess.model dataTransmissionAttempts 3622
+scalar DectRandomAccess.model failedDataTransmissionAttempts 1038
+scalar DectRandomAccess.model ackTimeoutCount 1686
+scalar DectRandomAccess.model packetsLeftInQueues 0
+scalar DectRandomAccess.model retransmissions 3349
+scalar DectRandomAccess.model accessRetries 3349
+scalar DectRandomAccess.model busyLbtCount 1663
+scalar DectRandomAccess.model dataDataCollisionAttempts 390
+scalar DectRandomAccess.model dataAckCollisionAttempts 648
+scalar DectRandomAccess.model ackCollisionCount 648
+scalar DectRandomAccess.model receiverBusyFailures 843
+scalar DectRandomAccess.model meanEndToEndDelaySeconds 0.0036002496844494
+attr unit s
+scalar DectRandomAccess.model meanEndToEndDelaySymbols 86.405991735537
+scalar DectRandomAccess.model meanConfirmedPacketDelaySeconds 0.0036002496844494
+attr unit s
+scalar DectRandomAccess.model meanConfirmedPacketDelaySymbols 86.405991735537
+par DectRandomAccess typename "\"DectRandomAccess\""
+
