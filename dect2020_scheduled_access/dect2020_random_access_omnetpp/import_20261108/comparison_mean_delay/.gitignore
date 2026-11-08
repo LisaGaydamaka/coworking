@@ -1,0 +1,5 @@
+# Preserve comparison data despite the ancestor simulator's generic output ignores.
+# Build products are regenerated and should not be committed.
+/build/
+!results/
+!results/**
