@@ -16,3 +16,6 @@ docker run --rm -v "$PROJECT_PARENT:/project" \
     cd ..
     python3 compare.py
 '
+# The ancestor .gitignore excludes every results/ directory. Force-stage only
+# the small verified diagnostic artifacts; raw traces/builds stay ignored.
+git add -f results/report.json results/summary.csv results/shared_backoff_delay.png
