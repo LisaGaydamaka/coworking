@@ -45,7 +45,8 @@ code = replace_one(code, "    pts.resize(ptCount);",
     paritySeed = par("paritySeed").intValue();
     parityBackoffCounts.assign(ptCount, 0);
     parityTrace.open(par("parityTraceFile").stringValue());
-    if (!parityTrace.is_open()) throw cRuntimeError("Cannot open parity trace file");""", "initialize")
+    if (!parityTrace.is_open()) throw cRuntimeError("Cannot open parity trace file");
+    parityTrace << "kind,pt,t,a,b\\n";""", "initialize")
 code = replace_one(code, "    int randomValue = intuniform(0, window);",
 """    uint32_t index = parityBackoffCounts[ptIndex]++;
     int randomValue = int(parityHash(1, ptIndex, index, paritySeed) % uint32_t(window + 1));
