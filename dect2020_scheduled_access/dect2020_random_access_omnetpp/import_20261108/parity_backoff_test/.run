@@ -1,3 +1,4 @@
 Paired diagnostic backoff parity test 2026-11-08: backoff/LBT/DATA/delivery event traces, seed 17, 0.3m and 2m symbols.
 retry-csv-header-2026-11-08
 final-compare-and-plot-rerun-20261108
+json-summary-fix-rerun-2026-11-08
