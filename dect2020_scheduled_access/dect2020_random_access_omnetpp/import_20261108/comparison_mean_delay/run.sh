@@ -16,5 +16,6 @@ cd build
 opp_makemake -f -o ra_compare
 make -j2
 cd ..
-python3 compare.py
+python3 -m py_compile 4_random_access_corrected.py
+python3 compare_fixed.py
 '
