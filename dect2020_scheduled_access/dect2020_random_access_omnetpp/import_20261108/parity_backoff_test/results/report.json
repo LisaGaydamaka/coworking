@@ -1,0 +1,668 @@
+{
+  "method": "independent per-PT counter-based hash PRNG, same seeds",
+  "original_sources_modified": false,
+  "reference_file": "comparison_mean_delay/4_random_access_corrected.py",
+  "scenarios": [
+    {
+      "config": {
+        "d": 110,
+        "symbols": 300000,
+        "seed": 17
+      },
+      "python": {
+        "mean_delay": 229.73757564643316,
+        "delivered_unique": 5453,
+        "data_attempts": 9706,
+        "busy_lbt": 4182,
+        "backoff_draws": [
+          6942,
+          6948
+        ]
+      },
+      "omnet": {
+        "mean_delay": 229.73757564643,
+        "delivered_unique": 5453,
+        "data_attempts": 9706,
+        "busy_lbt": 4182
+      },
+      "delay_diff": -3.154809746774845e-12,
+      "event_comparisons": {
+        "backoff": {
+          "python_count": 13890,
+          "omnet_count": 13890,
+          "matched": true,
+          "python_sha256": "4ff22b336c4d1dad3d0f0ad5f44cf325562e3a043039c7a08d195e9f5dd9ede7",
+          "omnet_sha256": "4ff22b336c4d1dad3d0f0ad5f44cf325562e3a043039c7a08d195e9f5dd9ede7",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": {
+            "0": 6942,
+            "1": 6948
+          }
+        },
+        "lbt": {
+          "python_count": 13888,
+          "omnet_count": 13888,
+          "matched": true,
+          "python_sha256": "2d237a2d0a3141b0e148765afe8ea1091c7e14dac96a322a3b0da732ff9c03fb",
+          "omnet_sha256": "2d237a2d0a3141b0e148765afe8ea1091c7e14dac96a322a3b0da732ff9c03fb",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": null
+        },
+        "data": {
+          "python_count": 9706,
+          "omnet_count": 9706,
+          "matched": true,
+          "python_sha256": "d0b4d60b72da68ed9a0a39bcd28e91f8fc69889024941daee233bf4aa8279b6a",
+          "omnet_sha256": "d0b4d60b72da68ed9a0a39bcd28e91f8fc69889024941daee233bf4aa8279b6a",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": null
+        },
+        "delivery": {
+          "python_count": 7366,
+          "omnet_count": 7366,
+          "matched": true,
+          "python_sha256": "7a05dc2473a2266f95225f4e571aca0e30827e69e06b5f2ba63ce541f958edd1",
+          "omnet_sha256": "7a05dc2473a2266f95225f4e571aca0e30827e69e06b5f2ba63ce541f958edd1",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": null
+        },
+        "backoff_within_horizon": {
+          "python_count": 13890,
+          "omnet_count": 13890,
+          "matched": true,
+          "python_sha256": "4ff22b336c4d1dad3d0f0ad5f44cf325562e3a043039c7a08d195e9f5dd9ede7",
+          "omnet_sha256": "4ff22b336c4d1dad3d0f0ad5f44cf325562e3a043039c7a08d195e9f5dd9ede7",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": {
+            "0": 6942,
+            "1": 6948
+          }
+        },
+        "terminal_backoff_counts": {
+          "python": 0,
+          "omnet": 0
+        }
+      }
+    },
+    {
+      "config": {
+        "d": 110,
+        "symbols": 2000000,
+        "seed": 17
+      },
+      "python": {
+        "mean_delay": 216.68346214142304,
+        "delivered_unique": 36359,
+        "data_attempts": 64443,
+        "busy_lbt": 28109,
+        "backoff_draws": [
+          46279,
+          46273
+        ]
+      },
+      "omnet": {
+        "mean_delay": 216.68346214142,
+        "delivered_unique": 36359,
+        "data_attempts": 64443,
+        "busy_lbt": 28109
+      },
+      "delay_diff": -3.0411229090532288e-12,
+      "event_comparisons": {
+        "backoff": {
+          "python_count": 92552,
+          "omnet_count": 92552,
+          "matched": true,
+          "python_sha256": "c4b3a2a9452578c72e79f125183f9e8bc58b3173bda7964f88e91322443a0a2d",
+          "omnet_sha256": "c4b3a2a9452578c72e79f125183f9e8bc58b3173bda7964f88e91322443a0a2d",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": {
+            "0": 46279,
+            "1": 46273
+          }
+        },
+        "lbt": {
+          "python_count": 92552,
+          "omnet_count": 92552,
+          "matched": true,
+          "python_sha256": "a024236c3f57d280c3277eee67f20371bc1ca24f8e7a4b8be504309db5c6e57e",
+          "omnet_sha256": "a024236c3f57d280c3277eee67f20371bc1ca24f8e7a4b8be504309db5c6e57e",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": null
+        },
+        "data": {
+          "python_count": 64443,
+          "omnet_count": 64443,
+          "matched": true,
+          "python_sha256": "eb2f888f9bfa44c33e7e9d41e4e1d30eff701449c8e0c1f519ef9b561958452f",
+          "omnet_sha256": "eb2f888f9bfa44c33e7e9d41e4e1d30eff701449c8e0c1f519ef9b561958452f",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": null
+        },
+        "delivery": {
+          "python_count": 49006,
+          "omnet_count": 49006,
+          "matched": true,
+          "python_sha256": "83d23ba9012c39af4b845828fe4d48f127bd6546384f4a5b57e1d8103c023aac",
+          "omnet_sha256": "83d23ba9012c39af4b845828fe4d48f127bd6546384f4a5b57e1d8103c023aac",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": null
+        },
+        "backoff_within_horizon": {
+          "python_count": 92552,
+          "omnet_count": 92552,
+          "matched": true,
+          "python_sha256": "c4b3a2a9452578c72e79f125183f9e8bc58b3173bda7964f88e91322443a0a2d",
+          "omnet_sha256": "c4b3a2a9452578c72e79f125183f9e8bc58b3173bda7964f88e91322443a0a2d",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": {
+            "0": 46279,
+            "1": 46273
+          }
+        },
+        "terminal_backoff_counts": {
+          "python": 0,
+          "omnet": 0
+        }
+      }
+    },
+    {
+      "config": {
+        "d": 120,
+        "symbols": 2000000,
+        "seed": 17
+      },
+      "python": {
+        "mean_delay": 155.12423496939877,
+        "delivered_unique": 33332,
+        "data_attempts": 60349,
+        "busy_lbt": 26107,
+        "backoff_draws": [
+          43322,
+          43134
+        ]
+      },
+      "omnet": {
+        "mean_delay": 155.1242349694,
+        "delivered_unique": 33332,
+        "data_attempts": 60349,
+        "busy_lbt": 26107
+      },
+      "delay_diff": 1.2221335055073723e-12,
+      "event_comparisons": {
+        "backoff": {
+          "python_count": 86456,
+          "omnet_count": 86456,
+          "matched": true,
+          "python_sha256": "92e3a2297b1c667c7478a4448eef10d23b598137df5b929303af4c2f09c8f0e5",
+          "omnet_sha256": "92e3a2297b1c667c7478a4448eef10d23b598137df5b929303af4c2f09c8f0e5",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": {
+            "0": 43322,
+            "1": 43134
+          }
+        },
+        "lbt": {
+          "python_count": 86456,
+          "omnet_count": 86456,
+          "matched": true,
+          "python_sha256": "5431418914af90f0f4de2a4cb154e424674278a1572893d437189523eb0e31e9",
+          "omnet_sha256": "5431418914af90f0f4de2a4cb154e424674278a1572893d437189523eb0e31e9",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": null
+        },
+        "data": {
+          "python_count": 60349,
+          "omnet_count": 60349,
+          "matched": true,
+          "python_sha256": "ad0772bf0645fe59ea5442fc2543cfb4e832f5828735c85c241f7c98a8e572d5",
+          "omnet_sha256": "ad0772bf0645fe59ea5442fc2543cfb4e832f5828735c85c241f7c98a8e572d5",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": null
+        },
+        "delivery": {
+          "python_count": 45218,
+          "omnet_count": 45218,
+          "matched": true,
+          "python_sha256": "2f7a5ef9f446c983c4487f075f9a2fc1b7f563575daa2ae8dc290640eade541e",
+          "omnet_sha256": "2f7a5ef9f446c983c4487f075f9a2fc1b7f563575daa2ae8dc290640eade541e",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": null
+        },
+        "backoff_within_horizon": {
+          "python_count": 86456,
+          "omnet_count": 86456,
+          "matched": true,
+          "python_sha256": "92e3a2297b1c667c7478a4448eef10d23b598137df5b929303af4c2f09c8f0e5",
+          "omnet_sha256": "92e3a2297b1c667c7478a4448eef10d23b598137df5b929303af4c2f09c8f0e5",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": {
+            "0": 43322,
+            "1": 43134
+          }
+        },
+        "terminal_backoff_counts": {
+          "python": 0,
+          "omnet": 0
+        }
+      }
+    },
+    {
+      "config": {
+        "d": 150,
+        "symbols": 2000000,
+        "seed": 17
+      },
+      "python": {
+        "mean_delay": 103.29380882738965,
+        "delivered_unique": 26667,
+        "data_attempts": 49011,
+        "busy_lbt": 22114,
+        "backoff_draws": [
+          35602,
+          35524
+        ]
+      },
+      "omnet": {
+        "mean_delay": 103.29380882739,
+        "delivered_unique": 26667,
+        "data_attempts": 49011,
+        "busy_lbt": 22114
+      },
+      "delay_diff": 3.410605131648481e-13,
+      "event_comparisons": {
+        "backoff": {
+          "python_count": 71126,
+          "omnet_count": 71126,
+          "matched": true,
+          "python_sha256": "31370a91cb00feea0c0d16558e3a25b69400600ad198dcd1d9074e344036fd56",
+          "omnet_sha256": "31370a91cb00feea0c0d16558e3a25b69400600ad198dcd1d9074e344036fd56",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": {
+            "0": 35602,
+            "1": 35524
+          }
+        },
+        "lbt": {
+          "python_count": 71125,
+          "omnet_count": 71125,
+          "matched": true,
+          "python_sha256": "ee791c91fa7c48f13ef3b792280c97f00bed04106486fca50f57a8fb27ca568e",
+          "omnet_sha256": "ee791c91fa7c48f13ef3b792280c97f00bed04106486fca50f57a8fb27ca568e",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": null
+        },
+        "data": {
+          "python_count": 49011,
+          "omnet_count": 49011,
+          "matched": true,
+          "python_sha256": "b7c7f99aeac519e1a54feaa3e3d32ba01163baae8cca9d5ffa67977ae9f9357e",
+          "omnet_sha256": "b7c7f99aeac519e1a54feaa3e3d32ba01163baae8cca9d5ffa67977ae9f9357e",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": null
+        },
+        "delivery": {
+          "python_count": 35710,
+          "omnet_count": 35710,
+          "matched": true,
+          "python_sha256": "7c6bc95814eb6e9d22a12ab33a423cc3dddedf84847cea1071d5674afa2ea7bb",
+          "omnet_sha256": "7c6bc95814eb6e9d22a12ab33a423cc3dddedf84847cea1071d5674afa2ea7bb",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": null
+        },
+        "backoff_within_horizon": {
+          "python_count": 71126,
+          "omnet_count": 71126,
+          "matched": true,
+          "python_sha256": "31370a91cb00feea0c0d16558e3a25b69400600ad198dcd1d9074e344036fd56",
+          "omnet_sha256": "31370a91cb00feea0c0d16558e3a25b69400600ad198dcd1d9074e344036fd56",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": {
+            "0": 35602,
+            "1": 35524
+          }
+        },
+        "terminal_backoff_counts": {
+          "python": 0,
+          "omnet": 0
+        }
+      }
+    },
+    {
+      "config": {
+        "d": 250,
+        "symbols": 2000000,
+        "seed": 17
+      },
+      "python": {
+        "mean_delay": 86.6115625,
+        "delivered_unique": 16000,
+        "data_attempts": 29866,
+        "busy_lbt": 13667,
+        "backoff_draws": [
+          21746,
+          21789
+        ]
+      },
+      "omnet": {
+        "mean_delay": 86.6115625,
+        "delivered_unique": 16000,
+        "data_attempts": 29866,
+        "busy_lbt": 13667
+      },
+      "delay_diff": 0.0,
+      "event_comparisons": {
+        "backoff": {
+          "python_count": 43535,
+          "omnet_count": 43533,
+          "matched": false,
+          "python_sha256": "c7addc2902d9ad615d0ba49ef9c63958b51213618fa79879c96143e4696c8fe5",
+          "omnet_sha256": "06e28d20d2322017c68ef02bf985f38b59e743934463906b51b5077e84d01c13",
+          "first_mismatch_index": 21745,
+          "python_at_mismatch": [
+            0,
+            2000000,
+            5,
+            5
+          ],
+          "omnet_at_mismatch": [
+            1,
+            0,
+            5,
+            1
+          ],
+          "matching_draw_prefix_per_pt": {
+            "0": 21745,
+            "1": 21788
+          }
+        },
+        "lbt": {
+          "python_count": 43533,
+          "omnet_count": 43533,
+          "matched": true,
+          "python_sha256": "d9c93335fba487b3208d3426a600758dd9ec13c31c5fd1aa8f59aeffd5bb9cf6",
+          "omnet_sha256": "d9c93335fba487b3208d3426a600758dd9ec13c31c5fd1aa8f59aeffd5bb9cf6",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": null
+        },
+        "data": {
+          "python_count": 29866,
+          "omnet_count": 29866,
+          "matched": true,
+          "python_sha256": "7afbe9134bd7150b096ab4d97b838f2f1507d55324abb07ff190898ae73407e0",
+          "omnet_sha256": "7afbe9134bd7150b096ab4d97b838f2f1507d55324abb07ff190898ae73407e0",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": null
+        },
+        "delivery": {
+          "python_count": 21380,
+          "omnet_count": 21380,
+          "matched": true,
+          "python_sha256": "b9e52219cdf62660e8b25244d09dae6c9e76f95e6bc4ed46208011e04d08b138",
+          "omnet_sha256": "b9e52219cdf62660e8b25244d09dae6c9e76f95e6bc4ed46208011e04d08b138",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": null
+        },
+        "backoff_within_horizon": {
+          "python_count": 43533,
+          "omnet_count": 43533,
+          "matched": true,
+          "python_sha256": "06e28d20d2322017c68ef02bf985f38b59e743934463906b51b5077e84d01c13",
+          "omnet_sha256": "06e28d20d2322017c68ef02bf985f38b59e743934463906b51b5077e84d01c13",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": {
+            "0": 21745,
+            "1": 21788
+          }
+        },
+        "terminal_backoff_counts": {
+          "python": 2,
+          "omnet": 0
+        }
+      }
+    },
+    {
+      "config": {
+        "d": 390,
+        "symbols": 2000000,
+        "seed": 17
+      },
+      "python": {
+        "mean_delay": 83.08715998830067,
+        "delivered_unique": 10257,
+        "data_attempts": 18692,
+        "busy_lbt": 8898,
+        "backoff_draws": [
+          13781,
+          13809
+        ]
+      },
+      "omnet": {
+        "mean_delay": 83.087159988301,
+        "delivered_unique": 10257,
+        "data_attempts": 18692,
+        "busy_lbt": 8898
+      },
+      "delay_diff": 3.268496584496461e-13,
+      "event_comparisons": {
+        "backoff": {
+          "python_count": 27590,
+          "omnet_count": 27590,
+          "matched": true,
+          "python_sha256": "e44466a556ef5ae92868702f82ce739114e83a336d12ef35077461ae35d0d8b0",
+          "omnet_sha256": "e44466a556ef5ae92868702f82ce739114e83a336d12ef35077461ae35d0d8b0",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": {
+            "0": 13781,
+            "1": 13809
+          }
+        },
+        "lbt": {
+          "python_count": 27590,
+          "omnet_count": 27590,
+          "matched": true,
+          "python_sha256": "1d4a53b76ae3f6f8613e9633d9ad56c68e7512bdfd4510c809fb72d247e03140",
+          "omnet_sha256": "1d4a53b76ae3f6f8613e9633d9ad56c68e7512bdfd4510c809fb72d247e03140",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": null
+        },
+        "data": {
+          "python_count": 18692,
+          "omnet_count": 18692,
+          "matched": true,
+          "python_sha256": "528d3e9e9c060d5ebabc7ce798828e72bbf050f13885654e66a4dad27c7d5a2c",
+          "omnet_sha256": "528d3e9e9c060d5ebabc7ce798828e72bbf050f13885654e66a4dad27c7d5a2c",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": null
+        },
+        "delivery": {
+          "python_count": 13511,
+          "omnet_count": 13511,
+          "matched": true,
+          "python_sha256": "f99346d142717368f995d09bdd48f702bbf4abf0881ffcfaa2122fdba888aac2",
+          "omnet_sha256": "f99346d142717368f995d09bdd48f702bbf4abf0881ffcfaa2122fdba888aac2",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": null
+        },
+        "backoff_within_horizon": {
+          "python_count": 27590,
+          "omnet_count": 27590,
+          "matched": true,
+          "python_sha256": "e44466a556ef5ae92868702f82ce739114e83a336d12ef35077461ae35d0d8b0",
+          "omnet_sha256": "e44466a556ef5ae92868702f82ce739114e83a336d12ef35077461ae35d0d8b0",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": {
+            "0": 13781,
+            "1": 13809
+          }
+        },
+        "terminal_backoff_counts": {
+          "python": 0,
+          "omnet": 0
+        }
+      }
+    },
+    {
+      "config": {
+        "d": 500,
+        "symbols": 2000000,
+        "seed": 17
+      },
+      "python": {
+        "mean_delay": 83.974,
+        "delivered_unique": 8000,
+        "data_attempts": 14760,
+        "busy_lbt": 6905,
+        "backoff_draws": [
+          10836,
+          10831
+        ]
+      },
+      "omnet": {
+        "mean_delay": 83.974,
+        "delivered_unique": 8000,
+        "data_attempts": 14760,
+        "busy_lbt": 6905
+      },
+      "delay_diff": 0.0,
+      "event_comparisons": {
+        "backoff": {
+          "python_count": 21667,
+          "omnet_count": 21665,
+          "matched": false,
+          "python_sha256": "68d53443b4520ce8f9f78595b73fc5b121dece02e14e0bb420a2e8cf191263b3",
+          "omnet_sha256": "c0a949af66667f8cf2ab2b3f00f52c2bd65ef95652fcb815eb018af65a2d0301",
+          "first_mismatch_index": 10835,
+          "python_at_mismatch": [
+            0,
+            2000000,
+            5,
+            4
+          ],
+          "omnet_at_mismatch": [
+            1,
+            0,
+            5,
+            1
+          ],
+          "matching_draw_prefix_per_pt": {
+            "0": 10835,
+            "1": 10830
+          }
+        },
+        "lbt": {
+          "python_count": 21665,
+          "omnet_count": 21665,
+          "matched": true,
+          "python_sha256": "afe6605b3cd29f4ce4631e340d25082f55ceba7e7468214e02a7349ddb33e5f4",
+          "omnet_sha256": "afe6605b3cd29f4ce4631e340d25082f55ceba7e7468214e02a7349ddb33e5f4",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": null
+        },
+        "data": {
+          "python_count": 14760,
+          "omnet_count": 14760,
+          "matched": true,
+          "python_sha256": "6ae6ea0a71a3e957fc9a281f609d287e11332a2d67403e0d9327a74890fe3acf",
+          "omnet_sha256": "6ae6ea0a71a3e957fc9a281f609d287e11332a2d67403e0d9327a74890fe3acf",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": null
+        },
+        "delivery": {
+          "python_count": 10606,
+          "omnet_count": 10606,
+          "matched": true,
+          "python_sha256": "87293e70f2200e0e94a6d6383fcc16030b293173d09ad7b42fc7032943273c17",
+          "omnet_sha256": "87293e70f2200e0e94a6d6383fcc16030b293173d09ad7b42fc7032943273c17",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": null
+        },
+        "backoff_within_horizon": {
+          "python_count": 21665,
+          "omnet_count": 21665,
+          "matched": true,
+          "python_sha256": "c0a949af66667f8cf2ab2b3f00f52c2bd65ef95652fcb815eb018af65a2d0301",
+          "omnet_sha256": "c0a949af66667f8cf2ab2b3f00f52c2bd65ef95652fcb815eb018af65a2d0301",
+          "first_mismatch_index": null,
+          "python_at_mismatch": null,
+          "omnet_at_mismatch": null,
+          "matching_draw_prefix_per_pt": {
+            "0": 10835,
+            "1": 10830
+          }
+        },
+        "terminal_backoff_counts": {
+          "python": 2,
+          "omnet": 0
+        }
+      }
+    }
+  ],
+  "all_event_traces_match": false,
+  "all_event_traces_match_within_observation_window": true,
+  "boundary_note": "Python processes events at time == horizon, whereas OMNeT++ does not run a symbol tick at t==horizon. Extra terminal backoffs are filtered only for the observation-window comparison. Raw counts are retained.",
+  "all_numeric_metrics_match": true
+}
