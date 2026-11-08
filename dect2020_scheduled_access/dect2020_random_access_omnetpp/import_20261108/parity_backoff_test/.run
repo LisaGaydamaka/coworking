@@ -2,3 +2,4 @@ Paired diagnostic backoff parity test 2026-11-08: backoff/LBT/DATA/delivery even
 retry-csv-header-2026-11-08
 final-compare-and-plot-rerun-20261108
 json-summary-fix-rerun-2026-11-08
+force-add-verified-parity-artifacts-2026-11-08
