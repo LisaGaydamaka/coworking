@@ -1,0 +1,1773 @@
+=== FINAL LONG-RUN SATURATION CHECK: FinalSat_D10R20 ===
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.3.0, build: 251110-bb3d6a4731, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from ../src:  3
+
+Preparing for running configuration FinalSat_D10R20, run #0...
+Assigned runID=FinalSat_D10R20-0-20261111-13:48:19-76
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15241102   t=30268.450191466172   Elapsed: 1.30026s (0m 01s)
+     Speed:     ev/sec=1.17217e+07   simsec/sec=23279   ev/simsec=503.531
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=30268.450191466172s, event #15241102
+
+Calling finish() at end of Run #0...
+
+Preparing for running configuration FinalSat_D10R20, run #1...
+Assigned runID=FinalSat_D10R20-1-20261111-13:48:20-76
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.9e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15241143   t=30256.933745497306   Elapsed: 1.27666s (0m 01s)
+     Speed:     ev/sec=1.19385e+07   simsec/sec=23700.5   ev/simsec=503.724
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=30256.933745497306s, event #15241143
+
+Calling finish() at end of Run #1...
+
+Preparing for running configuration FinalSat_D10R20, run #2...
+Assigned runID=FinalSat_D10R20-2-20261111-13:48:21-76
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.3e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15242119   t=30269.370849873817   Elapsed: 1.2704s (0m 01s)
+     Speed:     ev/sec=1.19981e+07   simsec/sec=23827.1   ev/simsec=503.549
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=30269.370849873817s, event #15242119
+
+Calling finish() at end of Run #2...
+
+Preparing for running configuration FinalSat_D10R20, run #3...
+Assigned runID=FinalSat_D10R20-3-20261111-13:48:23-76
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15240100   t=30274.649373434958   Elapsed: 1.27442s (0m 01s)
+     Speed:     ev/sec=1.19585e+07   simsec/sec=23755.8   ev/simsec=503.395
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=30274.649373434958s, event #15240100
+
+Calling finish() at end of Run #3...
+
+Preparing for running configuration FinalSat_D10R20, run #4...
+Assigned runID=FinalSat_D10R20-4-20261111-13:48:24-76
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.6e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15240680   t=30259.037757864151   Elapsed: 1.29048s (0m 01s)
+     Speed:     ev/sec=1.18104e+07   simsec/sec=23448.5   ev/simsec=503.674
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=30259.037757864151s, event #15240680
+
+Calling finish() at end of Run #4...
+
+Preparing for running configuration FinalSat_D10R20, run #5...
+Assigned runID=FinalSat_D10R20-5-20261111-13:48:25-76
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.9e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15241502   t=30269.822792549883   Elapsed: 1.28218s (0m 01s)
+     Speed:     ev/sec=1.18874e+07   simsec/sec=23608.6   ev/simsec=503.521
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=30269.822792549883s, event #15241502
+
+Calling finish() at end of Run #5...
+
+Preparing for running configuration FinalSat_D10R20, run #6...
+Assigned runID=FinalSat_D10R20-6-20261111-13:48:26-76
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3.1e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15239412   t=30270.601420060713   Elapsed: 1.26886s (0m 01s)
+     Speed:     ev/sec=1.20107e+07   simsec/sec=23857.2   ev/simsec=503.439
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=30270.601420060713s, event #15239412
+
+Calling finish() at end of Run #6...
+
+Preparing for running configuration FinalSat_D10R20, run #7...
+Assigned runID=FinalSat_D10R20-7-20261111-13:48:28-76
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.9e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15238803   t=30272.817748589241   Elapsed: 1.27059s (0m 01s)
+     Speed:     ev/sec=1.19938e+07   simsec/sec=23826.5   ev/simsec=503.382
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=30272.817748589241s, event #15238803
+
+Calling finish() at end of Run #7...
+
+Preparing for running configuration FinalSat_D10R20, run #8...
+Assigned runID=FinalSat_D10R20-8-20261111-13:48:29-76
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15242763   t=30269.84173348282   Elapsed: 1.27217s (0m 01s)
+     Speed:     ev/sec=1.19819e+07   simsec/sec=23794.3   ev/simsec=503.563
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=30269.84173348282s, event #15242763
+
+Calling finish() at end of Run #8...
+
+Preparing for running configuration FinalSat_D10R20, run #9...
+Assigned runID=FinalSat_D10R20-9-20261111-13:48:30-76
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15241769   t=30285.096193967376   Elapsed: 1.27041s (0m 01s)
+     Speed:     ev/sec=1.19976e+07   simsec/sec=23838.9   ev/simsec=503.276
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=30285.096193967376s, event #15241769
+
+Calling finish() at end of Run #9...
+
+Preparing for running configuration FinalSat_D10R20, run #10...
+Assigned runID=FinalSat_D10R20-10-20261111-13:48:32-76
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15239937   t=30271.296120428365   Elapsed: 1.27919s (0m 01s)
+     Speed:     ev/sec=1.19138e+07   simsec/sec=23664.6   ev/simsec=503.445
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=30271.296120428365s, event #15239937
+
+Calling finish() at end of Run #10...
+
+Preparing for running configuration FinalSat_D10R20, run #11...
+Assigned runID=FinalSat_D10R20-11-20261111-13:48:33-76
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15241619   t=30269.805881299059   Elapsed: 1.27122s (0m 01s)
+     Speed:     ev/sec=1.19899e+07   simsec/sec=23811.8   ev/simsec=503.525
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=30269.805881299059s, event #15241619
+
+Calling finish() at end of Run #11...
+
+Preparing for running configuration FinalSat_D10R20, run #12...
+Assigned runID=FinalSat_D10R20-12-20261111-13:48:34-76
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.9e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15240855   t=30258.243136420203   Elapsed: 1.29335s (0m 01s)
+     Speed:     ev/sec=1.17843e+07   simsec/sec=23395.7   ev/simsec=503.693
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=30258.243136420203s, event #15240855
+
+Calling finish() at end of Run #12...
+
+Preparing for running configuration FinalSat_D10R20, run #13...
+Assigned runID=FinalSat_D10R20-13-20261111-13:48:35-76
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15241263   t=30275.491978726817   Elapsed: 1.27104s (0m 01s)
+     Speed:     ev/sec=1.19913e+07   simsec/sec=23819.6   ev/simsec=503.419
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=30275.491978726817s, event #15241263
+
+Calling finish() at end of Run #13...
+
+Preparing for running configuration FinalSat_D10R20, run #14...
+Assigned runID=FinalSat_D10R20-14-20261111-13:48:37-76
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.9e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15241616   t=30274.925971293796   Elapsed: 1.27734s (0m 01s)
+     Speed:     ev/sec=1.19327e+07   simsec/sec=23702.3   ev/simsec=503.44
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=30274.925971293796s, event #15241616
+
+Calling finish() at end of Run #14...
+
+Preparing for running configuration FinalSat_D10R20, run #15...
+Assigned runID=FinalSat_D10R20-15-20261111-13:48:38-76
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.8e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15240223   t=30263.286350212196   Elapsed: 1.2735s (0m 01s)
+     Speed:     ev/sec=1.19674e+07   simsec/sec=23764.3   ev/simsec=503.588
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=30263.286350212196s, event #15240223
+
+Calling finish() at end of Run #15...
+
+Preparing for running configuration FinalSat_D10R20, run #16...
+Assigned runID=FinalSat_D10R20-16-20261111-13:48:39-76
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.4e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15240794   t=30253.199660385813   Elapsed: 1.27699s (0m 01s)
+     Speed:     ev/sec=1.19351e+07   simsec/sec=23691.4   ev/simsec=503.775
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=30253.199660385813s, event #15240794
+
+Calling finish() at end of Run #16...
+
+Preparing for running configuration FinalSat_D10R20, run #17...
+Assigned runID=FinalSat_D10R20-17-20261111-13:48:41-76
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15239475   t=30264.737026532955   Elapsed: 1.2892s (0m 01s)
+     Speed:     ev/sec=1.18209e+07   simsec/sec=23475.6   ev/simsec=503.539
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=30264.737026532955s, event #15239475
+
+Calling finish() at end of Run #17...
+
+Preparing for running configuration FinalSat_D10R20, run #18...
+Assigned runID=FinalSat_D10R20-18-20261111-13:48:42-76
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15240116   t=30261.775894255394   Elapsed: 1.27733s (0m 01s)
+     Speed:     ev/sec=1.19313e+07   simsec/sec=23691.6   ev/simsec=503.609
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=30261.775894255394s, event #15240116
+
+Calling finish() at end of Run #18...
+
+Preparing for running configuration FinalSat_D10R20, run #19...
+Assigned runID=FinalSat_D10R20-19-20261111-13:48:43-76
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.9e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15241273   t=30253.597314245656   Elapsed: 1.27079s (0m 01s)
+     Speed:     ev/sec=1.19937e+07   simsec/sec=23807.3   ev/simsec=503.784
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=30253.597314245656s, event #15241273
+
+Calling finish() at end of Run #19...
+
+Run statistics: total 20, successful 20
+
+End.
+=== FINAL LONG-RUN SATURATION CHECK: FinalSat_D10R50 ===
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.3.0, build: 251110-bb3d6a4731, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from ../src:  3
+
+Preparing for running configuration FinalSat_D10R50, run #0...
+Assigned runID=FinalSat_D10R50-0-20261111-13:48:44-77
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.5e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15094326   t=29810.145066047056   Elapsed: 1.24497s (0m 01s)
+     Speed:     ev/sec=1.21245e+07   simsec/sec=23945   ev/simsec=506.349
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=29810.145066047056s, event #15094326
+
+Calling finish() at end of Run #0...
+
+Preparing for running configuration FinalSat_D10R50, run #1...
+Assigned runID=FinalSat_D10R50-1-20261111-13:48:46-77
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.4e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15094777   t=29793.121895133264   Elapsed: 1.25648s (0m 01s)
+     Speed:     ev/sec=1.20138e+07   simsec/sec=23712.1   ev/simsec=506.653
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=29793.121895133264s, event #15094777
+
+Calling finish() at end of Run #1...
+
+Preparing for running configuration FinalSat_D10R50, run #2...
+Assigned runID=FinalSat_D10R50-2-20261111-13:48:47-77
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15096147   t=29813.98734180681   Elapsed: 1.24781s (0m 01s)
+     Speed:     ev/sec=1.20982e+07   simsec/sec=23893.2   ev/simsec=506.344
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=29813.98734180681s, event #15096147
+
+Calling finish() at end of Run #2...
+
+Preparing for running configuration FinalSat_D10R50, run #3...
+Assigned runID=FinalSat_D10R50-3-20261111-13:48:48-77
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15093491   t=29813.550710055798   Elapsed: 1.25242s (0m 01s)
+     Speed:     ev/sec=1.20517e+07   simsec/sec=23805.3   ev/simsec=506.263
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=29813.550710055798s, event #15093491
+
+Calling finish() at end of Run #3...
+
+Preparing for running configuration FinalSat_D10R50, run #4...
+Assigned runID=FinalSat_D10R50-4-20261111-13:48:49-77
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.2e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15094586   t=29797.232012532508   Elapsed: 1.25572s (0m 01s)
+     Speed:     ev/sec=1.2021e+07   simsec/sec=23729.8   ev/simsec=506.577
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=29797.232012532508s, event #15094586
+
+Calling finish() at end of Run #4...
+
+Preparing for running configuration FinalSat_D10R50, run #5...
+Assigned runID=FinalSat_D10R50-5-20261111-13:48:51-77
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15095418   t=29801.573504225615   Elapsed: 1.25042s (0m 01s)
+     Speed:     ev/sec=1.20724e+07   simsec/sec=23833.4   ev/simsec=506.531
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=29801.573504225615s, event #15095418
+
+Calling finish() at end of Run #5...
+
+Preparing for running configuration FinalSat_D10R50, run #6...
+Assigned runID=FinalSat_D10R50-6-20261111-13:48:52-77
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.9e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15093944   t=29809.760679089908   Elapsed: 1.24477s (0m 01s)
+     Speed:     ev/sec=1.21261e+07   simsec/sec=23948.4   ev/simsec=506.342
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=29809.760679089908s, event #15093944
+
+Calling finish() at end of Run #6...
+
+Preparing for running configuration FinalSat_D10R50, run #7...
+Assigned runID=FinalSat_D10R50-7-20261111-13:48:53-77
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.9e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15094162   t=29807.01434577433   Elapsed: 1.24408s (0m 01s)
+     Speed:     ev/sec=1.2133e+07   simsec/sec=23959.5   ev/simsec=506.396
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=29807.01434577433s, event #15094162
+
+Calling finish() at end of Run #7...
+
+Preparing for running configuration FinalSat_D10R50, run #8...
+Assigned runID=FinalSat_D10R50-8-20261111-13:48:54-77
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.7e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15095538   t=29795.326125326408   Elapsed: 1.2413s (0m 01s)
+     Speed:     ev/sec=1.21612e+07   simsec/sec=24003.7   ev/simsec=506.641
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=29795.326125326408s, event #15095538
+
+Calling finish() at end of Run #8...
+
+Preparing for running configuration FinalSat_D10R50, run #9...
+Assigned runID=FinalSat_D10R50-9-20261111-13:48:56-77
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15096104   t=29810.7531004164   Elapsed: 1.24421s (0m 01s)
+     Speed:     ev/sec=1.21333e+07   simsec/sec=23960.1   ev/simsec=506.398
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=29810.7531004164s, event #15096104
+
+Calling finish() at end of Run #9...
+
+Preparing for running configuration FinalSat_D10R50, run #10...
+Assigned runID=FinalSat_D10R50-10-20261111-13:48:57-77
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.8e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15093856   t=29810.603660404215   Elapsed: 1.24207s (0m 01s)
+     Speed:     ev/sec=1.21525e+07   simsec/sec=24001.4   ev/simsec=506.325
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=29810.603660404215s, event #15093856
+
+Calling finish() at end of Run #10...
+
+Preparing for running configuration FinalSat_D10R50, run #11...
+Assigned runID=FinalSat_D10R50-11-20261111-13:48:58-77
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15094922   t=29804.475417605991   Elapsed: 1.24689s (0m 01s)
+     Speed:     ev/sec=1.21061e+07   simsec/sec=23903.2   ev/simsec=506.465
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=29804.475417605991s, event #15094922
+
+Calling finish() at end of Run #11...
+
+Preparing for running configuration FinalSat_D10R50, run #12...
+Assigned runID=FinalSat_D10R50-12-20261111-13:48:59-77
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.4e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15095097   t=29787.220660802774   Elapsed: 1.24374s (0m 01s)
+     Speed:     ev/sec=1.21372e+07   simsec/sec=23950.3   ev/simsec=506.764
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=29787.220660802774s, event #15095097
+
+Calling finish() at end of Run #12...
+
+Preparing for running configuration FinalSat_D10R50, run #13...
+Assigned runID=FinalSat_D10R50-13-20261111-13:49:01-77
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.9e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15094781   t=29805.567143995899   Elapsed: 1.24119s (0m 01s)
+     Speed:     ev/sec=1.21618e+07   simsec/sec=24014.2   ev/simsec=506.442
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=29805.567143995899s, event #15094781
+
+Calling finish() at end of Run #13...
+
+Preparing for running configuration FinalSat_D10R50, run #14...
+Assigned runID=FinalSat_D10R50-14-20261111-13:49:02-77
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15094402   t=29799.670768325144   Elapsed: 1.24648s (0m 01s)
+     Speed:     ev/sec=1.21097e+07   simsec/sec=23907.3   ev/simsec=506.529
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=29799.670768325144s, event #15094402
+
+Calling finish() at end of Run #14...
+
+Preparing for running configuration FinalSat_D10R50, run #15...
+Assigned runID=FinalSat_D10R50-15-20261111-13:49:03-77
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.9e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15094357   t=29803.017163415894   Elapsed: 1.24166s (0m 01s)
+     Speed:     ev/sec=1.21569e+07   simsec/sec=24003.2   ev/simsec=506.471
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=29803.017163415894s, event #15094357
+
+Calling finish() at end of Run #15...
+
+Preparing for running configuration FinalSat_D10R50, run #16...
+Assigned runID=FinalSat_D10R50-16-20261111-13:49:04-77
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15097995   t=29790.770435929024   Elapsed: 1.24285s (0m 01s)
+     Speed:     ev/sec=1.2148e+07   simsec/sec=23969.9   ev/simsec=506.801
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=29790.770435929024s, event #15097995
+
+Calling finish() at end of Run #16...
+
+Preparing for running configuration FinalSat_D10R50, run #17...
+Assigned runID=FinalSat_D10R50-17-20261111-13:49:06-77
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15095023   t=29799.527435036945   Elapsed: 1.24308s (0m 01s)
+     Speed:     ev/sec=1.21433e+07   simsec/sec=23972.4   ev/simsec=506.552
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=29799.527435036945s, event #15095023
+
+Calling finish() at end of Run #17...
+
+Preparing for running configuration FinalSat_D10R50, run #18...
+Assigned runID=FinalSat_D10R50-18-20261111-13:49:07-77
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15093568   t=29795.242881940856   Elapsed: 1.24286s (0m 01s)
+     Speed:     ev/sec=1.21443e+07   simsec/sec=23973.2   ev/simsec=506.576
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=29795.242881940856s, event #15093568
+
+Calling finish() at end of Run #18...
+
+Preparing for running configuration FinalSat_D10R50, run #19...
+Assigned runID=FinalSat_D10R50-19-20261111-13:49:08-77
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #15096095   t=29785.674964311543   Elapsed: 1.24496s (0m 01s)
+     Speed:     ev/sec=1.21259e+07   simsec/sec=23925.2   ev/simsec=506.824
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=29785.674964311543s, event #15096095
+
+Calling finish() at end of Run #19...
+
+Run statistics: total 20, successful 20
+
+End.
+=== FINAL LONG-RUN SATURATION CHECK: FinalSat_D20R5 ===
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.3.0, build: 251110-bb3d6a4731, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from ../src:  3
+
+Preparing for running configuration FinalSat_D20R5, run #0...
+Assigned runID=FinalSat_D20R5-0-20261111-13:49:09-78
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 8e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #19264649   t=65639.341757165457   Elapsed: 1.57535s (0m 01s)
+     Speed:     ev/sec=1.22289e+07   simsec/sec=41666.7   ev/simsec=293.492
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=65639.341757165457s, event #19264649
+
+Calling finish() at end of Run #0...
+
+Preparing for running configuration FinalSat_D20R5, run #1...
+Assigned runID=FinalSat_D20R5-1-20261111-13:49:11-78
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.1e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #19264130   t=65622.907614244833   Elapsed: 1.55326s (0m 01s)
+     Speed:     ev/sec=1.24026e+07   simsec/sec=42249.3   ev/simsec=293.558
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=65622.907614244833s, event #19264130
+
+Calling finish() at end of Run #1...
+
+Preparing for running configuration FinalSat_D20R5, run #2...
+Assigned runID=FinalSat_D20R5-2-20261111-13:49:12-78
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #19265834   t=65639.734643147672   Elapsed: 1.52152s (0m 01s)
+     Speed:     ev/sec=1.26623e+07   simsec/sec=43141.2   ev/simsec=293.509
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=65639.734643147672s, event #19265834
+
+Calling finish() at end of Run #2...
+
+Preparing for running configuration FinalSat_D20R5, run #3...
+Assigned runID=FinalSat_D20R5-3-20261111-13:49:14-78
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.3e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #19266380   t=65664.933781068904   Elapsed: 1.52982s (0m 01s)
+     Speed:     ev/sec=1.25942e+07   simsec/sec=42924.2   ev/simsec=293.404
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=65664.933781068904s, event #19266380
+
+Calling finish() at end of Run #3...
+
+Preparing for running configuration FinalSat_D20R5, run #4...
+Assigned runID=FinalSat_D20R5-4-20261111-13:49:16-78
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #19263669   t=65627.15672952598   Elapsed: 1.52824s (0m 01s)
+     Speed:     ev/sec=1.26052e+07   simsec/sec=42943.3   ev/simsec=293.532
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=65627.15672952598s, event #19263669
+
+Calling finish() at end of Run #4...
+
+Preparing for running configuration FinalSat_D20R5, run #5...
+Assigned runID=FinalSat_D20R5-5-20261111-13:49:17-78
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #19263183   t=65643.773066581982   Elapsed: 1.52866s (0m 01s)
+     Speed:     ev/sec=1.26014e+07   simsec/sec=42942.2   ev/simsec=293.45
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=65643.773066581982s, event #19263183
+
+Calling finish() at end of Run #5...
+
+Preparing for running configuration FinalSat_D20R5, run #6...
+Assigned runID=FinalSat_D20R5-6-20261111-13:49:19-78
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #19265744   t=65642.764176024152   Elapsed: 1.52473s (0m 01s)
+     Speed:     ev/sec=1.26356e+07   simsec/sec=43052.3   ev/simsec=293.494
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=65642.764176024152s, event #19265744
+
+Calling finish() at end of Run #6...
+
+Preparing for running configuration FinalSat_D20R5, run #7...
+Assigned runID=FinalSat_D20R5-7-20261111-13:49:20-78
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.9e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #19263170   t=65652.954558957731   Elapsed: 1.53912s (0m 01s)
+     Speed:     ev/sec=1.2516e+07   simsec/sec=42657.1   ev/simsec=293.409
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=65652.954558957731s, event #19263170
+
+Calling finish() at end of Run #7...
+
+Preparing for running configuration FinalSat_D20R5, run #8...
+Assigned runID=FinalSat_D20R5-8-20261111-13:49:22-78
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #19262552   t=65610.678460129695   Elapsed: 1.52478s (0m 01s)
+     Speed:     ev/sec=1.26333e+07   simsec/sec=43030.6   ev/simsec=293.589
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=65610.678460129695s, event #19262552
+
+Calling finish() at end of Run #8...
+
+Preparing for running configuration FinalSat_D20R5, run #9...
+Assigned runID=FinalSat_D20R5-9-20261111-13:49:23-78
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #19265792   t=65648.617389453016   Elapsed: 1.52639s (0m 01s)
+     Speed:     ev/sec=1.2622e+07   simsec/sec=43009.7   ev/simsec=293.468
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=65648.617389453016s, event #19265792
+
+Calling finish() at end of Run #9...
+
+Preparing for running configuration FinalSat_D20R5, run #10...
+Assigned runID=FinalSat_D20R5-10-20261111-13:49:25-78
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.4e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #19264903   t=65651.930614196839   Elapsed: 1.52938s (0m 01s)
+     Speed:     ev/sec=1.25968e+07   simsec/sec=42928.1   ev/simsec=293.44
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=65651.930614196839s, event #19264903
+
+Calling finish() at end of Run #10...
+
+Preparing for running configuration FinalSat_D20R5, run #11...
+Assigned runID=FinalSat_D20R5-11-20261111-13:49:26-78
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #19264028   t=65636.38809861897   Elapsed: 1.52547s (0m 01s)
+     Speed:     ev/sec=1.26283e+07   simsec/sec=43027.1   ev/simsec=293.496
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=65636.38809861897s, event #19264028
+
+Calling finish() at end of Run #11...
+
+Preparing for running configuration FinalSat_D20R5, run #12...
+Assigned runID=FinalSat_D20R5-12-20261111-13:49:28-78
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #19267763   t=65635.645589218033   Elapsed: 1.52689s (0m 01s)
+     Speed:     ev/sec=1.2619e+07   simsec/sec=42986.7   ev/simsec=293.556
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=65635.645589218033s, event #19267763
+
+Calling finish() at end of Run #12...
+
+Preparing for running configuration FinalSat_D20R5, run #13...
+Assigned runID=FinalSat_D20R5-13-20261111-13:49:29-78
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.5e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #19266361   t=65646.358062624042   Elapsed: 1.54646s (0m 01s)
+     Speed:     ev/sec=1.24586e+07   simsec/sec=42450.1   ev/simsec=293.487
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=65646.358062624042s, event #19266361
+
+Calling finish() at end of Run #13...
+
+Preparing for running configuration FinalSat_D20R5, run #14...
+Assigned runID=FinalSat_D20R5-14-20261111-13:49:31-78
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #19266762   t=65636.854710187176   Elapsed: 1.52774s (0m 01s)
+     Speed:     ev/sec=1.26115e+07   simsec/sec=42964   ev/simsec=293.536
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=65636.854710187176s, event #19266762
+
+Calling finish() at end of Run #14...
+
+Preparing for running configuration FinalSat_D20R5, run #15...
+Assigned runID=FinalSat_D20R5-15-20261111-13:49:32-78
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #19265373   t=65647.43350953154   Elapsed: 1.52834s (0m 01s)
+     Speed:     ev/sec=1.26055e+07   simsec/sec=42953.6   ev/simsec=293.467
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=65647.43350953154s, event #19265373
+
+Calling finish() at end of Run #15...
+
+Preparing for running configuration FinalSat_D20R5, run #16...
+Assigned runID=FinalSat_D20R5-16-20261111-13:49:34-78
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #19266961   t=65624.137438885845   Elapsed: 1.52276s (0m 01s)
+     Speed:     ev/sec=1.26528e+07   simsec/sec=43095.9   ev/simsec=293.596
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=65624.137438885845s, event #19266961
+
+Calling finish() at end of Run #16...
+
+Preparing for running configuration FinalSat_D20R5, run #17...
+Assigned runID=FinalSat_D20R5-17-20261111-13:49:35-78
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.6e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #19266818   t=65645.347259592344   Elapsed: 1.54418s (0m 01s)
+     Speed:     ev/sec=1.24772e+07   simsec/sec=42512   ev/simsec=293.499
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=65645.347259592344s, event #19266818
+
+Calling finish() at end of Run #17...
+
+Preparing for running configuration FinalSat_D20R5, run #18...
+Assigned runID=FinalSat_D20R5-18-20261111-13:49:37-78
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.7e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #19261739   t=65624.282432084612   Elapsed: 1.52485s (0m 01s)
+     Speed:     ev/sec=1.26321e+07   simsec/sec=43037.3   ev/simsec=293.515
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=65624.282432084612s, event #19261739
+
+Calling finish() at end of Run #18...
+
+Preparing for running configuration FinalSat_D20R5, run #19...
+Assigned runID=FinalSat_D20R5-19-20261111-13:49:38-78
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.5e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #19265052   t=65634.39397907323   Elapsed: 1.52557s (0m 01s)
+     Speed:     ev/sec=1.26282e+07   simsec/sec=43023.3   ev/simsec=293.521
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=65634.39397907323s, event #19265052
+
+Calling finish() at end of Run #19...
+
+Run statistics: total 20, successful 20
+
+End.
+=== FINAL LONG-RUN SATURATION CHECK: FinalSat_D20R20 ===
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.3.0, build: 251110-bb3d6a4731, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from ../src:  3
+
+Preparing for running configuration FinalSat_D20R20, run #0...
+Assigned runID=FinalSat_D20R20-0-20261111-13:49:40-79
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 8e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18309844   t=61008.683868690364   Elapsed: 1.5093s (0m 01s)
+     Speed:     ev/sec=1.21314e+07   simsec/sec=40422.1   ev/simsec=300.119
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=61008.683868690364s, event #18309844
+
+Calling finish() at end of Run #0...
+
+Preparing for running configuration FinalSat_D20R20, run #1...
+Assigned runID=FinalSat_D20R20-1-20261111-13:49:42-79
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18309436   t=60995.408028719856   Elapsed: 1.47317s (0m 01s)
+     Speed:     ev/sec=1.24287e+07   simsec/sec=41404.6   ev/simsec=300.177
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=60995.408028719856s, event #18309436
+
+Calling finish() at end of Run #1...
+
+Preparing for running configuration FinalSat_D20R20, run #2...
+Assigned runID=FinalSat_D20R20-2-20261111-13:49:43-79
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.5e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18311188   t=61006.089152599845   Elapsed: 1.46269s (0m 01s)
+     Speed:     ev/sec=1.25191e+07   simsec/sec=41709.1   ev/simsec=300.153
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=61006.089152599845s, event #18311188
+
+Calling finish() at end of Run #2...
+
+Preparing for running configuration FinalSat_D20R20, run #3...
+Assigned runID=FinalSat_D20R20-3-20261111-13:49:44-79
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18307205   t=61013.942303264574   Elapsed: 1.44892s (0m 01s)
+     Speed:     ev/sec=1.26352e+07   simsec/sec=42110.2   ev/simsec=300.05
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=61013.942303264574s, event #18307205
+
+Calling finish() at end of Run #3...
+
+Preparing for running configuration FinalSat_D20R20, run #4...
+Assigned runID=FinalSat_D20R20-4-20261111-13:49:46-79
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.5e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18308621   t=60990.9693799421   Elapsed: 1.44939s (0m 01s)
+     Speed:     ev/sec=1.26322e+07   simsec/sec=42081.2   ev/simsec=300.186
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=60990.9693799421s, event #18308621
+
+Calling finish() at end of Run #4...
+
+Preparing for running configuration FinalSat_D20R20, run #5...
+Assigned runID=FinalSat_D20R20-5-20261111-13:49:47-79
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.2e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18308210   t=61012.459627221548   Elapsed: 1.45016s (0m 01s)
+     Speed:     ev/sec=1.26252e+07   simsec/sec=42073.6   ev/simsec=300.073
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=61012.459627221548s, event #18308210
+
+Calling finish() at end of Run #5...
+
+Preparing for running configuration FinalSat_D20R20, run #6...
+Assigned runID=FinalSat_D20R20-6-20261111-13:49:49-79
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.1e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18306852   t=60996.586485864529   Elapsed: 1.44991s (0m 01s)
+     Speed:     ev/sec=1.26264e+07   simsec/sec=42070   ev/simsec=300.129
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=60996.586485864529s, event #18306852
+
+Calling finish() at end of Run #6...
+
+Preparing for running configuration FinalSat_D20R20, run #7...
+Assigned runID=FinalSat_D20R20-7-20261111-13:49:50-79
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.5e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18308964   t=61025.309339247707   Elapsed: 1.45142s (0m 01s)
+     Speed:     ev/sec=1.26147e+07   simsec/sec=42045.8   ev/simsec=300.022
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=61025.309339247707s, event #18308964
+
+Calling finish() at end of Run #7...
+
+Preparing for running configuration FinalSat_D20R20, run #8...
+Assigned runID=FinalSat_D20R20-8-20261111-13:49:52-79
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.3e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18308003   t=60983.436831136826   Elapsed: 1.457s (0m 01s)
+     Speed:     ev/sec=1.25658e+07   simsec/sec=41856.4   ev/simsec=300.213
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=60983.436831136826s, event #18308003
+
+Calling finish() at end of Run #8...
+
+Preparing for running configuration FinalSat_D20R20, run #9...
+Assigned runID=FinalSat_D20R20-9-20261111-13:49:53-79
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.4e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18310707   t=61014.83863715629   Elapsed: 1.45457s (0m 01s)
+     Speed:     ev/sec=1.25886e+07   simsec/sec=41947.8   ev/simsec=300.103
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=61014.83863715629s, event #18310707
+
+Calling finish() at end of Run #9...
+
+Preparing for running configuration FinalSat_D20R20, run #10...
+Assigned runID=FinalSat_D20R20-10-20261111-13:49:55-79
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.7e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18306260   t=61005.86130799242   Elapsed: 1.44968s (0m 01s)
+     Speed:     ev/sec=1.2628e+07   simsec/sec=42083.1   ev/simsec=300.074
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=61005.86130799242s, event #18306260
+
+Calling finish() at end of Run #10...
+
+Preparing for running configuration FinalSat_D20R20, run #11...
+Assigned runID=FinalSat_D20R20-11-20261111-13:49:56-79
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.9e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18310248   t=61010.119044617098   Elapsed: 1.45059s (0m 01s)
+     Speed:     ev/sec=1.26228e+07   simsec/sec=42059.5   ev/simsec=300.118
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=61010.119044617098s, event #18310248
+
+Calling finish() at end of Run #11...
+
+Preparing for running configuration FinalSat_D20R20, run #12...
+Assigned runID=FinalSat_D20R20-12-20261111-13:49:58-79
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.3e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18309274   t=60991.272099310735   Elapsed: 1.46766s (0m 01s)
+     Speed:     ev/sec=1.24753e+07   simsec/sec=41557.5   ev/simsec=300.195
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=60991.272099310735s, event #18309274
+
+Calling finish() at end of Run #12...
+
+Preparing for running configuration FinalSat_D20R20, run #13...
+Assigned runID=FinalSat_D20R20-13-20261111-13:49:59-79
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18308752   t=61005.480903856195   Elapsed: 1.47799s (0m 01s)
+     Speed:     ev/sec=1.23877e+07   simsec/sec=41276.3   ev/simsec=300.117
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=61005.480903856195s, event #18308752
+
+Calling finish() at end of Run #13...
+
+Preparing for running configuration FinalSat_D20R20, run #14...
+Assigned runID=FinalSat_D20R20-14-20261111-13:50:00-79
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18311047   t=61003.964992339777   Elapsed: 1.45186s (0m 01s)
+     Speed:     ev/sec=1.26122e+07   simsec/sec=42018.1   ev/simsec=300.162
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=61003.964992339777s, event #18311047
+
+Calling finish() at end of Run #14...
+
+Preparing for running configuration FinalSat_D20R20, run #15...
+Assigned runID=FinalSat_D20R20-15-20261111-13:50:02-79
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18309658   t=60995.886567642573   Elapsed: 1.4611s (0m 01s)
+     Speed:     ev/sec=1.25315e+07   simsec/sec=41746.8   ev/simsec=300.179
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=60995.886567642573s, event #18309658
+
+Calling finish() at end of Run #15...
+
+Preparing for running configuration FinalSat_D20R20, run #16...
+Assigned runID=FinalSat_D20R20-16-20261111-13:50:03-79
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18307270   t=60969.511436477963   Elapsed: 1.45558s (0m 01s)
+     Speed:     ev/sec=1.25774e+07   simsec/sec=41887   ev/simsec=300.269
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=60969.511436477963s, event #18307270
+
+Calling finish() at end of Run #16...
+
+Preparing for running configuration FinalSat_D20R20, run #17...
+Assigned runID=FinalSat_D20R20-17-20261111-13:50:05-79
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18306589   t=60972.348459603761   Elapsed: 1.45054s (0m 01s)
+     Speed:     ev/sec=1.26206e+07   simsec/sec=42034.4   ev/simsec=300.244
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=60972.348459603761s, event #18306589
+
+Calling finish() at end of Run #17...
+
+Preparing for running configuration FinalSat_D20R20, run #18...
+Assigned runID=FinalSat_D20R20-18-20261111-13:50:06-79
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18309104   t=61006.034514338983   Elapsed: 1.44882s (0m 01s)
+     Speed:     ev/sec=1.26373e+07   simsec/sec=42107.6   ev/simsec=300.12
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=61006.034514338983s, event #18309104
+
+Calling finish() at end of Run #18...
+
+Preparing for running configuration FinalSat_D20R20, run #19...
+Assigned runID=FinalSat_D20R20-19-20261111-13:50:08-79
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18307470   t=60992.230881071142   Elapsed: 1.44835s (0m 01s)
+     Speed:     ev/sec=1.26403e+07   simsec/sec=42111.6   ev/simsec=300.161
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=60992.230881071142s, event #18307470
+
+Calling finish() at end of Run #19...
+
+Run statistics: total 20, successful 20
+
+End.
+=== FINAL LONG-RUN SATURATION CHECK: FinalSat_D20R50 ===
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.3.0, build: 251110-bb3d6a4731, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from ../src:  3
+
+Preparing for running configuration FinalSat_D20R50, run #0...
+Assigned runID=FinalSat_D20R50-0-20261111-13:50:09-80
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.6e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18124579   t=60110.895786921846   Elapsed: 1.47599s (0m 01s)
+     Speed:     ev/sec=1.22798e+07   simsec/sec=40726.6   ev/simsec=301.519
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=60110.895786921846s, event #18124579
+
+Calling finish() at end of Run #0...
+
+Preparing for running configuration FinalSat_D20R50, run #1...
+Assigned runID=FinalSat_D20R50-1-20261111-13:50:11-80
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18123016   t=60087.878284526667   Elapsed: 1.47719s (0m 01s)
+     Speed:     ev/sec=1.22687e+07   simsec/sec=40677.5   ev/simsec=301.609
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=60087.878284526667s, event #18123016
+
+Calling finish() at end of Run #1...
+
+Preparing for running configuration FinalSat_D20R50, run #2...
+Assigned runID=FinalSat_D20R50-2-20261111-13:50:12-80
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.3e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18125002   t=60109.617061988178   Elapsed: 1.43499s (0m 01s)
+     Speed:     ev/sec=1.2631e+07   simsec/sec=41889.4   ev/simsec=301.532
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=60109.617061988178s, event #18125002
+
+Calling finish() at end of Run #2...
+
+Preparing for running configuration FinalSat_D20R50, run #3...
+Assigned runID=FinalSat_D20R50-3-20261111-13:50:14-80
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.8e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18122806   t=60114.227363121457   Elapsed: 1.43266s (0m 01s)
+     Speed:     ev/sec=1.26499e+07   simsec/sec=41960.4   ev/simsec=301.473
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=60114.227363121457s, event #18122806
+
+Calling finish() at end of Run #3...
+
+Preparing for running configuration FinalSat_D20R50, run #4...
+Assigned runID=FinalSat_D20R50-4-20261111-13:50:15-80
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18123013   t=60094.183995077806   Elapsed: 1.43521s (0m 01s)
+     Speed:     ev/sec=1.26275e+07   simsec/sec=41871.6   ev/simsec=301.577
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=60094.183995077806s, event #18123013
+
+Calling finish() at end of Run #4...
+
+Preparing for running configuration FinalSat_D20R50, run #5...
+Assigned runID=FinalSat_D20R50-5-20261111-13:50:16-80
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.2e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18120882   t=60091.42965919907   Elapsed: 1.43525s (0m 01s)
+     Speed:     ev/sec=1.26258e+07   simsec/sec=41869.1   ev/simsec=301.555
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=60091.42965919907s, event #18120882
+
+Calling finish() at end of Run #5...
+
+Preparing for running configuration FinalSat_D20R50, run #6...
+Assigned runID=FinalSat_D20R50-6-20261111-13:50:18-80
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18122136   t=60101.485421286944   Elapsed: 1.43405s (0m 01s)
+     Speed:     ev/sec=1.26371e+07   simsec/sec=41910.7   ev/simsec=301.526
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=60101.485421286944s, event #18122136
+
+Calling finish() at end of Run #6...
+
+Preparing for running configuration FinalSat_D20R50, run #7...
+Assigned runID=FinalSat_D20R50-7-20261111-13:50:19-80
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18122561   t=60129.649807913788   Elapsed: 1.43465s (0m 01s)
+     Speed:     ev/sec=1.26321e+07   simsec/sec=41912.7   ev/simsec=301.391
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=60129.649807913788s, event #18122561
+
+Calling finish() at end of Run #7...
+
+Preparing for running configuration FinalSat_D20R50, run #8...
+Assigned runID=FinalSat_D20R50-8-20261111-13:50:21-80
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.9e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18122948   t=60089.021106896764   Elapsed: 1.4546s (0m 01s)
+     Speed:     ev/sec=1.24592e+07   simsec/sec=41310.3   ev/simsec=301.602
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=60089.021106896764s, event #18122948
+
+Calling finish() at end of Run #8...
+
+Preparing for running configuration FinalSat_D20R50, run #9...
+Assigned runID=FinalSat_D20R50-9-20261111-13:50:22-80
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18127389   t=60119.808958487067   Elapsed: 1.43372s (0m 01s)
+     Speed:     ev/sec=1.26438e+07   simsec/sec=41933.4   ev/simsec=301.521
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=60119.808958487067s, event #18127389
+
+Calling finish() at end of Run #9...
+
+Preparing for running configuration FinalSat_D20R50, run #10...
+Assigned runID=FinalSat_D20R50-10-20261111-13:50:24-80
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18123470   t=60105.896551491311   Elapsed: 1.4409s (0m 01s)
+     Speed:     ev/sec=1.25779e+07   simsec/sec=41714.2   ev/simsec=301.526
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=60105.896551491311s, event #18123470
+
+Calling finish() at end of Run #10...
+
+Preparing for running configuration FinalSat_D20R50, run #11...
+Assigned runID=FinalSat_D20R50-11-20261111-13:50:25-80
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18123980   t=60116.983337382738   Elapsed: 1.43788s (0m 01s)
+     Speed:     ev/sec=1.26047e+07   simsec/sec=41809.6   ev/simsec=301.479
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=60116.983337382738s, event #18123980
+
+Calling finish() at end of Run #11...
+
+Preparing for running configuration FinalSat_D20R50, run #12...
+Assigned runID=FinalSat_D20R50-12-20261111-13:50:27-80
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.1e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18122903   t=60078.896761928029   Elapsed: 1.45598s (0m 01s)
+     Speed:     ev/sec=1.24475e+07   simsec/sec=41264.4   ev/simsec=301.652
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=60078.896761928029s, event #18122903
+
+Calling finish() at end of Run #12...
+
+Preparing for running configuration FinalSat_D20R50, run #13...
+Assigned runID=FinalSat_D20R50-13-20261111-13:50:28-80
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18121724   t=60114.117219014503   Elapsed: 1.43221s (0m 01s)
+     Speed:     ev/sec=1.2653e+07   simsec/sec=41973.2   ev/simsec=301.455
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=60114.117219014503s, event #18121724
+
+Calling finish() at end of Run #13...
+
+Preparing for running configuration FinalSat_D20R50, run #14...
+Assigned runID=FinalSat_D20R50-14-20261111-13:50:29-80
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.5e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18123306   t=60090.738948533994   Elapsed: 1.43712s (0m 01s)
+     Speed:     ev/sec=1.2611e+07   simsec/sec=41813.8   ev/simsec=301.599
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=60090.738948533994s, event #18123306
+
+Calling finish() at end of Run #14...
+
+Preparing for running configuration FinalSat_D20R50, run #15...
+Assigned runID=FinalSat_D20R50-15-20261111-13:50:31-80
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18122827   t=60095.93304703972   Elapsed: 1.43333s (0m 01s)
+     Speed:     ev/sec=1.26439e+07   simsec/sec=41927.6   ev/simsec=301.565
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=60095.93304703972s, event #18122827
+
+Calling finish() at end of Run #15...
+
+Preparing for running configuration FinalSat_D20R50, run #16...
+Assigned runID=FinalSat_D20R50-16-20261111-13:50:32-80
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18123229   t=60080.920554779102   Elapsed: 1.43302s (0m 01s)
+     Speed:     ev/sec=1.26469e+07   simsec/sec=41926.3   ev/simsec=301.647
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=60080.920554779102s, event #18123229
+
+Calling finish() at end of Run #16...
+
+Preparing for running configuration FinalSat_D20R50, run #17...
+Assigned runID=FinalSat_D20R50-17-20261111-13:50:34-80
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18125450   t=60105.008194945462   Elapsed: 1.45372s (0m 01s)
+     Speed:     ev/sec=1.24684e+07   simsec/sec=41346.1   ev/simsec=301.563
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=60105.008194945462s, event #18125450
+
+Calling finish() at end of Run #17...
+
+Preparing for running configuration FinalSat_D20R50, run #18...
+Assigned runID=FinalSat_D20R50-18-20261111-13:50:35-80
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18122458   t=60099.978015619524   Elapsed: 1.43102s (0m 01s)
+     Speed:     ev/sec=1.26641e+07   simsec/sec=41998.3   ev/simsec=301.539
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=60099.978015619524s, event #18122458
+
+Calling finish() at end of Run #18...
+
+Preparing for running configuration FinalSat_D20R50, run #19...
+Assigned runID=FinalSat_D20R50-19-20261111-13:50:37-80
+Setting up network "dect2020scheduledaccess.DectScheduledAccessNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 2   present: 2   in FES: 2
+** Event #18120704   t=60085.504496235722   Elapsed: 1.43902s (0m 01s)
+     Speed:     ev/sec=1.25925e+07   simsec/sec=41754.8   ev/simsec=301.582
+     Messages:  created: 2   present: 2   in FES: 1
+
+<!> Simulation stopped with endSimulation() -- in module (ScheduledAccessQueue) DectScheduledAccessNetwork.queue (id=2), at t=60085.504496235722s, event #18120704
+
+Calling finish() at end of Run #19...
+
+Run statistics: total 20, successful 20
+
+End.
+Exported 3240 scalars, 1900 parameters
+# Long-run original-queue saturation audit (GitHub Actions)
+5 original mismatch cases, 20 repetitions each, 1,000,000 warm-up
+and 5,000,000 measured completions per new replication.
+Published C++ queue model and original Phase-2 CSV unchanged.
+Ten old seeds are intentionally reused for a paired robustness check.
+Analytical comparison is calculated in analysis/revision_final_analysis.py.
+
+D=10 r=20: old 49.685241 +/- 0.190581 ms, long 49.954920 +/- 0.067285 ms (95%)
+D=10 r=50: old 122.073566 +/- 1.155568 ms, long 123.834309 +/- 0.593516 ms (95%)
+D=20 r=5: old 25.872347 +/- 0.019643 ms, long 25.911759 +/- 0.008696 ms (95%)
+D=20 r=20: old 99.753053 +/- 0.307144 ms, long 100.367014 +/- 0.133892 ms (95%)
+D=20 r=50: old 246.365045 +/- 1.649950 ms, long 249.107134 +/- 1.141622 ms (95%)
