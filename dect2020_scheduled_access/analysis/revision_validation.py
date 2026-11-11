@@ -231,6 +231,27 @@ if traffic:
     fig.savefig(OUT/"revision_traffic_blocking.png",dpi=250)
     plt.close(fig)
 
+# Corrected 10-ms-cycle Phase 6: original M/G/1 vacation queue with fixed
+# mF=10-L*10/24, no physical slot synchronization.
+variability=read_csv(INPUT/"revision-variability-aligned_summary.csv")
+if variability:
+    fig,ax=plt.subplots(figsize=(7.6,4.8))
+    distnames={0:"Deterministic (SCV=0)",1:"Exponential (SCV=1)",
+               2:"Hyperexponential (SCV=4)"}
+    for code in (0,1,2):
+        rr=sorted([v for v in variability if int(v["distribution_code"])==code],
+                  key=lambda v:float(v["physical_load_factor"]))
+        ax.errorbar([float(v["physical_load_factor"]) for v in rr],
+                    [float(v["delay_p99_ms"]) for v in rr],
+                    yerr=[float(v["delay_p99_ms_ci95"]) for v in rr],
+                    marker="o",capsize=3,label=distnames[code])
+    ax.set_xlabel("Load relative to frame-aligned saturation")
+    ax.set_ylabel("Admitted-packet P99 [ms]")
+    ax.legend();ax.grid(alpha=.25);fig.tight_layout()
+    fig.savefig(OUT/"revision_corrected_service_variability_p99.pdf")
+    fig.savefig(OUT/"revision_corrected_service_variability_p99.png",dpi=250)
+    plt.close(fig)
+
 hits=sum(row["mean_delay_direct_ms_ci95_covers_analytical"] for row in audits)
 worst=next((r for r in audits if r["D"]==10 and r["r"]==50 and
               abs(r["rho"]-0.084745762712)<1e-7),None)
@@ -243,6 +264,13 @@ report=["# Major-revision independent analytical audit","",
     "## Completed experimental groups",
 ]
 report += ["- "+mode+": "+str(n)+" pooled configurations" for mode,n in mode_counts.items()]
+if variability:
+    report += ["", "## Corrected 10-ms-frame service-time variability (90 runs)"]
+    for v in variability:
+        if abs(float(v["physical_load_factor"])-1.2)<0.0001:
+            report.append("- %s: P99 %.4f +/- %.4f ms (95%%)"%
+                (v["distribution"],float(v["delay_p99_ms"]),
+                 float(v["delay_p99_ms_ci95"])))
 report += ["","## Original 27-case confidence-interval audit",
     "- Available groups: "+str(len(audits)),
     "- Analytical mean delays contained in 95% simulation CI: "+str(hits)+"/"+str(len(audits))]
