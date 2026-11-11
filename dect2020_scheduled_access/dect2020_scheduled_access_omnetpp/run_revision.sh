@@ -22,5 +22,8 @@ done
 opp_scavetool x results_revision/*.sca -F CSV-R -o "../ci_results/${MODE}_scalars.csv"
 echo "$MODE PASS" > "../ci_results/${MODE}_status.txt"
 cd ..
+if ! python3 -c "import numpy, matplotlib" >/dev/null 2>&1; then
+    PIP_BREAK_SYSTEM_PACKAGES=1 python3 -m pip install --quiet --disable-pip-version-check numpy matplotlib || true
+fi
 python3 revision_analysis.py "$MODE"
 echo "$MODE complete"
