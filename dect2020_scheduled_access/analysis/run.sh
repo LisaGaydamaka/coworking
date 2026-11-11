@@ -6,7 +6,10 @@ export MPLBACKEND=Agg
 python3 -m pip install --quiet --disable-pip-version-check numpy matplotlib
 
 RUN_MODE="$(cat .run 2>/dev/null || true)"
-if [[ "$RUN_MODE" == phase6-variability-figure* ]]; then
+if [[ "$RUN_MODE" == revision-analytics* ]]; then
+  export OPENBLAS_NUM_THREADS=1
+  python3 revision_validation.py
+elif [[ "$RUN_MODE" == phase6-variability-figure* ]]; then
   python3 phase6_service_variability.py
 elif [[ "$RUN_MODE" == phase5-tail-figure* ]]; then
   python3 phase5_tail_latency.py
