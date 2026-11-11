@@ -146,7 +146,13 @@ void FixedSlotQueue::processSlot() {
         if (collecting) ++usedSlots;
         // Exactly one packet per assigned slot, independent of arrivals in the slot.
         // Frame clock remains fixed when slots are unused.
-        scheduleAt(simTime() + SimTime(slotSeconds), completionEvent);
+        // Use the same absolute frame/slot boundary computation for starts
+        // and completions. Adding separately quantized slot durations would
+        // otherwise introduce a 1-tick overlap after consecutive slots.
+        const int activeSlot = assignedSlots[nextSlotIndex-1];
+        const double completionAbsoluteSeconds =
+            frameIndex * frameSeconds + (activeSlot+1) * slotSeconds;
+        scheduleAt(SimTime(completionAbsoluteSeconds), completionEvent);
     }
     nextSlot();
 }
