@@ -10,6 +10,7 @@ case "$TRIGGER" in
     revision-geometry*) MODE=revision-geometry ;;
     revision-traffic*) MODE=revision-traffic ;;
     revision-dimensioning*) MODE=revision-dimensioning ;;
+    revision-variability-aligned*) MODE=revision-variability-aligned ;;
     revision-full*) MODE=revision-full ;;
     *) echo "Unknown revision trigger: $TRIGGER" >&2; exit 2 ;;
 esac
@@ -26,6 +27,19 @@ case "$MODE" in
   revision-full) configs=(Revision_D6 Revision_D10 Revision_D20 Revision_Tail Revision_Distributed Revision_Overhead Revision_Traffic_Poisson Revision_Traffic_Periodic Revision_Traffic_Synchronized Revision_Traffic_Bursty Revision_DimensioningD6 Revision_DimensioningD10 Revision_DimensioningD20 Revision_Trade) ;;
   *) echo "Unknown revision mode: $MODE" >&2; exit 2 ;;
 esac
+if [[ "$MODE" == "revision-variability-aligned" ]]; then
+    rm -rf results_revision_variability
+    mkdir -p results_revision_variability
+    for cfg in RevisionVar_Deterministic RevisionVar_Exponential RevisionVar_Hyperexponential; do
+        echo "=== OMNeT++ frame-aligned service variability: $cfg ==="
+        ../src/dect2020_sa -u Cmdenv -n ../src -f revision_variability.ini -c "$cfg"
+    done
+    opp_scavetool x results_revision_variability/*.sca -F CSV-R -o ../ci_results/revision-variability-aligned_scalars.csv
+    cd ..
+    python3 revision_variability_post.py
+    echo "revision-variability-aligned PASS" > ci_results/revision-variability-aligned_status.txt
+    exit 0
+fi
 rm -f results_revision/*.sca results_revision/*.vec results_revision/*.vci
 for cfg in "${configs[@]}"; do
     echo "=== OMNeT++ fixed-slot: $cfg ==="
