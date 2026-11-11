@@ -207,7 +207,7 @@ lines=[
  "- Source code: original vacation-queue C++ unchanged; physical model idealized 10-ms/24-slot MAC.",
  "",
  "## Five exact finite-load original-queue checks",
- "- Analytical mean within long-run 95% CI: %d/5 cases."%full_coverage,
+ "- Analytical mean within long-run 95%% CI: %d/5 cases."%full_coverage,
  "- Largest absolute long-run relative mean-delay error: D=%d, r=%d, %.5f%%."%
      (worst["D"],worst["r"],abs(worst["mean_delay_direct_ms_longrun_relerror_pct"])),
  ]
