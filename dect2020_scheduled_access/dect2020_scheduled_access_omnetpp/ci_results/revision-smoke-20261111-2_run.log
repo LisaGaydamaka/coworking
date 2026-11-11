@@ -1,0 +1,138 @@
+=== OMNeT++ fixed-slot: Smoke ===
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.3.0, build: 251110-bb3d6a4731, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from ../src:  3
+
+Preparing for running configuration Smoke, run #0...
+Scenario: $lambdaPerMs=0.1, $repetition=0
+Assigned runID=Smoke-0-20261111-13:11:51-75
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.1e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #28317   t=71.580416666667   Elapsed: 0.003567s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=71.580416666667s, event #28317
+
+Calling finish() at end of Run #0...
+
+Preparing for running configuration Smoke, run #1...
+Scenario: $lambdaPerMs=0.1, $repetition=1
+Assigned runID=Smoke-1-20261111-13:11:51-75
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #28088   t=70.390833333333   Elapsed: 0.003349s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=70.390833333333s, event #28088
+
+Calling finish() at end of Run #1...
+
+Preparing for running configuration Smoke, run #2...
+Scenario: $lambdaPerMs=0.2, $repetition=0
+Assigned runID=Smoke-2-20261111-13:11:51-75
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.3e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #21247   t=36.010416666667   Elapsed: 0.001857s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=36.010416666667s, event #21247
+
+Calling finish() at end of Run #2...
+
+Preparing for running configuration Smoke, run #3...
+Scenario: $lambdaPerMs=0.2, $repetition=1
+Assigned runID=Smoke-3-20261111-13:11:51-75
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.8e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #21287   t=35.760833333333   Elapsed: 0.001851s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=35.760833333333s, event #21287
+
+Calling finish() at end of Run #3...
+
+Preparing for running configuration Smoke, run #4...
+Scenario: $lambdaPerMs=0.3, $repetition=0
+Assigned runID=Smoke-4-20261111-13:11:51-75
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #24527   t=35.130833333333   Elapsed: 0.002198s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=35.130833333333s, event #24527
+
+Calling finish() at end of Run #4...
+
+Preparing for running configuration Smoke, run #5...
+Scenario: $lambdaPerMs=0.3, $repetition=1
+Assigned runID=Smoke-5-20261111-13:11:51-75
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.2e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #24602   t=35.160833333333   Elapsed: 0.002249s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=35.160833333333s, event #24602
+
+Calling finish() at end of Run #5...
+
+Run statistics: total 6, successful 6
+
+End.
+Exported 186 scalars, 108 parameters
+WARNING: Phase-2 analytical CI audit unavailable: No module named 'phase4_dimensioning'
+WARNING: Analytical comparison requires numpy/matplotlib: No module named 'phase4_dimensioning'
+# Major-revision simulation: revision-smoke
+
+Runs observed: 6
+Independent configuration groups: 3
+Summary: ci_results/revision-smoke_summary.csv
+Full-frame correction: ci_results/revision-smoke_frame_mapping.csv
+Original model preserved: yes
+
+All physical metrics refer to one tagged PT with an explicit repeated
+10-ms / 24-slot allocation. This is an idealized slot-synchronous MAC
+benchmark, not a full radio PHY or ETSI conformance implementation.
+D=10 r=30 lambda=0.1: delay=6.98774ms, blocking=0
+D=10 r=30 lambda=0.2: delay=60.95952ms, blocking=0.00659479
+D=10 r=30 lambda=0.3: delay=143.63121ms, blocking=0.330107
+revision-smoke complete
