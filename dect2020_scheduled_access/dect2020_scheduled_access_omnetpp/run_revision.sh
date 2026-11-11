@@ -24,6 +24,7 @@ case "$MODE" in
   revision-geometry) configs=(Revision_Distributed Revision_Overhead) ;;
   revision-traffic) configs=(Revision_Traffic_Poisson Revision_Traffic_Periodic Revision_Traffic_Synchronized Revision_Traffic_Bursty) ;;
   revision-dimensioning) configs=(Revision_DimensioningD6 Revision_DimensioningD10 Revision_DimensioningD20 Revision_Trade) ;;
+  revision-variability-aligned) configs=() ;;
   revision-full) configs=(Revision_D6 Revision_D10 Revision_D20 Revision_Tail Revision_Distributed Revision_Overhead Revision_Traffic_Poisson Revision_Traffic_Periodic Revision_Traffic_Synchronized Revision_Traffic_Bursty Revision_DimensioningD6 Revision_DimensioningD10 Revision_DimensioningD20 Revision_Trade) ;;
   *) echo "Unknown revision mode: $MODE" >&2; exit 2 ;;
 esac
