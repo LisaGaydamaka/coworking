@@ -9,7 +9,7 @@ Physical model: fixed 10 ms/24-slot calendar, not full radio PHY.
 - revision-grid: 27 pooled configurations
 - revision-tail: 10 pooled configurations
 - revision-geometry: 17 pooled configurations
-- revision-traffic: 0 pooled configurations
+- revision-traffic: 16 pooled configurations
 - revision-dimensioning: 27 pooled configurations
 
 ## Original 27-case confidence-interval audit
