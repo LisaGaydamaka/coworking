@@ -12,6 +12,11 @@ Physical model: fixed 10 ms/24-slot calendar, not full radio PHY.
 - revision-traffic: 16 pooled configurations
 - revision-dimensioning: 27 pooled configurations
 
+## Corrected 10-ms-frame service-time variability (90 runs)
+- deterministic: P99 150.2195 +/- 0.0014 ms (95%)
+- exponential: P99 152.9620 +/- 0.0218 ms (95%)
+- hyperexponential_SCv4: P99 158.6321 +/- 0.0939 ms (95%)
+
 ## Original 27-case confidence-interval audit
 - Available groups: 27
 - Analytical mean delays contained in 95% simulation CI: 22/27
