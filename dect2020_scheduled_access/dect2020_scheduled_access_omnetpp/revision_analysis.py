@@ -92,7 +92,7 @@ for D in range(2,25):
     mapping.append(dict(D=D,L=L,original_F_ms=old_f,corrected_F_ms=corrected_f,
          original_capacity_per_ms=old_lam,physical_capacity_per_ms=new_lam,
          relative_capacity_overestimate_pct=100*(old_lam/new_lam-1)))
-save(OUT/"revision_frame_mapping.csv",mapping)
+save(OUT/(MODE+"_frame_mapping.csv"),mapping)
 
 # Original 270 independent runs; exact analytical values from frozen Phase-4 solver.
 audit = []
@@ -123,7 +123,7 @@ if legacy.exists():
                 row[simkey+"_analytical"]=analyticvalue
                 row[simkey+"_covered"]=int(abs(analyticalvalue-avg)<=half)
             audit.append(row)
-        save(OUT/"revision_phase2_ci_audit.csv",audit)
+        save(OUT/(MODE+"_phase2_ci_audit.csv"),audit)
     except (ImportError,ModuleNotFoundError) as exc:
         print("WARNING: Phase-2 analytical CI audit unavailable:",exc)
 
@@ -185,7 +185,7 @@ try:
             thresholds.append({"D":D,"r":30,"blocking_target":target,
                 "original_rho_threshold":threshold(D,False,target),
                 "aligned_rho_threshold":threshold(D,True,target)})
-    save(OUT/"revision_blocking_thresholds.csv",thresholds)
+    save(OUT/(MODE+"_blocking_thresholds.csv"),thresholds)
 except (ImportError,ModuleNotFoundError) as exc:
     print("WARNING: Analytical comparison requires numpy/matplotlib:",exc)
 
@@ -195,7 +195,7 @@ report=[
     "Runs observed: "+str(len(runs)),
     "Independent configuration groups: "+str(len(rows)),
     "Summary: ci_results/"+MODE+"_summary.csv",
-    "Full-frame correction: ci_results/revision_frame_mapping.csv",
+    "Full-frame correction: ci_results/"+MODE+"_frame_mapping.csv",
     "Original model preserved: yes",
     "",
     "All physical metrics refer to one tagged PT with an explicit repeated",
@@ -204,12 +204,12 @@ report=[
 ]
 if comparisons:
     report += ["", "Physical vs queue-model comparisons: ci_results/"+MODE+"_model_comparison.csv",
-               "Original/aligned blocking thresholds: ci_results/revision_blocking_thresholds.csv"]
+               "Original/aligned blocking thresholds: ci_results/"+MODE+"_blocking_thresholds.csv"]
 if audit:
     hit=sum(x["mean_delay_direct_ms_covered"] for x in audit)
     report += ["","Original Phase-2 analytical delay within 95% replication CI:",
              str(hit)+"/"+str(len(audit)),
-             "Audit: ci_results/revision_phase2_ci_audit.csv"]
+             "Audit: ci_results/"+MODE+"_phase2_ci_audit.csv"]
 for row in rows[:12]:
     report.append("D={D} r={r} lambda={lambda_per_ms:.6g}: delay={mean_delay_direct_ms:.5f}ms, blocking={blocking_probability:.6g}".format(**row))
 (OUT/(MODE+"_report.md")).write_text("\n".join(report)+"\n")
