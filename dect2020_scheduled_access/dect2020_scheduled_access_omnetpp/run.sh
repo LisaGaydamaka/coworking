@@ -39,6 +39,12 @@ docker run --rm \
     test -x src/dect2020_sa
     echo "build=PASS" > ci_results/build_status.txt
 
+    if [[ "$RUN_MODE" == revision-* ]]; then
+      echo "=== MAJOR REVISION FIXED-FRAME EXPERIMENTS ==="
+      bash run_revision.sh "$RUN_MODE" 2>&1 | tee "ci_results/${RUN_MODE}_run.log"
+      exit 0
+    fi
+
     if [[ "$RUN_MODE" == phase6-variability* ]]; then
       echo "=== PHASE 6 SERVICE-TIME VARIABILITY OMNET++ RUNS ==="
       rm -f ci_results/phase6_*.csv ci_results/phase6_*.log ci_results/phase6_variability_status.txt
