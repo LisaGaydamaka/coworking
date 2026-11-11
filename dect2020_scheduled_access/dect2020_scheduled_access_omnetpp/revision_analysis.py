@@ -127,6 +127,68 @@ if legacy.exists():
     except (ImportError,ModuleNotFoundError) as exc:
         print("WARNING: Phase-2 analytical CI audit unavailable:",exc)
 
+# Controlled decomposition: original exponential queue, 10-ms-aligned
+# exponential queue, 10-ms-aligned deterministic queue, and physical slots.
+# Each is evaluated at the SAME absolute lambda, not at its own saturation.
+comparisons = []
+thresholds = []
+try:
+    sys.path.insert(0,str(HERE.parent/"analysis"))
+    import phase4_dimensioning as a
+    def queue_metrics(D,r,lam,aligned,deterministic):
+        L=24//D
+        b=10/24
+        f=(10-L*b) if aligned else (10-10/D)
+        nmax=r+4
+        beta,bt=(a.det_counts(lam,b,nmax) if deterministic
+                 else a.exp_counts(lam,nmax))
+        phi,pt=a.det_counts(lam,f,nmax)
+        P=a.transition_matrix(r,L,beta,phi,bt,pt)
+        q=a.stationary(P)
+        N,pi,v=a.reward_metrics(lam,r,L,f,q,bt,pt)
+        return N,pi,v
+    for g in rows:
+        if g["traffic_model_code"] != 0 or g["available_slots"] != 24:
+            continue
+        D,r,lam=g["D"],g["r"],g["lambda_per_ms"]
+        old=queue_metrics(D,r,lam,False,False)
+        aligned=queue_metrics(D,r,lam,True,False)
+        determ=queue_metrics(D,r,lam,True,True)
+        row={"D":D,"r":r,"lambda_per_ms":lam,
+             "load_factor_physical":g["physical_load_factor"],
+             "fixed_slot_delay_ms":g["mean_delay_direct_ms"],
+             "fixed_slot_delay_ci95":g["mean_delay_direct_ms_ci95"],
+             "fixed_slot_blocking":g["blocking_probability"],
+             "old_exponential_delay_ms":old[2],
+             "aligned_exponential_delay_ms":aligned[2],
+             "aligned_deterministic_delay_ms":determ[2],
+             "old_exponential_blocking":old[1],
+             "aligned_exponential_blocking":aligned[1],
+             "aligned_deterministic_blocking":determ[1],
+             "physical_minus_aligned_deterministic_delay_ms":g["mean_delay_direct_ms"]-determ[2],
+             "physical_minus_aligned_deterministic_blocking":g["blocking_probability"]-determ[1]}
+        comparisons.append(row)
+    save(OUT/(MODE+"_model_comparison.csv"),comparisons)
+    # Readouts for the three table configurations with original-vs-aligned
+    # 1%, 5%, 10% blocking contours, evaluated at r=30.
+    def threshold(D,aligned,target):
+        b=10/24
+        cap=(24//D)/10 if aligned else (24//D)/((24//D)*b+10-10/D)
+        lo,hi=1e-10,2*cap
+        for _ in range(40):
+            m=queue_metrics(D,30,(lo+hi)/2,aligned,False)
+            if m[1]<target:lo=(lo+hi)/2
+            else:hi=(lo+hi)/2
+        return (lo+hi)/2*b
+    for D in (6,10,20):
+        for target in (0.01,0.05,0.10):
+            thresholds.append({"D":D,"r":30,"blocking_target":target,
+                "original_rho_threshold":threshold(D,False,target),
+                "aligned_rho_threshold":threshold(D,True,target)})
+    save(OUT/"revision_blocking_thresholds.csv",thresholds)
+except (ImportError,ModuleNotFoundError) as exc:
+    print("WARNING: Analytical comparison requires numpy/matplotlib:",exc)
+
 report=[
     "# Major-revision simulation: "+MODE,
     "",
@@ -140,6 +202,9 @@ report=[
     "10-ms / 24-slot allocation. This is an idealized slot-synchronous MAC",
     "benchmark, not a full radio PHY or ETSI conformance implementation.",
 ]
+if comparisons:
+    report += ["", "Physical vs queue-model comparisons: ci_results/"+MODE+"_model_comparison.csv",
+               "Original/aligned blocking thresholds: ci_results/revision_blocking_thresholds.csv"]
 if audit:
     hit=sum(x["mean_delay_direct_ms_covered"] for x in audit)
     report += ["","Original Phase-2 analytical delay within 95% replication CI:",
