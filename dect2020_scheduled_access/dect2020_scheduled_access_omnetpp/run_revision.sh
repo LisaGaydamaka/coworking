@@ -1,6 +1,18 @@
 #!/usr/bin/env bash
 set -euo pipefail
-MODE="${1:-revision-smoke}"
+TRIGGER="${1:-revision-smoke}"
+# GitHub Actions .run triggers carry a unique date suffix; normalize to a
+# stable experiment mode before selecting config and output file names.
+case "$TRIGGER" in
+    revision-smoke*) MODE=revision-smoke ;;
+    revision-grid*) MODE=revision-grid ;;
+    revision-tail*) MODE=revision-tail ;;
+    revision-geometry*) MODE=revision-geometry ;;
+    revision-traffic*) MODE=revision-traffic ;;
+    revision-dimensioning*) MODE=revision-dimensioning ;;
+    revision-full*) MODE=revision-full ;;
+    *) echo "Unknown revision trigger: $TRIGGER" >&2; exit 2 ;;
+esac
 cd "$(dirname "$0")"
 mkdir -p simulations/results_revision ci_results
 cd simulations
