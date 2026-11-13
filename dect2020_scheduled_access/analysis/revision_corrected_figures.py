@@ -134,11 +134,11 @@ def plot_operating_map():
     ax.set_xticks([2,4,6,8,10,12,14,16,18,20,22,24])
     ax.set_xlabel("Number of PT devices D")
     ax.set_ylabel("Offered load ρ = λmB")
-    ax.set_title("Frame-aligned deterministic-slot dimensioning (r = 30)")
+    ax.set_title("Frame-aligned deterministic-service vacation queue (r = 30)")
     ax.legend(loc="upper right",fontsize=8)
     fig.tight_layout()
     fig.savefig(OUT/"revision_corrected_figure_B_operating_map.pdf")
-    fig.savefig(OUT/"revision_corrected_figure_B_operating_map.png",dpi=280)
+    fig.savefig(OUT/"revision_corrected_figure_B_operating_map.png",dpi=600)
     plt.close(fig)
     return thresholds
 
@@ -178,12 +178,12 @@ def plot_delay_loss():
     ax.xaxis.set_minor_formatter(NullFormatter())
     ax.set_xlabel("Blocking probability π (logarithmic)")
     ax.set_ylabel("Mean admitted-packet sojourn time [ms]")
-    ax.set_title("Frame-aligned deterministic-slot queue (D = 10)")
+    ax.set_title("Frame-aligned deterministic-service vacation queue (D = 10)")
     ax.legend(loc="upper left",fontsize=8)
     ax.grid(True,alpha=.3,lw=.5)
     fig.tight_layout()
     fig.savefig(OUT/"revision_corrected_figure_C_delay_loss.pdf")
-    fig.savefig(OUT/"revision_corrected_figure_C_delay_loss.png",dpi=280)
+    fig.savefig(OUT/"revision_corrected_figure_C_delay_loss.png",dpi=600)
     plt.close(fig)
 
 def plot_fixed_slot_tail():
@@ -213,14 +213,14 @@ def plot_fixed_slot_tail():
     ax.set_xticklabels(["0.5","0.7","0.8","0.9","1.0",
                         "1.1","1.2","1.5","2.0","5.0"],fontsize=8)
     ax.set_xlim(.48,5.15)
-    ax.set_xlabel("λ / (L/10 ms), logarithmic axis")
+    ax.set_xlabel("Offered rate / fixed-slot saturation capacity (log scale)")
     ax.set_ylabel("Admitted-packet sojourn [ms]")
     ax.set_title("Fixed-slot mean, P95 and P99 (D=10, r=30)")
     ax.grid(alpha=.28,lw=.45)
     ax.legend(loc="lower right",fontsize=8)
     fig.tight_layout()
     fig.savefig(OUT/"revision_fixed_slot_figure_D_tail_latency.pdf")
-    fig.savefig(OUT/"revision_fixed_slot_figure_D_tail_latency.png",dpi=280)
+    fig.savefig(OUT/"revision_fixed_slot_figure_D_tail_latency.png",dpi=600)
     plt.close(fig)
 
 def plot_traffic_sensitivity():
@@ -242,7 +242,7 @@ def plot_traffic_sensitivity():
     ax.grid(alpha=.3);ax.legend(fontsize=8)
     fig.tight_layout()
     fig.savefig(OUT/"revision_traffic_sensitivity_blocking.pdf")
-    fig.savefig(OUT/"revision_traffic_sensitivity_blocking.png",dpi=280)
+    fig.savefig(OUT/"revision_traffic_sensitivity_blocking.png",dpi=600)
     plt.close(fig)
 
 def plot_geometry():
@@ -270,7 +270,7 @@ def plot_geometry():
     ax.grid(alpha=.3);ax.legend(fontsize=8)
     fig.tight_layout()
     fig.savefig(OUT/"revision_slot_position_sensitivity_p99.pdf")
-    fig.savefig(OUT/"revision_slot_position_sensitivity_p99.png",dpi=280)
+    fig.savefig(OUT/"revision_slot_position_sensitivity_p99.png",dpi=600)
     plt.close(fig)
 
     # FT resource reservation: theoretical change in saturated packet rate.
@@ -295,7 +295,7 @@ def plot_geometry():
     ax.legend(fontsize=8);ax.grid(alpha=.25)
     fig.tight_layout()
     fig.savefig(OUT/"revision_FT_slot_reservation_capacity.pdf")
-    fig.savefig(OUT/"revision_FT_slot_reservation_capacity.png",dpi=280)
+    fig.savefig(OUT/"revision_FT_slot_reservation_capacity.png",dpi=600)
     plt.close(fig)
 
 def make_manifest(thresholds):
