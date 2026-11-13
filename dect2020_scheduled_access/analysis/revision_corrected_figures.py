@@ -20,6 +20,7 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import NullFormatter
 import numpy as np
 import phase4_dimensioning as legacy
+from revision_plot_layout import save_compact
 
 HERE = Path(__file__).resolve().parent
 OUT = HERE / "revision_output"
@@ -120,7 +121,7 @@ def plot_operating_map():
               [x for x in thresholds if x["D"] in [2,6,10,13,20,24]])
     dr=float(load_grid[1]-load_grid[0])
     y_edges=np.concatenate(([0.0], load_grid+dr/2.0))
-    fig,ax=plt.subplots(figsize=(8.4,5.5))
+    fig,ax=plt.subplots(figsize=(7.4,4.4))
     mesh=ax.pcolormesh(np.arange(1.5,25.5,1.0),
                        y_edges,Z,shading="flat",cmap="viridis",vmin=0,vmax=1)
     bar=fig.colorbar(mesh,ax=ax,pad=.02)
@@ -134,11 +135,9 @@ def plot_operating_map():
     ax.set_xticks([2,4,6,8,10,12,14,16,18,20,22,24])
     ax.set_xlabel("Number of PT devices D")
     ax.set_ylabel("Offered load ρ = λmB")
-    ax.set_title("Frame-aligned deterministic-service vacation queue (r = 30)")
-    ax.legend(loc="upper right",fontsize=8)
-    fig.tight_layout()
-    fig.savefig(OUT/"revision_corrected_figure_B_operating_map.pdf")
-    fig.savefig(OUT/"revision_corrected_figure_B_operating_map.png",dpi=600)
+    ax.set_title("Frame-aligned deterministic-service queue (r=30)")
+    ax.legend(loc="upper right",fontsize=7.5,ncol=2,framealpha=.9)
+    save_compact(fig,OUT,"revision_corrected_figure_B_operating_map")
     plt.close(fig)
     return thresholds
 
@@ -148,7 +147,7 @@ def plot_delay_loss():
     rvals=range(1,51)
     factors=[.8,1.0,1.2]
     rows=[]
-    fig,ax=plt.subplots(figsize=(7.9,5.3))
+    fig,ax=plt.subplots(figsize=(7.3,4.3))
     for fac in factors:
         rr=[]
         for r in rvals:
@@ -178,19 +177,18 @@ def plot_delay_loss():
     ax.xaxis.set_minor_formatter(NullFormatter())
     ax.set_xlabel("Blocking probability π (logarithmic)")
     ax.set_ylabel("Mean admitted-packet sojourn time [ms]")
-    ax.set_title("Frame-aligned deterministic-service vacation queue (D = 10)")
+    ax.set_title("Frame-aligned deterministic-service queue (D=10)")
     ax.legend(loc="upper left",fontsize=8)
     ax.grid(True,alpha=.3,lw=.5)
-    fig.tight_layout()
-    fig.savefig(OUT/"revision_corrected_figure_C_delay_loss.pdf")
-    fig.savefig(OUT/"revision_corrected_figure_C_delay_loss.png",dpi=600)
+    save_compact(fig,OUT,"revision_corrected_figure_C_delay_loss")
     plt.close(fig)
 
 def plot_fixed_slot_tail():
-    """Figure D: primary linear axis and an optional archived log-axis version.
+    """Figure D: full linear range with a near-saturation *linear* zoom inset.
 
-    Both versions use exactly the same original, unmodified 10-point
-    fixed-slot OMNeT++ summary and replication-level 95% confidence intervals.
+    The inset fills the otherwise unused low-delay region at high load;
+    neither the main axis nor the zoom uses a logarithmic x scale.
+    The log-axis archival alternative is exported separately.
     """
     records=read_csv("revision-tail_summary.csv")
     data=sorted([z for z in records if int(z["D"])==10 and int(z["r"])==30
@@ -201,54 +199,65 @@ def plot_fixed_slot_tail():
     if len(data)!=10:
         raise RuntimeError("Expected 10 fixed-slot tail-latency grid points")
     x=[float(z["physical_load_factor"]) for z in data]
-    specs=[
-       ("mean_delay_direct_ms","Mean sojourn","o"),
-       ("delay_p95_ms","P95","s"),
-       ("delay_p99_ms","P99","^"),
-    ]
+    specs=[("mean_delay_direct_ms","Mean","o"),
+           ("delay_p95_ms","P95","s"),
+           ("delay_p99_ms","P99","^")]
     for scale in ("linear","log"):
-        fig,ax=plt.subplots(figsize=(8.7,5.5))
+        fig,ax=plt.subplots(figsize=(7.6,4.35))
         for key,label,marker in specs:
             ax.errorbar(x,[float(z[key]) for z in data],
                 yerr=[float(z[key+"_ci95"]) for z in data],
-                label=label,marker=marker,capsize=2.5,markersize=4,lw=1.65)
-        ax.axvline(1.0,color="gray",lw=1.1,ls="--",label="Fixed-slot capacity")
+                label=label,marker=marker,capsize=2.2,markersize=3.3,lw=1.5)
+        ax.axvline(1.0,color="gray",lw=1.0,ls="--",label="Saturation")
         if scale=="log":
             ax.set_xscale("log")
             ax.set_xticks([.5,.7,.8,.9,1.,1.1,1.2,1.5,2.,5.])
             ax.set_xticklabels(["0.5","0.7","0.8","0.9","1.0",
-                                "1.1","1.2","1.5","2.0","5.0"],fontsize=8)
-            ax.set_xlabel("Offered rate / fixed-slot saturation capacity (log scale)")
+                                "1.1","1.2","1.5","2.0","5.0"],fontsize=7)
+            ax.set_xlabel("Offered rate / fixed-slot capacity (log scale)")
         else:
             ax.set_xscale("linear")
             ax.set_xticks([.5,1.,1.5,2.,3.,4.,5.])
-            ax.set_xlabel("Offered rate / fixed-slot saturation capacity")
-        # Leave deliberate plot-area clearance at the two endpoint markers.
-        ax.set_xlim(.40,5.30)
+            ax.set_xlabel("Offered rate / fixed-slot capacity")
+        ax.set_xlim(.46,5.12)
         ax.set_ylim(0,160)
         ax.set_ylabel("Admitted-packet sojourn [ms]")
         ax.set_title("Fixed-slot mean, P95 and P99 (D=10, r=30)")
-        ax.grid(alpha=.28,lw=.45)
-        ax.legend(loc="lower right",fontsize=8)
-        # Keep the title, axis labels, ticks, legend and endpoint error bars
-        # away from the figure boundary in both PDF and PNG exports.
-        fig.tight_layout(pad=1.75)
-        filenames=(["revision_fixed_slot_figure_D_tail_latency",
-                    "revision_fixed_slot_figure_D_tail_latency_linear"]
-                   if scale=="linear" else
-                   ["revision_fixed_slot_figure_D_tail_latency_log"])
-        for name in filenames:
-            fig.savefig(OUT/(name+".pdf"), bbox_inches="tight",
-                        pad_inches=0.25, facecolor="white")
-            fig.savefig(OUT/(name+".png"), dpi=600,
-                        bbox_inches="tight", pad_inches=0.25, facecolor="white")
+        ax.grid(alpha=.24,lw=.4)
+        ax.legend(loc="lower right",fontsize=7,framealpha=.92,
+                  borderpad=.35,labelspacing=.3)
+        if scale=="linear":
+            # Use the blank under-saturation part of the right-hand side
+            # for a more legible near-saturation view. It is a LINEAR inset.
+            zoom=ax.inset_axes([.52,.31,.45,.49],zorder=4)
+            for key,label,marker in specs:
+                zoom.errorbar(x,[float(z[key]) for z in data],
+                    yerr=[float(z[key+"_ci95"]) for z in data],
+                    marker=marker,markersize=2.4,lw=1.0,capsize=1.1)
+            zoom.axvline(1.0,color="gray",lw=.7,ls="--")
+            zoom.set_xscale("linear")
+            zoom.set_xlim(.49,1.52)
+            zoom.set_ylim(0,158)
+            zoom.set_xticks([.5,1.,1.5])
+            zoom.set_yticks([0,80,160])
+            zoom.set_title("Near saturation (linear zoom)",fontsize=7,pad=1)
+            zoom.tick_params(labelsize=6.5,length=2,pad=1)
+            zoom.grid(alpha=.16,lw=.4)
+            zoom.patch.set_facecolor("white")
+            zoom.patch.set_alpha(.95)
+        names=(["revision_fixed_slot_figure_D_tail_latency",
+                "revision_fixed_slot_figure_D_tail_latency_linear"]
+               if scale=="linear" else
+               ["revision_fixed_slot_figure_D_tail_latency_log"])
+        for name in names:
+            save_compact(fig,OUT,name)
         plt.close(fig)
 
 def plot_traffic_sensitivity():
     r=read_csv("revision-traffic_summary.csv")
     labels={0:"Poisson",1:"Periodic (random phase)",
             2:"Synchronized periodic",3:"Compound-Poisson bursty"}
-    fig,ax=plt.subplots(figsize=(7.7,4.9))
+    fig,ax=plt.subplots(figsize=(7.2,4.0))
     for code in (0,1,2,3):
         p=sorted([z for z in r if int(z["traffic_model_code"])==code],
                  key=lambda x:float(x["lambda_per_ms"]))
@@ -261,9 +270,7 @@ def plot_traffic_sensitivity():
     ax.set_ylabel("Fixed-slot blocking probability [%]")
     ax.set_title("Equal-rate arrival-process sensitivity (D=10, r=30)")
     ax.grid(alpha=.3);ax.legend(fontsize=8)
-    fig.tight_layout()
-    fig.savefig(OUT/"revision_traffic_sensitivity_blocking.pdf")
-    fig.savefig(OUT/"revision_traffic_sensitivity_blocking.png",dpi=600)
+    save_compact(fig,OUT,"revision_traffic_sensitivity_blocking")
     plt.close(fig)
 
 def plot_geometry():
@@ -279,7 +286,7 @@ def plot_geometry():
         and int(z["available_slots"])==24 and int(z["slot_layout_code"])==1}
     rates=sorted(set(a)&set(b))
     if len(rates)<4:raise RuntimeError("Not enough matched geometry points")
-    fig,ax=plt.subplots(figsize=(7.7,4.9))
+    fig,ax=plt.subplots(figsize=(7.2,4.0))
     for dataset,label,marker in ((a,"Contiguous slots","o"),
                                  (b,"Distributed slots","s")):
         ax.errorbar(rates,[float(dataset[k]["delay_p99_ms"]) for k in rates],
@@ -289,9 +296,7 @@ def plot_geometry():
     ax.set_ylabel("Fixed-slot P99 sojourn time [ms]")
     ax.set_title("Slot-placement sensitivity (D=10, r=30)")
     ax.grid(alpha=.3);ax.legend(fontsize=8)
-    fig.tight_layout()
-    fig.savefig(OUT/"revision_slot_position_sensitivity_p99.pdf")
-    fig.savefig(OUT/"revision_slot_position_sensitivity_p99.png",dpi=600)
+    save_compact(fig,OUT,"revision_slot_position_sensitivity_p99")
     plt.close(fig)
 
     # FT resource reservation: theoretical change in saturated packet rate.
@@ -304,7 +309,7 @@ def plot_geometry():
             row[f"available_{S}_capacity_packets_ms"]=L/10. if L>=1 else ""
         caps.append(row)
     write_csv("revision_FT_slot_reservation_capacity.csv",caps)
-    fig,ax=plt.subplots(figsize=(7.7,4.5))
+    fig,ax=plt.subplots(figsize=(7.2,3.8))
     for S,marker in ((24,"o"),(22,"s")):
         xs=[z["D"] for z in caps if z[f"available_{S}_L"]>=1]
         ys=[z[f"available_{S}_capacity_packets_ms"] for z in caps if z[f"available_{S}_L"]>=1]
@@ -314,9 +319,7 @@ def plot_geometry():
     ax.set_ylabel("Theoretical saturated rate [packets/ms]")
     ax.set_title("Effect of reserving two slots for FT/control")
     ax.legend(fontsize=8);ax.grid(alpha=.25)
-    fig.tight_layout()
-    fig.savefig(OUT/"revision_FT_slot_reservation_capacity.pdf")
-    fig.savefig(OUT/"revision_FT_slot_reservation_capacity.png",dpi=600)
+    save_compact(fig,OUT,"revision_FT_slot_reservation_capacity")
     plt.close(fig)
 
 def make_manifest(thresholds):
