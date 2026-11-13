@@ -207,7 +207,7 @@ def plot_fixed_slot_tail():
        ("delay_p99_ms","P99","^"),
     ]
     for scale in ("linear","log"):
-        fig,ax=plt.subplots(figsize=(8.1,5.0))
+        fig,ax=plt.subplots(figsize=(8.7,5.5))
         for key,label,marker in specs:
             ax.errorbar(x,[float(z[key]) for z in data],
                 yerr=[float(z[key+"_ci95"]) for z in data],
@@ -223,19 +223,25 @@ def plot_fixed_slot_tail():
             ax.set_xscale("linear")
             ax.set_xticks([.5,1.,1.5,2.,3.,4.,5.])
             ax.set_xlabel("Offered rate / fixed-slot saturation capacity")
-        ax.set_xlim(.48,5.15)
+        # Leave deliberate plot-area clearance at the two endpoint markers.
+        ax.set_xlim(.40,5.30)
+        ax.set_ylim(0,160)
         ax.set_ylabel("Admitted-packet sojourn [ms]")
         ax.set_title("Fixed-slot mean, P95 and P99 (D=10, r=30)")
         ax.grid(alpha=.28,lw=.45)
         ax.legend(loc="lower right",fontsize=8)
-        fig.tight_layout()
+        # Keep the title, axis labels, ticks, legend and endpoint error bars
+        # away from the figure boundary in both PDF and PNG exports.
+        fig.tight_layout(pad=1.75)
         filenames=(["revision_fixed_slot_figure_D_tail_latency",
                     "revision_fixed_slot_figure_D_tail_latency_linear"]
                    if scale=="linear" else
                    ["revision_fixed_slot_figure_D_tail_latency_log"])
         for name in filenames:
-            fig.savefig(OUT/(name+".pdf"))
-            fig.savefig(OUT/(name+".png"),dpi=600)
+            fig.savefig(OUT/(name+".pdf"), bbox_inches="tight",
+                        pad_inches=0.25, facecolor="white")
+            fig.savefig(OUT/(name+".png"), dpi=600,
+                        bbox_inches="tight", pad_inches=0.25, facecolor="white")
         plt.close(fig)
 
 def plot_traffic_sensitivity():
