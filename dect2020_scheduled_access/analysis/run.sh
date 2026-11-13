@@ -6,7 +6,10 @@ export MPLBACKEND=Agg
 python3 -m pip install --quiet --disable-pip-version-check numpy matplotlib
 
 RUN_MODE="$(cat .run 2>/dev/null || true)"
-if [[ "$RUN_MODE" == revision-final-publication* ]]; then
+if [[ "$RUN_MODE" == revision-corrected-figures* ]]; then
+  export OPENBLAS_NUM_THREADS=1
+  python3 revision_corrected_figures.py
+elif [[ "$RUN_MODE" == revision-final-publication* ]]; then
   export OPENBLAS_NUM_THREADS=1
   python3 revision_final_analysis.py
 elif [[ "$RUN_MODE" == revision-analytics* ]]; then
