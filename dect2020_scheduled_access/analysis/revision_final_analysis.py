@@ -17,6 +17,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import phase4_dimensioning as a
+from revision_plot_layout import save_compact
 
 ROOT=Path(__file__).resolve().parent
 SRC=ROOT.parent/"dect2020_scheduled_access_omnetpp"/"ci_results"
@@ -143,7 +144,7 @@ write("revision_final_saturation_five_cases.csv",audits)
 
 # Graph A: actual blocking probabilities versus device count for 1/5/10%
 # rate-based contour targets, with replicate-level errorbars.
-fig,ax=plt.subplots(figsize=(7.7,5.1))
+fig,ax=plt.subplots(figsize=(7.15,3.85))
 for target,marker in ((0.01,"o"),(0.05,"s"),(0.10,"^")):
     rr=[z for z in dimensioning if z["target_blocking"]==target]
     ax.errorbar([z["D"] for z in rr],[z["physical_blocking"] for z in rr],
@@ -154,15 +155,16 @@ for target,marker in ((0.01,"o"),(0.05,"s"),(0.10,"^")):
 ax.set_xticks(sorted(rates))
 ax.set_xlabel("PT device count D")
 ax.set_ylabel("Fixed-slot blocking probability")
-ax.legend(fontsize=8);ax.grid(alpha=.24)
-fig.tight_layout()
-fig.savefig(OUT/"revision_final_sixD_blocking_validation.pdf")
-fig.savefig(OUT/"revision_final_sixD_blocking_validation.png",dpi=260)
+ax.set_ylim(-.004,.109)
+ax.legend(loc="lower center",bbox_to_anchor=(.5,1.005),ncol=3,
+          fontsize=7,frameon=False,columnspacing=.9,handlelength=1.1)
+ax.grid(alpha=.20)
+save_compact(fig,OUT,"revision_final_sixD_blocking_validation")
 plt.close(fig)
 
 # Graph B: original 5 simulations at old sampling effort vs 20 longer
 # original-queue runs, with EXACT analytical predictions at each case.
-fig,ax=plt.subplots(figsize=(8,5))
+fig,ax=plt.subplots(figsize=(7.25,4.15))
 x=np.arange(len(audits))
 orig=[100*(r["mean_delay_direct_ms_original_mean"]/r["mean_delay_direct_ms_analytical"]-1) for r in audits]
 long=[r["mean_delay_direct_ms_longrun_relerror_pct"] for r in audits]
@@ -173,14 +175,13 @@ ax.errorbar(x+.12,long,yerr=longerr,fmt="s",capsize=3,label="Long-run: 20 × 5 m
 ax.axhline(0,linestyle="--",linewidth=1,color="black",label="Exact analytical prediction")
 ax.set_xticks(x,["D%d, r%d"%(r["D"],r["r"]) for r in audits])
 ax.set_ylabel("Simulation minus analytical delay / analytical delay [%]")
-ax.legend(fontsize=8);ax.grid(alpha=.25)
-fig.tight_layout()
-fig.savefig(OUT/"revision_final_saturation_convergence.pdf")
-fig.savefig(OUT/"revision_final_saturation_convergence.png",dpi=260)
+ax.legend(loc="lower right",fontsize=7.2,framealpha=.92)
+ax.grid(alpha=.20)
+save_compact(fig,OUT,"revision_final_saturation_convergence")
 plt.close(fig)
 
 # Graph C: 18 fixed-slot dimensions vs frame-aligned deterministic model.
-fig,ax=plt.subplots(figsize=(7,5.1))
+fig,ax=plt.subplots(figsize=(7.0,3.85))
 for target,marker in ((0.01,"o"),(0.05,"s"),(0.10,"^")):
     rr=[z for z in dimensioning if z["target_blocking"]==target]
     ax.plot([z["D"] for z in rr],[z["relative_aligned_det_delay_error_pct"] for z in rr],
@@ -189,9 +190,9 @@ ax.axhline(0,color="black",linestyle="--",linewidth=1)
 ax.set_xticks(sorted(rates))
 ax.set_xlabel("PT device count D")
 ax.set_ylabel("Frame-aligned deterministic mean-delay error [%]")
-ax.grid(alpha=.25);ax.legend(fontsize=8);fig.tight_layout()
-fig.savefig(OUT/"revision_final_sixD_delay_approximation_error.pdf")
-fig.savefig(OUT/"revision_final_sixD_delay_approximation_error.png",dpi=260)
+ax.grid(alpha=.20)
+ax.legend(loc="lower right",fontsize=7.2,framealpha=.92)
+save_compact(fig,OUT,"revision_final_sixD_delay_approximation_error")
 plt.close(fig)
 
 # Summary is designed to be concise and directly translatable to Results.
