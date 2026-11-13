@@ -6,7 +6,13 @@ export MPLBACKEND=Agg
 python3 -m pip install --quiet --disable-pip-version-check numpy matplotlib
 
 RUN_MODE="$(cat .run 2>/dev/null || true)"
-if [[ "$RUN_MODE" == revision-corrected-figures* ]]; then
+if [[ "$RUN_MODE" == revision-relayout-all* ]]; then
+  export OPENBLAS_NUM_THREADS=1
+  # Regenerate already-measured plots without changing OMNeT++ data or LaTeX.
+  python3 revision_validation.py
+  python3 revision_final_analysis.py
+  python3 revision_corrected_figures.py
+elif [[ "$RUN_MODE" == revision-corrected-figures* ]]; then
   export OPENBLAS_NUM_THREADS=1
   python3 revision_corrected_figures.py
 elif [[ "$RUN_MODE" == revision-final-publication* ]]; then
