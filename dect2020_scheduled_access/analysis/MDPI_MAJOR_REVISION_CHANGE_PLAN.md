@@ -74,8 +74,18 @@ Do not present that model's agreement as physical DECT-2020 compliance.
 - Section 5 corrected D10 capacity: 0.2000000 packets/ms and rho_sat 0.0833333.
 - Section 5.2 corrected deterministic at D10 r30 physical factor1:
   analytical mean 75.7468 ms and blocking 1.67269%.
+- Section 6 fixed-slot at D10 r30 factor0.9:
+  mean 26.3449 ms, P95 74.1180 ms, P99 108.9520 ms.
 - Section 6 fixed-slot at D10 r30 factor1:
-  mean 75.7636 ms, P95 142.02 ms, P99 148.4820 ms, blocking 1.67867%.
+  mean 75.7636 ms, P95 142.0230 ms, P99 148.4820 ms, blocking 1.67867%.
+- Section 6 fixed-slot at D10 r30 factor1.2:
+  mean 135.9716 ms, P95 149.4538 ms, P99 150.2201 ms.
+- Section 6 fixed-slot at D10 r30 factor5:
+  mean 149.0860 ms, P95 150.3404 ms, P99 150.4017 ms;
+  blocking ~79.994%, so admitted-only tails must not suggest feasibility.
+- On the new physical tail grid, largest 95% CI halfwidth is
+  0.7738 ms for P95 and 1.0713 ms for P99; replace legacy
+  interval-width claims in Section 6 if still present.
 - Section 5.2 at D10 factor1 r50:
   corrected deterministic mean 125.7396ms and blocking 1.00217%
   (NOT legacy 123.65ms and ~1.01%).
