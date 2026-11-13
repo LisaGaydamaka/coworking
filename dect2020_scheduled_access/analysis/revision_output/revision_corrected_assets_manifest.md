@@ -10,7 +10,8 @@ Corrected mapping: L=floor(24/D), B=10/24ms and F=10-L*B.
 |---|---|---|
 | Replace submitted operating-regime Figure B | revision_corrected_figure_B_operating_map.pdf | Main Section 5.1 |
 | Replace submitted delay-loss Figure C | revision_corrected_figure_C_delay_loss.pdf | Main Section 5.2 |
-| Replace submitted Figure D (old vacation queue tail) | revision_fixed_slot_figure_D_tail_latency.pdf | Main Section 6 |
+| Replace submitted Figure D (old vacation queue tail) | revision_fixed_slot_figure_D_tail_latency_linear.pdf | Main Section 6 (linear axis) |
+| Archived optional log-axis tail figure | revision_fixed_slot_figure_D_tail_latency_log.pdf | Supplementary/archived only |
 | 27-case physical vs abstract analytical model | revision_27case_mean_delay_comparison.pdf | Main Section 4 |
 | Six-D physical blocking validation | revision_final_sixD_blocking_validation.pdf | Main Section 5 |
 | Physical vs original P99 comparison | revision_physical_vs_original_tail_p99.pdf | Main Section 6; optional if space limited |
