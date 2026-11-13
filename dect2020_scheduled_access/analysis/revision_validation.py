@@ -15,6 +15,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import phase4_dimensioning as a
+from revision_plot_layout import save_compact
 
 ROOT=Path(__file__).resolve().parent
 INPUT=ROOT.parent/"dect2020_scheduled_access_omnetpp"/"ci_results"
@@ -185,7 +186,7 @@ write_csv(OUT/"revision_tail_comparison.csv",tail_table)
 
 if physical_tail:
     x=[z["physical_load_factor"] for z in physical_tail]
-    fig,ax=plt.subplots(figsize=(7.8,4.8))
+    fig,ax=plt.subplots(figsize=(7.2,4.1))
     ax.plot(x,[float(z["physical_p95_ms"]) for z in physical_tail],"o-",label="Fixed-slot P95")
     ax.plot(x,[float(z["physical_p99_ms"]) for z in physical_tail],"s-",label="Fixed-slot P99")
     if historical_tail:
@@ -194,14 +195,30 @@ if physical_tail:
     ax.set_xlabel("Offered rate / fixed-slot saturation capacity")
     ax.set_ylabel("Admitted-packet sojourn [ms]")
     ax.set_xlim(0.45,5.15)
-    ax.legend();ax.grid(alpha=.3);fig.tight_layout()
-    fig.savefig(OUT/"revision_physical_vs_original_tail_p99.pdf")
-    fig.savefig(OUT/"revision_physical_vs_original_tail_p99.png",dpi=250)
+    # Use the lower-right empty part of the full 0.5–5 plot to show
+    # the much more informative near-saturation behavior without hiding
+    # the full-range linear data or the legacy reference curve.
+    zoom=ax.inset_axes([.53,.30,.43,.50],zorder=4)
+    zoom.plot(x,[float(z["physical_p95_ms"]) for z in physical_tail],"o-",ms=2.8,lw=1.0)
+    zoom.plot(x,[float(z["physical_p99_ms"]) for z in physical_tail],"s-",ms=2.8,lw=1.0)
+    if historical_tail:
+        zoom.plot(xold,[float(z["p99_ms"]) for z in historical_tail],"^--",ms=2.8,lw=1.0)
+    zoom.set_xlim(.48,1.55)
+    zoom.set_ylim(0,157)
+    zoom.set_xticks([.5,1.,1.5])
+    zoom.set_yticks([0,75,150])
+    zoom.set_title("Near saturation",fontsize=7,pad=1)
+    zoom.tick_params(labelsize=6.5,pad=1)
+    zoom.patch.set_facecolor("white")
+    zoom.patch.set_alpha(.96)
+    ax.legend(loc="lower right",fontsize=7,framealpha=.94)
+    ax.grid(alpha=.25)
+    save_compact(fig,OUT,"revision_physical_vs_original_tail_p99")
     plt.close(fig)
 
 grid=[x for x in comparisons if x["experiment"]=="revision-grid"]
 if grid:
-    fig,ax=plt.subplots(figsize=(6.5,5.8))
+    fig,ax=plt.subplots(figsize=(6.6,5.0))
     xp=[x["physical_delay_ms"] for x in grid]
     for name,marker,label in (("original_queue_delay_ms","o","Original exponential"),
                               ("aligned_exp_queue_delay_ms","s","Frame-aligned exponential"),
@@ -211,31 +228,48 @@ if grid:
     ax.plot([0,mx],[0,mx],"k--",lw=1,label="Perfect agreement")
     ax.set_xlabel("Fixed-slot mean delay [ms]")
     ax.set_ylabel("Vacation-queue mean delay [ms]")
-    ax.legend(fontsize=8);ax.grid(alpha=.25);fig.tight_layout()
-    fig.savefig(OUT/"revision_27case_mean_delay_comparison.pdf")
-    fig.savefig(OUT/"revision_27case_mean_delay_comparison.png",dpi=250)
+    ax.legend(loc="upper left",fontsize=7.5,framealpha=.93)
+    ax.grid(alpha=.22)
+    # At small delays many of the 27 cases overlap near the origin.
+    # A square inset uses otherwise blank lower-right figure space.
+    zoom=ax.inset_axes([.55,.11,.42,.41],zorder=3)
+    for name,marker,label in (("original_queue_delay_ms","o","Original"),
+                              ("aligned_exp_queue_delay_ms","s","Aligned exponential"),
+                              ("aligned_det_queue_delay_ms","^","Aligned deterministic")):
+        zoom.scatter(xp,[float(v[name]) for v in grid],
+                     s=11,marker=marker,alpha=.8)
+    zoom.plot([0,155],[0,155],"k--",lw=.8)
+    zoom.set_xlim(0,155)
+    zoom.set_ylim(0,155)
+    zoom.set_xticks([0,50,100,150])
+    zoom.set_yticks([0,50,100,150])
+    zoom.set_title("0–150 ms detail",fontsize=7,pad=1)
+    zoom.tick_params(labelsize=6.5,pad=1)
+    zoom.grid(alpha=.15)
+    zoom.set_aspect("equal", adjustable="box")
+    zoom.patch.set_alpha(.96)
+    save_compact(fig,OUT,"revision_27case_mean_delay_comparison")
     plt.close(fig)
 
 traffic=[x for x in comparisons if x["experiment"]=="revision-traffic"]
 if traffic:
     labels={0:"Poisson",1:"Periodic phase-randomized",2:"Synchronized periodic",3:"Compound-Poisson bursty"}
-    fig,ax=plt.subplots(figsize=(7.2,4.7))
+    fig,ax=plt.subplots(figsize=(7.0,3.85))
     for code in sorted({x["traffic_model_code"] for x in traffic}):
         rr=sorted([x for x in traffic if x["traffic_model_code"]==code],key=lambda x:x["lambda_per_ms"])
         ax.plot([x["lambda_per_ms"] for x in rr],
                 [x["physical_blocking"] for x in rr],"o-",label=labels[code])
     ax.set_xlabel("Mean offered packet rate [packets/ms]")
     ax.set_ylabel("Blocking probability")
-    ax.legend(fontsize=8);ax.grid(alpha=.25);fig.tight_layout()
-    fig.savefig(OUT/"revision_traffic_blocking.pdf")
-    fig.savefig(OUT/"revision_traffic_blocking.png",dpi=250)
+    ax.legend(fontsize=7.5);ax.grid(alpha=.22)
+    save_compact(fig,OUT,"revision_traffic_blocking")
     plt.close(fig)
 
 # Corrected 10-ms-cycle Phase 6: original M/G/1 vacation queue with fixed
 # mF=10-L*10/24, no physical slot synchronization.
 variability=read_csv(INPUT/"revision-variability-aligned_summary.csv")
 if variability:
-    fig,ax=plt.subplots(figsize=(7.6,4.8))
+    fig,ax=plt.subplots(figsize=(7.0,3.85))
     distnames={0:"Deterministic (SCV=0)",1:"Exponential (SCV=1)",
                2:"Hyperexponential (SCV=4)"}
     for code in (0,1,2):
@@ -247,9 +281,8 @@ if variability:
                     marker="o",capsize=3,label=distnames[code])
     ax.set_xlabel("Load relative to frame-aligned saturation")
     ax.set_ylabel("Admitted-packet P99 [ms]")
-    ax.legend();ax.grid(alpha=.25);fig.tight_layout()
-    fig.savefig(OUT/"revision_corrected_service_variability_p99.pdf")
-    fig.savefig(OUT/"revision_corrected_service_variability_p99.png",dpi=250)
+    ax.legend(fontsize=7.5);ax.grid(alpha=.22)
+    save_compact(fig,OUT,"revision_corrected_service_variability_p99")
     plt.close(fig)
 
 hits=sum(row["mean_delay_direct_ms_ci95_covers_analytical"] for row in audits)
