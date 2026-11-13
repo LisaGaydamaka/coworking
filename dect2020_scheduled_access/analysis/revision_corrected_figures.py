@@ -187,7 +187,11 @@ def plot_delay_loss():
     plt.close(fig)
 
 def plot_fixed_slot_tail():
-    """Main replacement Figure D: independent fixed-clock OMNeT++ mean/P95/P99."""
+    """Figure D: primary linear axis and an optional archived log-axis version.
+
+    Both versions use exactly the same original, unmodified 10-point
+    fixed-slot OMNeT++ summary and replication-level 95% confidence intervals.
+    """
     records=read_csv("revision-tail_summary.csv")
     data=sorted([z for z in records if int(z["D"])==10 and int(z["r"])==30
                  and int(z["available_slots"])==24
@@ -197,31 +201,42 @@ def plot_fixed_slot_tail():
     if len(data)!=10:
         raise RuntimeError("Expected 10 fixed-slot tail-latency grid points")
     x=[float(z["physical_load_factor"]) for z in data]
-    fig,ax=plt.subplots(figsize=(8.1,5.0))
     specs=[
        ("mean_delay_direct_ms","Mean sojourn","o"),
        ("delay_p95_ms","P95","s"),
        ("delay_p99_ms","P99","^"),
     ]
-    for key,label,marker in specs:
-        ax.errorbar(x,[float(z[key]) for z in data],
-            yerr=[float(z[key+"_ci95"]) for z in data],
-            label=label,marker=marker,capsize=2.5,markersize=4,lw=1.65)
-    ax.axvline(1.0,color="gray",lw=1.1,ls="--",label="Fixed-slot capacity")
-    ax.set_xscale("log")
-    ax.set_xticks([.5,.7,.8,.9,1.,1.1,1.2,1.5,2.,5.])
-    ax.set_xticklabels(["0.5","0.7","0.8","0.9","1.0",
-                        "1.1","1.2","1.5","2.0","5.0"],fontsize=8)
-    ax.set_xlim(.48,5.15)
-    ax.set_xlabel("Offered rate / fixed-slot saturation capacity (log scale)")
-    ax.set_ylabel("Admitted-packet sojourn [ms]")
-    ax.set_title("Fixed-slot mean, P95 and P99 (D=10, r=30)")
-    ax.grid(alpha=.28,lw=.45)
-    ax.legend(loc="lower right",fontsize=8)
-    fig.tight_layout()
-    fig.savefig(OUT/"revision_fixed_slot_figure_D_tail_latency.pdf")
-    fig.savefig(OUT/"revision_fixed_slot_figure_D_tail_latency.png",dpi=600)
-    plt.close(fig)
+    for scale in ("linear","log"):
+        fig,ax=plt.subplots(figsize=(8.1,5.0))
+        for key,label,marker in specs:
+            ax.errorbar(x,[float(z[key]) for z in data],
+                yerr=[float(z[key+"_ci95"]) for z in data],
+                label=label,marker=marker,capsize=2.5,markersize=4,lw=1.65)
+        ax.axvline(1.0,color="gray",lw=1.1,ls="--",label="Fixed-slot capacity")
+        if scale=="log":
+            ax.set_xscale("log")
+            ax.set_xticks([.5,.7,.8,.9,1.,1.1,1.2,1.5,2.,5.])
+            ax.set_xticklabels(["0.5","0.7","0.8","0.9","1.0",
+                                "1.1","1.2","1.5","2.0","5.0"],fontsize=8)
+            ax.set_xlabel("Offered rate / fixed-slot saturation capacity (log scale)")
+        else:
+            ax.set_xscale("linear")
+            ax.set_xticks([.5,1.,1.5,2.,3.,4.,5.])
+            ax.set_xlabel("Offered rate / fixed-slot saturation capacity")
+        ax.set_xlim(.48,5.15)
+        ax.set_ylabel("Admitted-packet sojourn [ms]")
+        ax.set_title("Fixed-slot mean, P95 and P99 (D=10, r=30)")
+        ax.grid(alpha=.28,lw=.45)
+        ax.legend(loc="lower right",fontsize=8)
+        fig.tight_layout()
+        filenames=(["revision_fixed_slot_figure_D_tail_latency",
+                    "revision_fixed_slot_figure_D_tail_latency_linear"]
+                   if scale=="linear" else
+                   ["revision_fixed_slot_figure_D_tail_latency_log"])
+        for name in filenames:
+            fig.savefig(OUT/(name+".pdf"))
+            fig.savefig(OUT/(name+".png"),dpi=600)
+        plt.close(fig)
 
 def plot_traffic_sensitivity():
     r=read_csv("revision-traffic_summary.csv")
@@ -313,7 +328,8 @@ def make_manifest(thresholds):
         "|---|---|---|",
         "| Replace submitted operating-regime Figure B | revision_corrected_figure_B_operating_map.pdf | Main Section 5.1 |",
         "| Replace submitted delay-loss Figure C | revision_corrected_figure_C_delay_loss.pdf | Main Section 5.2 |",
-        "| Replace submitted Figure D (old vacation queue tail) | revision_fixed_slot_figure_D_tail_latency.pdf | Main Section 6 |",
+        "| Replace submitted Figure D (old vacation queue tail) | revision_fixed_slot_figure_D_tail_latency_linear.pdf | Main Section 6 (linear axis) |",
+        "| Archived optional log-axis tail figure | revision_fixed_slot_figure_D_tail_latency_log.pdf | Supplementary/archived only |",
         "| 27-case physical vs abstract analytical model | revision_27case_mean_delay_comparison.pdf | Main Section 4 |",
         "| Six-D physical blocking validation | revision_final_sixD_blocking_validation.pdf | Main Section 5 |",
         "| Physical vs original P99 comparison | revision_physical_vs_original_tail_p99.pdf | Main Section 6; optional if space limited |",
