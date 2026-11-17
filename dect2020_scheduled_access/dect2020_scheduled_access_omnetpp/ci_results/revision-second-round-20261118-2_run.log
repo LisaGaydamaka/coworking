@@ -1,0 +1,2102 @@
+=== SECOND ROUND REVIEW EXPERIMENT: Round2_Lowload_D2_Contiguous ===
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.3.0, build: 251110-bb3d6a4731, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from ../src:  3
+
+Preparing for running configuration Round2_Lowload_D2_Contiguous, run #0...
+Scenario: $lambdaPerMs=0.24, $repetition=0
+Assigned runID=Round2_Lowload_D2_Contiguous-0-20261117-22:21:44-76
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 5.7e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #3500135   t=2083.44125   Elapsed: 0.289491s (0m 00s)
+     Speed:     ev/sec=1.2093e+07   simsec/sec=7198.3   ev/simsec=1679.98
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=2083.44125s, event #3500135
+
+Calling finish() at end of Run #0...
+
+Preparing for running configuration Round2_Lowload_D2_Contiguous, run #1...
+Scenario: $lambdaPerMs=0.24, $repetition=1
+Assigned runID=Round2_Lowload_D2_Contiguous-1-20261117-22:21:45-76
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4.2e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #3500778   t=2083.980416666667   Elapsed: 0.289471s (0m 00s)
+     Speed:     ev/sec=1.20956e+07   simsec/sec=7200.41   ev/simsec=1679.85
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=2083.980416666667s, event #3500778
+
+Calling finish() at end of Run #1...
+
+Preparing for running configuration Round2_Lowload_D2_Contiguous, run #2...
+Scenario: $lambdaPerMs=0.24, $repetition=2
+Assigned runID=Round2_Lowload_D2_Contiguous-2-20261117-22:21:45-76
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #3497808   t=2081.502916666667   Elapsed: 0.289656s (0m 00s)
+     Speed:     ev/sec=1.20761e+07   simsec/sec=7186.32   ev/simsec=1680.42
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=2081.502916666667s, event #3497808
+
+Calling finish() at end of Run #2...
+
+Preparing for running configuration Round2_Lowload_D2_Contiguous, run #3...
+Scenario: $lambdaPerMs=0.24, $repetition=3
+Assigned runID=Round2_Lowload_D2_Contiguous-3-20261117-22:21:45-76
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #3502677   t=2085.560416666667   Elapsed: 0.287503s (0m 00s)
+     Speed:     ev/sec=1.21835e+07   simsec/sec=7254.27   ev/simsec=1679.49
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=2085.560416666667s, event #3502677
+
+Calling finish() at end of Run #3...
+
+Preparing for running configuration Round2_Lowload_D2_Contiguous, run #4...
+Scenario: $lambdaPerMs=0.24, $repetition=4
+Assigned runID=Round2_Lowload_D2_Contiguous-4-20261117-22:21:45-76
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.1e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #3495849   t=2079.870833333334   Elapsed: 0.28188s (0m 00s)
+     Speed:     ev/sec=1.2403e+07   simsec/sec=7379.25   ev/simsec=1680.8
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=2079.870833333334s, event #3495849
+
+Calling finish() at end of Run #4...
+
+Preparing for running configuration Round2_Lowload_D2_Contiguous, run #5...
+Scenario: $lambdaPerMs=0.6, $repetition=0
+Assigned runID=Round2_Lowload_D2_Contiguous-5-20261117-22:21:46-76
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #2000064   t=833.380833333333   Elapsed: 0.170234s (0m 00s)
+     Speed:     ev/sec=1.17495e+07   simsec/sec=4895.73   ev/simsec=2399.94
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=833.380833333333s, event #2000064
+
+Calling finish() at end of Run #5...
+
+Preparing for running configuration Round2_Lowload_D2_Contiguous, run #6...
+Scenario: $lambdaPerMs=0.6, $repetition=1
+Assigned runID=Round2_Lowload_D2_Contiguous-6-20261117-22:21:46-76
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.3e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #2000324   t=833.594583333333   Elapsed: 0.175782s (0m 00s)
+     Speed:     ev/sec=1.13813e+07   simsec/sec=4742.91   ev/simsec=2399.64
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=833.594583333333s, event #2000324
+
+Calling finish() at end of Run #6...
+
+Preparing for running configuration Round2_Lowload_D2_Contiguous, run #7...
+Scenario: $lambdaPerMs=0.6, $repetition=2
+Assigned runID=Round2_Lowload_D2_Contiguous-7-20261117-22:21:46-76
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3.9e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1999142   t=832.610416666667   Elapsed: 0.170674s (0m 00s)
+     Speed:     ev/sec=1.17161e+07   simsec/sec=4879.57   ev/simsec=2401.05
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=832.610416666667s, event #1999142
+
+Calling finish() at end of Run #7...
+
+Preparing for running configuration Round2_Lowload_D2_Contiguous, run #8...
+Scenario: $lambdaPerMs=0.6, $repetition=3
+Assigned runID=Round2_Lowload_D2_Contiguous-8-20261117-22:21:46-76
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.3e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #2001080   t=834.224583333333   Elapsed: 0.169987s (0m 00s)
+     Speed:     ev/sec=1.17738e+07   simsec/sec=4908.33   ev/simsec=2398.73
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=834.224583333333s, event #2001080
+
+Calling finish() at end of Run #8...
+
+Preparing for running configuration Round2_Lowload_D2_Contiguous, run #9...
+Scenario: $lambdaPerMs=0.6, $repetition=4
+Assigned runID=Round2_Lowload_D2_Contiguous-9-20261117-22:21:46-76
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1998349   t=831.951666666667   Elapsed: 0.177739s (0m 00s)
+     Speed:     ev/sec=1.12437e+07   simsec/sec=4680.96   ev/simsec=2402
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=831.951666666667s, event #1998349
+
+Calling finish() at end of Run #9...
+
+Run statistics: total 10, successful 10
+
+End.
+=== SECOND ROUND REVIEW EXPERIMENT: Round2_Lowload_D2_Distributed ===
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.3.0, build: 251110-bb3d6a4731, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from ../src:  3
+
+Preparing for running configuration Round2_Lowload_D2_Distributed, run #0...
+Scenario: $lambdaPerMs=0.24, $repetition=0
+Assigned runID=Round2_Lowload_D2_Distributed-0-20261117-22:21:47-77
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3.3e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #3500127   t=2083.43875   Elapsed: 0.306789s (0m 00s)
+     Speed:     ev/sec=1.14101e+07   simsec/sec=6791.84   ev/simsec=1679.98
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=2083.43875s, event #3500127
+
+Calling finish() at end of Run #0...
+
+Preparing for running configuration Round2_Lowload_D2_Distributed, run #1...
+Scenario: $lambdaPerMs=0.24, $repetition=1
+Assigned runID=Round2_Lowload_D2_Distributed-1-20261117-22:21:47-77
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #3500773   t=2083.977083333334   Elapsed: 0.286669s (0m 00s)
+     Speed:     ev/sec=1.22134e+07   simsec/sec=7270.54   ev/simsec=1679.85
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=2083.977083333334s, event #3500773
+
+Calling finish() at end of Run #1...
+
+Preparing for running configuration Round2_Lowload_D2_Distributed, run #2...
+Scenario: $lambdaPerMs=0.24, $repetition=2
+Assigned runID=Round2_Lowload_D2_Distributed-2-20261117-22:21:47-77
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #3497805   t=2081.502916666667   Elapsed: 0.286911s (0m 00s)
+     Speed:     ev/sec=1.21916e+07   simsec/sec=7255.1   ev/simsec=1680.42
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=2081.502916666667s, event #3497805
+
+Calling finish() at end of Run #2...
+
+Preparing for running configuration Round2_Lowload_D2_Distributed, run #3...
+Scenario: $lambdaPerMs=0.24, $repetition=3
+Assigned runID=Round2_Lowload_D2_Distributed-3-20261117-22:21:47-77
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4.3e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #3502670   t=2085.555416666667   Elapsed: 0.283252s (0m 00s)
+     Speed:     ev/sec=1.2368e+07   simsec/sec=7364.12   ev/simsec=1679.49
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=2085.555416666667s, event #3502670
+
+Calling finish() at end of Run #3...
+
+Preparing for running configuration Round2_Lowload_D2_Distributed, run #4...
+Scenario: $lambdaPerMs=0.24, $repetition=4
+Assigned runID=Round2_Lowload_D2_Distributed-4-20261117-22:21:48-77
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #3495840   t=2079.86625   Elapsed: 0.285477s (0m 00s)
+     Speed:     ev/sec=1.2246e+07   simsec/sec=7285.81   ev/simsec=1680.8
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=2079.86625s, event #3495840
+
+Calling finish() at end of Run #4...
+
+Preparing for running configuration Round2_Lowload_D2_Distributed, run #5...
+Scenario: $lambdaPerMs=0.6, $repetition=0
+Assigned runID=Round2_Lowload_D2_Distributed-5-20261117-22:21:48-77
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 5e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #2000058   t=833.377083333333   Elapsed: 0.174569s (0m 00s)
+     Speed:     ev/sec=1.14577e+07   simsec/sec=4774.16   ev/simsec=2399.94
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=833.377083333333s, event #2000058
+
+Calling finish() at end of Run #5...
+
+Preparing for running configuration Round2_Lowload_D2_Distributed, run #6...
+Scenario: $lambdaPerMs=0.6, $repetition=1
+Assigned runID=Round2_Lowload_D2_Distributed-6-20261117-22:21:48-77
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #2000310   t=833.59125   Elapsed: 0.172689s (0m 00s)
+     Speed:     ev/sec=1.15839e+07   simsec/sec=4827.37   ev/simsec=2399.63
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=833.59125s, event #2000310
+
+Calling finish() at end of Run #6...
+
+Preparing for running configuration Round2_Lowload_D2_Distributed, run #7...
+Scenario: $lambdaPerMs=0.6, $repetition=2
+Assigned runID=Round2_Lowload_D2_Distributed-7-20261117-22:21:48-77
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.9e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1999124   t=832.602083333333   Elapsed: 0.173209s (0m 00s)
+     Speed:     ev/sec=1.1544e+07   simsec/sec=4807.86   ev/simsec=2401.06
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=832.602083333333s, event #1999124
+
+Calling finish() at end of Run #7...
+
+Preparing for running configuration Round2_Lowload_D2_Distributed, run #8...
+Scenario: $lambdaPerMs=0.6, $repetition=3
+Assigned runID=Round2_Lowload_D2_Distributed-8-20261117-22:21:49-77
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4.6e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #2001072   t=834.22375   Elapsed: 0.172933s (0m 00s)
+     Speed:     ev/sec=1.15747e+07   simsec/sec=4825.36   ev/simsec=2398.72
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=834.22375s, event #2001072
+
+Calling finish() at end of Run #8...
+
+Preparing for running configuration Round2_Lowload_D2_Distributed, run #9...
+Scenario: $lambdaPerMs=0.6, $repetition=4
+Assigned runID=Round2_Lowload_D2_Distributed-9-20261117-22:21:49-77
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1998339   t=831.947916666667   Elapsed: 0.172329s (0m 00s)
+     Speed:     ev/sec=1.15967e+07   simsec/sec=4827.92   ev/simsec=2402
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=831.947916666667s, event #1998339
+
+Calling finish() at end of Run #9...
+
+Run statistics: total 10, successful 10
+
+End.
+=== SECOND ROUND REVIEW EXPERIMENT: Round2_Deterministic_D2 ===
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.3.0, build: 251110-bb3d6a4731, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from ../src:  3
+
+Preparing for running configuration Round2_Deterministic_D2, run #0...
+Scenario: $lambdaPerMs=1.175827370643, $repetition=0
+Assigned runID=Round2_Deterministic_D2-0-20261117-22:21:49-78
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.4e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1520900   t=429.674166666667   Elapsed: 0.136107s (0m 00s)
+     Speed:     ev/sec=1.11754e+07   simsec/sec=3157.21   ev/simsec=3539.66
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=429.674166666667s, event #1520900
+
+Calling finish() at end of Run #0...
+
+Preparing for running configuration Round2_Deterministic_D2, run #1...
+Scenario: $lambdaPerMs=1.175827370643, $repetition=1
+Assigned runID=Round2_Deterministic_D2-1-20261117-22:21:49-78
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 5e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1520653   t=429.66375   Elapsed: 0.133849s (0m 00s)
+     Speed:     ev/sec=1.13616e+07   simsec/sec=3210.23   ev/simsec=3539.17
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=429.66375s, event #1520653
+
+Calling finish() at end of Run #1...
+
+Preparing for running configuration Round2_Deterministic_D2, run #2...
+Scenario: $lambdaPerMs=1.175827370643, $repetition=2
+Assigned runID=Round2_Deterministic_D2-2-20261117-22:21:49-78
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 5e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1520573   t=429.3525   Elapsed: 0.133923s (0m 00s)
+     Speed:     ev/sec=1.13551e+07   simsec/sec=3206.25   ev/simsec=3541.55
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=429.3525s, event #1520573
+
+Calling finish() at end of Run #2...
+
+Preparing for running configuration Round2_Deterministic_D2, run #3...
+Scenario: $lambdaPerMs=1.175827370643, $repetition=3
+Assigned runID=Round2_Deterministic_D2-3-20261117-22:21:49-78
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 5e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1520591   t=429.805   Elapsed: 0.133801s (0m 00s)
+     Speed:     ev/sec=1.13653e+07   simsec/sec=3212.46   ev/simsec=3537.87
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=429.805s, event #1520591
+
+Calling finish() at end of Run #3...
+
+Preparing for running configuration Round2_Deterministic_D2, run #4...
+Scenario: $lambdaPerMs=1.175827370643, $repetition=4
+Assigned runID=Round2_Deterministic_D2-4-20261117-22:21:49-78
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 5e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1520415   t=429.123333333333   Elapsed: 0.133895s (0m 00s)
+     Speed:     ev/sec=1.1356e+07   simsec/sec=3205.14   ev/simsec=3543.07
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=429.123333333333s, event #1520415
+
+Calling finish() at end of Run #4...
+
+Preparing for running configuration Round2_Deterministic_D2, run #5...
+Scenario: $lambdaPerMs=1.258426609238, $repetition=0
+Assigned runID=Round2_Deterministic_D2-5-20261117-22:21:50-78
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1528815   t=418.333333333333   Elapsed: 0.141714s (0m 00s)
+     Speed:     ev/sec=1.07886e+07   simsec/sec=2952.12   ev/simsec=3654.54
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=418.333333333333s, event #1528815
+
+Calling finish() at end of Run #5...
+
+Preparing for running configuration Round2_Deterministic_D2, run #6...
+Scenario: $lambdaPerMs=1.258426609238, $repetition=1
+Assigned runID=Round2_Deterministic_D2-6-20261117-22:21:50-78
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1527972   t=418.222916666667   Elapsed: 0.135546s (0m 00s)
+     Speed:     ev/sec=1.12735e+07   simsec/sec=3085.67   ev/simsec=3653.49
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=418.222916666667s, event #1527972
+
+Calling finish() at end of Run #6...
+
+Preparing for running configuration Round2_Deterministic_D2, run #7...
+Scenario: $lambdaPerMs=1.258426609238, $repetition=2
+Assigned runID=Round2_Deterministic_D2-7-20261117-22:21:50-78
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1528634   t=418.142916666667   Elapsed: 0.13825s (0m 00s)
+     Speed:     ev/sec=1.10577e+07   simsec/sec=3024.74   ev/simsec=3655.77
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=418.142916666667s, event #1528634
+
+Calling finish() at end of Run #7...
+
+Preparing for running configuration Round2_Deterministic_D2, run #8...
+Scenario: $lambdaPerMs=1.258426609238, $repetition=3
+Assigned runID=Round2_Deterministic_D2-8-20261117-22:21:50-78
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1527560   t=418.204583333333   Elapsed: 0.135071s (0m 00s)
+     Speed:     ev/sec=1.13101e+07   simsec/sec=3096.39   ev/simsec=3652.67
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=418.204583333333s, event #1527560
+
+Calling finish() at end of Run #8...
+
+Preparing for running configuration Round2_Deterministic_D2, run #9...
+Scenario: $lambdaPerMs=1.258426609238, $repetition=4
+Assigned runID=Round2_Deterministic_D2-9-20261117-22:21:50-78
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 5e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1529212   t=418.364583333333   Elapsed: 0.135126s (0m 00s)
+     Speed:     ev/sec=1.13177e+07   simsec/sec=3096.31   ev/simsec=3655.21
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=418.364583333333s, event #1529212
+
+Calling finish() at end of Run #9...
+
+Preparing for running configuration Round2_Deterministic_D2, run #10...
+Scenario: $lambdaPerMs=1.332922484076, $repetition=0
+Assigned runID=Round2_Deterministic_D2-10-20261117-22:21:50-78
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 5e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1556098   t=416.862916666667   Elapsed: 0.138363s (0m 00s)
+     Speed:     ev/sec=1.12472e+07   simsec/sec=3013.02   ev/simsec=3732.88
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=416.862916666667s, event #1556098
+
+Calling finish() at end of Run #10...
+
+Preparing for running configuration Round2_Deterministic_D2, run #11...
+Scenario: $lambdaPerMs=1.332922484076, $repetition=1
+Assigned runID=Round2_Deterministic_D2-11-20261117-22:21:50-78
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1555555   t=416.81125   Elapsed: 0.137812s (0m 00s)
+     Speed:     ev/sec=1.12882e+07   simsec/sec=3024.66   ev/simsec=3732.04
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=416.81125s, event #1555555
+
+Calling finish() at end of Run #11...
+
+Preparing for running configuration Round2_Deterministic_D2, run #12...
+Scenario: $lambdaPerMs=1.332922484076, $repetition=2
+Assigned runID=Round2_Deterministic_D2-12-20261117-22:21:51-78
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1556335   t=416.804166666667   Elapsed: 0.138069s (0m 00s)
+     Speed:     ev/sec=1.12727e+07   simsec/sec=3018.96   ev/simsec=3733.98
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=416.804166666667s, event #1556335
+
+Calling finish() at end of Run #12...
+
+Preparing for running configuration Round2_Deterministic_D2, run #13...
+Scenario: $lambdaPerMs=1.332922484076, $repetition=3
+Assigned runID=Round2_Deterministic_D2-13-20261117-22:21:51-78
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1555222   t=416.802916666667   Elapsed: 0.137525s (0m 00s)
+     Speed:     ev/sec=1.13091e+07   simsec/sec=3030.87   ev/simsec=3731.32
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=416.802916666667s, event #1555222
+
+Calling finish() at end of Run #13...
+
+Preparing for running configuration Round2_Deterministic_D2, run #14...
+Scenario: $lambdaPerMs=1.332922484076, $repetition=4
+Assigned runID=Round2_Deterministic_D2-14-20261117-22:21:51-78
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1556368   t=416.86375   Elapsed: 0.137785s (0m 00s)
+     Speed:     ev/sec=1.12963e+07   simsec/sec=3025.64   ev/simsec=3733.52
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=416.86375s, event #1556368
+
+Calling finish() at end of Run #14...
+
+Run statistics: total 15, successful 15
+
+End.
+=== SECOND ROUND REVIEW EXPERIMENT: Round2_Deterministic_D6 ===
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.3.0, build: 251110-bb3d6a4731, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from ../src:  3
+
+Preparing for running configuration Round2_Deterministic_D6, run #0...
+Scenario: $lambdaPerMs=0.392955259762, $repetition=0
+Assigned runID=Round2_Deterministic_D6-0-20261117-22:21:51-79
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.3e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1519510   t=1285.62125   Elapsed: 0.134699s (0m 00s)
+     Speed:     ev/sec=1.12818e+07   simsec/sec=9545.25   ev/simsec=1181.93
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=1285.62125s, event #1519510
+
+Calling finish() at end of Run #0...
+
+Preparing for running configuration Round2_Deterministic_D6, run #1...
+Scenario: $lambdaPerMs=0.392955259762, $repetition=1
+Assigned runID=Round2_Deterministic_D6-1-20261117-22:21:51-79
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1519195   t=1285.500416666667   Elapsed: 0.133572s (0m 00s)
+     Speed:     ev/sec=1.13743e+07   simsec/sec=9624.6   ev/simsec=1181.79
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=1285.500416666667s, event #1519195
+
+Calling finish() at end of Run #1...
+
+Preparing for running configuration Round2_Deterministic_D6, run #2...
+Scenario: $lambdaPerMs=0.392955259762, $repetition=2
+Assigned runID=Round2_Deterministic_D6-2-20261117-22:21:51-79
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1519197   t=1284.69125   Elapsed: 0.138221s (0m 00s)
+     Speed:     ev/sec=1.09921e+07   simsec/sec=9295.34   ev/simsec=1182.54
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=1284.69125s, event #1519197
+
+Calling finish() at end of Run #2...
+
+Preparing for running configuration Round2_Deterministic_D6, run #3...
+Scenario: $lambdaPerMs=0.392955259762, $repetition=3
+Assigned runID=Round2_Deterministic_D6-3-20261117-22:21:51-79
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1519177   t=1285.99125   Elapsed: 0.13361s (0m 00s)
+     Speed:     ev/sec=1.13709e+07   simsec/sec=9625.54   ev/simsec=1181.33
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=1285.99125s, event #1519177
+
+Calling finish() at end of Run #3...
+
+Preparing for running configuration Round2_Deterministic_D6, run #4...
+Scenario: $lambdaPerMs=0.392955259762, $repetition=4
+Assigned runID=Round2_Deterministic_D6-4-20261117-22:21:52-79
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1519026   t=1283.98125   Elapsed: 0.133207s (0m 00s)
+     Speed:     ev/sec=1.14043e+07   simsec/sec=9639.64   ev/simsec=1183.06
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=1283.98125s, event #1519026
+
+Calling finish() at end of Run #4...
+
+Preparing for running configuration Round2_Deterministic_D6, run #5...
+Scenario: $lambdaPerMs=0.419726949589, $repetition=0
+Assigned runID=Round2_Deterministic_D6-5-20261117-22:21:52-79
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1528430   t=1254.15125   Elapsed: 0.139666s (0m 00s)
+     Speed:     ev/sec=1.09441e+07   simsec/sec=8980.16   ev/simsec=1218.7
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=1254.15125s, event #1528430
+
+Calling finish() at end of Run #5...
+
+Preparing for running configuration Round2_Deterministic_D6, run #6...
+Scenario: $lambdaPerMs=0.419726949589, $repetition=1
+Assigned runID=Round2_Deterministic_D6-6-20261117-22:21:52-79
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1527548   t=1253.77125   Elapsed: 0.133786s (0m 00s)
+     Speed:     ev/sec=1.14185e+07   simsec/sec=9372.03   ev/simsec=1218.36
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=1253.77125s, event #1527548
+
+Calling finish() at end of Run #6...
+
+Preparing for running configuration Round2_Deterministic_D6, run #7...
+Scenario: $lambdaPerMs=0.419726949589, $repetition=2
+Assigned runID=Round2_Deterministic_D6-7-20261117-22:21:52-79
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1528251   t=1253.58125   Elapsed: 0.134083s (0m 00s)
+     Speed:     ev/sec=1.13985e+07   simsec/sec=9349.85   ev/simsec=1219.11
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=1253.58125s, event #1528251
+
+Calling finish() at end of Run #7...
+
+Preparing for running configuration Round2_Deterministic_D6, run #8...
+Scenario: $lambdaPerMs=0.419726949589, $repetition=3
+Assigned runID=Round2_Deterministic_D6-8-20261117-22:21:52-79
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.8e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1527195   t=1253.790833333333   Elapsed: 0.137046s (0m 00s)
+     Speed:     ev/sec=1.11463e+07   simsec/sec=9150.82   ev/simsec=1218.06
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=1253.790833333333s, event #1527195
+
+Calling finish() at end of Run #8...
+
+Preparing for running configuration Round2_Deterministic_D6, run #9...
+Scenario: $lambdaPerMs=0.419726949589, $repetition=4
+Assigned runID=Round2_Deterministic_D6-9-20261117-22:21:52-79
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1528849   t=1254.26125   Elapsed: 0.133874s (0m 00s)
+     Speed:     ev/sec=1.14207e+07   simsec/sec=9369.52   ev/simsec=1218.92
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=1254.26125s, event #1528849
+
+Calling finish() at end of Run #9...
+
+Preparing for running configuration Round2_Deterministic_D6, run #10...
+Scenario: $lambdaPerMs=0.444344681023, $repetition=0
+Assigned runID=Round2_Deterministic_D6-10-20261117-22:21:52-79
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1556019   t=1250.440833333333   Elapsed: 0.137528s (0m 00s)
+     Speed:     ev/sec=1.13151e+07   simsec/sec=9092.99   ev/simsec=1244.38
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=1250.440833333333s, event #1556019
+
+Calling finish() at end of Run #10...
+
+Preparing for running configuration Round2_Deterministic_D6, run #11...
+Scenario: $lambdaPerMs=0.444344681023, $repetition=1
+Assigned runID=Round2_Deterministic_D6-11-20261117-22:21:53-79
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1555512   t=1250.32125   Elapsed: 0.136773s (0m 00s)
+     Speed:     ev/sec=1.13736e+07   simsec/sec=9142.11   ev/simsec=1244.09
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=1250.32125s, event #1555512
+
+Calling finish() at end of Run #11...
+
+Preparing for running configuration Round2_Deterministic_D6, run #12...
+Scenario: $lambdaPerMs=0.444344681023, $repetition=2
+Assigned runID=Round2_Deterministic_D6-12-20261117-22:21:53-79
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1556308   t=1250.33125   Elapsed: 0.138915s (0m 00s)
+     Speed:     ev/sec=1.12039e+07   simsec/sec=9001.14   ev/simsec=1244.72
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=1250.33125s, event #1556308
+
+Calling finish() at end of Run #12...
+
+Preparing for running configuration Round2_Deterministic_D6, run #13...
+Scenario: $lambdaPerMs=0.444344681023, $repetition=3
+Assigned runID=Round2_Deterministic_D6-13-20261117-22:21:53-79
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1555166   t=1250.290416666667   Elapsed: 0.136813s (0m 00s)
+     Speed:     ev/sec=1.13677e+07   simsec/sec=9139.15   ev/simsec=1243.84
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=1250.290416666667s, event #1555166
+
+Calling finish() at end of Run #13...
+
+Preparing for running configuration Round2_Deterministic_D6, run #14...
+Scenario: $lambdaPerMs=0.444344681023, $repetition=4
+Assigned runID=Round2_Deterministic_D6-14-20261117-22:21:53-79
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1556285   t=1250.441666666667   Elapsed: 0.137147s (0m 00s)
+     Speed:     ev/sec=1.13481e+07   simsec/sec=9117.99   ev/simsec=1244.59
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=1250.441666666667s, event #1556285
+
+Calling finish() at end of Run #14...
+
+Run statistics: total 15, successful 15
+
+End.
+=== SECOND ROUND REVIEW EXPERIMENT: Round2_Deterministic_D10 ===
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.3.0, build: 251110-bb3d6a4731, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from ../src:  3
+
+Preparing for running configuration Round2_Deterministic_D10, run #0...
+Scenario: $lambdaPerMs=0.196764559978, $repetition=0
+Assigned runID=Round2_Deterministic_D10-0-20261117-22:21:53-80
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.2e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1518677   t=2567.280416666667   Elapsed: 0.133181s (0m 00s)
+     Speed:     ev/sec=1.14042e+07   simsec/sec=19278.5   ev/simsec=591.551
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=2567.280416666667s, event #1518677
+
+Calling finish() at end of Run #0...
+
+Preparing for running configuration Round2_Deterministic_D10, run #1...
+Scenario: $lambdaPerMs=0.196764559978, $repetition=1
+Assigned runID=Round2_Deterministic_D10-1-20261117-22:21:53-80
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.7e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1518463   t=2567.300416666667   Elapsed: 0.132377s (0m 00s)
+     Speed:     ev/sec=1.14734e+07   simsec/sec=19398.4   ev/simsec=591.463
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=2567.300416666667s, event #1518463
+
+Calling finish() at end of Run #1...
+
+Preparing for running configuration Round2_Deterministic_D10, run #2...
+Scenario: $lambdaPerMs=0.196764559978, $repetition=2
+Assigned runID=Round2_Deterministic_D10-2-20261117-22:21:53-80
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1518420   t=2565.560416666667   Elapsed: 0.132561s (0m 00s)
+     Speed:     ev/sec=1.14551e+07   simsec/sec=19354.8   ev/simsec=591.847
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=2565.560416666667s, event #1518420
+
+Calling finish() at end of Run #2...
+
+Preparing for running configuration Round2_Deterministic_D10, run #3...
+Scenario: $lambdaPerMs=0.196764559978, $repetition=3
+Assigned runID=Round2_Deterministic_D10-3-20261117-22:21:53-80
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1518386   t=2568.140833333334   Elapsed: 0.132397s (0m 00s)
+     Speed:     ev/sec=1.14692e+07   simsec/sec=19398.6   ev/simsec=591.239
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=2568.140833333334s, event #1518386
+
+Calling finish() at end of Run #3...
+
+Preparing for running configuration Round2_Deterministic_D10, run #4...
+Scenario: $lambdaPerMs=0.196764559978, $repetition=4
+Assigned runID=Round2_Deterministic_D10-4-20261117-22:21:54-80
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1518263   t=2564.190416666667   Elapsed: 0.132969s (0m 00s)
+     Speed:     ev/sec=1.14189e+07   simsec/sec=19285.4   ev/simsec=592.102
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=2564.190416666667s, event #1518263
+
+Calling finish() at end of Run #4...
+
+Preparing for running configuration Round2_Deterministic_D10, run #5...
+Scenario: $lambdaPerMs=0.209930944859, $repetition=0
+Assigned runID=Round2_Deterministic_D10-5-20261117-22:21:54-80
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1528269   t=2507.500416666667   Elapsed: 0.133456s (0m 00s)
+     Speed:     ev/sec=1.14523e+07   simsec/sec=18790.2   ev/simsec=609.479
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=2507.500416666667s, event #1528269
+
+Calling finish() at end of Run #5...
+
+Preparing for running configuration Round2_Deterministic_D10, run #6...
+Scenario: $lambdaPerMs=0.209930944859, $repetition=1
+Assigned runID=Round2_Deterministic_D10-6-20261117-22:21:54-80
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1527397   t=2506.760416666667   Elapsed: 0.133617s (0m 00s)
+     Speed:     ev/sec=1.14318e+07   simsec/sec=18761.9   ev/simsec=609.311
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=2506.760416666667s, event #1527397
+
+Calling finish() at end of Run #6...
+
+Preparing for running configuration Round2_Deterministic_D10, run #7...
+Scenario: $lambdaPerMs=0.209930944859, $repetition=2
+Assigned runID=Round2_Deterministic_D10-7-20261117-22:21:54-80
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1528061   t=2506.290416666667   Elapsed: 0.134346s (0m 00s)
+     Speed:     ev/sec=1.13747e+07   simsec/sec=18656.6   ev/simsec=609.69
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=2506.290416666667s, event #1528061
+
+Calling finish() at end of Run #7...
+
+Preparing for running configuration Round2_Deterministic_D10, run #8...
+Scenario: $lambdaPerMs=0.209930944859, $repetition=3
+Assigned runID=Round2_Deterministic_D10-8-20261117-22:21:54-80
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1526972   t=2506.620833333334   Elapsed: 0.133676s (0m 00s)
+     Speed:     ev/sec=1.14236e+07   simsec/sec=18752.6   ev/simsec=609.176
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=2506.620833333334s, event #1526972
+
+Calling finish() at end of Run #8...
+
+Preparing for running configuration Round2_Deterministic_D10, run #9...
+Scenario: $lambdaPerMs=0.209930944859, $repetition=4
+Assigned runID=Round2_Deterministic_D10-9-20261117-22:21:54-80
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1528707   t=2507.770833333334   Elapsed: 0.133582s (0m 00s)
+     Speed:     ev/sec=1.14446e+07   simsec/sec=18774.4   ev/simsec=609.588
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=2507.770833333334s, event #1528707
+
+Calling finish() at end of Run #9...
+
+Preparing for running configuration Round2_Deterministic_D10, run #10...
+Scenario: $lambdaPerMs=0.222181270175, $repetition=0
+Assigned runID=Round2_Deterministic_D10-10-20261117-22:21:54-80
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1555984   t=2500.760416666667   Elapsed: 0.137657s (0m 00s)
+     Speed:     ev/sec=1.13041e+07   simsec/sec=18167.8   ev/simsec=622.204
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=2500.760416666667s, event #1555984
+
+Calling finish() at end of Run #10...
+
+Preparing for running configuration Round2_Deterministic_D10, run #11...
+Scenario: $lambdaPerMs=0.222181270175, $repetition=1
+Assigned runID=Round2_Deterministic_D10-11-20261117-22:21:55-80
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1555490   t=2500.550416666667   Elapsed: 0.136496s (0m 00s)
+     Speed:     ev/sec=1.13966e+07   simsec/sec=18320.8   ev/simsec=622.059
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=2500.550416666667s, event #1555490
+
+Calling finish() at end of Run #11...
+
+Preparing for running configuration Round2_Deterministic_D10, run #12...
+Scenario: $lambdaPerMs=0.222181270175, $repetition=2
+Assigned runID=Round2_Deterministic_D10-12-20261117-22:21:55-80
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1556294   t=2500.580833333334   Elapsed: 0.137165s (0m 00s)
+     Speed:     ev/sec=1.13468e+07   simsec/sec=18231.5   ev/simsec=622.373
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=2500.580833333334s, event #1556294
+
+Calling finish() at end of Run #12...
+
+Preparing for running configuration Round2_Deterministic_D10, run #13...
+Scenario: $lambdaPerMs=0.222181270175, $repetition=3
+Assigned runID=Round2_Deterministic_D10-13-20261117-22:21:55-80
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1555145   t=2500.480416666667   Elapsed: 0.136588s (0m 00s)
+     Speed:     ev/sec=1.13864e+07   simsec/sec=18307.9   ev/simsec=621.939
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=2500.480416666667s, event #1555145
+
+Calling finish() at end of Run #13...
+
+Preparing for running configuration Round2_Deterministic_D10, run #14...
+Scenario: $lambdaPerMs=0.222181270175, $repetition=4
+Assigned runID=Round2_Deterministic_D10-14-20261117-22:21:55-80
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1556253   t=2500.760416666667   Elapsed: 0.136871s (0m 00s)
+     Speed:     ev/sec=1.13709e+07   simsec/sec=18272   ev/simsec=622.312
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=2500.760416666667s, event #1556253
+
+Calling finish() at end of Run #14...
+
+Run statistics: total 15, successful 15
+
+End.
+=== SECOND ROUND REVIEW EXPERIMENT: Round2_Deterministic_D13 ===
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.3.0, build: 251110-bb3d6a4731, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from ../src:  3
+
+Preparing for running configuration Round2_Deterministic_D13, run #0...
+Scenario: $lambdaPerMs=0.0984513038, $repetition=0
+Assigned runID=Round2_Deterministic_D13-0-20261117-22:21:55-81
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.4e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1518334   t=5131.040416666668   Elapsed: 0.137825s (0m 00s)
+     Speed:     ev/sec=1.10173e+07   simsec/sec=37231.9   ev/simsec=295.912
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5131.040416666668s, event #1518334
+
+Calling finish() at end of Run #0...
+
+Preparing for running configuration Round2_Deterministic_D13, run #1...
+Scenario: $lambdaPerMs=0.0984513038, $repetition=1
+Assigned runID=Round2_Deterministic_D13-1-20261117-22:21:55-81
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1518106   t=5131.010416666668   Elapsed: 0.135564s (0m 00s)
+     Speed:     ev/sec=1.11991e+07   simsec/sec=37851.6   ev/simsec=295.869
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5131.010416666668s, event #1518106
+
+Calling finish() at end of Run #1...
+
+Preparing for running configuration Round2_Deterministic_D13, run #2...
+Scenario: $lambdaPerMs=0.0984513038, $repetition=2
+Assigned runID=Round2_Deterministic_D13-2-20261117-22:21:55-81
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1518050   t=5127.470416666668   Elapsed: 0.134852s (0m 00s)
+     Speed:     ev/sec=1.1258e+07   simsec/sec=38025.8   ev/simsec=296.062
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5127.470416666668s, event #1518050
+
+Calling finish() at end of Run #2...
+
+Preparing for running configuration Round2_Deterministic_D13, run #3...
+Scenario: $lambdaPerMs=0.0984513038, $repetition=3
+Assigned runID=Round2_Deterministic_D13-3-20261117-22:21:56-81
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1517986   t=5132.480416666668   Elapsed: 0.134147s (0m 00s)
+     Speed:     ev/sec=1.13164e+07   simsec/sec=38262.1   ev/simsec=295.761
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5132.480416666668s, event #1517986
+
+Calling finish() at end of Run #3...
+
+Preparing for running configuration Round2_Deterministic_D13, run #4...
+Scenario: $lambdaPerMs=0.0984513038, $repetition=4
+Assigned runID=Round2_Deterministic_D13-4-20261117-22:21:56-81
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1517909   t=5124.810416666668   Elapsed: 0.134303s (0m 00s)
+     Speed:     ev/sec=1.13029e+07   simsec/sec=38161.1   ev/simsec=296.188
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5124.810416666668s, event #1517909
+
+Calling finish() at end of Run #4...
+
+Preparing for running configuration Round2_Deterministic_D13, run #5...
+Scenario: $lambdaPerMs=0.104981209063, $repetition=0
+Assigned runID=Round2_Deterministic_D13-5-20261117-22:21:56-81
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.8e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1528176   t=5014.180416666668   Elapsed: 0.135443s (0m 00s)
+     Speed:     ev/sec=1.12855e+07   simsec/sec=37029.3   ev/simsec=304.771
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5014.180416666668s, event #1528176
+
+Calling finish() at end of Run #5...
+
+Preparing for running configuration Round2_Deterministic_D13, run #6...
+Scenario: $lambdaPerMs=0.104981209063, $repetition=1
+Assigned runID=Round2_Deterministic_D13-6-20261117-22:21:56-81
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3.5e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1527288   t=5012.600416666668   Elapsed: 0.135644s (0m 00s)
+     Speed:     ev/sec=1.12628e+07   simsec/sec=36964.7   ev/simsec=304.69
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5012.600416666668s, event #1527288
+
+Calling finish() at end of Run #6...
+
+Preparing for running configuration Round2_Deterministic_D13, run #7...
+Scenario: $lambdaPerMs=0.104981209063, $repetition=2
+Assigned runID=Round2_Deterministic_D13-7-20261117-22:21:56-81
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.4e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1528004   t=5011.920416666668   Elapsed: 0.135534s (0m 00s)
+     Speed:     ev/sec=1.12762e+07   simsec/sec=36986.4   ev/simsec=304.874
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5011.920416666668s, event #1528004
+
+Calling finish() at end of Run #7...
+
+Preparing for running configuration Round2_Deterministic_D13, run #8...
+Scenario: $lambdaPerMs=0.104981209063, $repetition=3
+Assigned runID=Round2_Deterministic_D13-8-20261117-22:21:56-81
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1526878   t=5012.420416666668   Elapsed: 0.135707s (0m 00s)
+     Speed:     ev/sec=1.12533e+07   simsec/sec=36942.1   ev/simsec=304.619
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5012.420416666668s, event #1526878
+
+Calling finish() at end of Run #8...
+
+Preparing for running configuration Round2_Deterministic_D13, run #9...
+Scenario: $lambdaPerMs=0.104981209063, $repetition=4
+Assigned runID=Round2_Deterministic_D13-9-20261117-22:21:56-81
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.2e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1528632   t=5014.790416666668   Elapsed: 0.136596s (0m 00s)
+     Speed:     ev/sec=1.1193e+07   simsec/sec=36719.6   ev/simsec=304.825
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5014.790416666668s, event #1528632
+
+Calling finish() at end of Run #9...
+
+Preparing for running configuration Round2_Deterministic_D13, run #10...
+Scenario: $lambdaPerMs=0.111092590039, $repetition=0
+Assigned runID=Round2_Deterministic_D13-10-20261117-22:21:56-81
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1555989   t=5001.480416666668   Elapsed: 0.138764s (0m 00s)
+     Speed:     ev/sec=1.12139e+07   simsec/sec=36045.1   ev/simsec=311.106
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5001.480416666668s, event #1555989
+
+Calling finish() at end of Run #10...
+
+Preparing for running configuration Round2_Deterministic_D13, run #11...
+Scenario: $lambdaPerMs=0.111092590039, $repetition=1
+Assigned runID=Round2_Deterministic_D13-11-20261117-22:21:57-81
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1555490   t=5001.050416666668   Elapsed: 0.140414s (0m 00s)
+     Speed:     ev/sec=1.10786e+07   simsec/sec=35618.7   ev/simsec=311.033
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5001.050416666668s, event #1555490
+
+Calling finish() at end of Run #11...
+
+Preparing for running configuration Round2_Deterministic_D13, run #12...
+Scenario: $lambdaPerMs=0.111092590039, $repetition=2
+Assigned runID=Round2_Deterministic_D13-12-20261117-22:21:57-81
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1556280   t=5001.050416666668   Elapsed: 0.138465s (0m 00s)
+     Speed:     ev/sec=1.12401e+07   simsec/sec=36119.6   ev/simsec=311.191
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5001.050416666668s, event #1556280
+
+Calling finish() at end of Run #12...
+
+Preparing for running configuration Round2_Deterministic_D13, run #13...
+Scenario: $lambdaPerMs=0.111092590039, $repetition=3
+Assigned runID=Round2_Deterministic_D13-13-20261117-22:21:57-81
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1555134   t=5000.860416666666   Elapsed: 0.138906s (0m 00s)
+     Speed:     ev/sec=1.11962e+07   simsec/sec=36003.8   ev/simsec=310.973
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5000.860416666666s, event #1555134
+
+Calling finish() at end of Run #13...
+
+Preparing for running configuration Round2_Deterministic_D13, run #14...
+Scenario: $lambdaPerMs=0.111092590039, $repetition=4
+Assigned runID=Round2_Deterministic_D13-14-20261117-22:21:57-81
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1556241   t=5001.410416666668   Elapsed: 0.138662s (0m 00s)
+     Speed:     ev/sec=1.12238e+07   simsec/sec=36070.9   ev/simsec=311.16
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5001.410416666668s, event #1556241
+
+Calling finish() at end of Run #14...
+
+Run statistics: total 15, successful 15
+
+End.
+=== SECOND ROUND REVIEW EXPERIMENT: Round2_Deterministic_D20 ===
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.3.0, build: 251110-bb3d6a4731, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from ../src:  3
+
+Preparing for running configuration Round2_Deterministic_D20, run #0...
+Scenario: $lambdaPerMs=0.0984513038, $repetition=0
+Assigned runID=Round2_Deterministic_D20-0-20261117-22:21:57-82
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.2e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1518334   t=5131.040416666668   Elapsed: 0.135618s (0m 00s)
+     Speed:     ev/sec=1.11967e+07   simsec/sec=37838.1   ev/simsec=295.912
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5131.040416666668s, event #1518334
+
+Calling finish() at end of Run #0...
+
+Preparing for running configuration Round2_Deterministic_D20, run #1...
+Scenario: $lambdaPerMs=0.0984513038, $repetition=1
+Assigned runID=Round2_Deterministic_D20-1-20261117-22:21:57-82
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3.3e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1518106   t=5131.010416666668   Elapsed: 0.13447s (0m 00s)
+     Speed:     ev/sec=1.12927e+07   simsec/sec=38168.1   ev/simsec=295.869
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5131.010416666668s, event #1518106
+
+Calling finish() at end of Run #1...
+
+Preparing for running configuration Round2_Deterministic_D20, run #2...
+Scenario: $lambdaPerMs=0.0984513038, $repetition=2
+Assigned runID=Round2_Deterministic_D20-2-20261117-22:21:57-82
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3.2e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1518050   t=5127.470416666668   Elapsed: 0.134398s (0m 00s)
+     Speed:     ev/sec=1.12981e+07   simsec/sec=38161.3   ev/simsec=296.062
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5127.470416666668s, event #1518050
+
+Calling finish() at end of Run #2...
+
+Preparing for running configuration Round2_Deterministic_D20, run #3...
+Scenario: $lambdaPerMs=0.0984513038, $repetition=3
+Assigned runID=Round2_Deterministic_D20-3-20261117-22:21:58-82
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1517986   t=5132.480416666668   Elapsed: 0.134171s (0m 00s)
+     Speed:     ev/sec=1.13145e+07   simsec/sec=38255.6   ev/simsec=295.761
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5132.480416666668s, event #1517986
+
+Calling finish() at end of Run #3...
+
+Preparing for running configuration Round2_Deterministic_D20, run #4...
+Scenario: $lambdaPerMs=0.0984513038, $repetition=4
+Assigned runID=Round2_Deterministic_D20-4-20261117-22:21:58-82
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1517909   t=5124.810416666668   Elapsed: 0.134195s (0m 00s)
+     Speed:     ev/sec=1.13118e+07   simsec/sec=38191.3   ev/simsec=296.188
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5124.810416666668s, event #1517909
+
+Calling finish() at end of Run #4...
+
+Preparing for running configuration Round2_Deterministic_D20, run #5...
+Scenario: $lambdaPerMs=0.104981209063, $repetition=0
+Assigned runID=Round2_Deterministic_D20-5-20261117-22:21:58-82
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1528176   t=5014.180416666668   Elapsed: 0.135682s (0m 00s)
+     Speed:     ev/sec=1.12636e+07   simsec/sec=36957.6   ev/simsec=304.771
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5014.180416666668s, event #1528176
+
+Calling finish() at end of Run #5...
+
+Preparing for running configuration Round2_Deterministic_D20, run #6...
+Scenario: $lambdaPerMs=0.104981209063, $repetition=1
+Assigned runID=Round2_Deterministic_D20-6-20261117-22:21:58-82
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1527288   t=5012.600416666668   Elapsed: 0.137101s (0m 00s)
+     Speed:     ev/sec=1.11405e+07   simsec/sec=36563.5   ev/simsec=304.69
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5012.600416666668s, event #1527288
+
+Calling finish() at end of Run #6...
+
+Preparing for running configuration Round2_Deterministic_D20, run #7...
+Scenario: $lambdaPerMs=0.104981209063, $repetition=2
+Assigned runID=Round2_Deterministic_D20-7-20261117-22:21:58-82
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1528004   t=5011.920416666668   Elapsed: 0.139075s (0m 00s)
+     Speed:     ev/sec=1.09876e+07   simsec/sec=36039.9   ev/simsec=304.874
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5011.920416666668s, event #1528004
+
+Calling finish() at end of Run #7...
+
+Preparing for running configuration Round2_Deterministic_D20, run #8...
+Scenario: $lambdaPerMs=0.104981209063, $repetition=3
+Assigned runID=Round2_Deterministic_D20-8-20261117-22:21:58-82
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 5e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1526878   t=5012.420416666668   Elapsed: 0.135931s (0m 00s)
+     Speed:     ev/sec=1.12335e+07   simsec/sec=36877.2   ev/simsec=304.619
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5012.420416666668s, event #1526878
+
+Calling finish() at end of Run #8...
+
+Preparing for running configuration Round2_Deterministic_D20, run #9...
+Scenario: $lambdaPerMs=0.104981209063, $repetition=4
+Assigned runID=Round2_Deterministic_D20-9-20261117-22:21:58-82
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1528632   t=5014.790416666668   Elapsed: 0.136196s (0m 00s)
+     Speed:     ev/sec=1.12244e+07   simsec/sec=36822.6   ev/simsec=304.825
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5014.790416666668s, event #1528632
+
+Calling finish() at end of Run #9...
+
+Preparing for running configuration Round2_Deterministic_D20, run #10...
+Scenario: $lambdaPerMs=0.111092590039, $repetition=0
+Assigned runID=Round2_Deterministic_D20-10-20261117-22:21:59-82
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1555989   t=5001.480416666668   Elapsed: 0.13901s (0m 00s)
+     Speed:     ev/sec=1.1194e+07   simsec/sec=35981.4   ev/simsec=311.106
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5001.480416666668s, event #1555989
+
+Calling finish() at end of Run #10...
+
+Preparing for running configuration Round2_Deterministic_D20, run #11...
+Scenario: $lambdaPerMs=0.111092590039, $repetition=1
+Assigned runID=Round2_Deterministic_D20-11-20261117-22:21:59-82
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1555490   t=5001.050416666668   Elapsed: 0.138651s (0m 00s)
+     Speed:     ev/sec=1.12194e+07   simsec/sec=36071.4   ev/simsec=311.033
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5001.050416666668s, event #1555490
+
+Calling finish() at end of Run #11...
+
+Preparing for running configuration Round2_Deterministic_D20, run #12...
+Scenario: $lambdaPerMs=0.111092590039, $repetition=2
+Assigned runID=Round2_Deterministic_D20-12-20261117-22:21:59-82
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 5e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1556280   t=5001.050416666668   Elapsed: 0.138471s (0m 00s)
+     Speed:     ev/sec=1.12397e+07   simsec/sec=36118.3   ev/simsec=311.191
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5001.050416666668s, event #1556280
+
+Calling finish() at end of Run #12...
+
+Preparing for running configuration Round2_Deterministic_D20, run #13...
+Scenario: $lambdaPerMs=0.111092590039, $repetition=3
+Assigned runID=Round2_Deterministic_D20-13-20261117-22:21:59-82
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.4e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1555134   t=5000.860416666666   Elapsed: 0.13883s (0m 00s)
+     Speed:     ev/sec=1.12041e+07   simsec/sec=36029   ev/simsec=310.973
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5000.860416666666s, event #1555134
+
+Calling finish() at end of Run #13...
+
+Preparing for running configuration Round2_Deterministic_D20, run #14...
+Scenario: $lambdaPerMs=0.111092590039, $repetition=4
+Assigned runID=Round2_Deterministic_D20-14-20261117-22:21:59-82
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3.9e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1556241   t=5001.410416666668   Elapsed: 0.140595s (0m 00s)
+     Speed:     ev/sec=1.10724e+07   simsec/sec=35584.1   ev/simsec=311.16
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5001.410416666668s, event #1556241
+
+Calling finish() at end of Run #14...
+
+Run statistics: total 15, successful 15
+
+End.
+=== SECOND ROUND REVIEW EXPERIMENT: Round2_Deterministic_D24 ===
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.3.0, build: 251110-bb3d6a4731, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from ../src:  3
+
+Preparing for running configuration Round2_Deterministic_D24, run #0...
+Scenario: $lambdaPerMs=0.0984513038, $repetition=0
+Assigned runID=Round2_Deterministic_D24-0-20261117-22:21:59-83
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.1e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1518334   t=5131.040416666668   Elapsed: 0.136057s (0m 00s)
+     Speed:     ev/sec=1.11605e+07   simsec/sec=37715.8   ev/simsec=295.912
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5131.040416666668s, event #1518334
+
+Calling finish() at end of Run #0...
+
+Preparing for running configuration Round2_Deterministic_D24, run #1...
+Scenario: $lambdaPerMs=0.0984513038, $repetition=1
+Assigned runID=Round2_Deterministic_D24-1-20261117-22:21:59-83
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3.2e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1518106   t=5131.010416666668   Elapsed: 0.134677s (0m 00s)
+     Speed:     ev/sec=1.12752e+07   simsec/sec=38108.8   ev/simsec=295.869
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5131.010416666668s, event #1518106
+
+Calling finish() at end of Run #1...
+
+Preparing for running configuration Round2_Deterministic_D24, run #2...
+Scenario: $lambdaPerMs=0.0984513038, $repetition=2
+Assigned runID=Round2_Deterministic_D24-2-20261117-22:22:00-83
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1518050   t=5127.470416666668   Elapsed: 0.134044s (0m 00s)
+     Speed:     ev/sec=1.13258e+07   simsec/sec=38254.7   ev/simsec=296.062
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5127.470416666668s, event #1518050
+
+Calling finish() at end of Run #2...
+
+Preparing for running configuration Round2_Deterministic_D24, run #3...
+Scenario: $lambdaPerMs=0.0984513038, $repetition=3
+Assigned runID=Round2_Deterministic_D24-3-20261117-22:22:00-83
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 2.4e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1517986   t=5132.480416666668   Elapsed: 0.134264s (0m 00s)
+     Speed:     ev/sec=1.13084e+07   simsec/sec=38235   ev/simsec=295.761
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5132.480416666668s, event #1517986
+
+Calling finish() at end of Run #3...
+
+Preparing for running configuration Round2_Deterministic_D24, run #4...
+Scenario: $lambdaPerMs=0.0984513038, $repetition=4
+Assigned runID=Round2_Deterministic_D24-4-20261117-22:22:00-83
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.7e-05s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1517909   t=5124.810416666668   Elapsed: 0.134173s (0m 00s)
+     Speed:     ev/sec=1.13148e+07   simsec/sec=38201.5   ev/simsec=296.188
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5124.810416666668s, event #1517909
+
+Calling finish() at end of Run #4...
+
+Preparing for running configuration Round2_Deterministic_D24, run #5...
+Scenario: $lambdaPerMs=0.104981209063, $repetition=0
+Assigned runID=Round2_Deterministic_D24-5-20261117-22:22:00-83
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1528176   t=5014.180416666668   Elapsed: 0.135265s (0m 00s)
+     Speed:     ev/sec=1.12982e+07   simsec/sec=37071.2   ev/simsec=304.771
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5014.180416666668s, event #1528176
+
+Calling finish() at end of Run #5...
+
+Preparing for running configuration Round2_Deterministic_D24, run #6...
+Scenario: $lambdaPerMs=0.104981209063, $repetition=1
+Assigned runID=Round2_Deterministic_D24-6-20261117-22:22:00-83
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 5e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1527288   t=5012.600416666668   Elapsed: 0.135616s (0m 00s)
+     Speed:     ev/sec=1.12626e+07   simsec/sec=36964.2   ev/simsec=304.69
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5012.600416666668s, event #1527288
+
+Calling finish() at end of Run #6...
+
+Preparing for running configuration Round2_Deterministic_D24, run #7...
+Scenario: $lambdaPerMs=0.104981209063, $repetition=2
+Assigned runID=Round2_Deterministic_D24-7-20261117-22:22:00-83
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1528004   t=5011.920416666668   Elapsed: 0.135106s (0m 00s)
+     Speed:     ev/sec=1.13103e+07   simsec/sec=37098.1   ev/simsec=304.874
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5011.920416666668s, event #1528004
+
+Calling finish() at end of Run #7...
+
+Preparing for running configuration Round2_Deterministic_D24, run #8...
+Scenario: $lambdaPerMs=0.104981209063, $repetition=3
+Assigned runID=Round2_Deterministic_D24-8-20261117-22:22:00-83
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1526878   t=5012.420416666668   Elapsed: 0.135201s (0m 00s)
+     Speed:     ev/sec=1.12939e+07   simsec/sec=37075.5   ev/simsec=304.619
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5012.420416666668s, event #1526878
+
+Calling finish() at end of Run #8...
+
+Preparing for running configuration Round2_Deterministic_D24, run #9...
+Scenario: $lambdaPerMs=0.104981209063, $repetition=4
+Assigned runID=Round2_Deterministic_D24-9-20261117-22:22:01-83
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1528632   t=5014.790416666668   Elapsed: 0.137927s (0m 00s)
+     Speed:     ev/sec=1.10835e+07   simsec/sec=36360.4   ev/simsec=304.825
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5014.790416666668s, event #1528632
+
+Calling finish() at end of Run #9...
+
+Preparing for running configuration Round2_Deterministic_D24, run #10...
+Scenario: $lambdaPerMs=0.111092590039, $repetition=0
+Assigned runID=Round2_Deterministic_D24-10-20261117-22:22:01-83
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1555989   t=5001.480416666668   Elapsed: 0.138416s (0m 00s)
+     Speed:     ev/sec=1.1242e+07   simsec/sec=36135.8   ev/simsec=311.106
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5001.480416666668s, event #1555989
+
+Calling finish() at end of Run #10...
+
+Preparing for running configuration Round2_Deterministic_D24, run #11...
+Scenario: $lambdaPerMs=0.111092590039, $repetition=1
+Assigned runID=Round2_Deterministic_D24-11-20261117-22:22:01-83
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1555490   t=5001.050416666668   Elapsed: 0.138199s (0m 00s)
+     Speed:     ev/sec=1.12561e+07   simsec/sec=36189.4   ev/simsec=311.033
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5001.050416666668s, event #1555490
+
+Calling finish() at end of Run #11...
+
+Preparing for running configuration Round2_Deterministic_D24, run #12...
+Scenario: $lambdaPerMs=0.111092590039, $repetition=2
+Assigned runID=Round2_Deterministic_D24-12-20261117-22:22:01-83
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1556280   t=5001.050416666668   Elapsed: 0.138448s (0m 00s)
+     Speed:     ev/sec=1.12415e+07   simsec/sec=36124.1   ev/simsec=311.191
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5001.050416666668s, event #1556280
+
+Calling finish() at end of Run #12...
+
+Preparing for running configuration Round2_Deterministic_D24, run #13...
+Scenario: $lambdaPerMs=0.111092590039, $repetition=3
+Assigned runID=Round2_Deterministic_D24-13-20261117-22:22:01-83
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1555134   t=5000.860416666666   Elapsed: 0.140043s (0m 00s)
+     Speed:     ev/sec=1.11054e+07   simsec/sec=35711.8   ev/simsec=310.973
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5000.860416666666s, event #1555134
+
+Calling finish() at end of Run #13...
+
+Preparing for running configuration Round2_Deterministic_D24, run #14...
+Scenario: $lambdaPerMs=0.111092590039, $repetition=4
+Assigned runID=Round2_Deterministic_D24-14-20261117-22:22:01-83
+Setting up network "dect2020scheduledaccess.FixedSlotNetwork"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 5e-06s (0m 00s)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 3   present: 3   in FES: 2
+** Event #1556241   t=5001.410416666668   Elapsed: 0.143032s (0m 00s)
+     Speed:     ev/sec=1.08811e+07   simsec/sec=34969.3   ev/simsec=311.16
+     Messages:  created: 3   present: 3   in FES: 2
+
+<!> Simulation stopped with endSimulation() -- in module (FixedSlotQueue) FixedSlotNetwork.queue (id=2), at t=5001.410416666668s, event #1556241
+
+Calling finish() at end of Run #14...
+
+Run statistics: total 15, successful 15
+
+End.
+Exported 2970 scalars, 1980 parameters
+WARNING: Phase-2 analytical CI audit unavailable: No module named 'phase4_dimensioning'
+WARNING: Analytical comparison requires numpy/matplotlib: No module named 'phase4_dimensioning'
+# Major-revision simulation: revision-second-round
+
+Runs observed: 110
+Independent configuration groups: 22
+Summary: ci_results/revision-second-round_summary.csv
+Full-frame correction: ci_results/revision-second-round_frame_mapping.csv
+Original model preserved: yes
+
+All physical metrics refer to one tagged PT with an explicit repeated
+10-ms / 24-slot allocation. This is an idealized slot-synchronous MAC
+benchmark, not a full radio PHY or ETSI conformance implementation.
+D=2 r=30 lambda=0.24: delay=2.16669ms, blocking=0
+D=2 r=30 lambda=0.6: delay=2.56066ms, blocking=0
+D=2 r=30 lambda=1.17583: delay=11.05761ms, blocking=0.010166
+D=2 r=30 lambda=1.25843: delay=17.44547ms, blocking=0.0503285
+D=2 r=30 lambda=1.33292: delay=20.44923ms, blocking=0.100092
+D=2 r=30 lambda=0.24: delay=0.93802ms, blocking=0
+D=2 r=30 lambda=0.6: delay=1.25214ms, blocking=0
+D=6 r=30 lambda=0.392955: delay=32.35812ms, blocking=0.0100812
+D=6 r=30 lambda=0.419727: delay=52.95016ms, blocking=0.0502643
+D=6 r=30 lambda=0.444345: delay=62.16722ms, blocking=0.100074
+D=10 r=30 lambda=0.196765: delay=64.53298ms, blocking=0.0100405
+D=10 r=30 lambda=0.209931: delay=107.34056ms, blocking=0.0502611
