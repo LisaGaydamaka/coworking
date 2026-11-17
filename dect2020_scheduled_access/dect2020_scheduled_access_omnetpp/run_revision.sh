@@ -4,6 +4,7 @@ TRIGGER="${1:-revision-smoke}"
 # GitHub Actions .run triggers carry a unique date suffix; normalize to a
 # stable experiment mode before selecting config and output file names.
 case "$TRIGGER" in
+    revision-second-round*) MODE=revision-second-round ;;
     revision-final-physical*) MODE=revision-final-physical ;;
     revision-final-saturation*) MODE=revision-final-saturation ;;
     revision-smoke*) MODE=revision-smoke ;;
@@ -32,6 +33,23 @@ case "$MODE" in
   revision-full) configs=(Revision_D6 Revision_D10 Revision_D20 Revision_Tail Revision_Distributed Revision_Overhead Revision_Traffic_Poisson Revision_Traffic_Periodic Revision_Traffic_Synchronized Revision_Traffic_Bursty Revision_DimensioningD6 Revision_DimensioningD10 Revision_DimensioningD20 Revision_Trade) ;;
   *) echo "Unknown revision mode: $MODE" >&2; exit 2 ;;
 esac
+# Independent response to second-round review, isolated from first-round data.
+if [[ "$MODE" == "revision-second-round" ]]; then
+    rm -rf results_revision_second_round
+    mkdir -p results_revision_second_round
+    for cfg in Round2_Lowload_D2_Contiguous Round2_Lowload_D2_Distributed \
+               Round2_Deterministic_D2 Round2_Deterministic_D6 \
+               Round2_Deterministic_D10 Round2_Deterministic_D13 \
+               Round2_Deterministic_D20 Round2_Deterministic_D24; do
+        echo "=== SECOND ROUND REVIEW EXPERIMENT: $cfg ==="
+        ../src/dect2020_sa -u Cmdenv -n ../src -f revision_second_round.ini -c "$cfg"
+    done
+    opp_scavetool x results_revision_second_round/*.sca -F CSV-R -o ../ci_results/revision-second-round_scalars.csv
+    cd ..
+    python3 revision_analysis.py revision-second-round
+    echo "revision-second-round PASS" > ci_results/revision-second-round_status.txt
+    exit 0
+fi
 # Two final pre-writing checks; filenames and results are isolated from every
 # previously published and major-revision experiment.
 if [[ "$MODE" == "revision-final-physical" ]]; then
