@@ -21,6 +21,7 @@ cd "$(dirname "$0")"
 mkdir -p simulations/results_revision ci_results
 cd simulations
 case "$MODE" in
+  revision-second-round) configs=() ;;
   revision-final-physical) configs=() ;;
   revision-final-saturation) configs=() ;;
   revision-smoke) configs=(Smoke) ;;
