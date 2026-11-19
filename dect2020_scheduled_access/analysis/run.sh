@@ -6,7 +6,10 @@ export MPLBACKEND=Agg
 python3 -m pip install --quiet --disable-pip-version-check numpy matplotlib
 
 RUN_MODE="$(cat .run 2>/dev/null || true)"
-if [[ "$RUN_MODE" == revision-round2-analytics* ]]; then
+if [[ "$RUN_MODE" == section5-exp-figures* ]]; then
+  export OPENBLAS_NUM_THREADS=1
+  python3 section5_exponential_figure_refresh.py
+elif [[ "$RUN_MODE" == revision-round2-analytics* ]]; then
   export OPENBLAS_NUM_THREADS=1
   python3 revision_second_round_analysis.py
 elif [[ "$RUN_MODE" == revision-relayout-all* ]]; then
